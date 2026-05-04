@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/artist/:artistId",
+      "destination": "/artist.html?artistId=:artistId"
+    }
+  ]
+}
