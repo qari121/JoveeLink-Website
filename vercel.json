@@ -3,6 +3,10 @@
     {
       "source": "/artist/:artistId",
       "destination": "/artist.html?artistId=:artistId"
+    },
+    {
+      "source": "/community/post/:postId",
+      "destination": "/community.html?postId=:postId"
     }
   ]
 }

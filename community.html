@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open in Jovee Link</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #ffffff;
+        color: #1f1f1f;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      .card {
+        max-width: 520px;
+        margin: 8vh auto 0;
+        border: 1px solid #ece8eb;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 26px;
+        color: #8e4256;
+      }
+      p {
+        line-height: 1.5;
+        color: #555;
+      }
+      .btn {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+      .primary {
+        background: #8e4256;
+        color: #fff;
+      }
+      .secondary {
+        background: #f6f3f4;
+        color: #8e4256;
+        border: 1px solid #e6d8dd;
+      }
+      .muted {
+        margin-top: 16px;
+        font-size: 13px;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Jovee Link</h1>
+      <p id="desc">Opening post...</p>
+      <a id="openAppBtn" class="btn primary" href="#">Open in app</a>
+      <a id="iosBtn" class="btn secondary" href="https://apps.apple.com/us/app/jovee-link/id6755535426">Download on App Store</a>
+      <a id="androidBtn" class="btn secondary" href="https://play.google.com/store/apps/details?id=com.joveelink.app">Get it on Google Play</a>
+      <a class="btn secondary" href="https://www.joveelink.com/">Back to website</a>
+      <p class="muted">If the app does not open automatically, use the download buttons above.</p>
+    </div>
+
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        // /community/post/<id>  ->  parts = ["community","post","<id>"]
+        var pathPostId = parts[0] === "community" && parts[1] === "post" ? parts[2] : null;
+        var queryPostId = new URLSearchParams(window.location.search).get("postId");
+        var postId = queryPostId || pathPostId;
+
+        var deepLink = postId
+          ? "joveelinkmobile://community/post/" + encodeURIComponent(postId)
+          : "joveelinkmobile://";
+
+        var desc = document.getElementById("desc");
+        var openBtn = document.getElementById("openAppBtn");
+        openBtn.href = deepLink;
+        desc.textContent = postId ? "Opening this post in the Jovee Link app..." : "Opening Jovee Link app...";
+
+        var ua = navigator.userAgent || "";
+        var isIOS = /iPhone|iPad|iPod/i.test(ua);
+        var isAndroid = /Android/i.test(ua);
+
+        if (!isIOS) document.getElementById("iosBtn").style.display = "none";
+        if (!isAndroid) document.getElementById("androidBtn").style.display = "none";
+
+        var start = Date.now();
+        window.location.href = deepLink;
+
+        setTimeout(function () {
+          if (Date.now() - start < 1400) return;
+          if (isIOS) {
+            window.location.href = "https://apps.apple.com/us/app/jovee-link/id6755535426";
+          } else if (isAndroid) {
+            window.location.href = "https://play.google.com/store/apps/details?id=com.joveelink.app";
+          }
+        }, 1200);
+      })();
+    </script>
+  </body>
+</html>
