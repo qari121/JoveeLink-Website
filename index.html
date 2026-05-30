@@ -1673,11 +1673,12 @@
                 </div>
 
                 <nav class="footer-links">
-                    <a href="#" data-i18n="footer_about">About</a>
-                    <a href="#" data-i18n="footer_artists">For Artists</a>
-                    <a href="#" data-i18n="footer_clients">For Clients</a>
-                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
-                    <a href="#" data-i18n="footer_terms">Terms of Service</a>
+                    <a href="#features" data-i18n="footer_about">About</a>
+                    <a href="#how-it-works" data-i18n="footer_artists">For Artists</a>
+                    <a href="/?tab=client#how-it-works" data-i18n="footer_clients">For Clients</a>
+                    <a href="/support" data-i18n="footer_support">Support</a>
+                    <a href="/privacy" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="/terms" data-i18n="footer_terms">Terms of Service</a>
                 </nav>
 
                 <div class="footer-social">
@@ -1770,6 +1771,7 @@
                 footer_about: 'About',
                 footer_artists: 'For Artists',
                 footer_clients: 'For Clients',
+                footer_support: 'Support',
                 footer_privacy: 'Privacy Policy',
                 footer_terms: 'Terms of Service'
             },
@@ -1831,6 +1833,7 @@
                 footer_about: 'V\u1EC1 ch\u00FAng t\u00F4i',
                 footer_artists: 'Cho Th\u1EE3 n\u00E1il',
                 footer_clients: 'Cho Kh\u00E1ch h\u00E0ng',
+                footer_support: 'H\u1ED7 tr\u1EE3',
                 footer_privacy: 'Ch\u00EDnh s\u00E1ch B\u1EA3o m\u1EADt',
                 footer_terms: '\u0110i\u1EC1u kho\u1EA3n D\u1ECBch v\u1EE5'
             }
@@ -1909,27 +1912,31 @@
         var tabBtns = document.querySelectorAll('.tab-btn[data-tab]');
         var tabContents = document.querySelectorAll('.tab-content');
 
+        function activateTab(tab) {
+            tabBtns.forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.tab-btn[data-tab="' + tab + '"]').forEach(function(b) {
+                b.classList.add('active');
+            });
+            tabContents.forEach(function(c) { c.classList.remove('active'); });
+            var content = document.getElementById('tab-' + tab);
+            if (content) content.classList.add('active');
+            document.querySelectorAll('#tab-' + tab + ' .animate-on-scroll').forEach(function(el) {
+                el.classList.remove('is-visible');
+                void el.offsetWidth;
+                el.classList.add('is-visible');
+            });
+        }
+
         tabBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
-                var tab = this.getAttribute('data-tab');
-
-                tabBtns.forEach(function(b) { b.classList.remove('active'); });
-                // Activate all buttons with the same data-tab (if duplicated)
-                document.querySelectorAll('.tab-btn[data-tab="' + tab + '"]').forEach(function(b) {
-                    b.classList.add('active');
-                });
-
-                tabContents.forEach(function(c) { c.classList.remove('active'); });
-                document.getElementById('tab-' + tab).classList.add('active');
-
-                // Re-trigger animations
-                document.querySelectorAll('#tab-' + tab + ' .animate-on-scroll').forEach(function(el) {
-                    el.classList.remove('is-visible');
-                    void el.offsetWidth;
-                    el.classList.add('is-visible');
-                });
+                activateTab(this.getAttribute('data-tab'));
             });
         });
+
+        var urlTab = new URLSearchParams(window.location.search).get('tab');
+        if (urlTab === 'artist' || urlTab === 'client') {
+            activateTab(urlTab);
+        }
 
         /* ==========================================
            SCROLL ANIMATIONS
