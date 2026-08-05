@@ -4,11 +4,31 @@
   "rewrites": [
     {
       "source": "/artist/:artistId",
-      "destination": "/artist.html?artistId=:artistId"
+      "destination": "/artist?artistId=:artistId"
     },
     {
       "source": "/community/post/:postId",
-      "destination": "/community.html?postId=:postId"
+      "destination": "/community?postId=:postId"
+    },
+    {
+      "source": "/community/profile/:userId",
+      "destination": "/community?userId=:userId"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
     }
   ]
 }

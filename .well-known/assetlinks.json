@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.joveelink.app",
+      "sha256_cert_fingerprints": [
+        "E8:6D:14:30:E9:D0:8F:D8:F7:12:D1:77:D0:89:C3:35:B5:51:A3:62:A2:A2:14:38:DC:86:FC:AF:E0:E0:0D:F4"
+      ]
+    }
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["QH5R4528B9.com.joveelink.mobile"],
+        "components": [
+          {
+            "/": "/artist/*",
+            "comment": "Artist profile deep links"
+          },
+          {
+            "/": "/community/post/*",
+            "comment": "Community post deep links"
+          },
+          {
+            "/": "/community/profile/*",
+            "comment": "Community profile deep links"
+          }
+        ]
+      }
+    ]
+  }
+}
