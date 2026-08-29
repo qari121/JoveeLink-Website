@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>You have been invited to Jovee Link</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #ffffff;
+        color: #1f1f1f;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      .card {
+        max-width: 520px;
+        margin: 8vh auto 0;
+        border: 1px solid #ece8eb;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 26px;
+        color: #8e4256;
+      }
+      p {
+        line-height: 1.5;
+        color: #555;
+      }
+      .btn {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+      .primary {
+        background: #8e4256;
+        color: #fff;
+      }
+      .secondary {
+        background: #f6f3f4;
+        color: #8e4256;
+        border: 1px solid #e6d8dd;
+      }
+      .muted {
+        margin-top: 16px;
+        font-size: 13px;
+        color: #777;
+      }
+      .code {
+        margin: 18px 0 4px;
+        font-size: 16px;
+        color: #1f1f1f;
+      }
+      .code strong {
+        display: inline-block;
+        margin-left: 6px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        background: #f6f3f4;
+        border: 1px solid #e6d8dd;
+        color: #8e4256;
+        letter-spacing: 2px;
+        font-size: 18px;
+      }
+    </style>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+      ttq.load('DA0FUTJC77UDKVSV2FQG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+  </head>
+  <body>
+    <div class="card">
+      <h1>You have been invited</h1>
+      <!-- The offer wording must match config/referrals in Firestore
+           (valuePercent / maxDiscountCents). Change both together. -->
+      <p id="desc">Get 20% off your first appointment, up to $15.</p>
+      <p class="code" id="codeBox" style="display:none">
+        Your code: <strong id="codeText"></strong>
+      </p>
+      <p class="muted" id="howTo" style="display:none">
+        Enter this code when you book your first appointment.
+      </p>
+      <a id="openAppBtn" class="btn primary" href="#">Open in app</a>
+      <a id="iosBtn" class="btn secondary" href="https://apps.apple.com/us/app/jovee-link/id6755535426">Download on App Store</a>
+      <a id="androidBtn" class="btn secondary" href="https://play.google.com/store/apps/details?id=com.joveelink.app">Get it on Google Play</a>
+      <a class="btn secondary" href="https://www.joveelink.com/">Back to website</a>
+      <p class="muted">If the app does not open automatically, use the download buttons above.</p>
+    </div>
+
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var pathCode = parts[0] === "r" ? parts[1] : null;
+        var queryCode = new URLSearchParams(window.location.search).get("code");
+        var code = (queryCode || pathCode || "").toUpperCase();
+
+        // The app cannot yet accept a code from a link, so this page's job is to
+        // make the code readable and memorable before handing over to the app.
+        var deepLink = "joveelinkmobile://";
+
+        var openBtn = document.getElementById("openAppBtn");
+        openBtn.href = deepLink;
+        if (code) {
+          document.getElementById("codeText").textContent = code;
+          document.getElementById("codeBox").style.display = "block";
+          document.getElementById("howTo").style.display = "block";
+        }
+
+        var ua = navigator.userAgent || "";
+        var isIOS = /iPhone|iPad|iPod/i.test(ua);
+        var isAndroid = /Android/i.test(ua);
+
+        if (!isIOS) document.getElementById("iosBtn").style.display = "none";
+        if (!isAndroid) document.getElementById("androidBtn").style.display = "none";
+
+        // Deliberately no auto-redirect: bouncing to the store would hide the
+        // code the visitor needs to type. They choose when to leave.
+      })();
+    </script>
+  </body>
+</html>
