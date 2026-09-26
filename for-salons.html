@@ -11,8 +11,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Clients — Jovée Link</title>
-    <meta name="description" content="Find a nail artist near you. Book the time you actually want. See their real work, message them directly, and pay after your appointment.">
+    <title>For Salons — Jovée Link</title>
+    <meta name="description" content="Run the floor, not the phone. Take bookings for the salon, hand them to whoever's free, and see exactly where business is being lost.">
     <link rel="icon" type="image/png" href="assets/logo-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,7 @@
             --blush-50: #FDF2F5;
             --navy: #1A2B4A;
             --navy-900: #0C1A30;
+            --navy-tint: #EDEFF5;
             --charcoal: #2D2D2D;
             --gray-700: #4A4A4A;
             --gray-500: #777777;
@@ -46,7 +47,6 @@
             -webkit-font-smoothing: antialiased;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .prose-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
         /* Nav */
         .page-nav {
@@ -85,7 +85,7 @@
 
         /* Hero */
         .page-hero {
-            background: linear-gradient(180deg, #ffffff 0%, var(--blush-50) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, var(--navy-tint) 100%);
             padding: 88px 0 96px;
             border-bottom: 1px solid var(--gray-100);
         }
@@ -93,7 +93,7 @@
             display: inline-block;
             font-size: 13px;
             font-weight: 700;
-            color: var(--blush);
+            color: var(--navy);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 20px;
@@ -105,14 +105,14 @@
             letter-spacing: -2px;
             color: var(--navy-900);
             margin: 0 0 20px;
-            max-width: 18ch;
+            max-width: 16ch;
         }
         .page-hero .lede {
             color: var(--gray-700);
             font-size: 18px;
             line-height: 1.6;
             margin: 0 0 36px;
-            max-width: 62ch;
+            max-width: 60ch;
         }
 
         .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -136,6 +136,24 @@
         .btn-store-text small { font-size: 10px; font-weight: 500; opacity: 0.7; }
         .btn-store-text strong { font-size: 15px; font-weight: 700; }
 
+        /* Positioning strip */
+        .positioning {
+            padding: 56px 0;
+            background: var(--navy-900);
+            color: white;
+            text-align: center;
+        }
+        .positioning p {
+            font-size: clamp(20px, 2.6vw, 28px);
+            font-weight: 700;
+            color: white;
+            margin: 0 auto;
+            max-width: 32ch;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
+        }
+        .positioning .accent { color: var(--teal-50); }
+
         /* Feature grid */
         .features {
             padding: 96px 0;
@@ -145,10 +163,10 @@
             display: inline-block;
             font-size: 12px;
             font-weight: 700;
-            color: var(--blush);
+            color: var(--navy);
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            background: var(--blush-50);
+            background: var(--navy-tint);
             padding: 6px 14px;
             border-radius: 999px;
             margin-bottom: 16px;
@@ -183,24 +201,27 @@
         }
         .feature-tile:hover {
             transform: translateY(-3px);
-            border-color: rgba(212, 109, 134, 0.3);
+            border-color: rgba(31, 128, 128, 0.3);
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
-        .feature-tile:nth-child(even):hover { border-color: rgba(31, 128, 128, 0.3); }
         .feature-icon {
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: var(--blush-50);
-            color: var(--blush);
+            background: var(--teal-50);
+            color: var(--teal);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
         }
-        .feature-tile:nth-child(even) .feature-icon {
-            background: var(--teal-50);
-            color: var(--teal);
+        .feature-tile:nth-child(3n+2) .feature-icon {
+            background: var(--blush-50);
+            color: var(--blush);
+        }
+        .feature-tile:nth-child(3n) .feature-icon {
+            background: var(--navy-tint);
+            color: var(--navy);
         }
         .feature-icon svg { width: 24px; height: 24px; }
         .feature-tile h3 {
@@ -216,55 +237,57 @@
             line-height: 1.6;
             margin: 0;
         }
+        .feature-tile p b { color: var(--navy); font-weight: 700; }
 
-        /* Two-ways-to-book */
-        .ways {
+        /* Get started */
+        .get-started {
             padding: 96px 0;
-            background: linear-gradient(180deg, var(--offwhite) 0%, var(--blush-50) 100%);
+            background: linear-gradient(180deg, var(--offwhite) 0%, var(--navy-tint) 100%);
         }
-        .ways-grid {
+        .steps-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             margin-top: 48px;
         }
-        .way-card {
+        .step-card {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 40px 36px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            padding: 32px 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(0, 0, 0, 0.03);
-            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
         }
-        .way-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--navy));
         }
-        .way-tag {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--blush);
-            background: var(--blush-50);
-            padding: 4px 12px;
-            border-radius: 999px;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--navy-900);
+            color: white;
+            font-weight: 800;
+            font-size: 15px;
             margin-bottom: 16px;
         }
-        .way-card:nth-child(2) .way-tag {
-            color: var(--teal);
-            background: var(--teal-50);
+        .step-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 8px;
         }
-        .way-card h3 {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--navy-900);
-            margin: 0 0 12px;
-            letter-spacing: -0.5px;
-            line-height: 1.15;
-        }
-        .way-card p {
+        .step-card p {
             font-size: 15px;
             color: var(--gray-700);
             line-height: 1.6;
@@ -274,7 +297,7 @@
         /* Final CTA */
         .cta-section {
             padding: 96px 0;
-            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-900) 60%, var(--blush) 200%);
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-900) 60%, var(--teal-dark) 100%);
             text-align: center;
             color: white;
         }
@@ -285,13 +308,13 @@
             letter-spacing: -1px;
             color: white;
             margin: 0 auto 16px;
-            max-width: 24ch;
+            max-width: 22ch;
         }
         .cta-section p {
             font-size: 17px;
             color: rgba(255, 255, 255, 0.75);
             margin: 0 auto 36px;
-            max-width: 52ch;
+            max-width: 54ch;
         }
         .cta-section .hero-ctas { justify-content: center; }
         .cta-section .btn-store {
@@ -326,11 +349,11 @@
 
         @media (max-width: 900px) {
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
-            .ways-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .page-hero { padding: 56px 0 64px; }
-            .features, .ways, .cta-section { padding: 64px 0; }
+            .features, .get-started, .cta-section, .positioning { padding: 48px 0; }
             .feature-grid { grid-template-columns: 1fr; }
             .page-footer .container { flex-direction: column; text-align: center; }
         }
@@ -348,9 +371,9 @@
 
     <section class="page-hero">
         <div class="container">
-            <span class="eyebrow">For clients</span>
-            <h1>Find a nail artist near you. Book the time you actually want.</h1>
-            <p class="lede">See their real work, their prices and their open slots on a map of salons around you. Book in a few taps, message them directly, and pay after your appointment.</p>
+            <span class="eyebrow">For salons</span>
+            <h1>Run the floor, not the phone.</h1>
+            <p class="lede">Take bookings for the salon, hand them to whoever&rsquo;s free, and see exactly where business is being lost. Add your managers so it doesn&rsquo;t all sit with you.</p>
             <div class="hero-ctas">
                 <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -370,80 +393,91 @@
         </div>
     </section>
 
+    <section class="positioning">
+        <div class="container">
+            <p>Built for <span class="accent">how nail spas actually run in America</span> &mdash; the salon owns the floor, the artists work the chairs, and every booking has one home.</p>
+        </div>
+    </section>
+
     <section class="features">
         <div class="container">
-            <span class="section-eyebrow">Everything you can do</span>
-            <h2 class="section-title">The nail appointment, without the phone tag.</h2>
-            <p class="section-lede">See real work. Pick a real slot. Message your artist. Pay for what you actually got. That's it.</p>
+            <span class="section-eyebrow">Everything you get</span>
+            <h2 class="section-title">The whole floor, in one place.</h2>
+            <p class="section-lede">Bookings, roster, dashboard, stock &mdash; each one used to live in its own notebook, WhatsApp thread or spreadsheet. Now they don&rsquo;t.</p>
 
             <div class="feature-grid">
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
                     </div>
-                    <h3>A map of salons around you</h3>
-                    <p>Real nail salons on a live map with the nearest one always on screen. Search by name or location. Tap a pin to open the salon or an artist.</p>
+                    <h3>One inbox for the salon</h3>
+                    <p>Clients book the salon, not a person. Assign whoever's free. <b>If they can't take it, the request comes back to the inbox</b> — never dies on you.</p>
                 </div>
 
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/></svg>
                     </div>
-                    <h3>Portfolios that mean something</h3>
-                    <p>Every artist has photos of their actual work, their prices, their specialties, their reviews. Know exactly what you're booking before you commit.</p>
+                    <h3>Website bookings, same inbox</h3>
+                    <p>People book from joveelink.com without downloading the app. Their name and phone land in the same inbox as everything else — no separate flow to check.</p>
                 </div>
 
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
                     </div>
-                    <h3>Pick a real slot</h3>
-                    <p>Choose from the artist's actual open times. Slots already taken are marked. No "we'll call you back," no phone tag.</p>
+                    <h3>See where business slips</h3>
+                    <p>The dashboard names it: how many requests died waiting, split into <b>nobody was assigned</b> and <b>artist never answered</b>. Per artist. Fix what's actually broken.</p>
                 </div>
 
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
                     </div>
-                    <h3>Chat before you show up</h3>
-                    <p>Send a reference photo, agree on the design, sort out the details — one thread with your artist, nothing lost in DMs.</p>
+                    <h3>Managers and co-owners</h3>
+                    <p>Add team members by email as managers or co-owners. They take bookings, assign artists and approve requests when you're not there. Only the owner changes the team.</p>
                 </div>
 
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
                     </div>
-                    <h3>Pay after, not before</h3>
-                    <p>Nothing is charged when you book. Your artist bills you for what was actually done. Card, Apple Pay, Google Pay, Klarna, Clearpay, or just at the salon.</p>
+                    <h3>Your artists, one place</h3>
+                    <p>Your whole roster in one search. Filter by skills, experience or who's free today. Review artists asking to join. Open any artist's week to see their schedule.</p>
                 </div>
 
                 <div class="feature-tile">
                     <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5-.625 3.75a1 1 0 0 0-.625.625 15 15 0 0 1-1.5.75m18.75 0v11.25c0 .621-.504 1.125-1.125 1.125h-8.25a1.125 1.125 0 0 1-1.125-1.125V7.5m14.25 0h1.5m-16.5 0h.375a1.125 1.125 0 0 1 1.125 1.125v9c0 .621-.504 1.125-1.125 1.125H3.375A1.125 1.125 0 0 1 2.25 17.625v-9A1.125 1.125 0 0 1 3.375 7.5h.375m14.25 0h-14.25M18 15h-6"/></svg>
                     </div>
-                    <h3>Invite a friend, both win</h3>
-                    <p>Share your referral code. They get money off their first appointment. You get a reward once they've actually been in — no gaming it, no cap on how many friends.</p>
+                    <h3>Inventory that updates itself</h3>
+                    <p>Stock levels adjust as appointments are billed. Low-stock warnings. Quick stocktake to correct estimates. Recipes so a gel set deducts the right things.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="ways">
+    <section class="get-started">
         <div class="container">
-            <span class="section-eyebrow">Two ways to book</span>
-            <h2 class="section-title">Pick your artist, or let the salon pick for you.</h2>
-            <p class="section-lede">Some days you know exactly who you want. Other days you just want the appointment. Jovée Link handles both.</p>
+            <span class="section-eyebrow">Getting started</span>
+            <h2 class="section-title">Set up in three steps.</h2>
+            <p class="section-lede">No sales call. No setup fee. Add your salon, invite your team, start taking bookings.</p>
 
-            <div class="ways-grid">
-                <div class="way-card">
-                    <span class="way-tag">Option 1</span>
-                    <h3>Pick your artist</h3>
-                    <p>Browse portfolios, prices and reviews. Choose your artist, pick a slot from their real availability, add any notes. They confirm, and you're booked.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h3>Set up your salon</h3>
+                    <p>Business name, photo, hours, location. Define the service list you actually offer.</p>
                 </div>
-                <div class="way-card">
-                    <span class="way-tag">Option 2</span>
-                    <h3>Let the salon pick</h3>
-                    <p>Tell the salon the service and the time you want. They match you with an artist who's free. If that artist can't take it, it goes back to the salon instead of dying on you.</p>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h3>Add your team</h3>
+                    <p>Approve artists who ask to join, add managers or co-owners so it doesn't all sit with you.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h3>Take the first booking</h3>
+                    <p>Requests land in the salon inbox. Assign, deliver, watch the dashboard fill in what's actually happening.</p>
                 </div>
             </div>
         </div>
@@ -451,8 +485,8 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2>Your next set is one download away.</h2>
-            <p>Free to download. Nothing charged until your appointment's done. Available on iOS and Android.</p>
+            <h2>Ready to run the floor properly?</h2>
+            <p>Free to set up. Bookings from your website, your inbox and your Instagram all end up in the same place. Available on iOS and Android.</p>
             <div class="hero-ctas">
                 <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
