@@ -1059,6 +1059,85 @@
         @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
 
         /* ========================================
+           PAY AFTER SECTION
+           ======================================== */
+        .pay-section {
+            padding: 96px 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--blush-50) 100%);
+        }
+        .pay-timeline {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            gap: 20px;
+            align-items: stretch;
+            margin-top: 48px;
+        }
+        .pay-step {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .pay-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .pay-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--teal-50);
+            color: var(--teal);
+            font-family: var(--body, inherit);
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .pay-step:nth-child(3) .pay-step-num {
+            background: var(--blush-50);
+            color: var(--blush);
+        }
+        .pay-step h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 8px;
+            letter-spacing: -0.2px;
+        }
+        .pay-step p {
+            font-size: 15px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .pay-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rule, var(--gray-300));
+        }
+        .pay-arrow svg { width: 28px; height: 28px; }
+        .pay-note {
+            text-align: center;
+            margin: 32px auto 0;
+            max-width: 640px;
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+        @media (max-width: 900px) {
+            .pay-timeline {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .pay-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+
+        /* ========================================
            DOWNLOAD CTA
            ======================================== */
         .download-section {
@@ -1537,6 +1616,43 @@
         </div>
     </section>
 
+    <!-- ====== PAY AFTER ====== -->
+    <section class="pay-section" id="pay">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-eyebrow" data-i18n="pay_eyebrow">Pay model</div>
+                <h2 class="section-title" data-i18n="pay_title">Nothing is charged when you book.</h2>
+                <p class="section-subtitle" data-i18n="pay_subtitle">Your artist bills you after the appointment for what was actually done. Pay in the app or settle up at the salon &mdash; either way, you&rsquo;re booked.</p>
+            </div>
+
+            <div class="pay-timeline">
+                <div class="pay-step animate-on-scroll stagger-1">
+                    <div class="pay-step-num">01</div>
+                    <h3 data-i18n="pay_step1_title">You book a slot</h3>
+                    <p data-i18n="pay_step1_text">No hold, no charge. Not even a card required.</p>
+                </div>
+                <div class="pay-arrow animate-on-scroll stagger-2" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                </div>
+                <div class="pay-step animate-on-scroll stagger-3">
+                    <div class="pay-step-num">02</div>
+                    <h3 data-i18n="pay_step2_title">Artist does the work</h3>
+                    <p data-i18n="pay_step2_text">They itemise what they actually did, not what was booked.</p>
+                </div>
+                <div class="pay-arrow animate-on-scroll stagger-4" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                </div>
+                <div class="pay-step animate-on-scroll stagger-5">
+                    <div class="pay-step-num">03</div>
+                    <h3 data-i18n="pay_step3_title">Pay when it&rsquo;s done</h3>
+                    <p data-i18n="pay_step3_text">Card, Apple Pay, Google Pay, Klarna, or just at the salon.</p>
+                </div>
+            </div>
+
+            <p class="pay-note animate-on-scroll stagger-6" data-i18n="pay_note">Card payments handled by Stripe. Refunded automatically if a booking is cancelled.</p>
+        </div>
+    </section>
+
     <!-- ====== WAVE DIVIDER ====== -->
     <div class="wave-divider">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--navy)">
@@ -1672,6 +1788,16 @@
                 feat5_text: 'Turn the work you already post into a bookable profile.',
                 feat6_title: 'Booking Alerts',
                 feat6_text: 'Instant notifications so you never miss a booking.',
+                pay_eyebrow: 'Pay model',
+                pay_title: 'Nothing is charged when you book.',
+                pay_subtitle: 'Your artist bills you after the appointment for what was actually done. Pay in the app or settle up at the salon — either way, you’re booked.',
+                pay_step1_title: 'You book a slot',
+                pay_step1_text: 'No hold, no charge. Not even a card required.',
+                pay_step2_title: 'Artist does the work',
+                pay_step2_text: 'They itemise what they actually did, not what was booked.',
+                pay_step3_title: 'Pay when it’s done',
+                pay_step3_text: 'Card, Apple Pay, Google Pay, Klarna, or just at the salon.',
+                pay_note: 'Card payments handled by Stripe. Refunded automatically if a booking is cancelled.',
                 dl_title: 'Your next appointment. Your next artist. Your next hire.',
                 dl_subtitle: 'Join the nail community using Jov\u00E9e Link \u2014 clients, artists and salons alike.',
                 dl_note: 'Free to download. Available on iOS and Android.',
@@ -1735,6 +1861,16 @@
                 feat5_text: 'Bi\u1EBFn nh\u1EEFng t\u00E1c ph\u1EA9m b\u1EA1n \u0111\u00E3 \u0111\u0103ng th\u00E0nh h\u1ED3 s\u01A1 c\u00F3 th\u1EC3 \u0111\u1EB7t l\u1ECBch.',
                 feat6_title: 'Th\u00F4ng b\u00E1o \u0110\u1EB7t l\u1ECBch',
                 feat6_text: 'Th\u00F4ng b\u00E1o t\u1EE9c th\u00EC \u0111\u1EC3 kh\u00F4ng b\u1ECF l\u1EE1 l\u1ECBch h\u1EB9n n\u00E0o.',
+                pay_eyebrow: 'C\u00E1ch thanh to\u00E1n',
+                pay_title: 'Kh\u00F4ng c\u00F3 ph\u00ED khi b\u1EA1n \u0111\u1EB7t l\u1ECBch.',
+                pay_subtitle: 'Th\u1EE3 nail s\u1EBD t\u00EDnh ti\u1EC1n sau khi l\u00E0m xong, d\u1EF1a tr\u00EAn nh\u1EEFng g\u00EC h\u1ECD th\u1EF1c s\u1EF1 l\u00E0m. Thanh to\u00E1n trong \u1EE9ng d\u1EE5ng ho\u1EB7c tr\u1EA3 t\u1EA1i salon \u2014 d\u00F9 c\u00E1ch n\u00E0o b\u1EA1n c\u0169ng \u0111\u00E3 c\u00F3 l\u1ECBch h\u1EB9n.',
+                pay_step1_title: 'B\u1EA1n \u0111\u1EB7t khung gi\u1EDD',
+                pay_step1_text: 'Kh\u00F4ng gi\u1EEF ti\u1EC1n, kh\u00F4ng tr\u1EEB ph\u00ED. Th\u1EADm ch\u00ED kh\u00F4ng c\u1EA7n th\u1EBB.',
+                pay_step2_title: 'Th\u1EE3 nail th\u1EF1c hi\u1EC7n',
+                pay_step2_text: 'H\u1ECD li\u1EC7t k\u00EA nh\u1EEFng g\u00EC \u0111\u00E3 th\u1EF1c s\u1EF1 l\u00E0m, kh\u00F4ng ph\u1EA3i nh\u1EEFng g\u00EC \u0111\u1EB7t l\u1ECBch.',
+                pay_step3_title: 'Thanh to\u00E1n khi xong',
+                pay_step3_text: 'Th\u1EBB, Apple Pay, Google Pay, Klarna, ho\u1EB7c t\u1EA1i salon.',
+                pay_note: 'Thanh to\u00E1n th\u1EBB \u0111\u01B0\u1EE3c x\u1EED l\u00FD b\u1EDFi Stripe. T\u1EF1 \u0111\u1ED9ng ho\u00E0n ti\u1EC1n n\u1EBFu l\u1ECBch h\u1EB9n b\u1ECB hu\u1EF7.',
                 dl_title: 'L\u1ECBch h\u1EB9n ti\u1EBFp theo. Th\u1EE3 nail ti\u1EBFp theo. Ng\u01B0\u1EDDi b\u1EA1n tuy\u1EC3n ti\u1EBFp theo.',
                 dl_subtitle: 'Tham gia c\u1ED9ng \u0111\u1ED3ng nail \u0111ang d\u00F9ng Jov\u00E9e Link \u2014 kh\u00E1ch h\u00E0ng, th\u1EE3 nail v\u00E0 salon.',
                 dl_note: 'Mi\u1EC5n ph\u00ED t\u1EA3i v\u1EC1. C\u00F3 s\u1EB5n tr\u00EAn iOS v\u00E0 Android.',
