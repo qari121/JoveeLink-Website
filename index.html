@@ -1780,6 +1780,10 @@
             });
         });
 
+        // Apply the initial language on load so the translations object
+        // is the source of truth, not the HTML fallback text.
+        setLanguage(currentLang);
+
         /* ==========================================
            STICKY NAV
            ========================================== */
