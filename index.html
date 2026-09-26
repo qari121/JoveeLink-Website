@@ -171,9 +171,16 @@
             transition: all 0.5s var(--ease-out-expo);
         }
 
-        /* Nav over video hero: light logo & text */
+        /* Nav over video hero: light logo & text.
+           logo-white.png is the same file as logo-dark.png; the filter
+           renders it as a solid-white silhouette against the dark video. */
         .nav .nav-logo-dark { display: none; }
-        .nav .nav-logo-white { display: block; height: 44px; width: auto; }
+        .nav .nav-logo-white {
+            display: block;
+            height: 44px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
 
         .nav.scrolled {
             background: rgba(255, 255, 255, 0.88);
@@ -1244,7 +1251,7 @@
             margin-bottom: 48px;
         }
 
-        .footer-logo { height: 40px; width: auto; margin-bottom: 12px; }
+        .footer-logo { height: 40px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); }
 
         .footer-lang-note {
             font-size: 12px;
