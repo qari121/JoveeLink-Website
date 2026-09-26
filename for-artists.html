@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERKQ239G6V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ERKQ239G6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nail Artists — Jovée Link</title>
+    <meta name="description" content="Your work, your prices, your hours. Build a profile that shows what you can actually do, set your own schedule, and take bookings without a phone call.">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #1F8080;
+            --teal-50: #E6F7F7;
+            --teal-dark: #166363;
+            --blush: #D46D86;
+            --blush-50: #FDF2F5;
+            --navy: #1A2B4A;
+            --navy-900: #0C1A30;
+            --charcoal: #2D2D2D;
+            --gray-700: #4A4A4A;
+            --gray-500: #777777;
+            --gray-300: #BBBBBB;
+            --gray-100: #F0F0F0;
+            --offwhite: #F8F6F2;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--charcoal);
+            background: var(--offwhite);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .prose-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        .page-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            z-index: 100;
+        }
+        .page-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        .page-nav .nav-logo img { height: 32px; display: block; }
+        .nav-back {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--teal-dark);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1.5px solid rgba(31, 128, 128, 0.25);
+            transition: all 0.3s var(--ease);
+        }
+        .nav-back:hover {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+            transform: scale(1.03);
+        }
+
+        /* Hero */
+        .page-hero {
+            background: linear-gradient(180deg, #ffffff 0%, var(--offwhite) 100%);
+            padding: 88px 0 96px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+        .page-hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: var(--navy-900);
+            margin: 0 0 20px;
+            max-width: 18ch;
+        }
+        .page-hero .lede {
+            color: var(--gray-700);
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 0 36px;
+            max-width: 60ch;
+        }
+
+        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--navy-900);
+            color: white;
+            text-decoration: none;
+            padding: 14px 22px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s var(--ease);
+        }
+        .btn-store:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .btn-store svg { width: 22px; height: 22px; flex-shrink: 0; }
+        .btn-store-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+        .btn-store-text small { font-size: 10px; font-weight: 500; opacity: 0.7; }
+        .btn-store-text strong { font-size: 15px; font-weight: 700; }
+
+        /* Feature grid */
+        .features {
+            padding: 96px 0;
+            background: white;
+        }
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: var(--teal-50);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 800;
+            color: var(--navy-900);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin: 0 0 16px;
+            max-width: 24ch;
+        }
+        .section-lede {
+            font-size: 17px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: 0 0 48px;
+            max-width: 60ch;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .feature-tile {
+            background: var(--offwhite);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.4s var(--ease);
+        }
+        .feature-tile:hover {
+            transform: translateY(-3px);
+            border-color: rgba(31, 128, 128, 0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .feature-tile:nth-child(even):hover { border-color: rgba(212, 109, 134, 0.3); }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--teal-50);
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .feature-tile:nth-child(even) .feature-icon {
+            background: var(--blush-50);
+            color: var(--blush);
+        }
+        .feature-icon svg { width: 24px; height: 24px; }
+        .feature-tile h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 10px;
+            letter-spacing: -0.3px;
+        }
+        .feature-tile p {
+            font-size: 15px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* How to start */
+        .get-started {
+            padding: 96px 0;
+            background: linear-gradient(180deg, var(--offwhite) 0%, var(--teal-50) 100%);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+        .step-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--blush));
+        }
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--navy-900);
+            color: white;
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+        .step-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 8px;
+        }
+        .step-card p {
+            font-size: 15px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Final CTA */
+        .cta-section {
+            padding: 96px 0;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-900) 60%, var(--teal-dark) 100%);
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: white;
+            margin: 0 0 16px;
+            max-width: 22ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 0 0 36px;
+            max-width: 52ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-section .hero-ctas { justify-content: center; }
+        .cta-section .btn-store {
+            background: white;
+            color: var(--navy-900);
+        }
+
+        /* Footer */
+        .page-footer {
+            background: var(--navy-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 48px 0;
+            font-size: 14px;
+        }
+        .page-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .page-footer img { height: 24px; display: block; filter: brightness(0) invert(1); }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s var(--ease);
+        }
+        .footer-links a:hover { color: white; }
+        .footer-copy { font-size: 13px; color: rgba(255, 255, 255, 0.5); }
+
+        @media (max-width: 900px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .page-hero { padding: 56px 0 64px; }
+            .features, .get-started, .cta-section { padding: 64px 0; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .page-footer .container { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-nav">
+        <div class="container">
+            <a href="/" class="nav-logo" aria-label="Jovée Link home">
+                <img src="assets/logo-dark.png" alt="Jovée Link">
+            </a>
+            <a href="/" class="nav-back">← Back to home</a>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">For nail artists</span>
+            <h1>Your work, your prices, your hours.</h1>
+            <p class="lede">Build a profile that shows what you can actually do, set the services and hours you want to work, and take bookings without a phone call. Free to join.</p>
+            <div class="hero-ctas">
+                <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span class="btn-store-text">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                    <span class="btn-store-text">
+                        <small>Get it on</small>
+                        <strong>Google Play</strong>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <span class="section-eyebrow">Everything you get</span>
+            <h2 class="section-title">A shopfront that does the boring parts for you.</h2>
+            <p class="section-lede">Your profile is your business. Portfolio, prices, availability and reviews all on one page — plus the reminders, chase-ups and receipts that used to eat your evening.</p>
+
+            <div class="feature-grid">
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+                    </div>
+                    <h3>A portfolio that books work</h3>
+                    <p>Photos of your sets, your services with prices, your specialties and your reviews — all on one page clients can open from a link or QR code.</p>
+                </div>
+
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                    </div>
+                    <h3>You decide when you work</h3>
+                    <p>Set each day as available or off, with your own hours and how many clients you take. Clients only see slots inside your real availability.</p>
+                </div>
+
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/></svg>
+                    </div>
+                    <h3>Bill for what you actually did</h3>
+                    <p>Finish the appointment, add the lines, send it. The client pays in the app or you mark it paid in person. Add-ons get billed with the rest — no awkward adjustments.</p>
+                </div>
+
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                    </div>
+                    <h3>Turn a chat into a booking</h3>
+                    <p>Send a client an offer in the conversation with your price and a time. They accept in-chat and the booking is made.</p>
+                </div>
+
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z"/></svg>
+                    </div>
+                    <h3>Work inside a real salon</h3>
+                    <p>Search salons near you and ask to join their team. The salon takes bookings and hands the right ones to you — a professional home for your work, not a marketplace of strangers.</p>
+                </div>
+
+                <div class="feature-tile">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"/></svg>
+                    </div>
+                    <h3>The app chases for you</h3>
+                    <p>Appointment reminders 24 and 2 hours out, review prompts after, and messages that bring quiet clients back — sent automatically. You show up, the app does the rest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-started">
+        <div class="container">
+            <span class="section-eyebrow">Getting started</span>
+            <h2 class="section-title">Live in three steps.</h2>
+            <p class="section-lede">No paperwork. No approval queue. Sign up, set your profile, connect to your salon, take bookings.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h3>Sign up as a nail artist</h3>
+                    <p>Email, Google or Apple. Pick your role. Verify with a six-digit code and you're in.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h3>Build your profile</h3>
+                    <p>Upload portfolio photos, add your services with prices, set your weekly hours. Skip the parts you'll fill in later.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h3>Join your salon &amp; go live</h3>
+                    <p>Search for your salon and ask to join. Once you're on their team, bookings start landing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready when you are.</h2>
+            <p>Free to join. Takes ten minutes to set up. Your first booking is one download away.</p>
+            <div class="hero-ctas">
+                <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span class="btn-store-text">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                    <span class="btn-store-text">
+                        <small>Get it on</small>
+                        <strong>Google Play</strong>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <div class="container">
+            <img src="assets/logo-white.png" alt="Jovée Link">
+            <nav class="footer-links">
+                <a href="/">Home</a>
+                <a href="/for-artists">For Artists</a>
+                <a href="/for-clients">For Clients</a>
+                <a href="/support">Support</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Jovée Link. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+      ttq.load('DA0FUTJC77UDKVSV2FQG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+</body>
+</html>
