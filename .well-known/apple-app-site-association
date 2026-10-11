@@ -2,11 +2,17 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["QH5R4528B9.com.joveelink.mobile"],
+        "appIDs": [
+          "QH5R4528B9.com.joveelink.mobile"
+        ],
         "components": [
           {
             "/": "/artist/*",
             "comment": "Artist profile deep links"
+          },
+          {
+            "/": "/salon/*",
+            "comment": "Salon profile deep links"
           },
           {
             "/": "/community/post/*",

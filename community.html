@@ -11,6 +11,7 @@
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-itunes-app" content="app-id=6755535426" />
     <title>Open in Jovee Link</title>
     <style>
       body {
@@ -79,12 +80,12 @@
   <body>
     <div class="card">
       <h1>Jovee Link</h1>
-      <p id="desc">Opening post...</p>
+      <p id="desc">Join this discussion in the Jovée Link app.</p>
       <a id="openAppBtn" class="btn primary" href="#">Open in app</a>
       <a id="iosBtn" class="btn secondary" href="https://apps.apple.com/us/app/jovee-link/id6755535426">Download on App Store</a>
       <a id="androidBtn" class="btn secondary" href="https://play.google.com/store/apps/details?id=com.joveelink.app">Get it on Google Play</a>
       <a class="btn secondary" href="https://www.joveelink.com/">Back to website</a>
-      <p class="muted">If the app does not open automatically, use the download buttons above.</p>
+      <p class="muted">Tap “Open in app” if you have Jovée Link, or download it above.</p>
     </div>
 
     <script>
@@ -102,7 +103,7 @@
         var desc = document.getElementById("desc");
         var openBtn = document.getElementById("openAppBtn");
         openBtn.href = deepLink;
-        desc.textContent = postId ? "Opening this post in the Jovee Link app..." : "Opening Jovee Link app...";
+        desc.textContent = postId ? "Join this discussion in the Jovée Link app." : "Get the Jovée Link app.";
 
         var ua = navigator.userAgent || "";
         var isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -111,17 +112,15 @@
         if (!isIOS) document.getElementById("iosBtn").style.display = "none";
         if (!isAndroid) document.getElementById("androidBtn").style.display = "none";
 
-        var start = Date.now();
-        window.location.href = deepLink;
-
-        setTimeout(function () {
-          if (Date.now() - start < 1400) return;
-          if (isIOS) {
-            window.location.href = "https://apps.apple.com/us/app/jovee-link/id6755535426";
-          } else if (isAndroid) {
-            window.location.href = "https://play.google.com/store/apps/details?id=com.joveelink.app";
-          }
-        }, 1200);
+        // No automatic jumps: the old timer sent people who HAVE the app to the
+        // store when they came back to the browser. Android's intent link opens
+        // the app when it's installed and Google Play when it isn't; iPhones get
+        // Safari's Smart App Banner plus these buttons.
+        if (isAndroid) {
+          openBtn.href = "intent://" + deepLink.replace("joveelinkmobile://", "") +
+            "#Intent;scheme=joveelinkmobile;package=com.joveelink.app;S.browser_fallback_url=" +
+            encodeURIComponent("https://play.google.com/store/apps/details?id=com.joveelink.app") + ";end";
+        }
       })();
     </script>
   </body>

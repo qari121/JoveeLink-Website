@@ -8,11 +8,11 @@
     },
     {
       "source": "/community/post/:postId",
-      "destination": "/community?postId=:postId"
+      "destination": "https://us-central1-joveelink.cloudfunctions.net/sharePreview/community/post/:postId"
     },
     {
       "source": "/community/profile/:userId",
-      "destination": "/community?userId=:userId"
+      "destination": "https://us-central1-joveelink.cloudfunctions.net/sharePreview/community/profile/:userId"
     },
     {
       "source": "/salon/:salonId",
