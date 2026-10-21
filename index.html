@@ -10,1322 +10,1947 @@
       gtag('config', 'G-ERKQ239G6V');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jovée Link — Nails. Connected.</title>
-    <meta name="description" content="Jovée Link connects nail artists with clients. Get discovered, manage bookings, and grow your business — all in one app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Jovée Link — A home for everyone in the nail industry</title>
+    <meta name="description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
     <link rel="icon" type="image/png" href="assets/logo-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ========================================
-           RESET & BASE
-           ======================================== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ==========================================
+           DESIGN TOKENS (from Figma v2)
+           ========================================== */
         :root {
-            /* Primary Teal Scale */
-            --teal-50:  #E6F7F7;
-            --teal-100: #B3ECEC;
-            --teal-200: #80E0E0;
-            --teal-300: #5CD2D2;
-            --teal-400: #3DBFBF;
-            --teal-500: #2A9D9D;
-            --teal-600: #1F8080;
-            --teal-700: #166363;
-            --teal-800: #0D4747;
-            --teal-900: #062D2D;
+            /* Brand */
+            --brand-navy: #0d2340;
+            --brand-teal: #0d7568;
+            --brand-mint: #e8f5f3;
 
-            /* Secondary Blush/Pink Scale */
-            --blush-50:  #FDF2F5;
-            --blush-100: #F9DDE4;
-            --blush-200: #F2C4CE;
-            --blush-300: #EBA8B7;
-            --blush-400: #E08A9E;
-            --blush-500: #D46D86;
-            --blush-600: #B85470;
-            --blush-700: #943F58;
-            --blush-800: #6F2D41;
-            --blush-900: #4A1D2B;
+            /* Teal scale */
+            --teal-50: #f0faf8;
+            --teal-100: #dcf3ef;
+            --teal-200: #b8e6dd;
+            --teal-300: #86d3c6;
+            --teal-950: #062a25;
 
-            /* Neutrals */
-            --navy-900: #0C1A30;
-            --navy-800: #111F3A;
-            --navy:     #1A2B4A;
-            --navy-600: #243B60;
-            --navy-500: #2E4B76;
+            /* Dark blue scale */
+            --navy-200: #c9d8e2;
+            --navy-800: #1f3a4f;
+            --navy-900: #0d2340;
 
-            --charcoal: #2D2D2D;
-            --gray-700: #4A4A4A;
-            --gray-500: #777777;
-            --gray-400: #999999;
-            --gray-300: #BBBBBB;
-            --gray-200: #E0E0E0;
-            --gray-100: #F0F0F0;
-            --offwhite: #F8F6F2;
-            --white:    #FFFFFF;
+            /* Neutral */
+            --white: #ffffff;
+            --gray-50: #f5f5f5;
+            --gray-100: #dddedf;
+            --gray-400: #91959b;
+            --gray-500: #7a7e84;
+            --gray-700: #4d5157;
+            --gray-800: #383b40;
+            --gray-900: #212326;
+            --black: #101828;
+
+            /* Accent */
+            --orange: #ffa300;
 
             /* Semantic */
-            --teal:       var(--teal-400);
-            --teal-dark:  var(--teal-500);
-            --blush:      var(--blush-200);
-            --blush-dark: var(--blush-400);
+            --text-strong: var(--navy-900);
+            --text-body: var(--gray-700);
+            --text-muted: var(--gray-500);
+            --text-eyebrow: var(--brand-teal);
 
-            /* Typography */
-            --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            /* Spacing */
+            --sp-1: 4px;
+            --sp-2: 8px;
+            --sp-3: 12px;
+            --sp-4: 16px;
+            --sp-5: 20px;
+            --sp-6: 24px;
+            --sp-8: 32px;
+            --sp-10: 40px;
+            --sp-12: 48px;
+            --sp-16: 64px;
+            --sp-20: 80px;
+            --sp-24: 96px;
 
             /* Radius */
-            --radius-sm: 12px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
+            --r-sm: 8px;
+            --r-md: 16px;
+            --r-lg: 24px;
+            --r-xl: 32px;
+            --r-pill: 999px;
 
-            /* Shadows */
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.06);
-            --shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.10);
-            --shadow-nav: 0 4px 24px rgba(0, 0, 0, 0.06);
+            /* Shadow */
+            --shadow-xs: 0 1px 2px rgba(13, 13, 18, 0.06);
+            --shadow-sm: 0 2px 8px rgba(13, 35, 64, 0.06);
+            --shadow-md: 0 8px 24px rgba(13, 35, 64, 0.08);
+            --shadow-lg: 0 16px 40px rgba(13, 35, 64, 0.10);
 
-            /* Motion */
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* Teal button w/ inner-shadow glow (per Figma Button Inner shadow) */
+            --shadow-btn: 0 1px 2px rgba(13, 13, 18, 0.06), inset 0 -14px 24px rgba(134, 211, 198, 0.5);
+
+            /* Easing */
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Fonts */
+            --font-head: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Layout */
+            --container: 1200px;
+            --gutter: 24px;
         }
 
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font);
-            color: var(--charcoal);
-            background: var(--white);
+            margin: 0;
+            font-family: var(--font-body);
+            font-size: 16px;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text-body);
+            background: var(--white);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        img, svg { display: block; max-width: 100%; }
-        a { text-decoration: none; color: inherit; }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; }
-        ul, ol { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        a { color: inherit; text-decoration: none; }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: var(--container);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--gutter);
         }
 
-        /* ========================================
-           ANIMATIONS
-           ======================================== */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-16px); }
+        /* ==========================================
+           TYPOGRAPHY
+           ========================================== */
+        .eyebrow {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--text-eyebrow);
+            margin: 0 0 var(--sp-5);
         }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to { opacity: 1; transform: translateY(0); }
+        .h1 {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: clamp(40px, 5.6vw, 72px);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            color: var(--text-strong);
+            margin: 0 0 var(--sp-6);
         }
 
-        @keyframes blobPulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            33% { transform: scale(1.05) rotate(2deg); }
-            66% { transform: scale(0.97) rotate(-1deg); }
+        .h2 {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: clamp(30px, 3.8vw, 48px);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: var(--text-strong);
+            margin: 0 0 var(--sp-5);
         }
 
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        .lede {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-body);
+            margin: 0 0 var(--sp-8);
+            max-width: 60ch;
         }
 
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        .lede--tight { margin-bottom: var(--sp-6); max-width: 56ch; }
+
+        strong { font-weight: 600; color: var(--text-strong); }
+
+        /* ==========================================
+           BUTTONS
+           ========================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-3);
+            padding: 14px 24px;
+            border-radius: var(--r-pill);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--brand-teal);
+            color: var(--white);
+            box-shadow: var(--shadow-btn);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            background: #0a5f54;
+        }
+        .btn-primary svg { width: 18px; height: 18px; stroke: currentColor; }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-strong);
+            border: 1.5px solid var(--gray-100);
+        }
+        .btn-outline:hover {
+            border-color: var(--text-strong);
+            background: var(--white);
         }
 
-        .stagger-1 { transition-delay: 0.05s; }
-        .stagger-2 { transition-delay: 0.12s; }
-        .stagger-3 { transition-delay: 0.19s; }
-        .stagger-4 { transition-delay: 0.26s; }
-        .stagger-5 { transition-delay: 0.33s; }
-        .stagger-6 { transition-delay: 0.40s; }
+        .btn-sm { padding: 10px 18px; font-size: 14px; }
 
-        /* ========================================
-           NAVIGATION
-           ======================================== */
+        /* ==========================================
+           PILL CHIPS (outlined tags)
+           ========================================== */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: var(--r-pill);
+            border: 1.5px solid var(--teal-200);
+            background: var(--white);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-strong);
+        }
+        .chip-mint {
+            background: var(--teal-100);
+            border-color: var(--teal-200);
+            color: var(--brand-teal);
+        }
+
+        /* ==========================================
+           NAV
+           ========================================== */
         .nav {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             z-index: 100;
-            padding: 16px 0;
-            transition: all 0.5s var(--ease-out-expo);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px) saturate(1.6);
+            -webkit-backdrop-filter: blur(16px) saturate(1.6);
+            border-bottom: 1px solid rgba(13, 35, 64, 0.04);
         }
-
-        /* Nav over video hero: light logo & text.
-           logo-white.png is the same file as logo-dark.png; the filter
-           renders it as a solid-white silhouette against the dark video. */
-        .nav .nav-logo-dark { display: none; }
-        .nav .nav-logo-white {
-            display: block;
-            height: 44px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-
-        .nav.scrolled {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(20px) saturate(1.8);
-            -webkit-backdrop-filter: blur(20px) saturate(1.8);
-            box-shadow: var(--shadow-nav);
-            padding: 10px 0;
-        }
-
-        /* Swap to dark logo when nav has white bg */
-        .nav.scrolled .nav-logo-dark { display: block; }
-        .nav.scrolled .nav-logo-white { display: none; }
-        .nav.scrolled .nav-logo img { height: 38px; }
-
         .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: var(--sp-6);
+            padding: 16px 0;
         }
-
-        .nav-logo {
+        .nav-logo { display: flex; align-items: center; }
+        .nav-logo img { height: 34px; width: auto; }
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 0;
+            gap: var(--sp-8);
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
-
-        .nav-logo img {
-            height: 44px;
-            width: auto;
-            transition: height 0.3s var(--ease-out-expo);
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-strong);
+            transition: color 0.3s var(--ease);
         }
+        .nav-links a:hover { color: var(--brand-teal); }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+        .nav-cta { display: flex; align-items: center; gap: var(--sp-3); }
 
-        .lang-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 100px;
-            overflow: hidden;
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s var(--ease-out-expo);
-        }
-
-        .nav.scrolled .lang-toggle {
-            border-color: var(--gray-200);
-        }
-
-        .lang-btn {
-            padding: 7px 14px;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s var(--ease-out-expo);
-            background: transparent;
-        }
-
-        .lang-btn.active {
-            background: var(--white);
-            color: var(--navy);
-        }
-
-        .nav.scrolled .lang-btn {
-            color: var(--gray-500);
-        }
-
-        .nav.scrolled .lang-btn.active {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        .lang-btn:hover:not(.active) {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav.scrolled .lang-btn:hover:not(.active) {
-            color: var(--navy);
-            background: var(--gray-100);
-        }
-
-        .btn-nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            background: var(--teal);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 100px;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        .btn-nav-cta:hover {
-            background: var(--teal-dark);
-            transform: scale(1.03);
-            box-shadow: 0 8px 24px rgba(61, 191, 191, 0.3);
-        }
-
-        .btn-nav-cta:active { transform: scale(0.98); }
-
-        .btn-nav-cta svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s var(--ease-out-expo);
-        }
-
-        .btn-nav-cta:hover svg { transform: translateY(1px); }
-
-        /* Hamburger */
         .hamburger {
             display: none;
-            flex-direction: column;
-            gap: 5px;
-            width: 28px;
-            padding: 4px 0;
-            z-index: 110;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
         }
-
         .hamburger span {
             display: block;
+            width: 24px;
             height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: all 0.4s var(--ease-out-expo);
-            transform-origin: center;
+            background: var(--text-strong);
+            margin: 5px 0;
+            transition: all 0.3s var(--ease);
         }
 
-        .nav.scrolled .hamburger span {
-            background: var(--navy);
-        }
-
-        .hamburger span:nth-child(1) { width: 100%; }
-        .hamburger span:nth-child(2) { width: 70%; }
-        .hamburger span:nth-child(3) { width: 85%; }
-
-        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
-        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); width: 100%; }
-
-        /* Mobile Menu */
         .mobile-menu {
+            display: none;
             position: fixed;
-            inset: 0;
-            z-index: 105;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            display: flex;
+            inset: 64px 0 0;
+            background: var(--white);
+            z-index: 99;
+            padding: var(--sp-8) var(--gutter);
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s var(--ease-out-expo);
+            gap: var(--sp-6);
         }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-strong);
+            padding: var(--sp-3) 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .mobile-menu .btn-primary { margin-top: var(--sp-4); align-self: flex-start; }
 
-        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        /* ==========================================
+           SECTIONS – shared
+           ========================================== */
+        section { padding: var(--sp-24) 0; }
+        .section-mint { background: var(--brand-mint); }
 
-        .mobile-menu a, .mobile-menu button {
-            font-size: 18px;
+        .section-head { margin-bottom: var(--sp-12); max-width: 820px; }
+        .section-head .lede { max-width: 60ch; }
+
+        .checklist { list-style: none; padding: 0; margin: 0 0 var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-6); }
+        .checklist li { display: flex; gap: var(--sp-4); align-items: flex-start; }
+        .checklist .check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            color: var(--brand-teal);
+        }
+        .checklist .check svg { width: 100%; height: 100%; }
+        .checklist h3 {
+            font-family: var(--font-body);
+            font-size: 16px;
             font-weight: 600;
-            color: var(--navy);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s var(--ease-out-expo);
+            color: var(--text-strong);
+            margin: 0 0 4px;
+            line-height: 1.4;
+        }
+        .checklist p {
+            font-size: 15px;
+            color: var(--text-body);
+            margin: 0;
+            line-height: 1.55;
         }
 
-        .mobile-menu.open a, .mobile-menu.open button { opacity: 1; transform: translateY(0); }
-        .mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-menu.open a:nth-child(2) { transition-delay: 0.15s; }
-        .mobile-menu.open a:nth-child(3) { transition-delay: 0.2s; }
-        .mobile-menu.open *:nth-child(4) { transition-delay: 0.25s; }
-        .mobile-menu.open *:nth-child(5) { transition-delay: 0.3s; }
-
-        .mobile-menu .btn-nav-cta { padding: 14px 36px; font-size: 16px; }
-
-        .mobile-lang-toggle {
-            display: flex;
-            gap: 0;
-            border-radius: 100px;
-            overflow: hidden;
-            border: 1.5px solid var(--gray-200);
-        }
-
-        .mobile-lang-toggle .lang-btn { padding: 10px 24px; font-size: 15px; }
-
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-actions .lang-toggle,
-            .nav-actions .btn-nav-cta { display: none; }
-        }
-
-        /* ========================================
-           HERO
-           ======================================== */
-        .hero {
-            position: relative;
-            min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            padding-top: 100px;
-            padding-bottom: 80px;
-            overflow: hidden;
-            background: var(--navy-900);
-        }
-
-        /* Video Background */
-        .hero-video-wrap {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-            object-position: center 20%;
-        }
-
-        /* Overlay gradient so text is always readable */
-        .hero-video-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background:
-                linear-gradient(90deg, rgba(12, 26, 48, 0.88) 0%, rgba(12, 26, 48, 0.65) 45%, rgba(12, 26, 48, 0.15) 100%);
-        }
-
-        /* Mobile: stronger overlay since text stacks on top of video */
-        @media (max-width: 900px) {
-            .hero-video-overlay {
-                background:
-                    linear-gradient(180deg, rgba(12, 26, 48, 0.82) 0%, rgba(12, 26, 48, 0.50) 55%, rgba(12, 26, 48, 0.75) 100%);
-            }
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .hero-blob-1 {
-            position: absolute;
-            top: 8%;
-            right: 12%;
-            width: 380px;
-            height: 380px;
-            background: radial-gradient(circle, rgba(61, 191, 191, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: blobPulse 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero-blob-2 {
-            position: absolute;
-            top: 35%;
-            right: 2%;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(242, 196, 206, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: blobPulse 10s ease-in-out infinite reverse;
-            pointer-events: none;
-        }
-
-        .hero-blob-3 {
-            position: absolute;
-            bottom: 15%;
-            left: 5%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(242, 196, 206, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: blobPulse 12s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .hero-dots {
-            display: none; /* hidden on video bg */
-        }
-
-        .hero-grid {
-            position: relative;
-            z-index: 3;
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: var(--sp-16);
             align-items: center;
         }
 
-        /* Right column is empty — lets the video show through the lighter overlay */
-        .hero-video-spacer {
-            /* Intentionally empty to maintain grid layout */
+        /* ==========================================
+           1 · HERO (Welcome)
+           ========================================== */
+        .hero {
+            padding: var(--sp-20) 0 var(--sp-24);
+            background: linear-gradient(180deg, var(--brand-mint) 0%, #f3faf8 100%);
+            overflow: hidden;
         }
-
-        .hero-content { max-width: 540px; }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--teal-200);
-            margin-bottom: 28px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 0.75fr;
+            gap: var(--sp-8);
+            align-items: start;
         }
+        .hero-copy { padding-top: var(--sp-8); }
+        .hero-copy .ctas { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-6); }
+        .hero-chips { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
 
-        .hero-headline {
-            font-size: clamp(50px, 6.5vw, 76px);
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.0;
-            letter-spacing: -2.5px;
-            margin-bottom: 20px;
-        }
-
-        .hero-headline span { display: block; }
-
-        .hero-headline .headline-accent {
-            background: linear-gradient(135deg, var(--teal-300), var(--blush-200));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: 18px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.65;
-            max-width: 440px;
-            margin-bottom: 36px;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 14px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-        }
-
-        .btn-store {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            background: var(--white);
-            color: var(--navy);
-            border-radius: var(--radius-md);
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        .btn-store:hover {
-            background: var(--teal-50);
-            transform: scale(1.03);
-            box-shadow: 0 8px 28px rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-store:active { transform: scale(0.98); }
-
-        .btn-store svg { width: 22px; height: 22px; flex-shrink: 0; }
-
-        .btn-store-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .btn-store-text small { font-size: 10px; font-weight: 500; opacity: 0.7; }
-        .btn-store-text strong { font-size: 15px; font-weight: 700; }
-
-        .hero-proof {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-proof-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--blush-300);
-            border-radius: 50%;
-        }
-
-        /* Phone Mockup */
-        .hero-visual {
-            position: relative;
+        .hero-phone-col {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: start;
         }
 
-        .phone-wrapper {
-            position: relative;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .phone-frame {
-            position: relative;
-            width: 280px;
-            height: 570px;
-            background: linear-gradient(160deg, var(--navy), var(--navy-900));
-            border-radius: 40px;
-            padding: 12px;
-            box-shadow:
-                0 40px 80px rgba(26, 43, 74, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-                0 2px 0 rgba(255, 255, 255, 0.06) inset;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(160deg, var(--offwhite) 0%, var(--white) 40%, var(--blush-50) 100%);
-            border-radius: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: var(--navy);
-            border-radius: 0 0 18px 18px;
-        }
-
-        .phone-screen-content {
-            padding: 44px 16px 16px;
+        .hero-side {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            height: 100%;
+            gap: var(--sp-6);
+            margin-top: var(--sp-12);
         }
-
-        .phone-greeting {
-            font-size: 17px;
-            font-weight: 800;
-            color: var(--navy);
-        }
-
-        .phone-search {
-            background: var(--gray-100);
-            border-radius: 12px;
-            padding: 10px 14px;
-            font-size: 11px;
-            color: var(--gray-400);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .phone-search-icon { width: 14px; height: 14px; opacity: 0.4; }
-
-        .phone-map {
-            flex: 1;
-            background: linear-gradient(145deg, var(--teal-50) 0%, #d6eceb 40%, var(--blush-50) 100%);
-            border-radius: 14px;
-            position: relative;
+        .hero-side-img {
+            border-radius: var(--r-lg);
             overflow: hidden;
-            min-height: 160px;
+            aspect-ratio: 4/5;
+            background: var(--teal-100);
+        }
+        .hero-side-img img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-side-title {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 1.15;
+            color: var(--text-strong);
+            margin: var(--sp-2) 0 var(--sp-2);
+        }
+        .hero-side-sub {
+            font-size: 15px;
+            color: var(--text-body);
+            margin: 0;
+            line-height: 1.5;
         }
 
-        /* Map road lines */
-        .phone-map::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 0;
-            right: 0;
-            height: 1.5px;
-            background: rgba(42, 157, 157, 0.15);
+        .hero-caption {
+            text-align: right;
+            margin-top: var(--sp-10);
+            font-size: 13px;
+            color: var(--brand-teal);
+            font-weight: 500;
         }
 
-        .phone-map::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 45%;
-            width: 1.5px;
-            background: rgba(42, 157, 157, 0.12);
-        }
-
-        .phone-map-pin { position: absolute; width: 32px; height: 32px; }
-
-        .phone-map-pin-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--teal);
-            border-radius: 50%;
-            border: 2.5px solid var(--white);
-            box-shadow: 0 2px 8px rgba(61, 191, 191, 0.4);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .phone-map-pin-pulse {
-            width: 28px;
-            height: 28px;
-            background: rgba(61, 191, 191, 0.15);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: blobPulse 2s ease-in-out infinite;
-        }
-
-        .pin-1 { top: 25%; left: 22%; }
-        .pin-2 { top: 55%; left: 62%; }
-        .pin-3 { top: 72%; left: 30%; }
-
-        .pin-blush .phone-map-pin-dot {
-            background: var(--blush-400);
-            box-shadow: 0 2px 8px rgba(224, 138, 158, 0.4);
-        }
-        .pin-blush .phone-map-pin-pulse {
-            background: rgba(242, 196, 206, 0.2);
-        }
-
-        .phone-card-mini {
+        /* ==========================================
+           PHONE FRAME (shared)
+           ========================================== */
+        .phone {
+            width: 320px;
             background: var(--white);
-            border-radius: 12px;
-            padding: 10px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .phone-card-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--blush-200), var(--blush-400));
+            border-radius: 42px;
+            border: 10px solid var(--navy-900);
+            box-shadow: 0 24px 48px rgba(13, 35, 64, 0.18), 0 4px 12px rgba(13, 35, 64, 0.08);
+            overflow: hidden;
+            position: relative;
+            font-family: var(--font-body);
+            color: var(--navy-900);
             flex-shrink: 0;
         }
+        .phone-notch {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92px;
+            height: 24px;
+            background: var(--navy-900);
+            border-radius: 999px;
+            z-index: 2;
+        }
+        .phone-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 24px 2px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy-900);
+        }
+        .phone-status-icons {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-size: 11px;
+        }
 
-        .phone-card-info { flex: 1; }
-        .phone-card-name { font-size: 11px; font-weight: 700; color: var(--navy); }
-        .phone-card-detail { font-size: 9px; color: var(--gray-400); font-weight: 500; }
-
-        .phone-card-rating {
+        /* Community/Home phone */
+        .phone-home-head {
+            background: linear-gradient(180deg, #a9ddd2 0%, #86d3c6 100%);
+            padding: 44px 20px 20px;
+            margin-top: -20px;
+            position: relative;
+        }
+        .phone-home-head .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy-900);
+            margin-bottom: 12px;
+        }
+        .phone-greet {
+            font-family: var(--font-head);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy-900);
+        }
+        .phone-bell {
+            position: absolute;
+            top: 54px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
             display: flex;
             align-items: center;
-            gap: 2px;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--teal-500);
+            justify-content: center;
+            color: var(--navy-900);
         }
+        .phone-bell svg { width: 16px; height: 16px; }
 
-        .phone-card-rating svg { width: 10px; height: 10px; fill: var(--teal-400); }
-
-        @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 0; }
-            .hero-content { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
-            .hero-sub { max-width: 100%; }
-            .hero-ctas { justify-content: center; }
-            .hero-proof { justify-content: center; }
-            .hero-video-spacer { display: none; }
-            .hero-blob-1 { width: 200px; height: 200px; top: 5%; right: 5%; }
-            .hero-blob-2 { width: 150px; height: 150px; }
+        .phone-body { padding: 16px 14px 0; }
+        .phone-row-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .phone-row-head .avatar {
+            width: 24px; height: 24px; border-radius: 50%;
+            background: var(--teal-100);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--brand-teal);
         }
-
-        @media (max-width: 480px) {
-            .hero { padding-top: 88px; padding-bottom: 48px; }
-            .hero-ctas { flex-direction: column; width: 100%; }
-            .btn-store { justify-content: center; width: 100%; }
-        }
-
-        /* ========================================
-           PAIN POINT BANNER
-           ======================================== */
-        .pain-banner {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-800) 50%, var(--teal-800) 100%);
-            padding: 60px 24px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pain-banner::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            right: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(242, 196, 206, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .pain-banner::after {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            left: -5%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(61, 191, 191, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .pain-banner h2 {
-            font-size: clamp(22px, 3.5vw, 32px);
-            font-weight: 700;
-            color: var(--white);
-            max-width: 700px;
-            margin: 0 auto;
+        .phone-row-head .avatar svg { width: 14px; height: 14px; }
+        .phone-row-head .label { font-size: 14px; font-weight: 600; color: var(--navy-900); }
+        .phone-sub {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin: 0 0 10px;
             line-height: 1.4;
-            position: relative;
-            z-index: 1;
         }
-
-        .pain-banner h2 span {
-            color: var(--blush-200);
-        }
-
-        /* ========================================
-           WAVE DIVIDERS
-           ======================================== */
-        .wave-divider { width: 100%; line-height: 0; overflow: hidden; }
-        .wave-divider svg { width: 100%; height: 60px; display: block; }
-        .wave-divider-flip svg { transform: scaleY(-1); }
-
-        /* ========================================
-           HOW IT WORKS
-           ======================================== */
-        .how-section {
-            padding: 96px 0 80px;
-            background: var(--offwhite);
-        }
-
-        .section-header {
+        .phone-ask-btn {
+            background: linear-gradient(180deg, #0d7568 0%, #0a5f54 100%);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            width: 100%;
             text-align: center;
-            margin-bottom: 56px;
+            margin-bottom: 10px;
+            box-shadow: inset 0 -8px 14px rgba(134, 211, 198, 0.5);
+            font-family: var(--font-body);
         }
-
-        .section-eyebrow {
+        .phone-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .phone-photos img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .phone-post {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .phone-post-head { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+        .phone-post-avatar {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, #d8c3b8, #a88877);
+            flex-shrink: 0;
+        }
+        .phone-post-name { font-size: 13px; font-weight: 600; color: var(--navy-900); }
+        .phone-post-meta { font-size: 11px; color: var(--gray-500); }
+        .phone-post-text { font-size: 12px; color: var(--gray-700); line-height: 1.45; margin: 0 0 10px; }
+        .phone-post-tags { display: flex; gap: 6px; margin-bottom: 10px; }
+        .phone-tag {
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 500;
+            background: var(--teal-100);
+            color: var(--brand-teal);
+        }
+        .phone-tag--outline {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            color: var(--navy-900);
+        }
+        .phone-post-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-100);
+            padding-top: 8px;
+        }
+        .phone-ar-pill {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, var(--teal-50), var(--blush-50));
-            border: 1px solid var(--teal-100);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--teal-600);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 4.2vw, 46px);
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 14px;
-        }
-
-        .section-subtitle {
-            font-size: 17px;
-            font-weight: 400;
-            color: var(--gray-500);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            margin-bottom: 48px;
-            background: var(--white);
-            border-radius: 100px;
-            padding: 4px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .tab-btn {
-            padding: 12px 32px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--gray-500);
-            border-radius: 100px;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        .tab-btn.active {
-            background: var(--navy);
+            background: linear-gradient(135deg, #e4c3d5, #b891a9);
             color: var(--white);
-            box-shadow: 0 4px 16px rgba(26, 43, 74, 0.2);
+            padding: 7px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0 auto 12px;
+            box-shadow: inset 0 -4px 8px rgba(255, 255, 255, 0.25);
         }
+        .phone-ar-wrap { display: flex; justify-content: center; }
 
-        .tab-btn:hover:not(.active) { color: var(--navy); }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeUp 0.5s var(--ease-out-expo) forwards; }
-
-        .steps-grid {
+        .phone-tabs {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            grid-template-columns: repeat(5, 1fr);
+            padding: 6px 8px 14px;
+            border-top: 1px solid var(--gray-100);
+        }
+        .phone-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--gray-500);
+        }
+        .phone-tab svg { width: 18px; height: 18px; stroke-width: 1.5; }
+        .phone-tab.active { color: var(--brand-teal); }
+        .phone-tab.active .tab-icon {
+            background: var(--teal-100);
+            color: var(--brand-teal);
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .tab-icon { padding: 5px; display: flex; align-items: center; justify-content: center; }
+
+        .phone-home-indicator {
+            width: 110px;
+            height: 4px;
+            background: var(--navy-900);
+            border-radius: 999px;
+            margin: 0 auto 6px;
         }
 
-        .step-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 36px 28px;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            transition: all 0.5s var(--ease-out-expo);
+        /* Pro-dashboard phone (section 5) */
+        .phone-pro-head {
+            background: linear-gradient(180deg, #a9ddd2 0%, #86d3c6 100%);
+            padding: 44px 20px 20px;
+            margin-top: -20px;
             position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            overflow: hidden;
         }
-
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            border-radius: 3px 3px 0 0;
+        .phone-pro-head .greet {
+            font-family: var(--font-head);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--navy-900);
         }
-
-        .step-card:nth-child(1)::before { background: linear-gradient(90deg, var(--teal-400), var(--teal-300)); }
-        .step-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blush-300), var(--blush-200)); }
-        .step-card:nth-child(3)::before { background: linear-gradient(90deg, var(--teal-500), var(--teal-400)); }
-
-        .step-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card-hover);
+        .phone-stat-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin: 14px 0 0;
         }
-
-        .step-number {
-            position: absolute;
-            top: 20px;
-            left: 22px;
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--teal-100);
+        .phone-stat-card .lbl { font-size: 11px; color: var(--gray-500); }
+        .phone-stat-card .val {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy-900);
         }
+        .phone-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0 0; }
+        .phone-stat-row .val-tr { color: var(--brand-teal); }
 
-        .step-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
+        .phone-section-h {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 22px;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy-900);
+            padding: 14px 14px 10px;
         }
+        .phone-section-h svg { width: 16px; height: 16px; color: var(--brand-teal); }
 
-        .step-card:nth-child(1) .step-icon { background: var(--teal-50); }
-        .step-card:nth-child(2) .step-icon { background: var(--blush-50); }
-        .step-card:nth-child(3) .step-icon { background: var(--teal-50); }
-
-        .step-card:nth-child(1) .step-icon svg { color: var(--teal-500); }
-        .step-card:nth-child(2) .step-icon svg { color: var(--blush-500); }
-        .step-card:nth-child(3) .step-icon svg { color: var(--teal-600); }
-
-        .step-icon svg { width: 28px; height: 28px; }
-
-        .step-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-        .step-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
-
-        @media (max-width: 768px) {
-            .steps-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-            .tabs { width: 100%; max-width: 360px; }
-            .tab-btn { padding: 10px 20px; font-size: 13px; flex: 1; text-align: center; }
-        }
-
-        /* ========================================
-           FEATURES
-           ======================================== */
-        .features-section {
-            padding: 96px 0;
-            background: var(--white);
-            position: relative;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-tile {
+        .phone-booking {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             background: var(--white);
             border: 1px solid var(--gray-100);
-            border-radius: var(--radius-lg);
-            padding: 32px 28px;
-            transition: all 0.5s var(--ease-out-expo);
+            border-radius: 14px;
+            padding: 10px 12px;
+            margin: 0 14px 8px;
+        }
+        .phone-booking-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, #d8c3b8, #a88877);
+            flex-shrink: 0;
+        }
+        .phone-booking-main { flex: 1; min-width: 0; }
+        .phone-booking-name { font-size: 13px; font-weight: 600; color: var(--navy-900); }
+        .phone-booking-svc { font-size: 11px; color: var(--gray-500); }
+        .phone-booking-tag {
+            background: var(--teal-100);
+            color: var(--brand-teal);
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 500;
         }
 
-        .feature-tile:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card-hover);
-        }
-
-        .feature-tile:nth-child(1):hover { border-color: var(--teal-200); }
-        .feature-tile:nth-child(2):hover { border-color: var(--blush-200); }
-        .feature-tile:nth-child(3):hover { border-color: var(--teal-200); }
-        .feature-tile:nth-child(4):hover { border-color: var(--blush-200); }
-        .feature-tile:nth-child(5):hover { border-color: var(--teal-200); }
-        .feature-tile:nth-child(6):hover { border-color: var(--blush-200); }
-
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
+        /* Booking-flow phone (section 6) */
+        .phone-book-head {
+            padding: 44px 20px 10px;
+            margin-top: -20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+            gap: 12px;
         }
-
-        .feature-tile:nth-child(odd) .feature-icon { background: var(--teal-50); }
-        .feature-tile:nth-child(odd) .feature-icon svg { color: var(--teal-500); }
-        .feature-tile:nth-child(even) .feature-icon { background: var(--blush-50); }
-        .feature-tile:nth-child(even) .feature-icon svg { color: var(--blush-500); }
-
-        .feature-icon svg { width: 24px; height: 24px; }
-
-        .feature-tile h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-        .feature-tile p { font-size: 14px; color: var(--gray-500); line-height: 1.55; }
-
-        @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
-
-        /* ========================================
-           PAY AFTER SECTION
-           ======================================== */
-        .pay-section {
-            padding: 96px 0;
-            background: linear-gradient(180deg, var(--white) 0%, var(--blush-50) 100%);
+        .phone-back {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid var(--gray-100);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--navy-900);
         }
-        .pay-timeline {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr auto 1fr;
-            gap: 20px;
-            align-items: stretch;
-            margin-top: 48px;
+        .phone-back svg { width: 14px; height: 14px; }
+        .phone-book-title { font-size: 15px; font-weight: 600; color: var(--navy-900); }
+        .phone-book-body { padding: 10px 20px 0; }
+        .phone-book-body h4 {
+            font-family: var(--font-head);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy-900);
+            margin: 0 0 4px;
         }
-        .pay-step {
+        .phone-book-body .intro { font-size: 12px; color: var(--gray-500); margin: 0 0 14px; }
+        .phone-progress { display: flex; gap: 6px; margin: 0 0 20px; }
+        .phone-progress span {
+            flex: 1;
+            height: 4px;
+            border-radius: 999px;
+            background: var(--gray-100);
+        }
+        .phone-progress span.active { background: var(--brand-teal); }
+        .phone-svc {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            border: 1.5px solid var(--gray-100);
+            border-radius: 14px;
+            margin-bottom: 10px;
+        }
+        .phone-svc.selected {
+            border-color: var(--brand-teal);
+            background: var(--teal-50);
+        }
+        .phone-svc-radio {
+            width: 18px; height: 18px; border-radius: 50%;
+            border: 1.5px solid var(--gray-100);
+            flex-shrink: 0;
+            margin-top: 2px;
             background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 32px 28px;
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
         }
-        .pay-step:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card-hover);
+        .phone-svc.selected .phone-svc-radio {
+            border-color: var(--brand-teal);
+            background: var(--brand-teal);
         }
-        .pay-step-num {
+        .phone-svc.selected .phone-svc-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 7px; height: 7px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+        .phone-svc-main { flex: 1; }
+        .phone-svc-name { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+        .phone-svc-desc { font-size: 11px; color: var(--gray-500); line-height: 1.4; margin-bottom: 4px; }
+        .phone-svc-dur { font-size: 11px; color: var(--brand-teal); font-weight: 500; }
+
+        .phone-continue {
+            margin: 24px 20px 10px;
+            background: linear-gradient(180deg, #0d7568 0%, #0a5f54 100%);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px;
+            width: calc(100% - 40px);
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: inset 0 -10px 18px rgba(134, 211, 198, 0.45);
+            font-family: var(--font-body);
+        }
+
+        /* Salon card (section 6) */
+        .salon-card {
+            width: 300px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-right: 20px;
+            align-self: flex-start;
+        }
+        .salon-card-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: var(--teal-100);
+        }
+        .salon-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .salon-card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--navy-900);
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
+            gap: 4px;
+        }
+        .salon-card-body { padding: 14px; }
+        .salon-card-name { font-size: 15px; font-weight: 600; color: var(--navy-900); display: inline-flex; align-items: center; gap: 6px; }
+        .salon-card-tag {
+            background: var(--teal-100);
+            color: var(--brand-teal);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: 6px;
+        }
+        .salon-card-desc {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin: 6px 0 12px;
+            line-height: 1.45;
+        }
+        .salon-card-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .salon-card-distance {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--brand-teal);
+            font-weight: 500;
+        }
+        .salon-card-distance svg { width: 14px; height: 14px; }
+        .salon-card-book {
+            background: linear-gradient(180deg, #0d7568 0%, #0a5f54 100%);
+            color: #fff;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 500;
+            box-shadow: inset 0 -5px 8px rgba(134, 211, 198, 0.45);
+            font-family: var(--font-body);
+        }
+
+        /* ==========================================
+           2 · COMMUNITY ("Where the nail industry comes together")
+           ========================================== */
+        .community-left {
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: var(--sp-5);
+            padding: var(--sp-6);
+            background: var(--white);
+            border-radius: var(--r-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--teal-100);
+            position: relative;
+        }
+        .community-photos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+        .community-photos img { aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-md); width: 100%; }
+        .community-post {
+            background: var(--white);
+            border: 1px solid var(--teal-100);
+            border-radius: var(--r-md);
+            padding: var(--sp-5);
+        }
+        .community-post-head { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-3); }
+        .community-post-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, #d8c3b8, #a88877);
+        }
+        .community-post-name { font-size: 14px; font-weight: 600; color: var(--text-strong); }
+        .community-post-meta { font-size: 12px; color: var(--text-muted); }
+        .community-post-body { font-size: 14px; color: var(--text-body); margin: 0 0 var(--sp-4); line-height: 1.55; }
+        .community-post-tags { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+        .community-post-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--sp-3);
+            border-top: 1px solid var(--gray-100);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .community-post-foot svg { width: 14px; height: 14px; }
+        .community-caption { text-align: center; margin-top: var(--sp-4); font-size: 12px; color: var(--text-muted); }
+
+        .community-chips { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-6); }
+
+        /* ==========================================
+           3 · BENEFITS (Three audience cards)
+           ========================================== */
+        .benefits-head { margin-bottom: var(--sp-10); max-width: 820px; }
+        .benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+        .benefit-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--r-lg);
+            padding: var(--sp-8);
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: var(--teal-50);
-            color: var(--teal);
-            font-family: var(--body, inherit);
-            font-weight: 800;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-        .pay-step:nth-child(3) .pay-step-num {
-            background: var(--blush-50);
-            color: var(--blush);
-        }
-        .pay-step h3 {
-            font-size: 19px;
-            font-weight: 700;
-            color: var(--navy);
-            margin: 0 0 8px;
-            letter-spacing: -0.2px;
-        }
-        .pay-step p {
-            font-size: 15px;
-            color: var(--gray-700);
-            line-height: 1.6;
-            margin: 0;
-        }
-        .pay-arrow {
+            background: var(--brand-mint);
+            color: var(--brand-teal);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--rule, var(--gray-300));
+            margin-bottom: var(--sp-6);
         }
-        .pay-arrow svg { width: 28px; height: 28px; }
-        .pay-note {
-            text-align: center;
-            margin: 32px auto 0;
-            max-width: 640px;
-            font-size: 14px;
-            color: var(--gray-500);
+        .benefit-icon svg { width: 22px; height: 22px; }
+        .benefit-card h3 {
+            font-family: var(--font-head);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-strong);
+            margin: 0 0 var(--sp-3);
         }
-        @media (max-width: 900px) {
-            .pay-timeline {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .pay-arrow { transform: rotate(90deg); padding: 4px 0; }
+        .benefit-card p {
+            font-size: 15px;
+            color: var(--text-body);
+            margin: 0;
+            line-height: 1.6;
         }
 
-        /* ========================================
-           DOWNLOAD CTA
-           ======================================== */
-        .download-section {
+        /* ==========================================
+           5 · PROS (Pro dashboard) & 6 · DISCOVERY  share two-col mint
+           ========================================== */
+        .pros-visual, .discovery-visual {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+        }
+        .pros-caption, .discovery-caption {
+            text-align: center;
+            font-size: 13px;
+            color: var(--brand-teal);
+            font-weight: 500;
+            margin-top: var(--sp-4);
+        }
+        .discovery-visual { gap: var(--sp-6); align-items: flex-start; }
+        .discovery-cards { display: flex; gap: var(--sp-6); align-items: flex-start; }
+
+        /* ==========================================
+           7 · AR (Love the idea)
+           ========================================== */
+        .ar-visual {
+            background: var(--brand-mint);
+            border-radius: var(--r-xl);
+            padding: var(--sp-10);
             position: relative;
-            padding: 100px 0;
-            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-900) 60%, var(--teal-900) 100%);
             overflow: hidden;
             text-align: center;
         }
-
-        .download-section::before {
-            content: '';
+        .ar-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(61, 191, 191, 0.10) 0%, transparent 60%);
-            pointer-events: none;
+            top: var(--sp-6);
+            left: var(--sp-6);
+            background: var(--white);
+            padding: 6px 14px;
+            border-radius: var(--r-pill);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--brand-teal);
         }
-
-        .download-section::after {
-            content: '';
+        .ar-made-for-you {
             position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(242, 196, 206, 0.06) 0%, transparent 60%);
-            pointer-events: none;
+            top: var(--sp-6);
+            right: var(--sp-6);
+            font-size: 12px;
+            color: var(--brand-teal);
+            font-weight: 500;
+        }
+        .ar-hand {
+            max-width: 320px;
+            margin: var(--sp-8) auto 0;
+            border-radius: var(--r-md);
+            overflow: hidden;
+        }
+        .ar-hand img { width: 100%; display: block; }
+        .ar-caption {
+            margin-top: var(--sp-6);
+            font-size: 13px;
+            color: var(--brand-teal);
+            font-weight: 500;
+        }
+        .ar-finepr {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: var(--sp-4);
+            line-height: 1.5;
         }
 
-        .download-section .section-title {
-            color: var(--white);
-            position: relative;
-            z-index: 1;
-        }
-
-        .download-subtitle {
-            font-size: 17px;
-            color: rgba(255, 255, 255, 0.55);
-            margin-bottom: 44px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .download-ctas {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-store-light {
+        /* ==========================================
+           8 · HOW IT WORKS (3 steps)
+           ========================================== */
+        .how-head { margin-bottom: var(--sp-10); max-width: 920px; }
+        .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-10); }
+        .how-step { }
+        .how-num {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: var(--white);
-            color: var(--navy);
-            border-radius: var(--radius-md);
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        .btn-store-light:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-store-light:active { transform: scale(0.98); }
-        .btn-store-light svg { width: 24px; height: 24px; flex-shrink: 0; }
-
-        .download-note {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.35);
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 480px) {
-            .download-ctas { flex-direction: column; align-items: center; }
-            .btn-store-light { width: 100%; max-width: 300px; justify-content: center; }
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .footer {
-            background: var(--navy-900);
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 56px 0 32px;
-            color: rgba(255, 255, 255, 0.45);
-        }
-
-        .footer-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 48px;
-        }
-
-        .footer-logo { height: 40px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); }
-
-        .footer-lang-note {
-            font-size: 12px;
-            color: var(--teal-400);
-            font-weight: 500;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.45);
-            transition: color 0.3s var(--ease-out-expo);
-        }
-
-        .footer-links a:hover { color: var(--white); }
-
-        .footer-social { display: flex; gap: 12px; }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            transition: all 0.3s var(--ease-out-expo);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a9ddd2 0%, #86d3c6 100%);
+            color: var(--navy-900);
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: var(--sp-5);
+        }
+        .how-step h3 {
+            font-family: var(--font-head);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-strong);
+            margin: 0 0 var(--sp-3);
+        }
+        .how-step p {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.55;
+            margin: 0;
         }
 
-        .footer-social a:nth-child(1) { background: rgba(242, 196, 206, 0.1); }
-        .footer-social a:nth-child(2) { background: rgba(61, 191, 191, 0.1); }
-        .footer-social a:nth-child(3) { background: rgba(242, 196, 206, 0.1); }
-
-        .footer-social a:hover { background: var(--teal-400); }
-        .footer-social svg { width: 18px; height: 18px; color: var(--teal-400); transition: color 0.3s var(--ease-out-expo); }
-        .footer-social a:hover svg { color: var(--white); }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 24px;
+        /* ==========================================
+           9 · FAQ
+           ========================================== */
+        .faq-two {
+            display: grid;
+            grid-template-columns: 0.75fr 1.5fr;
+            gap: var(--sp-16);
+        }
+        .faq-head .lede { max-width: 32ch; }
+        .faq-list { display: flex; flex-direction: column; gap: var(--sp-3); }
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--r-lg);
+            padding: var(--sp-6) var(--sp-8);
+            transition: border-color 0.3s var(--ease);
+        }
+        .faq-item[open] { border-color: var(--teal-200); }
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: var(--sp-4);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--text-strong);
+            line-height: 1.4;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-chev {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s var(--ease);
+            color: var(--text-strong);
+        }
+        .faq-item[open] .faq-chev { transform: rotate(180deg); }
+        .faq-item p {
+            margin: var(--sp-4) 0 0;
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.65;
+        }
+
+        /* ==========================================
+           10 · YOU BELONG HERE + FOOTER
+           ========================================== */
+        .belong-wrap { padding: var(--sp-20) 0 var(--sp-12); }
+        .belong-card {
+            background: linear-gradient(180deg, #d5ebe6 0%, var(--brand-mint) 100%);
+            border-radius: var(--r-xl);
+            padding: var(--sp-16) var(--sp-16);
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--sp-10);
+            align-items: center;
+        }
+        .belong-card .ctas { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-4); }
+        .belong-imgs { display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--sp-4); }
+        .belong-imgs img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: var(--r-md);
+        }
+
+        .footer {
+            background: var(--brand-mint);
+            padding: var(--sp-16) 0 var(--sp-10);
+            margin-top: 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--sp-10);
+            margin-bottom: var(--sp-12);
+        }
+        .footer-brand img { height: 32px; margin-bottom: var(--sp-5); }
+        .footer-tag {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin: 0;
+            max-width: 30ch;
+        }
+        .footer-col h4 {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-strong);
+            margin: 0 0 var(--sp-5);
+        }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--sp-3); }
+        .footer-col a {
+            font-size: 15px;
+            color: var(--text-body);
+            transition: color 0.3s var(--ease);
+        }
+        .footer-col a:hover { color: var(--brand-teal); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--sp-6);
+            border-top: 1px solid rgba(13, 35, 64, 0.08);
+            font-size: 14px;
+            color: var(--text-muted);
             flex-wrap: wrap;
-            gap: 12px;
+            gap: var(--sp-4);
+        }
+        .footer-legal { display: flex; gap: var(--sp-8); }
+        .footer-legal a:hover { color: var(--brand-teal); }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 1100px) {
+            .hero-grid { grid-template-columns: 1fr 1fr; }
+            .hero-side { grid-column: 1 / -1; flex-direction: row; margin-top: var(--sp-8); align-items: center; justify-content: center; }
+            .hero-side-img { width: 220px; }
+            .discovery-cards { flex-direction: column; align-items: center; }
+            .salon-card { margin-right: 0; }
         }
 
-        .footer-copy { font-size: 13px; }
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta .btn { display: none; }
+            .hamburger { display: block; }
+            .nav-cta { gap: var(--sp-2); }
 
-        .footer-bottom .lang-toggle {
-            border-color: rgba(255, 255, 255, 0.1);
+            .two-col { grid-template-columns: 1fr; gap: var(--sp-12); }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-copy { text-align: left; }
+            .hero-phone-col { justify-content: center; order: 2; }
+            .hero-side { order: 3; flex-direction: column; margin-top: var(--sp-10); }
+            .hero-side-img { width: 100%; max-width: 400px; margin: 0 auto; }
+
+            .benefit-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+            .how-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+            .faq-two { grid-template-columns: 1fr; gap: var(--sp-8); }
+
+            .belong-card { grid-template-columns: 1fr; padding: var(--sp-10); gap: var(--sp-8); }
+            .belong-imgs { max-width: 400px; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+            .footer-brand { grid-column: 1 / -1; }
+
+            section { padding: var(--sp-16) 0; }
+            .hero { padding: var(--sp-12) 0 var(--sp-16); }
         }
 
-        .footer-bottom .lang-btn {
-            color: rgba(255, 255, 255, 0.4);
+        @media (max-width: 540px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .ar-visual { padding: var(--sp-6); }
+            .community-left { padding: var(--sp-4); }
+            .faq-item { padding: var(--sp-5); }
+            .faq-item summary { font-size: 16px; }
         }
 
-        .footer-bottom .lang-btn.active {
-            background: var(--teal-600);
-            color: var(--white);
+        /* ==========================================
+           ANIMATIONS
+           ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
         }
-
-        .footer-bottom .lang-btn:hover:not(.active) {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid { flex-direction: column; align-items: center; text-align: center; }
-            .footer-links { justify-content: center; }
-            .footer-bottom { justify-content: center; text-align: center; }
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
+</head>
+<body>
+
+    <!-- =================================== -->
+    <!-- NAV                                  -->
+    <!-- =================================== -->
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="/" class="nav-logo" aria-label="Jovée Link home">
+                <img src="assets/logo-dark.png" alt="Jovée Link">
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#community">Community</a>
+                <a href="/for-clients">For clients</a>
+                <a href="/for-artists">For professionals</a>
+                <a href="/for-salons">For salons</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#belong" class="btn btn-primary btn-sm" data-tt-track="nav_join">
+                    Join the community
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+        <a href="#community">Community</a>
+        <a href="/for-clients">For clients</a>
+        <a href="/for-artists">For professionals</a>
+        <a href="/for-salons">For salons</a>
+        <a href="#belong" class="btn btn-primary">Join the community
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </nav>
+
+    <!-- =================================== -->
+    <!-- 1 · HERO                             -->
+    <!-- =================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow">Everyone has a place here</span>
+                    <h1 class="h1">A home for everyone in the nail industry.</h1>
+                    <p class="lede">Clients, nail artists and salon owners &mdash; all in one place. Connect, share inspiration and exchange knowledge in a community centred on the people behind the craft.</p>
+                    <div class="ctas">
+                        <a href="#belong" class="btn btn-primary" data-tt-track="hero_join">
+                            Join the community
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="#download" class="btn btn-outline" data-tt-track="hero_download">Download App</a>
+                    </div>
+                    <div class="hero-chips">
+                        <span class="chip">For clients</span>
+                        <span class="chip">For nail artists</span>
+                        <span class="chip">For salons</span>
+                    </div>
+                </div>
+
+                <div class="hero-phone-col">
+                    <div class="phone" aria-hidden="true">
+                        <div class="phone-home-head">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <span>&#9679;&#9679;&#9679;&#9679;&#9679;</span>
+                            </div>
+                            <div class="phone-greet">Good Morning Sara <span>&#128075;</span></div>
+                            <div class="phone-bell">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            </div>
+                        </div>
+                        <div class="phone-body">
+                            <div class="phone-row-head">
+                                <span class="avatar">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="9" r="3"/></svg>
+                                </span>
+                                <span class="label">Community</span>
+                            </div>
+                            <p class="phone-sub">Join the conversations from the artist and client.</p>
+                            <button class="phone-ask-btn">Want to ask something to the Artist?</button>
+                            <div class="phone-photos">
+                                <img src="assets/v2/hand-nude.jpg" alt="">
+                                <img src="assets/v2/hand-pink-french.jpg" alt="">
+                            </div>
+                            <div class="phone-post">
+                                <div class="phone-post-head">
+                                    <div class="phone-post-avatar"></div>
+                                    <div>
+                                        <div class="phone-post-name">Ryana H. <span style="color:#ffa300">&#9733;</span></div>
+                                        <div class="phone-post-meta">Greater Manchester &middot; 3h ago</div>
+                                    </div>
+                                </div>
+                                <p class="phone-post-text">We&rsquo;re really considering expanding into gel nail services as basic manicures aren&rsquo;t booking like they used to&hellip;</p>
+                                <div class="phone-post-tags">
+                                    <span class="phone-tag">Manicure</span>
+                                    <span class="phone-tag phone-tag--outline">Question</span>
+                                </div>
+                                <div class="phone-post-foot">
+                                    <span>&#128172; 23 replies</span>
+                                    <span>&rsaquo;</span>
+                                </div>
+                            </div>
+                            <div class="phone-ar-wrap">
+                                <span class="phone-ar-pill">&#128247; AR Nail Preview</span>
+                            </div>
+                        </div>
+                        <div class="phone-tabs">
+                            <div class="phone-tab active">
+                                <span class="tab-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                                </span>
+                                <span>Home</span>
+                            </div>
+                            <div class="phone-tab">
+                                <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span>Explore</span>
+                            </div>
+                            <div class="phone-tab">
+                                <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                                <span>Bookings</span>
+                            </div>
+                            <div class="phone-tab">
+                                <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                                <span>Chat</span>
+                            </div>
+                            <div class="phone-tab">
+                                <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                                <span>Profile</span>
+                            </div>
+                        </div>
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                </div>
+
+                <div class="hero-side">
+                    <div class="hero-side-img">
+                        <img src="assets/v2/hand-pearl.jpg" alt="Hand with pearl and chrome nail art">
+                    </div>
+                    <div>
+                        <h3 class="hero-side-title">Find your<br>people.</h3>
+                        <p class="hero-side-sub">Inspiration. Connection. Community.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="hero-caption">Your nail community, all in one place</p>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 2 · COMMUNITY                        -->
+    <!-- =================================== -->
+    <section id="community">
+        <div class="container">
+            <div class="two-col">
+                <div class="community-left reveal">
+                    <div class="community-photos">
+                        <img src="assets/v2/hand-nude.jpg" alt="">
+                        <img src="assets/v2/hand-pink-french.jpg" alt="">
+                    </div>
+                    <div class="community-post">
+                        <div class="community-post-head">
+                            <div class="community-post-avatar"></div>
+                            <div>
+                                <div class="community-post-name">Ryana H. <span style="color:#ffa300">&#9733;</span></div>
+                                <div class="community-post-meta">Greater Manchester &middot; 3h ago</div>
+                            </div>
+                        </div>
+                        <p class="community-post-body">We&rsquo;re really considering expanding into gel nail services as basic manicures are not booking like they used to. Does anyone have recommendations for builder gel brands?</p>
+                        <div class="community-post-tags">
+                            <span class="phone-tag">Manicure</span>
+                            <span class="phone-tag phone-tag--outline">Question</span>
+                        </div>
+                        <div class="community-post-foot">
+                            <span style="display:inline-flex;align-items:center;gap:6px">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                23 replies
+                            </span>
+                            <span>&rsaquo;</span>
+                        </div>
+                    </div>
+                    <p class="community-caption">A conversation from the application community</p>
+                </div>
+
+                <div class="reveal">
+                    <span class="eyebrow">The heart of Jovéelink</span>
+                    <h2 class="h2">Where the nail industry comes together.</h2>
+                    <p class="lede lede--tight">Ask questions, trade knowledge, share inspiration and find your people. JOVÉELINK is a social space first &mdash; a place to belong, whether you&rsquo;re a client discovering nail art or a salon owner building your community.</p>
+                    <ul class="checklist">
+                        <li>
+                            <span class="check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <div>
+                                <h3>Ask, share and discover together</h3>
+                                <p>Discuss techniques, seek advice and find inspiration in a community that actually understands nails.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <div>
+                                <h3>Clients and professionals, side by side</h3>
+                                <p>Genuine conversations between the people who love nails and the people who perfect them.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="community-chips">
+                        <span class="chip">Nail Art</span>
+                        <span class="chip chip-mint">Gel Nails</span>
+                        <span class="chip">French Tips</span>
+                    </div>
+                    <a href="#belong" class="btn btn-primary" data-tt-track="community_join">
+                        Join the community
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 3 · BENEFITS (three cards)           -->
+    <!-- =================================== -->
+    <section>
+        <div class="container">
+            <div class="benefits-head reveal">
+                <span class="eyebrow">One home. Three communities.</span>
+                <h2 class="h2">Everyone in the nail industry has a place here.</h2>
+            </div>
+            <div class="benefit-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>For clients</h3>
+                    <p>Discover artists, explore nail looks, ask questions and connect with a community that shares your passion.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>For nail artists</h3>
+                    <p>Showcase your portfolio, share your craft, grow your reputation and build real connections with clients and peers.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>For salons &amp; owners</h3>
+                    <p>Present your salon to a community that cares about quality. Stay in control of your profile, appointments and story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 5 · PROS (Built to give control)     -->
+    <!-- =================================== -->
+    <section class="section-mint">
+        <div class="container">
+            <div class="two-col">
+                <div class="reveal">
+                    <span class="eyebrow">Your industry. Your platform.</span>
+                    <h2 class="h2">Built to give control back to nail professionals.</h2>
+                    <p class="lede lede--tight">Your craft. Your voice. Your business. Showcase your work, present your services, manage your schedule and connect directly with clients and peers. A home that puts nail professionals at the centre.</p>
+                    <ul class="checklist">
+                        <li>
+                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <div>
+                                <h3>Your profile, your story</h3>
+                                <p>Showcase your work, list your services and let your portfolio represent the craft you&rsquo;ve built.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <div>
+                                <h3>Manage appointments, your way</h3>
+                                <p>View your upcoming schedule and stay organised &mdash; so you can focus on what you do best.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <div>
+                                <h3>Be part of a professional community</h3>
+                                <p>Connect with other nail professionals, share knowledge and grow alongside people who understand your craft.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="/for-artists" class="btn btn-primary" data-tt-track="pros_join">
+                        Join as a professional
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+
+                <div class="pros-visual reveal">
+                    <div>
+                        <div class="phone" aria-hidden="true">
+                            <div class="phone-pro-head">
+                                <div class="status-bar" style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#0d2340;margin-bottom:12px">
+                                    <span>9:41</span><span>&#9679;&#9679;&#9679;&#9679;&#9679;</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center">
+                                    <div class="greet">Welcome, Katty Nails <span>&#128075;</span></div>
+                                    <div class="phone-bell" style="position:static;top:auto;right:auto">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                    </div>
+                                </div>
+                                <div class="phone-stat-card">
+                                    <div class="lbl">Today</div>
+                                    <div class="val">8 Bookings</div>
+                                </div>
+                                <div class="phone-stat-row">
+                                    <div class="phone-stat-card">
+                                        <div class="lbl">Revenue</div>
+                                        <div class="val val-tr">$1,240</div>
+                                    </div>
+                                    <div class="phone-stat-card">
+                                        <div class="lbl">Rating</div>
+                                        <div class="val">4.9 <span style="color:#ffa300">&#9733;</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phone-section-h">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                Upcoming Bookings
+                            </div>
+                            <div class="phone-booking">
+                                <div class="phone-booking-avatar"></div>
+                                <div class="phone-booking-main">
+                                    <div class="phone-booking-name">Sarah Jenkins</div>
+                                    <div class="phone-booking-svc">Gel Extensions &middot; 10:30 AM</div>
+                                </div>
+                                <span class="phone-booking-tag">Confirmed</span>
+                            </div>
+                            <div class="phone-booking">
+                                <div class="phone-booking-avatar" style="background:linear-gradient(135deg,#c3b8d8,#8877a8)"></div>
+                                <div class="phone-booking-main">
+                                    <div class="phone-booking-name">Megan Fox</div>
+                                    <div class="phone-booking-svc">Custom Acrylic Nail Art &middot; 1:00 PM</div>
+                                </div>
+                                <span class="phone-booking-tag">Confirmed</span>
+                            </div>
+                            <div class="phone-ar-wrap" style="margin:12px 0 12px">
+                                <span class="phone-ar-pill">&#128247; AR Nail Preview</span>
+                            </div>
+                            <div class="phone-tabs">
+                                <div class="phone-tab active">
+                                    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+                                    <span>Home</span>
+                                </div>
+                                <div class="phone-tab">
+                                    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></span>
+                                    <span>Schedule</span>
+                                </div>
+                                <div class="phone-tab">
+                                    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                                    <span>Bookings</span>
+                                </div>
+                                <div class="phone-tab">
+                                    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                                    <span>Chat</span>
+                                </div>
+                                <div class="phone-tab">
+                                    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                                    <span>Profile</span>
+                                </div>
+                            </div>
+                            <div class="phone-home-indicator"></div>
+                        </div>
+                        <p class="pros-caption">Professional home detail &middot; Example account shown in the app</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 6 · DISCOVERY (Find the artist)      -->
+    <!-- =================================== -->
+    <section class="section-mint">
+        <div class="container">
+            <div class="two-col">
+                <div class="reveal">
+                    <span class="eyebrow">Discover &amp; connect</span>
+                    <h2 class="h2">Find the artist who gets your vision.</h2>
+                    <p class="lede lede--tight">Explore nearby salons, browse real portfolios and connect with artists in your area. When you&rsquo;re ready, booking is simple &mdash; but the connection comes first.</p>
+                    <ul class="checklist">
+                        <li>
+                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <div>
+                                <h3>Real portfolios, real artists</h3>
+                                <p>See the actual work of artists near you. Browse styles, services and the stories behind them.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <div>
+                                <h3>Booking when you&rsquo;re ready</h3>
+                                <p>Once you&rsquo;ve found your artist, booking is straightforward &mdash; choose a service, pick your time and confirm your request.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#community" class="btn btn-primary" data-tt-track="discovery_explore">
+                        Explore the community
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+
+                <div class="discovery-visual reveal">
+                    <div class="discovery-cards">
+                        <div class="salon-card">
+                            <div class="salon-card-img">
+                                <img src="assets/v2/salon-service.jpg" alt="Nail artist painting a client&rsquo;s nails">
+                                <span class="salon-card-badge">
+                                    <span style="color:#ffa300">&#9733;</span> High Rating
+                                </span>
+                            </div>
+                            <div class="salon-card-body">
+                                <div>
+                                    <span class="salon-card-name">Luxe Nails</span>
+                                    <span class="salon-card-tag">Client Suggested</span>
+                                </div>
+                                <p class="salon-card-desc">Luxe Nails is a premier salon that specializes in providing top-notch nail care services. Our expert technicians offer a range of treatments&hellip;</p>
+                                <div class="salon-card-foot">
+                                    <span class="salon-card-distance">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                        1.2 mi &middot; 4 min
+                                    </span>
+                                    <button class="salon-card-book">Book now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="phone" aria-hidden="true">
+                                <div class="phone-book-head">
+                                    <div class="phone-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
+                                    <span class="phone-book-title">Book Appointment</span>
+                                </div>
+                                <div class="phone-book-body">
+                                    <h4>Choose a service</h4>
+                                    <p class="intro">Select one service for your appointment with Luxe Nails.</p>
+                                    <div class="phone-progress">
+                                        <span class="active"></span><span></span><span></span>
+                                    </div>
+                                    <div class="phone-svc selected">
+                                        <div class="phone-svc-radio"></div>
+                                        <div class="phone-svc-main">
+                                            <div class="phone-svc-name">Gel Manicure</div>
+                                            <div class="phone-svc-desc">Shape, cuticle care and a glossy gel finish.</div>
+                                            <div class="phone-svc-dur">45 min</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-svc">
+                                        <div class="phone-svc-radio"></div>
+                                        <div class="phone-svc-main">
+                                            <div class="phone-svc-name">Acrylic Full Set</div>
+                                            <div class="phone-svc-desc">Sculpted extensions with your choice of shape and color.</div>
+                                            <div class="phone-svc-dur">1 hr 30 min</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-svc">
+                                        <div class="phone-svc-radio"></div>
+                                        <div class="phone-svc-main">
+                                            <div class="phone-svc-name">Dipping Powder</div>
+                                            <div class="phone-svc-desc">Long-lasting color with a lightweight natural feel.</div>
+                                            <div class="phone-svc-dur">1 hr</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="phone-continue">Continue</button>
+                                <div class="phone-home-indicator"></div>
+                            </div>
+                            <p class="discovery-caption">Choose a service in the app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 7 · AR (Love the idea)               -->
+    <!-- =================================== -->
+    <section>
+        <div class="container">
+            <div class="two-col">
+                <div class="ar-visual reveal">
+                    <span class="ar-badge">AI + AR nail preview</span>
+                    <span class="ar-made-for-you">Made for you</span>
+                    <div class="ar-hand">
+                        <img src="assets/v2/hand-mixed-art.jpg" alt="Hand with mixed nail art designs">
+                    </div>
+                    <p class="ar-caption">Explore a look. Share your inspiration.</p>
+                </div>
+
+                <div class="reveal">
+                    <span class="eyebrow">Inspiration, made personal</span>
+                    <h2 class="h2">Love the idea. Preview the look.</h2>
+                    <p class="lede lede--tight">Explore nail looks with AI and AR, then share your ideas with your artist. A creative tool for conversations, inspiration and finding a style that feels like you.</p>
+                    <p class="lede lede--tight">From a subtle everyday finish to something expressive, explore a look before discussing it with your nail artist.</p>
+                    <a href="https://joveear.ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-tt-track="ar_discover">
+                        Discover nail preview
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <p class="ar-finepr">A preview is inspiration, not a guarantee of the final result. Your artist can help bring the look to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 8 · HOW IT WORKS                      -->
+    <!-- =================================== -->
+    <section class="section-mint">
+        <div class="container">
+            <div class="how-head reveal">
+                <span class="eyebrow">Getting started</span>
+                <h2 class="h2">Your place in the nail industry, in three steps.</h2>
+            </div>
+            <div class="how-grid">
+                <div class="how-step reveal">
+                    <div class="how-num">01</div>
+                    <h3>Join the community</h3>
+                    <p>Create your profile as a client, nail artist or salon. Your space to belong and be found.</p>
+                </div>
+                <div class="how-step reveal">
+                    <div class="how-num">02</div>
+                    <h3>Connect and explore</h3>
+                    <p>Discover artists, join discussions, share ideas and find inspiration from the people in your nail world.</p>
+                </div>
+                <div class="how-step reveal">
+                    <div class="how-num">03</div>
+                    <h3>Make it your own</h3>
+                    <p>Share your work, build connections and explore new looks. When you need it, appointments and messaging are there too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 9 · FAQ                              -->
+    <!-- =================================== -->
+    <section>
+        <div class="container">
+            <div class="faq-two">
+                <div class="faq-head reveal">
+                    <span class="eyebrow">Good to know</span>
+                    <h2 class="h2">Your questions, answered.</h2>
+                    <p class="lede">A few things worth knowing before you make JOVÉELINK your home.</p>
+                </div>
+                <div class="faq-list reveal">
+                    <details class="faq-item" open>
+                        <summary>Who is JOVÉELINK for?
+                            <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                        </summary>
+                        <p>JOVÉELINK is a home for everyone in the nail industry &mdash; clients who love discovering nail art, nail artists who want to share their craft, and salon owners who want to connect with a wider community. Everyone has a place here.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is JOVÉELINK only for booking?
+                            <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                        </summary>
+                        <p>Not at all. Booking is one part of JOVÉELINK. The community &mdash; discussions, inspiration, connections between artists and clients &mdash; is the heart of what we&rsquo;re building. Nail professionals and clients come here to belong, not just to transact.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I preview nails before I book?
+                            <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                        </summary>
+                        <p>Yes. The AI and AR nail preview feature lets you explore a look before discussing it with your artist. Think of it as inspiration made personal &mdash; something to bring to your consultation.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does JOVÉELINK support nail professionals?
+                            <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                        </summary>
+                        <p>Professionals can build and showcase their portfolio, present their services, manage their schedule and stay connected with clients and peers &mdash; all in one place designed for the nail industry.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- 10 · YOU BELONG HERE                 -->
+    <!-- =================================== -->
+    <section class="belong-wrap" id="belong">
+        <div class="container">
+            <div class="belong-card reveal">
+                <div>
+                    <span class="eyebrow">A home for everyone in the nail industry.</span>
+                    <h2 class="h2">You belong here.</h2>
+                    <p class="lede lede--tight">Whether you&rsquo;re a client looking for your next look, an artist ready to share your craft, or a salon owner building your community &mdash; JOVÉELINK is the place where the nail industry comes together.</p>
+                    <div class="ctas" id="download">
+                        <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-tt-track="belong_join">
+                            Join the community
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="/for-artists" class="btn btn-outline" data-tt-track="belong_pro">Join as a professional</a>
+                    </div>
+                </div>
+                <div class="belong-imgs">
+                    <img src="assets/v2/hand-nude.jpg" alt="Nude almond manicure">
+                    <img src="assets/v2/hand-pearl.jpg" alt="Pearl and chrome nail art">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================== -->
+    <!-- FOOTER                               -->
+    <!-- =================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo-dark.png" alt="Jovée Link">
+                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#community">Discussions</a></li>
+                        <li><a href="#community">Nail inspiration</a></li>
+                        <li><a href="https://joveear.ai" target="_blank" rel="noopener noreferrer">AI &amp; AR preview</a></li>
+                        <li><a href="/for-clients">Find an artist</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>For professionals</h4>
+                    <ul>
+                        <li><a href="/for-artists">Your profile &amp; portfolio</a></li>
+                        <li><a href="/for-artists">Appointments</a></li>
+                        <li><a href="/for-artists">Professional community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Join JOVÉELINK</h4>
+                    <ul>
+                        <li><a href="/for-clients">For clients</a></li>
+                        <li><a href="/for-artists">For nail artists &amp; salons</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 JOVÉELINK. All rights reserved.</span>
+                <div class="footer-legal">
+                    <a href="/privacy">Privacy policy</a>
+                    <a href="/terms">Terms of use</a>
+                    <a href="/support">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================== -->
+    <!-- SCRIPTS                              -->
+    <!-- =================================== -->
+    <script>
+    (function() {
+        'use strict';
+
+        // Hamburger / mobile menu
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', function() {
+                var open = mobileMenu.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                document.body.style.overflow = open ? 'hidden' : '';
+            });
+            mobileMenu.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // FAQ accordion: close others when one opens (optional, but nicer UX)
+        document.querySelectorAll('.faq-item').forEach(function(item) {
+            item.addEventListener('toggle', function() {
+                if (item.open) {
+                    document.querySelectorAll('.faq-item').forEach(function(other) {
+                        if (other !== item && other.open) other.open = false;
+                    });
+                }
+            });
+        });
+
+        // Reveal-on-scroll
+        var revealed = document.querySelectorAll('.reveal');
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
+        revealed.forEach(function(el) { io.observe(el); });
+
+        // TikTok ClickButton tracking (parallels existing /api/tiktok-track relay)
+        function ttGenId() {
+            return 'evt_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+        }
+        function ttReadCookie(name) {
+            var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=([^;]*)'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+        document.addEventListener('click', function(e) {
+            var el = e.target.closest('[data-tt-track]');
+            if (!el) return;
+            var name = el.getAttribute('data-tt-track');
+            var eventId = ttGenId();
+            var props = { content_name: name, content_type: 'button', url: location.href };
+            if (window.ttq && typeof window.ttq.track === 'function') {
+                try { window.ttq.track('ClickButton', props, { event_id: eventId }); } catch (_) {}
+            }
+            try {
+                fetch('/api/tiktok-track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        event: 'ClickButton',
+                        event_id: eventId,
+                        properties: props,
+                        url: location.href,
+                        referrer: document.referrer || '',
+                        ttp: ttReadCookie('_ttp'),
+                        ttclid: new URLSearchParams(location.search).get('ttclid') || ttReadCookie('ttclid')
+                    }),
+                    keepalive: true
+                }).catch(function() {});
+            } catch (_) {}
+        });
+    })();
+    </script>
 
     <!-- TikTok Pixel Code Start -->
     <script>
@@ -1340,689 +1965,5 @@
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
-</head>
-<body>
-
-    <!-- ====== NAVIGATION ====== -->
-    <nav class="nav" id="nav">
-        <div class="container nav-inner">
-            <a href="#" class="nav-logo" aria-label="Jovée Link home">
-                <img src="assets/logo-dark.png" alt="Jovée Link" class="nav-logo-dark">
-                <img src="assets/logo-white.png" alt="Jovée Link" class="nav-logo-white">
-            </a>
-
-            <div class="nav-actions">
-                <div class="lang-toggle" role="group" aria-label="Language">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="vi">VI</button>
-                </div>
-                <a href="#download" class="btn-nav-cta">
-                    <span data-i18n="nav_cta">Get the App</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></svg>
-                </a>
-            </div>
-
-            <button class="hamburger" id="hamburger" aria-label="Open menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#how-it-works" class="mobile-link" data-i18n="nav_how">How it works</a>
-        <a href="#features" class="mobile-link" data-i18n="nav_features">Features</a>
-        <div class="mobile-lang-toggle" role="group">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="vi">VI</button>
-        </div>
-        <a href="#download" class="btn-nav-cta mobile-link" data-i18n="nav_cta">Get the App</a>
-    </div>
-
-    <!-- ====== HERO ====== -->
-    <section class="hero" id="hero">
-        <!-- Video Background -->
-        <div class="hero-video-wrap">
-            <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-                <source src="assets/HeaderVideo.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-
-        <div class="hero-bg">
-            <div class="hero-blob-1"></div>
-            <div class="hero-blob-2"></div>
-            <div class="hero-blob-3"></div>
-        </div>
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-eyebrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z"/></svg>
-                    <span data-i18n="hero_eyebrow">The home of the nail community</span>
-                </div>
-                <h1 class="hero-headline">
-                    <span data-i18n="hero_h1_1">Nails.</span>
-                    <span class="headline-accent" data-i18n="hero_h1_2">Connected.</span>
-                </h1>
-                <p class="hero-sub" data-i18n="hero_sub">Where nail artists, clients and salons share the work, chat, and book &mdash; all in one app.</p>
-                <div class="hero-ctas">
-                    <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span class="btn-store-text">
-                            <small data-i18n="store_apple_sub">Download on the</small>
-                            <strong>App Store</strong>
-                        </span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" class="btn-store" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                        <span class="btn-store-text">
-                            <small data-i18n="store_google_sub">Get it on</small>
-                            <strong>Google Play</strong>
-                        </span>
-                    </a>
-                </div>
-                <p class="hero-proof">
-                    <span class="hero-proof-dot"></span>
-                    <span data-i18n="hero_proof">Now live in Charlotte, NC &mdash; and growing.</span>
-                </p>
-            </div>
-
-            <!-- Right side: empty spacer — video shows through the lighter overlay gradient -->
-            <div class="hero-video-spacer">
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== PAIN POINT BANNER ====== -->
-    <section class="pain-banner animate-on-scroll">
-        <h2 data-i18n="pain_text">Still living in <span>Instagram DMs</span>? The whole nail world deserves a real home.</h2>
-    </section>
-
-    <!-- ====== WAVE DIVIDER ====== -->
-    <div class="wave-divider">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--offwhite)">
-            <path d="M0,0 C360,60 1080,0 1440,40 L1440,60 L0,60 Z"/>
-        </svg>
-    </div>
-
-    <!-- ====== HOW IT WORKS ====== -->
-    <section class="how-section" id="how-it-works">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-eyebrow" data-i18n="how_eyebrow">Step by step</div>
-                <h2 class="section-title" data-i18n="how_title">How it works</h2>
-                <p class="section-subtitle" data-i18n="how_subtitle">Whether you book, do the work, or run the salon.</p>
-            </div>
-
-            <div class="tabs animate-on-scroll">
-                <button class="tab-btn active" data-tab="artist" data-i18n="tab_artist">I'm a Nail Artist</button>
-                <button class="tab-btn" data-tab="client" data-i18n="tab_client">I'm a Client</button>
-                <button class="tab-btn" data-tab="salon" data-i18n="tab_salon">I'm a Salon</button>
-            </div>
-
-            <!-- Artist Tab -->
-            <div class="tab-content active" id="tab-artist">
-                <div class="steps-grid">
-                    <div class="step-card animate-on-scroll stagger-1">
-                        <span class="step-number">01</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
-                        </div>
-                        <h3 data-i18n="artist_step1_title">Create your profile</h3>
-                        <p data-i18n="artist_step1_text">Set up your services, prices, availability, and portfolio in minutes.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-2">
-                        <span class="step-number">02</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                        </div>
-                        <h3 data-i18n="artist_step2_title">Get discovered</h3>
-                        <p data-i18n="artist_step2_text">Clients near you find your profile on the map. No more waiting for DMs.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-3">
-                        <span class="step-number">03</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
-                        </div>
-                        <h3 data-i18n="artist_step3_title">Grow your business</h3>
-                        <p data-i18n="artist_step3_text">Manage bookings, chat with clients, and build your reputation &mdash; all in one place.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Client Tab -->
-            <div class="tab-content" id="tab-client">
-                <div class="steps-grid">
-                    <div class="step-card animate-on-scroll stagger-1">
-                        <span class="step-number">01</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
-                        </div>
-                        <h3 data-i18n="client_step1_title">Browse local artists</h3>
-                        <p data-i18n="client_step1_text">Discover nail artists near you with real photos and reviews.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-2">
-                        <span class="step-number">02</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
-                        </div>
-                        <h3 data-i18n="client_step2_title">Pick a real slot</h3>
-                        <p data-i18n="client_step2_text">See real availability and book without back-and-forth messaging.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-3">
-                        <span class="step-number">03</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>
-                        </div>
-                        <h3 data-i18n="client_step3_title">Show up confident</h3>
-                        <p data-i18n="client_step3_text">Know your artist, know your price, know your style &mdash; before you arrive.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Salon Tab -->
-            <div class="tab-content" id="tab-salon">
-                <div class="steps-grid">
-                    <div class="step-card animate-on-scroll stagger-1">
-                        <span class="step-number">01</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z"/></svg>
-                        </div>
-                        <h3 data-i18n="salon_step1_title">Claim your salon</h3>
-                        <p data-i18n="salon_step1_text">Add your business, photos, hours and location &mdash; one home for everything about your salon.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-2">
-                        <span class="step-number">02</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
-                        </div>
-                        <h3 data-i18n="salon_step2_title">Build your team</h3>
-                        <p data-i18n="salon_step2_text">Connect with nail artists ready to join your space, and give the ones already there a proper profile.</p>
-                    </div>
-                    <div class="step-card animate-on-scroll stagger-3">
-                        <span class="step-number">03</span>
-                        <div class="step-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
-                        </div>
-                        <h3 data-i18n="salon_step3_title">Own your presence</h3>
-                        <p data-i18n="salon_step3_text">Reviews, portfolios, bookings &mdash; clients see the whole salon in one profile.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== WAVE DIVIDER ====== -->
-    <div class="wave-divider wave-divider-flip">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--offwhite)">
-            <path d="M0,0 C360,60 1080,0 1440,40 L1440,60 L0,60 Z"/>
-        </svg>
-    </div>
-
-    <!-- ====== FEATURES ====== -->
-    <section class="features-section" id="features">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-eyebrow" data-i18n="feat_eyebrow">Built for you</div>
-                <h2 class="section-title" data-i18n="feat_title">Everything a nail artist needs to run their business.</h2>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-tile animate-on-scroll stagger-1">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-                    </div>
-                    <h3 data-i18n="feat1_title">Map Discovery</h3>
-                    <p data-i18n="feat1_text">Clients find you by location, instantly.</p>
-                </div>
-                <div class="feature-tile animate-on-scroll stagger-2">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"/></svg>
-                    </div>
-                    <h3 data-i18n="feat2_title">Smart Booking</h3>
-                    <p data-i18n="feat2_text">Real-time availability. Zero scheduling chaos.</p>
-                </div>
-                <div class="feature-tile animate-on-scroll stagger-3">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-                    </div>
-                    <h3 data-i18n="feat3_title">Built-in Messaging</h3>
-                    <p data-i18n="feat3_text">Chat with clients without leaving the app.</p>
-                </div>
-                <div class="feature-tile animate-on-scroll stagger-4">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
-                    </div>
-                    <h3 data-i18n="feat4_title">Reviews &amp; Ratings</h3>
-                    <p data-i18n="feat4_text">Build a reputation that brings clients back.</p>
-                </div>
-                <div class="feature-tile animate-on-scroll stagger-5">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
-                    </div>
-                    <h3 data-i18n="feat5_title">Portfolio Display</h3>
-                    <p data-i18n="feat5_text">Turn the work you already post into a bookable profile.</p>
-                </div>
-                <div class="feature-tile animate-on-scroll stagger-6">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"/></svg>
-                    </div>
-                    <h3 data-i18n="feat6_title">Booking Alerts</h3>
-                    <p data-i18n="feat6_text">Instant notifications so you never miss a booking.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== PAY AFTER ====== -->
-    <section class="pay-section" id="pay">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-eyebrow" data-i18n="pay_eyebrow">Pay model</div>
-                <h2 class="section-title" data-i18n="pay_title">Nothing is charged when you book.</h2>
-                <p class="section-subtitle" data-i18n="pay_subtitle">Your artist bills you after the appointment for what was actually done. Add-ons are normal in nail work &mdash; a shape change, an extra design, a longer set &mdash; and paying once at the end is easier than adjusting a pre-charged booking. Pay in the app or settle up at the salon.</p>
-            </div>
-
-            <div class="pay-timeline">
-                <div class="pay-step animate-on-scroll stagger-1">
-                    <div class="pay-step-num">01</div>
-                    <h3 data-i18n="pay_step1_title">You book a slot</h3>
-                    <p data-i18n="pay_step1_text">No hold, no charge. Not even a card required.</p>
-                </div>
-                <div class="pay-arrow animate-on-scroll stagger-2" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-                </div>
-                <div class="pay-step animate-on-scroll stagger-3">
-                    <div class="pay-step-num">02</div>
-                    <h3 data-i18n="pay_step2_title">Artist does the work</h3>
-                    <p data-i18n="pay_step2_text">They itemise what they actually did, not what was booked.</p>
-                </div>
-                <div class="pay-arrow animate-on-scroll stagger-4" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-                </div>
-                <div class="pay-step animate-on-scroll stagger-5">
-                    <div class="pay-step-num">03</div>
-                    <h3 data-i18n="pay_step3_title">Pay when it&rsquo;s done</h3>
-                    <p data-i18n="pay_step3_text">Card, Apple Pay, Google Pay, Klarna, Clearpay, or just at the salon.</p>
-                </div>
-            </div>
-
-            <p class="pay-note animate-on-scroll stagger-6" data-i18n="pay_note">Card payments handled by Stripe. Refunded automatically if a booking is cancelled.</p>
-        </div>
-    </section>
-
-    <!-- ====== WAVE DIVIDER ====== -->
-    <div class="wave-divider">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--navy)">
-            <path d="M0,20 C480,80 960,-20 1440,30 L1440,60 L0,60 Z"/>
-        </svg>
-    </div>
-
-    <!-- ====== DOWNLOAD CTA ====== -->
-    <section class="download-section" id="download">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll" data-i18n="dl_title">Your next appointment. Your next artist. Your next hire.</h2>
-            <p class="download-subtitle animate-on-scroll stagger-1" data-i18n="dl_subtitle">Join the nail community using Jov&eacute;e Link &mdash; clients, artists and salons alike.</p>
-
-            <div class="download-ctas animate-on-scroll stagger-2">
-                <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" class="btn-store-light" target="_blank" rel="noopener noreferrer" aria-label="Download on App Store">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    <span class="btn-store-text">
-                        <small data-i18n="store_apple_sub">Download on the</small>
-                        <strong>App Store</strong>
-                    </span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" class="btn-store-light" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                    <span class="btn-store-text">
-                        <small data-i18n="store_google_sub">Get it on</small>
-                        <strong>Google Play</strong>
-                    </span>
-                </a>
-            </div>
-            <p class="download-note animate-on-scroll stagger-3" data-i18n="dl_note">Free to download. Available on iOS and Android.</p>
-        </div>
-    </section>
-
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/logo-white.png" alt="Jovée Link" class="footer-logo">
-                    <p class="footer-lang-note" data-i18n="footer_lang_note">Available in English, Spanish and Vietnamese</p>
-                </div>
-
-                <nav class="footer-links">
-                    <a href="#features" data-i18n="footer_about">About</a>
-                    <a href="/for-artists" data-i18n="footer_artists">For Artists</a>
-                    <a href="/for-clients" data-i18n="footer_clients">For Clients</a>
-                    <a href="/for-salons" data-i18n="footer_salons">For Salons</a>
-                    <a href="/support" data-i18n="footer_support">Support</a>
-                    <a href="/privacy" data-i18n="footer_privacy">Privacy Policy</a>
-                    <a href="/terms" data-i18n="footer_terms">Terms of Service</a>
-                </nav>
-
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/joveeai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@joveeai" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.2a6.34 6.34 0 0 0 10.86 4.48 6.3 6.3 0 0 0 1.86-4.49V8.65a8.28 8.28 0 0 0 4.83 1.56V6.76a4.84 4.84 0 0 1-1.11-.07z"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61585144746310" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2025 Jov&eacute;e Link. All rights reserved.</p>
-                <div class="lang-toggle" role="group" aria-label="Language">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="vi">VI</button>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ====== JAVASCRIPT ====== -->
-    <script>
-    (function() {
-        'use strict';
-
-        /* ==========================================
-           TRANSLATIONS
-           ========================================== */
-        var translations = {
-            en: {
-                nav_cta: 'Get the App',
-                nav_how: 'How it works',
-                nav_features: 'Features',
-                hero_eyebrow: 'The home of the nail community',
-                hero_h1_1: 'Nails.',
-                hero_h1_2: 'Connected.',
-                hero_sub: 'Where nail artists, clients and salons share the work, chat, and book — all in one app.',
-                store_apple_sub: 'Download on the',
-                store_google_sub: 'Get it on',
-                hero_proof: 'Now live in Charlotte, NC — and growing.',
-                phone_title: 'Discover Artists',
-                phone_search: 'Search by style, location...',
-                pain_text: 'Still living in <span>Instagram DMs</span>? The whole nail world deserves a real home.',
-                how_eyebrow: 'Step by step',
-                how_title: 'How it works',
-                how_subtitle: 'Whether you book, do the work, or run the salon.',
-                tab_artist: "I'm a Nail Artist",
-                tab_client: "I'm a Client",
-                tab_salon: "I'm a Salon",
-                artist_step1_title: 'Create your profile',
-                artist_step1_text: 'Set up your services, prices, availability, and portfolio in minutes.',
-                artist_step2_title: 'Get discovered',
-                artist_step2_text: 'Clients near you find your profile on the map. No more waiting for DMs.',
-                artist_step3_title: 'Grow your business',
-                artist_step3_text: 'Manage bookings, chat with clients, and build your reputation \u2014 all in one place.',
-                client_step1_title: 'Browse local artists',
-                client_step1_text: 'Discover nail artists near you with real photos and reviews.',
-                client_step2_title: 'Pick a real slot',
-                client_step2_text: 'See real availability and book without back-and-forth messaging.',
-                client_step3_title: 'Show up confident',
-                client_step3_text: 'Know your artist, know your price, know your style \u2014 before you arrive.',
-                salon_step1_title: 'Claim your salon',
-                salon_step1_text: 'Add your business, photos, hours and location \u2014 one home for everything about your salon.',
-                salon_step2_title: 'Build your team',
-                salon_step2_text: 'Connect with nail artists ready to join your space, and give the ones already there a proper profile.',
-                salon_step3_title: 'Own your presence',
-                salon_step3_text: 'Reviews, portfolios, bookings \u2014 clients see the whole salon in one profile.',
-                feat_eyebrow: 'Built for you',
-                feat_title: 'Everything a nail artist needs to run their business.',
-                feat1_title: 'Map Discovery',
-                feat1_text: 'Clients find you by location, instantly.',
-                feat2_title: 'Smart Booking',
-                feat2_text: 'Real-time availability. Zero scheduling chaos.',
-                feat3_title: 'Built-in Messaging',
-                feat3_text: 'Chat with clients without leaving the app.',
-                feat4_title: 'Reviews & Ratings',
-                feat4_text: 'Build a reputation that brings clients back.',
-                feat5_title: 'Portfolio Display',
-                feat5_text: 'Turn the work you already post into a bookable profile.',
-                feat6_title: 'Booking Alerts',
-                feat6_text: 'Instant notifications so you never miss a booking.',
-                pay_eyebrow: 'Pay model',
-                pay_title: 'Nothing is charged when you book.',
-                pay_subtitle: 'Your artist bills you after the appointment for what was actually done. Add-ons are normal in nail work — a shape change, an extra design, a longer set — and paying once at the end is easier than adjusting a pre-charged booking. Pay in the app or settle up at the salon.',
-                pay_step1_title: 'You book a slot',
-                pay_step1_text: 'No hold, no charge. Not even a card required.',
-                pay_step2_title: 'Artist does the work',
-                pay_step2_text: 'They itemise what they actually did, not what was booked.',
-                pay_step3_title: 'Pay when it’s done',
-                pay_step3_text: 'Card, Apple Pay, Google Pay, Klarna, Clearpay, or just at the salon.',
-                pay_note: 'Card payments handled by Stripe. Refunded automatically if a booking is cancelled.',
-                dl_title: 'Your next appointment. Your next artist. Your next hire.',
-                dl_subtitle: 'Join the nail community using Jov\u00E9e Link \u2014 clients, artists and salons alike.',
-                dl_note: 'Free to download. Available on iOS and Android.',
-                footer_lang_note: 'Available in English, Spanish and Vietnamese',
-                footer_about: 'About',
-                footer_artists: 'For Artists',
-                footer_clients: 'For Clients',
-                footer_salons: 'For Salons',
-                footer_support: 'Support',
-                footer_privacy: 'Privacy Policy',
-                footer_terms: 'Terms of Service'
-            },
-            vi: {
-                nav_cta: 'T\u1EA3i \u1EE8ng d\u1EE5ng',
-                nav_how: 'C\u00E1ch ho\u1EA1t \u0111\u1ED9ng',
-                nav_features: 'T\u00EDnh n\u0103ng',
-                hero_eyebrow: 'Ng\u00F4i nh\u00E0 c\u1EE7a c\u1ED9ng \u0111\u1ED3ng nail',
-                hero_h1_1: 'N\u00E1il.',
-                hero_h1_2: 'K\u1EBFt n\u1ED1i.',
-                hero_sub: 'N\u01A1i th\u1EE3 nail, kh\u00E1ch h\u00E0ng v\u00E0 salon chia s\u1EBB t\u00E1c ph\u1EA9m, tr\u00F2 chuy\u1EC7n v\u00E0 \u0111\u1EB7t l\u1ECBch \u2014 t\u1EA5t c\u1EA3 trong m\u1ED9t \u1EE9ng d\u1EE5ng.',
-                store_apple_sub: 'T\u1EA3i v\u1EC1 tr\u00EAn',
-                store_google_sub: 'T\u1EA3i tr\u00EAn',
-                hero_proof: '\u0110\u00E3 c\u00F3 m\u1EB7t t\u1EA1i Charlotte, NC \u2014 v\u00E0 \u0111ang m\u1EDF r\u1ED9ng.',
-                phone_title: 'Kh\u00E1m ph\u00E1 Th\u1EE3 n\u00E1il',
-                phone_search: 'T\u00ECm theo phong c\u00E1ch, v\u1ECB tr\u00ED...',
-                pain_text: 'V\u1EABn "s\u1ED1ng" trong <span>tin nh\u1EAFn Instagram</span>? C\u1EA3 th\u1EBF gi\u1EDBi nail x\u1EE9ng \u0111\u00E1ng c\u00F3 m\u1ED9t ng\u00F4i nh\u00E0 th\u1EADt s\u1EF1.',
-                how_eyebrow: 'T\u1EEBng b\u01B0\u1EDBc',
-                how_title: 'C\u00E1ch ho\u1EA1t \u0111\u1ED9ng',
-                how_subtitle: 'D\u00F9 b\u1EA1n \u0111\u1EB7t l\u1ECBch, l\u00E0m ngh\u1EC1, hay qu\u1EA3n l\u00FD salon.',
-                tab_artist: 'T\u00F4i l\u00E0 Th\u1EE3 N\u00E1il',
-                tab_client: 'T\u00F4i l\u00E0 Kh\u00E1ch h\u00E0ng',
-                tab_salon: 'T\u00F4i l\u00E0 Salon',
-                artist_step1_title: 'T\u1EA1o h\u1ED3 s\u01A1',
-                artist_step1_text: 'Thi\u1EBFt l\u1EADp d\u1ECBch v\u1EE5, gi\u00E1 c\u1EA3, l\u1ECBch tr\u1ED1ng v\u00E0 portfolio ch\u1EC9 trong v\u00E0i ph\u00FAt.',
-                artist_step2_title: '\u0110\u01B0\u1EE3c kh\u00E1m ph\u00E1',
-                artist_step2_text: 'Kh\u00E1ch h\u00E0ng g\u1EA7n b\u1EA1n t\u00ECm th\u1EA5y h\u1ED3 s\u01A1 c\u1EE7a b\u1EA1n tr\u00EAn b\u1EA3n \u0111\u1ED3. Kh\u00F4ng c\u1EA7n ch\u1EDD tin nh\u1EAFn.',
-                artist_step3_title: 'Ph\u00E1t tri\u1EC3n kinh doanh',
-                artist_step3_text: 'Qu\u1EA3n l\u00FD l\u1ECBch h\u1EB9n, tr\u00F2 chuy\u1EC7n v\u1EDBi kh\u00E1ch v\u00E0 x\u00E2y d\u1EF1ng uy t\u00EDn \u2014 t\u1EA5t c\u1EA3 trong m\u1ED9t \u1EE9ng d\u1EE5ng.',
-                client_step1_title: 'Duy\u1EC7t th\u1EE3 n\u00E1il g\u1EA7n \u0111\u00E2y',
-                client_step1_text: 'Kh\u00E1m ph\u00E1 th\u1EE3 n\u00E1il g\u1EA7n b\u1EA1n v\u1EDBi \u1EA3nh th\u1EADt v\u00E0 \u0111\u00E1nh gi\u00E1.',
-                client_step2_title: 'Ch\u1ECDn khung gi\u1EDD th\u1EADt',
-                client_step2_text: 'Xem l\u1ECBch tr\u1ED1ng th\u1EF1c t\u1EBF v\u00E0 \u0111\u1EB7t l\u1ECBch kh\u00F4ng c\u1EA7n nh\u1EAFn tin qua l\u1EA1i.',
-                client_step3_title: 'T\u1EF1 tin \u0111\u1EBFn ti\u1EC7m',
-                client_step3_text: 'Bi\u1EBFt th\u1EE3 n\u00E1il, bi\u1EBFt gi\u00E1, bi\u1EBFt phong c\u00E1ch \u2014 tr\u01B0\u1EDBc khi \u0111\u1EBFn.',
-                salon_step1_title: 'X\u00E1c nh\u1EADn salon c\u1EE7a b\u1EA1n',
-                salon_step1_text: 'Th\u00EAm th\u00F4ng tin doanh nghi\u1EC7p, \u1EA3nh, gi\u1EDD m\u1EDF c\u1EEDa v\u00E0 \u0111\u1ECBa ch\u1EC9 \u2014 m\u1ED9t n\u01A1i cho m\u1ECDi th\u1EE9 v\u1EC1 salon c\u1EE7a b\u1EA1n.',
-                salon_step2_title: 'X\u00E2y d\u1EF1ng \u0111\u1ED9i ng\u0169',
-                salon_step2_text: 'K\u1EBFt n\u1ED1i v\u1EDBi th\u1EE3 nail s\u1EB5n s\u00E0ng gia nh\u1EADp, v\u00E0 mang \u0111\u1EBFn h\u1ED3 s\u01A1 chuy\u00EAn nghi\u1EC7p cho nh\u1EEFng ng\u01B0\u1EDDi \u0111ang l\u00E0m c\u00F9ng b\u1EA1n.',
-                salon_step3_title: 'L\u00E0m ch\u1EE7 h\u00ECnh \u1EA3nh c\u1EE7a b\u1EA1n',
-                salon_step3_text: '\u0110\u00E1nh gi\u00E1, portfolio, l\u1ECBch h\u1EB9n \u2014 kh\u00E1ch nh\u00ECn th\u1EA5y to\u00E0n b\u1ED9 salon trong m\u1ED9t h\u1ED3 s\u01A1.',
-                feat_eyebrow: 'D\u00E0nh cho b\u1EA1n',
-                feat_title: 'M\u1ECDi th\u1EE9 th\u1EE3 n\u00E1il c\u1EA7n \u0111\u1EC3 v\u1EADn h\u00E0nh c\u00F4ng vi\u1EC7c.',
-                feat1_title: 'B\u1EA3n \u0111\u1ED3 Kh\u00E1m ph\u00E1',
-                feat1_text: 'Kh\u00E1ch h\u00E0ng t\u00ECm b\u1EA1n theo v\u1ECB tr\u00ED, ngay l\u1EADp t\u1EE9c.',
-                feat2_title: '\u0110\u1EB7t l\u1ECBch Th\u00F4ng minh',
-                feat2_text: 'L\u1ECBch tr\u1ED1ng th\u1EF1c t\u1EBF. Kh\u00F4ng l\u1ED9n x\u1ED9n l\u1ECBch h\u1EB9n.',
-                feat3_title: 'Nh\u1EAFn tin T\u00EDch h\u1EE3p',
-                feat3_text: 'Tr\u00F2 chuy\u1EC7n v\u1EDBi kh\u00E1ch ngay trong \u1EE9ng d\u1EE5ng.',
-                feat4_title: '\u0110\u00E1nh gi\u00E1 & X\u1EBFp h\u1EA1ng',
-                feat4_text: 'X\u00E2y d\u1EF1ng uy t\u00EDn \u0111\u1EC3 kh\u00E1ch quay l\u1EA1i.',
-                feat5_title: 'Hi\u1EC3n th\u1ECB Portfolio',
-                feat5_text: 'Bi\u1EBFn nh\u1EEFng t\u00E1c ph\u1EA9m b\u1EA1n \u0111\u00E3 \u0111\u0103ng th\u00E0nh h\u1ED3 s\u01A1 c\u00F3 th\u1EC3 \u0111\u1EB7t l\u1ECBch.',
-                feat6_title: 'Th\u00F4ng b\u00E1o \u0110\u1EB7t l\u1ECBch',
-                feat6_text: 'Th\u00F4ng b\u00E1o t\u1EE9c th\u00EC \u0111\u1EC3 kh\u00F4ng b\u1ECF l\u1EE1 l\u1ECBch h\u1EB9n n\u00E0o.',
-                pay_eyebrow: 'C\u00E1ch thanh to\u00E1n',
-                pay_title: 'Kh\u00F4ng c\u00F3 ph\u00ED khi b\u1EA1n \u0111\u1EB7t l\u1ECBch.',
-                pay_subtitle: 'Th\u1EE3 nail s\u1EBD t\u00EDnh ti\u1EC1n sau khi l\u00E0m xong, d\u1EF1a tr\u00EAn nh\u1EEFng g\u00EC h\u1ECD th\u1EF1c s\u1EF1 l\u00E0m. Trong ng\u00E0nh nail, l\u00E0m th\u00EAm l\u00E0 chuy\u1EC7n b\u00ECnh th\u01B0\u1EDDng \u2014 \u0111\u1ED5i d\u00E1ng, th\u00EAm ho\u1EA1 ti\u1EBFt, k\u00E9o d\u00E0i b\u1ED9 m\u00F3ng \u2014 v\u00E0 t\u00EDnh ti\u1EC1n m\u1ED9t l\u1EA7n \u1EDF cu\u1ED1i d\u1EC5 h\u01A1n nhi\u1EC1u so v\u1EDBi \u0111i\u1EC1u ch\u1EC9nh kho\u1EA3n \u0111\u00E3 tr\u1EEB tr\u01B0\u1EDBc. Thanh to\u00E1n trong \u1EE9ng d\u1EE5ng ho\u1EB7c tr\u1EA3 t\u1EA1i salon.',
-                pay_step1_title: 'B\u1EA1n \u0111\u1EB7t khung gi\u1EDD',
-                pay_step1_text: 'Kh\u00F4ng gi\u1EEF ti\u1EC1n, kh\u00F4ng tr\u1EEB ph\u00ED. Th\u1EADm ch\u00ED kh\u00F4ng c\u1EA7n th\u1EBB.',
-                pay_step2_title: 'Th\u1EE3 nail th\u1EF1c hi\u1EC7n',
-                pay_step2_text: 'H\u1ECD li\u1EC7t k\u00EA nh\u1EEFng g\u00EC \u0111\u00E3 th\u1EF1c s\u1EF1 l\u00E0m, kh\u00F4ng ph\u1EA3i nh\u1EEFng g\u00EC \u0111\u1EB7t l\u1ECBch.',
-                pay_step3_title: 'Thanh to\u00E1n khi xong',
-                pay_step3_text: 'Th\u1EBB, Apple Pay, Google Pay, Klarna, Clearpay, ho\u1EB7c t\u1EA1i salon.',
-                pay_note: 'Thanh to\u00E1n th\u1EBB \u0111\u01B0\u1EE3c x\u1EED l\u00FD b\u1EDFi Stripe. T\u1EF1 \u0111\u1ED9ng ho\u00E0n ti\u1EC1n n\u1EBFu l\u1ECBch h\u1EB9n b\u1ECB hu\u1EF7.',
-                dl_title: 'L\u1ECBch h\u1EB9n ti\u1EBFp theo. Th\u1EE3 nail ti\u1EBFp theo. Ng\u01B0\u1EDDi b\u1EA1n tuy\u1EC3n ti\u1EBFp theo.',
-                dl_subtitle: 'Tham gia c\u1ED9ng \u0111\u1ED3ng nail \u0111ang d\u00F9ng Jov\u00E9e Link \u2014 kh\u00E1ch h\u00E0ng, th\u1EE3 nail v\u00E0 salon.',
-                dl_note: 'Mi\u1EC5n ph\u00ED t\u1EA3i v\u1EC1. C\u00F3 s\u1EB5n tr\u00EAn iOS v\u00E0 Android.',
-                footer_lang_note: 'C\u00F3 s\u1EB5n b\u1EB1ng Ti\u1EBFng Anh, Ti\u1EBFng T\u00E2y Ban Nha v\u00E0 Ti\u1EBFng Vi\u1EC7t',
-                footer_about: 'V\u1EC1 ch\u00FAng t\u00F4i',
-                footer_artists: 'Cho Th\u1EE3 n\u00E1il',
-                footer_clients: 'Cho Kh\u00E1ch h\u00E0ng',
-                footer_salons: 'Cho Salon',
-                footer_support: 'H\u1ED7 tr\u1EE3',
-                footer_privacy: 'Ch\u00EDnh s\u00E1ch B\u1EA3o m\u1EADt',
-                footer_terms: '\u0110i\u1EC1u kho\u1EA3n D\u1ECBch v\u1EE5'
-            }
-        };
-
-        var currentLang = 'en';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-
-            // Update all translatable elements
-            var elems = document.querySelectorAll('[data-i18n]');
-            elems.forEach(function(el) {
-                var key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    if (el.innerHTML.indexOf('<span') !== -1 || key === 'pain_text') {
-                        el.innerHTML = translations[lang][key];
-                    } else {
-                        el.textContent = translations[lang][key];
-                    }
-                }
-            });
-
-            // Update all language toggle buttons
-            document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-        }
-
-        // Bind all language buttons (nav, footer, mobile)
-        document.querySelectorAll('.lang-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                setLanguage(this.getAttribute('data-lang'));
-            });
-        });
-
-        // Apply the initial language on load so the translations object
-        // is the source of truth, not the HTML fallback text.
-        setLanguage(currentLang);
-
-        /* ==========================================
-           STICKY NAV
-           ========================================== */
-        var nav = document.getElementById('nav');
-
-        function handleScroll() {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        /* ==========================================
-           HAMBURGER MENU
-           ========================================== */
-        var hamburger = document.getElementById('hamburger');
-        var mobileMenu = document.getElementById('mobileMenu');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('open');
-            mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('open');
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        /* ==========================================
-           TABS
-           ========================================== */
-        var tabBtns = document.querySelectorAll('.tab-btn[data-tab]');
-        var tabContents = document.querySelectorAll('.tab-content');
-
-        function activateTab(tab) {
-            tabBtns.forEach(function(b) { b.classList.remove('active'); });
-            document.querySelectorAll('.tab-btn[data-tab="' + tab + '"]').forEach(function(b) {
-                b.classList.add('active');
-            });
-            tabContents.forEach(function(c) { c.classList.remove('active'); });
-            var content = document.getElementById('tab-' + tab);
-            if (content) content.classList.add('active');
-            document.querySelectorAll('#tab-' + tab + ' .animate-on-scroll').forEach(function(el) {
-                el.classList.remove('is-visible');
-                void el.offsetWidth;
-                el.classList.add('is-visible');
-            });
-        }
-
-        tabBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                activateTab(this.getAttribute('data-tab'));
-            });
-        });
-
-        var urlTab = new URLSearchParams(window.location.search).get('tab');
-        if (urlTab === 'artist' || urlTab === 'client') {
-            activateTab(urlTab);
-        }
-
-        /* ==========================================
-           SCROLL ANIMATIONS
-           ========================================== */
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '0px 0px -60px 0px',
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
-            observer.observe(el);
-        });
-
-        /* ==========================================
-           SMOOTH SCROLL
-           ========================================== */
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                var target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-    })();
-    </script>
 </body>
 </html>
