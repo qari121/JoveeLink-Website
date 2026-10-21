@@ -213,6 +213,24 @@
 
         .btn-sm { padding: 10px 18px; font-size: 14px; }
 
+        /* App-store buttons */
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--navy-900);
+            color: var(--white);
+            padding: 14px 22px;
+            border-radius: var(--r-md);
+            text-decoration: none;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+        .btn-store:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-store svg { width: 22px; height: 22px; flex-shrink: 0; fill: currentColor; }
+        .btn-store-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+        .btn-store-text small { font-size: 10px; font-weight: 500; opacity: 0.7; }
+        .btn-store-text strong { font-size: 15px; font-weight: 700; color: var(--white); }
+
         /* ==========================================
            PILL CHIPS (outlined tags)
            ========================================== */
@@ -1806,9 +1824,13 @@
                     <h2 class="h2">You belong here.</h2>
                     <p class="lede lede--tight">Whether you&rsquo;re a client looking for your next look, an artist ready to share your craft, or a salon owner building your community &mdash; JOVÉELINK is the place where the nail industry comes together.</p>
                     <div class="ctas" id="download">
-                        <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-tt-track="belong_join">
-                            Join the community
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="belong_appstore" aria-label="Download on the App Store">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="belong_playstore" aria-label="Get it on Google Play">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                            <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
                         </a>
                         <a href="/for-artists" class="btn btn-outline" data-tt-track="belong_pro">Join as a professional</a>
                     </div>
@@ -1873,6 +1895,26 @@
     <script>
     (function() {
         'use strict';
+
+        // Scroll to hash target on initial page load (defensive — browsers
+        // sometimes skip the native jump with scroll-behavior: smooth, or
+        // when images below the target haven't loaded yet and layout shifts
+        // after first paint).
+        function scrollToHash() {
+            if (!location.hash) return;
+            var hashTarget = document.getElementById(location.hash.slice(1));
+            if (hashTarget) hashTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
+        if (location.hash) {
+            scrollToHash();
+            // Re-run after window.load (images decoded, layout settled) and once more at 400ms
+            if (document.readyState === 'complete') {
+                setTimeout(scrollToHash, 50);
+            } else {
+                window.addEventListener('load', function() { setTimeout(scrollToHash, 50); }, { once: true });
+            }
+            setTimeout(scrollToHash, 400);
+        }
 
         // Hamburger / mobile menu
         var hamburger = document.getElementById('hamburger');
