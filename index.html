@@ -1944,25 +1944,44 @@
     (function() {
         'use strict';
 
-        // Scroll to hash target on initial page load (defensive — browsers
-        // sometimes skip the native jump with scroll-behavior: smooth, or
-        // when images below the target haven't loaded yet and layout shifts
-        // after first paint).
+        // Section links (/#community, #belong, ...): land on the section when
+        // arriving from a link, then clear the #hash from the address bar so a
+        // refresh starts at the top of the page instead of jumping back down.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        function clearHash() {
+            if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+        }
         function scrollToHash() {
             if (!location.hash) return;
-            var hashTarget = document.getElementById(location.hash.slice(1));
-            if (hashTarget) hashTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+            var t = document.getElementById(location.hash.slice(1));
+            if (t) t.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
         if (location.hash) {
-            scrollToHash();
-            // Re-run after window.load (images decoded, layout settled) and once more at 400ms
+            var landedHash = location.hash;
+            var settle = function () { if (location.hash === landedHash) scrollToHash(); };
+            settle();
             if (document.readyState === 'complete') {
-                setTimeout(scrollToHash, 50);
+                setTimeout(settle, 50);
             } else {
-                window.addEventListener('load', function() { setTimeout(scrollToHash, 50); }, { once: true });
+                window.addEventListener('load', function () { setTimeout(settle, 50); }, { once: true });
             }
-            setTimeout(scrollToHash, 400);
+            setTimeout(function () { settle(); clearHash(); }, 400);
+        } else {
+            window.scrollTo(0, 0);
         }
+        // Same-page section links scroll smoothly without leaving #hash behind
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href^="#"], a[href^="/#"]');
+            if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+            var href = a.getAttribute('href');
+            var id = href.slice(href.indexOf('#') + 1);
+            if (href.charAt(0) === '/' && location.pathname !== '/' && location.pathname !== '/index.html') return;
+            var t = id && document.getElementById(id);
+            if (!t) return;
+            e.preventDefault();
+            t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            clearHash();
+        });
 
         // Hamburger / mobile menu
         var hamburger = document.getElementById('hamburger');
