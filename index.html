@@ -7,12 +7,23 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-ERKQ239G6V');
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        gtag('config', 'G-ERKQ239G6V', { linker: { domains: ['joveelink.com', 'joveear.ai'] } });
+      }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Jovée Link — A home for everyone in the nail industry</title>
     <meta name="description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
+    <link rel="canonical" href="https://www.joveelink.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jovée Link">
+    <meta property="og:url" content="https://www.joveelink.com/">
+    <meta property="og:title" content="Jovée Link — A home for everyone in the nail industry">
+    <meta property="og:description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jovée Link — A home for everyone in the nail industry">
+    <meta name="twitter:description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
     <link rel="icon" type="image/png" href="assets/logo-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1733,7 +1744,7 @@
                     <h2 class="h2">Love the idea. Preview the look.</h2>
                     <p class="lede lede--tight">Explore nail looks with AI and AR, then share your ideas with your artist. A creative tool for conversations, inspiration and finding a style that feels like you.</p>
                     <p class="lede lede--tight">From a subtle everyday finish to something expressive, explore a look before discussing it with your nail artist.</p>
-                    <a href="https://joveear.ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-tt-track="ar_discover">
+                    <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-tt-track="ar_discover">
                         Discover nail preview
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
@@ -1858,7 +1869,7 @@
                     <ul>
                         <li><a href="#community">Discussions</a></li>
                         <li><a href="#community">Nail inspiration</a></li>
-                        <li><a href="https://joveear.ai" target="_blank" rel="noopener noreferrer">AI &amp; AR preview</a></li>
+                        <li><a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer">AI &amp; AR preview</a></li>
                         <li><a href="/for-clients">Find an artist</a></li>
                     </ul>
                 </div>
@@ -2002,8 +2013,10 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
 
-      ttq.load('DA0FUTJC77UDKVSV2FQG');
-      ttq.page();
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        ttq.load('DA0FUTJC77UDKVSV2FQG');
+        ttq.page();
+      }
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->

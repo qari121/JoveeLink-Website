@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex">
     <meta name="apple-itunes-app" content="app-id=6755535426" />
     <title>Open in Jovee Link</title>
     <style>
@@ -63,8 +64,10 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
 
-      ttq.load('DA0FUTJC77UDKVSV2FQG');
-      ttq.page();
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        ttq.load('DA0FUTJC77UDKVSV2FQG');
+        ttq.page();
+      }
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
