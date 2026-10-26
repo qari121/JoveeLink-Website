@@ -13,17 +13,17 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Jovée Link — A home for everyone in the nail industry</title>
-    <meta name="description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
+    <title>Jovée Link: Charlotte's Nail Community | Find Nail Artists</title>
+    <meta name="description" content="Charlotte's nail community. Find nail artists near you, see their real work and prices, book your appointment and try designs on your own hand with AR.">
     <link rel="canonical" href="https://www.joveelink.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jovée Link">
     <meta property="og:url" content="https://www.joveelink.com/">
-    <meta property="og:title" content="Jovée Link — A home for everyone in the nail industry">
-    <meta property="og:description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
+    <meta property="og:title" content="Jovée Link: Charlotte&#x27;s Nail Community | Find Nail Artists">
+    <meta property="og:description" content="Charlotte's nail community. Find nail artists near you, see their real work and prices, book your appointment and try designs on your own hand with AR.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Jovée Link — A home for everyone in the nail industry">
-    <meta name="twitter:description" content="Jovée Link is where clients, nail artists and salon owners connect — share inspiration, discover artists, book appointments and belong to a community built around the craft.">
+    <meta name="twitter:title" content="Jovée Link: Charlotte&#x27;s Nail Community | Find Nail Artists">
+    <meta name="twitter:description" content="Charlotte's nail community. Find nail artists near you, see their real work and prices, book your appointment and try designs on your own hand with AR.">
     <link rel="icon" type="image/png" href="assets/logo-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -395,6 +395,11 @@
         .hero-copy { padding-top: var(--sp-8); }
         .hero-copy .ctas { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-6); }
         .hero-chips { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+        .hero-chips .chip { text-decoration: none; transition: border-color 0.2s var(--ease), color 0.2s var(--ease); }
+        .hero-chips .chip:hover { border-color: var(--brand-teal); color: var(--brand-teal); }
+        .hero-stores { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+        .hero-stores-label { font-size: 13px; font-weight: 600; color: var(--text-muted, #5b6b78); }
+        .hero-stores-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
 
         .hero-phone-col {
             display: flex;
@@ -898,8 +903,15 @@
         .community-post-head { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-3); }
         .community-post-avatar {
             width: 36px; height: 36px; border-radius: 50%;
-            background: linear-gradient(135deg, #d8c3b8, #a88877);
+            background: var(--teal-100); color: var(--brand-teal);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; letter-spacing: 0.02em; flex-shrink: 0;
         }
+        .community-post-avatar[data-tone="blush"] { background: #f7e1e7; color: #a3445f; }
+        .community-post-avatar[data-tone="sand"] { background: #f1e6dc; color: #8a5a3c; }
+        .community-left .community-photos img, .community-left .community-post { transition: opacity 0.25s var(--ease); }
+        .community-left.is-swapping .community-photos img, .community-left.is-swapping .community-post { opacity: 0; }
+        @media (prefers-reduced-motion: reduce) { .community-left .community-photos img, .community-left .community-post { transition: none; } }
         .community-post-name { font-size: 14px; font-weight: 600; color: var(--text-strong); }
         .community-post-meta { font-size: 12px; color: var(--text-muted); }
         .community-post-body { font-size: 14px; color: var(--text-body); margin: 0 0 var(--sp-4); line-height: 1.55; }
@@ -916,7 +928,17 @@
         .community-post-foot svg { width: 14px; height: 14px; }
         .community-caption { text-align: center; margin-top: var(--sp-4); font-size: 12px; color: var(--text-muted); }
 
+        .benefit-card--link { display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease); }
+        .benefit-card--link:hover { border-color: var(--teal-200); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .benefit-card--link:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 3px; }
+        .benefit-more { margin-top: auto; padding-top: var(--sp-4); display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--brand-teal); }
+        .benefit-more svg { width: 16px; height: 16px; transition: transform 0.2s var(--ease); }
+        .benefit-card--link:hover .benefit-more svg { transform: translateX(3px); }
         .community-chips { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-6); }
+        .community-chips button.chip { cursor: pointer; font-family: inherit; transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
+        .community-chips button.chip:hover { border-color: var(--brand-teal); }
+        .community-chips button.chip[aria-selected="true"] { background: var(--teal-100); border-color: var(--teal-200); color: var(--brand-teal); font-weight: 600; }
+        .community-chips button.chip:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
 
         /* ==========================================
            3 · BENEFITS (Three audience cards)
@@ -1284,20 +1306,32 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-copy">
-                    <span class="eyebrow">Everyone has a place here</span>
+                    <span class="eyebrow">Charlotte&rsquo;s nail community</span>
                     <h1 class="h1">A home for everyone in the nail industry.</h1>
-                    <p class="lede">Clients, nail artists and salon owners &mdash; all in one place. Connect, share inspiration and exchange knowledge in a community centred on the people behind the craft.</p>
+                    <p class="lede">Clients, nail artists and salon owners across Charlotte, all in one place. Share inspiration, find the artist whose work you love and book them, in a community centred on the people behind the craft.</p>
                     <div class="ctas">
                         <a href="#belong" class="btn btn-primary" data-tt-track="hero_join">
                             Join the community
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
-                        <a href="#download" class="btn btn-outline" data-tt-track="hero_download">Download App</a>
+                    </div>
+                    <div class="hero-stores">
+                        <span class="hero-stores-label">Free on iPhone and Android</span>
+                        <div class="hero-stores-row">
+                            <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="hero_appstore" aria-label="Download on the App Store">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="hero_playstore" aria-label="Get it on Google Play">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                                <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                            </a>
+                        </div>
                     </div>
                     <div class="hero-chips">
-                        <span class="chip">For clients</span>
-                        <span class="chip">For nail artists</span>
-                        <span class="chip">For salons</span>
+                        <a href="/for-clients" class="chip">For clients</a>
+                        <a href="/for-artists" class="chip">For nail artists</a>
+                        <a href="/for-salons" class="chip">For salons</a>
                     </div>
                 </div>
 
@@ -1321,7 +1355,7 @@
                                 <span class="label">Community</span>
                             </div>
                             <p class="phone-sub">Join the conversations from the artist and client.</p>
-                            <button class="phone-ask-btn">Want to ask something to the Artist?</button>
+                            <button type="button" class="phone-ask-btn" tabindex="-1">Want to ask something to the Artist?</button>
                             <div class="phone-photos">
                                 <img src="assets/v2/hand-nude.jpg" alt="">
                                 <img src="assets/v2/hand-pink-french.jpg" alt="">
@@ -1330,13 +1364,13 @@
                                 <div class="phone-post-head">
                                     <div class="phone-post-avatar"></div>
                                     <div>
-                                        <div class="phone-post-name">Ryana H. <span style="color:#ffa300">&#9733;</span></div>
-                                        <div class="phone-post-meta">Greater Manchester &middot; 3h ago</div>
+                                        <div class="phone-post-name">Tasha N. <span style="color:#ffa300">&#9733;</span></div>
+                                        <div class="phone-post-meta">South End, Charlotte &middot; 3h ago</div>
                                     </div>
                                 </div>
-                                <p class="phone-post-text">We&rsquo;re really considering expanding into gel nail services as basic manicures aren&rsquo;t booking like they used to&hellip;</p>
+                                <p class="phone-post-text">We&rsquo;re thinking of adding builder gel because basic manicures aren&rsquo;t booking like they used to&hellip;</p>
                                 <div class="phone-post-tags">
-                                    <span class="phone-tag">Manicure</span>
+                                    <span class="phone-tag">Gel Nails</span>
                                     <span class="phone-tag phone-tag--outline">Question</span>
                                 </div>
                                 <div class="phone-post-foot">
@@ -1396,33 +1430,33 @@
     <section id="community">
         <div class="container">
             <div class="two-col">
-                <div class="community-left reveal">
+                <div class="community-left reveal" id="community-preview" role="tabpanel" aria-live="polite">
                     <div class="community-photos">
-                        <img src="assets/v2/hand-nude.jpg" alt="">
-                        <img src="assets/v2/hand-pink-french.jpg" alt="">
+                        <img src="assets/v2/hand-nude.jpg" alt="Nude almond gel manicure" data-cp="img1">
+                        <img src="assets/v2/hand-pearl.jpg" alt="Pearl and chrome gel nails" data-cp="img2">
                     </div>
                     <div class="community-post">
                         <div class="community-post-head">
-                            <div class="community-post-avatar"></div>
+                            <div class="community-post-avatar" data-cp="avatar" data-tone="teal" aria-hidden="true">TN</div>
                             <div>
-                                <div class="community-post-name">Ryana H. <span style="color:#ffa300">&#9733;</span></div>
-                                <div class="community-post-meta">Greater Manchester &middot; 3h ago</div>
+                                <div class="community-post-name"><span data-cp="name">Tasha N.</span> <span data-cp="badge" style="color:#ffa300" title="Nail professional">&#9733;</span></div>
+                                <div class="community-post-meta" data-cp="meta">Salon owner &middot; South End, Charlotte &middot; 3h ago</div>
                             </div>
                         </div>
-                        <p class="community-post-body">We&rsquo;re really considering expanding into gel nail services as basic manicures are not booking like they used to. Does anyone have recommendations for builder gel brands?</p>
+                        <p class="community-post-body" data-cp="body">We&rsquo;re thinking of adding builder gel because basic manicures aren&rsquo;t booking like they used to. Which builder gel brands do your clients actually ask for?</p>
                         <div class="community-post-tags">
-                            <span class="phone-tag">Manicure</span>
-                            <span class="phone-tag phone-tag--outline">Question</span>
+                            <span class="phone-tag" data-cp="tag">Gel Nails</span>
+                            <span class="phone-tag phone-tag--outline" data-cp="kind">Question</span>
                         </div>
                         <div class="community-post-foot">
                             <span style="display:inline-flex;align-items:center;gap:6px">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                                23 replies
+                                <span data-cp="replies">23 replies</span>
                             </span>
                             <span>&rsaquo;</span>
                         </div>
                     </div>
-                    <p class="community-caption">A conversation from the application community</p>
+                    <p class="community-caption">Example posts showing the kind of conversations in the app</p>
                 </div>
 
                 <div class="reveal">
@@ -1449,10 +1483,10 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="community-chips">
-                        <span class="chip">Nail Art</span>
-                        <span class="chip chip-mint">Gel Nails</span>
-                        <span class="chip">French Tips</span>
+                    <div class="community-chips" role="tablist" aria-label="Browse example posts by topic">
+                        <button type="button" class="chip" role="tab" aria-selected="false" aria-controls="community-preview" data-topic="art">Nail Art</button>
+                        <button type="button" class="chip" role="tab" aria-selected="true" aria-controls="community-preview" data-topic="gel">Gel Nails</button>
+                        <button type="button" class="chip" role="tab" aria-selected="false" aria-controls="community-preview" data-topic="french">French Tips</button>
                     </div>
                     <a href="#belong" class="btn btn-primary" data-tt-track="community_join">
                         Join the community
@@ -1473,27 +1507,30 @@
                 <h2 class="h2">Everyone in the nail industry has a place here.</h2>
             </div>
             <div class="benefit-grid">
-                <div class="benefit-card reveal">
+                <a href="/for-clients" class="benefit-card benefit-card--link reveal" data-tt-track="benefit_client">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </div>
                     <h3>For clients</h3>
                     <p>Discover artists, explore nail looks, ask questions and connect with a community that shares your passion.</p>
-                </div>
-                <div class="benefit-card reveal">
+                    <span class="benefit-more">Find an artist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
+                <a href="/for-artists" class="benefit-card benefit-card--link reveal" data-tt-track="benefit_artist">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <h3>For nail artists</h3>
                     <p>Showcase your portfolio, share your craft, grow your reputation and build real connections with clients and peers.</p>
-                </div>
-                <div class="benefit-card reveal">
+                    <span class="benefit-more">Join as an artist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
+                <a href="/for-salons" class="benefit-card benefit-card--link reveal" data-tt-track="benefit_salon">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <h3>For salons &amp; owners</h3>
                     <p>Present your salon to a community that cares about quality. Stay in control of your profile, appointments and story.</p>
-                </div>
+                    <span class="benefit-more">See how salons use it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
             </div>
         </div>
     </section>
@@ -1671,7 +1708,7 @@
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                         1.2 mi &middot; 4 min
                                     </span>
-                                    <button class="salon-card-book">Book now</button>
+                                    <button type="button" class="salon-card-book" tabindex="-1">Book now</button>
                                 </div>
                             </div>
                         </div>
@@ -1713,7 +1750,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="phone-continue">Continue</button>
+                                <button type="button" class="phone-continue" tabindex="-1">Continue</button>
                                 <div class="phone-home-indicator"></div>
                             </div>
                             <p class="discovery-caption">Choose a service in the app</p>
@@ -1862,7 +1899,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="assets/logo-dark.png" alt="Jovée Link">
-                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place.</p>
+                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place. Based in Charlotte, NC.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Community</h4>
@@ -2002,6 +2039,48 @@
                 }).catch(function() {});
             } catch (_) {}
         });
+    })();
+    </script>
+
+    <!-- Community topic tabs: swap the example post and photos -->
+    <script>
+    (function () {
+        var panel = document.getElementById('community-preview');
+        var tabs = document.querySelectorAll('.community-chips [data-topic]');
+        if (!panel || !tabs.length) return;
+        var posts = {
+            art: { img1: ['assets/v2/hand-mixed-art.jpg', 'Mixed nail art set with tortoiseshell, chrome and a star'], img2: ['assets/v2/hand-pearl.jpg', 'Pearl and chrome nail art'],
+                   avatar: 'MR', tone: 'blush', name: 'Maya R.', pro: true, meta: 'Nail artist \u00b7 NoDa, Charlotte \u00b7 2h ago',
+                   body: 'Did this mixed set for a client yesterday: tortoiseshell, chrome and one tiny star. Which nail would you keep if you could only pick one?',
+                   tag: 'Nail Art', kind: 'Inspiration', replies: '41 replies' },
+            gel: { img1: ['assets/v2/hand-nude.jpg', 'Nude almond gel manicure'], img2: ['assets/v2/hand-pearl.jpg', 'Pearl and chrome gel nails'],
+                   avatar: 'TN', tone: 'teal', name: 'Tasha N.', pro: true, meta: 'Salon owner \u00b7 South End, Charlotte \u00b7 3h ago',
+                   body: 'We\u2019re thinking of adding builder gel because basic manicures aren\u2019t booking like they used to. Which builder gel brands do your clients actually ask for?',
+                   tag: 'Gel Nails', kind: 'Question', replies: '23 replies' },
+            french: { img1: ['assets/v2/hand-pink-french.jpg', 'Soft pink French tips'], img2: ['assets/v2/hand-nude.jpg', 'Nude almond nails'],
+                   avatar: 'JK', tone: 'sand', name: 'Jasmine K.', pro: false, meta: 'Ballantyne, Charlotte \u00b7 5h ago',
+                   body: 'Wedding next month and I want a soft pink French with a little shimmer, like the second photo but shorter. Who does micro French really well near Ballantyne?',
+                   tag: 'French Tips', kind: 'Question', replies: '17 replies' }
+        };
+        var q = function (k) { return panel.querySelector('[data-cp="' + k + '"]'); };
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function render(p) {
+            q('img1').src = p.img1[0]; q('img1').alt = p.img1[1];
+            q('img2').src = p.img2[0]; q('img2').alt = p.img2[1];
+            var av = q('avatar'); av.textContent = p.avatar; av.setAttribute('data-tone', p.tone);
+            q('name').textContent = p.name; q('badge').hidden = !p.pro;
+            q('meta').textContent = p.meta; q('body').textContent = p.body;
+            q('tag').textContent = p.tag; q('kind').textContent = p.kind; q('replies').textContent = p.replies;
+        }
+        function select(tab) {
+            var p = posts[tab.getAttribute('data-topic')]; if (!p) return;
+            tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+            if (reduce) { render(p); return; }
+            panel.classList.add('is-swapping');
+            setTimeout(function () { render(p); panel.classList.remove('is-swapping'); }, 220);
+            if (typeof window.ttq !== 'undefined' && window.ttq.track) { try { window.ttq.track('ClickButton', { content_name: 'community_topic_' + tab.getAttribute('data-topic') }); } catch (_) {} }
+        }
+        tabs.forEach(function (t) { t.addEventListener('click', function () { select(t); }); });
     })();
     </script>
 
