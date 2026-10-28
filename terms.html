@@ -6,12 +6,23 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-ERKQ239G6V');
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        gtag('config', 'G-ERKQ239G6V', { linker: { domains: ['joveelink.com', 'joveear.ai'] } });
+      }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Terms of Service — Jovée Link</title>
     <meta name="description" content="The Terms of Service governing your use of the Jovée Link app.">
+    <link rel="canonical" href="https://www.joveelink.com/terms">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jovée Link">
+    <meta property="og:url" content="https://www.joveelink.com/terms">
+    <meta property="og:title" content="Terms of Service — Jovée Link">
+    <meta property="og:description" content="The Terms of Service governing your use of the Jovée Link app.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Terms of Service — Jovée Link">
+    <meta name="twitter:description" content="The Terms of Service governing your use of the Jovée Link app.">
     <link rel="icon" type="image/png" href="assets/logo-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,14 +186,14 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="assets/logo-dark.png" alt="Jovée Link">
-                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place.</p>
+                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place. Based in Charlotte, NC.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Community</h4>
                     <ul>
                         <li><a href="/#community">Discussions</a></li>
                         <li><a href="/#community">Nail inspiration</a></li>
-                        <li><a href="https://joveear.ai" target="_blank" rel="noopener noreferrer">AI &amp; AR preview</a></li>
+                        <li><a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer">AI &amp; AR preview</a></li>
                         <li><a href="/for-clients">Find an artist</a></li>
                     </ul>
                 </div>
@@ -223,8 +234,10 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
 
-      ttq.load('DA0FUTJC77UDKVSV2FQG');
-      ttq.page();
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        ttq.load('DA0FUTJC77UDKVSV2FQG');
+        ttq.page();
+      }
     }(window, document, 'ttq');
     </script>
 </body>
