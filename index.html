@@ -893,7 +893,7 @@
             position: relative;
         }
         .community-photos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
-        .community-photos img { aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-md); width: 100%; }
+        .community-photos img { aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-md); width: 100%; height: auto; }
         .community-post {
             background: var(--white);
             border: 1px solid var(--teal-100);
@@ -1202,14 +1202,259 @@
         .footer-legal a:hover { color: var(--brand-teal); }
 
         /* ==========================================
+           APP WALKTHROUGH PHONE (hero)
+           ========================================== */
+        .phone { width: 320px; max-width: 100%; }
+        .phone-topbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 22px 0 26px; font-size: 13px; font-weight: 600; color: var(--navy-900);
+            position: relative; z-index: 3; height: 34px;
+        }
+        .phone-topbar-icons { display: inline-flex; align-items: center; gap: 5px; color: var(--navy-900); }
+        .phone-topbar-icons svg { width: 15px; height: 13px; }
+        .phone-topbar-icons svg:last-child { width: 24px; }
+        .phone--tour { display: flex; flex-direction: column; }
+        .phone--tour .phone-topbar { position: absolute; top: 0; left: 0; right: 0; }
+        .phone-screens { position: relative; height: 584px; overflow: hidden; background: #f7fcff; }
+        .ps {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            opacity: 0; transform: translateX(12px); pointer-events: none;
+            transition: opacity 0.35s var(--ease), transform 0.45s var(--ease);
+        }
+        .ps.is-active { opacity: 1; transform: none; pointer-events: auto; }
+        @media (prefers-reduced-motion: reduce) { .ps { transition: none; transform: none; } }
+        .ps-head { background: linear-gradient(180deg, #a9ddd2 0%, #86d3c6 100%); padding: 46px 16px 14px; }
+        .ps-head--plain { background: var(--white); border-bottom: 1px solid var(--gray-100); }
+        .ps-head-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .ps-head-row .phone-greet { font-size: 17px; }
+        .ps-head-row .phone-bell { position: static; width: 32px; height: 32px; flex-shrink: 0; }
+        .ps-search {
+            margin-top: 12px; background: rgba(255,255,255,0.92); border-radius: 999px;
+            padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+            font-size: 11px; color: var(--gray-500);
+        }
+        .ps-search svg { width: 14px; height: 14px; color: var(--gray-500); flex-shrink: 0; }
+        .ps-body { padding: 12px 14px 10px; flex: 1; min-height: 0; }
+        .ps-row-title { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 8px; }
+        .ps-link { font-size: 11px; font-weight: 500; color: var(--brand-teal); }
+        .ps-filters { display: flex; gap: 6px; overflow: hidden; margin-bottom: 10px; }
+        .ps-filter { flex-shrink: 0; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--gray-100); font-size: 10.5px; font-weight: 500; color: var(--navy-900); background: var(--white); }
+        .ps-filter.is-on { background: var(--brand-teal); border-color: var(--brand-teal); color: var(--white); }
+        .phone-post-avatar { object-fit: cover; }
+        .ps-verified { display: inline-flex; align-items: center; justify-content: center; width: 13px; height: 13px; border-radius: 50%; background: var(--brand-teal); color: #fff; font-size: 8px; margin-left: 2px; vertical-align: middle; }
+        .ps-post-img { border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+        .ps-post-img img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .ps-home .ps-body { display: flex; flex-direction: column; }
+        .ps-home .phone-post { margin-bottom: 10px; flex: 1; min-height: 0; overflow: hidden; }
+        .ps-home .ps-ar-btn { margin-top: auto; flex-shrink: 0; }
+        .ps-home .phone-post-text { margin-bottom: 8px; }
+        .ps-ar-btn {
+            display: flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #0d7568 0%, #0a5f54 100%); color: #fff;
+            border-radius: 14px; padding: 10px 12px; text-decoration: none;
+            box-shadow: inset 0 -8px 14px rgba(134, 211, 198, 0.4), 0 6px 14px rgba(13, 117, 104, 0.25);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+        }
+        .ps-ar-btn:hover { transform: translateY(-1px); box-shadow: inset 0 -8px 14px rgba(134, 211, 198, 0.4), 0 10px 18px rgba(13, 117, 104, 0.3); }
+        .ps-ar-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+        .ps-ar-ico { font-size: 18px; }
+        .ps-ar-txt { display: flex; flex-direction: column; line-height: 1.2; flex: 1; }
+        .ps-ar-txt strong { color: #fff; font-size: 13px; font-weight: 600; }
+        .ps-ar-txt small { font-size: 10.5px; opacity: 0.85; }
+        .ps-ar-go { font-size: 18px; opacity: 0.9; }
+
+        /* Explore */
+        .ps-map { position: relative; flex: 1; min-height: 0; background: #e9f1ee; overflow: hidden; }
+        .ps-map-roads {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(90deg, transparent 48%, #fff 48%, #fff 52%, transparent 52%),
+                linear-gradient(0deg, transparent 58%, #fff 58%, #fff 62%, transparent 62%),
+                linear-gradient(30deg, transparent 49%, #fff 49%, #fff 51%, transparent 51%),
+                linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px) 0 0 / 34px 34px,
+                linear-gradient(0deg, rgba(255,255,255,0.7) 1px, transparent 1px) 0 0 / 34px 34px,
+                radial-gradient(circle at 78% 18%, #cfe9e2 0 42px, transparent 43px),
+                radial-gradient(circle at 18% 80%, #cfe9e2 0 36px, transparent 37px);
+        }
+        .ps-map-label { position: absolute; font-size: 9.5px; font-weight: 600; color: #6b7d88; letter-spacing: 0.3px; }
+        .ps-pin {
+            position: absolute; width: 22px; height: 22px; transform: translate(-50%, -100%);
+            background: var(--navy-900); border-radius: 50% 50% 50% 0; rotate: -45deg;
+            border: 3px solid #fff; box-shadow: 0 3px 6px rgba(13,35,64,0.25);
+        }
+        .ps-pin--on { background: var(--brand-teal); width: 26px; height: 26px; }
+        .ps-pin--me { background: #3b82f6; border-radius: 50%; rotate: 0deg; width: 16px; height: 16px; transform: translate(-50%, -50%); box-shadow: 0 0 0 8px rgba(59,130,246,0.18); }
+        .ps-map-search {
+            position: absolute; left: 14px; right: 14px; top: 42px; background: #fff; border-radius: 999px;
+            padding: 9px 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--navy-900);
+            font-weight: 500; box-shadow: var(--shadow-sm);
+        }
+        .ps-map-search svg { width: 14px; height: 14px; color: var(--gray-500); }
+        .ps-sheet { background: #fff; border-radius: 20px 20px 0 0; padding: 8px 14px 10px; box-shadow: 0 -8px 20px rgba(13,35,64,0.08); }
+        .ps-sheet-handle { width: 36px; height: 4px; border-radius: 999px; background: var(--gray-100); margin: 0 auto 10px; }
+        .ps-salon { display: flex; gap: 10px; align-items: center; padding: 8px; border: 1px solid var(--gray-100); border-radius: 14px; margin-bottom: 8px; }
+        .ps-salon img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+        .ps-salon-main { min-width: 0; }
+        .ps-salon-name { font-size: 13px; font-weight: 600; color: var(--navy-900); display: flex; justify-content: space-between; gap: 6px; }
+        .ps-rate { color: #ffa300; font-size: 11px; font-weight: 600; }
+        .ps-salon-meta { font-size: 10.5px; color: var(--gray-500); margin: 1px 0 5px; }
+        .ps-salon-tags { display: flex; gap: 4px; }
+        .ps-salon-tags span { background: var(--teal-100); color: var(--brand-teal); font-size: 9.5px; font-weight: 500; padding: 2px 7px; border-radius: 999px; }
+
+        /* Bookings */
+        .ps-title { font-family: var(--font-head); font-size: 20px; font-weight: 600; color: var(--navy-900); }
+        .ps-title--sm { font-size: 14px; }
+        .ps-seg { display: flex; background: var(--gray-50); border-radius: 999px; padding: 3px; margin-top: 10px; }
+        .ps-seg span { flex: 1; text-align: center; font-size: 11px; font-weight: 600; color: var(--gray-500); padding: 6px; border-radius: 999px; }
+        .ps-seg span.is-on { background: #fff; color: var(--navy-900); box-shadow: var(--shadow-xs); }
+        .ps-date { font-size: 11px; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.6px; margin: 4px 0 6px; }
+        .ps-bookings .phone-booking { margin: 0 0 10px; }
+        .phone-booking-avatar { object-fit: cover; }
+        .phone-booking-tag--pending { background: #fff4df; color: #b26a00; }
+        .ps-book-new { margin-top: 6px; text-align: center; font-size: 12px; font-weight: 600; color: var(--brand-teal); border: 1.5px dashed var(--teal-200); border-radius: 12px; padding: 10px; }
+
+        /* Chat */
+        .ps-chat-head { display: flex; align-items: center; gap: 10px; }
+        .ps-chat-head img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+        .ps-online { font-size: 10.5px; color: #16a34a; font-weight: 500; }
+        .ps-thread { display: flex; flex-direction: column; gap: 8px; background: #f7fcff; }
+        .ps-bubble { max-width: 82%; font-size: 12px; line-height: 1.4; padding: 9px 12px; border-radius: 16px; }
+        .ps-bubble--them { align-self: flex-start; background: #fff; border: 1px solid var(--gray-100); color: var(--navy-900); border-bottom-left-radius: 4px; }
+        .ps-bubble--me { align-self: flex-end; background: var(--brand-teal); color: #fff; border-bottom-right-radius: 4px; }
+        .ps-bubble--img { padding: 6px; }
+        .ps-bubble--img img { width: 150px; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; display: block; margin-bottom: 4px; }
+        .ps-bubble--img span { display: block; padding: 0 4px 2px; }
+        .ps-chat-input { margin-top: auto; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--gray-100); background: #fff; border-radius: 999px; padding: 8px 8px 8px 14px; font-size: 11px; color: var(--gray-500); }
+        .ps-send { width: 26px; height: 26px; border-radius: 50%; background: var(--brand-teal); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
+
+        /* Profile */
+        .ps-cover { height: 112px; background: linear-gradient(135deg, #a9ddd2 0%, #86d3c6 55%, #e4c3d5 100%); flex-shrink: 0; }
+        .ps-profile-body { padding-top: 0; }
+        .ps-profile-avatar { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; margin-top: -34px; box-shadow: var(--shadow-sm); }
+        .ps-profile-name { font-family: var(--font-head); font-size: 16px; font-weight: 600; color: var(--navy-900); margin-top: 6px; }
+        .ps-profile-meta { font-size: 11px; color: var(--gray-500); margin-bottom: 10px; }
+        .ps-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+        .ps-stats div { background: #fff; border: 1px solid var(--gray-100); border-radius: 10px; padding: 7px 4px; text-align: center; display: flex; flex-direction: column; }
+        .ps-stats strong { font-size: 13px; color: var(--navy-900); font-weight: 600; }
+        .ps-stats span { font-size: 9.5px; color: var(--gray-500); }
+        .ps-profile-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+        .ps-btn-fill, .ps-btn-line { flex: 1; text-align: center; font-size: 12px; font-weight: 600; padding: 8px; border-radius: 999px; }
+        .ps-btn-fill { background: var(--brand-teal); color: #fff; box-shadow: inset 0 -6px 10px rgba(134, 211, 198, 0.45); }
+        .ps-btn-line { border: 1.5px solid var(--gray-100); color: var(--navy-900); background: #fff; }
+        .ps-portfolio { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+        .ps-portfolio img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
+
+        .phone-tabs button.phone-tab { background: none; border: 0; cursor: pointer; font-family: inherit; padding: 4px 0 0; }
+        .phone-tabs button.phone-tab:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: -2px; border-radius: 8px; }
+        .tour-steps { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
+        .tour-step { width: 6px; height: 6px; border-radius: 999px; background: var(--teal-200); transition: width 0.3s var(--ease), background 0.3s var(--ease); }
+        .tour-step.is-active { width: 20px; background: var(--brand-teal); }
+        .hero-phone-col { flex-direction: column; align-items: center; }
+        .hero-phone-col .hero-caption { text-align: center; margin-top: var(--sp-3); }
+        .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--sp-12); align-items: start; }
+
+        /* ==========================================
+           FIND YOUR PEOPLE (under the hero)
+           ========================================== */
+        .people {
+            margin-top: var(--sp-16);
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--sp-10); align-items: stretch;
+            background: var(--white); border-radius: var(--r-xl); box-shadow: var(--shadow-sm); border: 1px solid var(--teal-100); overflow: hidden;
+        }
+        .people-img { position: relative; min-height: 320px; background: var(--teal-100); }
+        .people-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .people-img-tag { position: absolute; left: var(--sp-5); bottom: var(--sp-5); background: rgba(255,255,255,0.92); color: var(--navy-900); font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+        .people-copy { padding: var(--sp-10) var(--sp-10) var(--sp-10) 0; }
+        .people-title { font-family: var(--font-head); font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; letter-spacing: -0.5px; color: var(--text-strong); margin: 0 0 var(--sp-3); }
+        .people-sub { font-size: 15px; color: var(--text-body); margin: 0 0 var(--sp-6); line-height: 1.55; }
+        .people-artists { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+        .people-artist { display: flex; align-items: center; gap: var(--sp-3); padding: 10px 12px; border: 1px solid var(--gray-100); border-radius: 14px; background: var(--white); }
+        .people-artist img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .people-artist-main { flex: 1; min-width: 0; }
+        .people-artist-name { font-size: 14px; font-weight: 600; color: var(--text-strong); }
+        .people-artist-meta { font-size: 12px; color: var(--text-muted); }
+        .people-artist-rate { font-size: 13px; font-weight: 600; color: var(--text-strong); white-space: nowrap; }
+        .people-artist-rate, .ps-rate { color: var(--text-strong); }
+        .people-trend-head { font-size: 13px; font-weight: 600; color: var(--text-strong); margin-bottom: var(--sp-3); }
+        .people-trends { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-3); }
+        .people-trend { display: block; text-decoration: none; color: var(--text-body); font-size: 12px; font-weight: 500; text-align: center; }
+        .people-trend img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-md); margin-bottom: 6px; transition: transform 0.3s var(--ease); }
+        .people-trend:hover img { transform: translateY(-2px); }
+
+        /* Community review card */
+        .community-post-avatar { object-fit: cover; }
+        img.community-post-avatar { width: 40px; height: 40px; }
+        .community-post-head { position: relative; }
+        .community-stars { margin-left: auto; color: #ffa300; font-size: 13px; letter-spacing: 1px; white-space: nowrap; }
+
+        /* ==========================================
+           SERVICES GRID + SCROLLABLE BOOKING PHONE
+           ========================================== */
+        .svc-head { font-size: 14px; font-weight: 600; color: var(--text-strong); margin: 0 0 var(--sp-4); }
+        .svc-grid { list-style: none; padding: 0; margin: 0 0 var(--sp-8); display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
+        .svc-grid li { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--r-md); padding: 12px 14px; display: grid; grid-template-columns: 30px 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center; }
+        .svc-ico { grid-row: 1 / span 2; font-size: 20px; line-height: 1; }
+        .svc-grid strong { font-size: 14px; color: var(--text-strong); font-weight: 600; }
+        .svc-grid small { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
+        .two-col--discovery { align-items: start; }
+        .phone--book .phone-book-head { padding-top: 10px; margin-top: 0; }
+        .phone--book .phone-book-body { padding-bottom: 0; }
+        .phone--book .phone-progress { margin-bottom: 12px; }
+        .phone-svc-scroll { position: relative; }
+        .phone-svc-list { height: 300px; overflow-y: auto; padding: 2px 20px 40px; scrollbar-width: none; overscroll-behavior: contain; }
+        .phone-svc-list::-webkit-scrollbar { display: none; }
+        .phone-svc-list .phone-svc { margin-bottom: 8px; }
+        .phone-svc-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 85%); pointer-events: none; }
+        .phone-scroll-hint {
+            position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+            display: inline-flex; align-items: center; gap: 4px; background: var(--navy-900); color: #fff;
+            font-size: 10.5px; font-weight: 600; padding: 6px 10px 6px 12px; border-radius: 999px; box-shadow: var(--shadow-md);
+            animation: hintBob 1.6s ease-in-out infinite; transition: opacity 0.3s var(--ease);
+        }
+        .phone-scroll-hint svg { width: 12px; height: 12px; }
+        .phone-scroll-hint.is-hidden { opacity: 0; }
+        @keyframes hintBob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 4px); } }
+        @media (prefers-reduced-motion: reduce) { .phone-scroll-hint { animation: none; } }
+        .phone--book .phone-continue { margin-top: 12px; }
+
+        /* ==========================================
+           AUTO-SCROLLING DESIGN CAROUSEL
+           ========================================== */
+        .ar-visual { padding: var(--sp-16) 0 var(--sp-8); }
+        .ar-marquee { overflow: hidden; margin-top: var(--sp-4); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+        .ar-track { display: flex; gap: var(--sp-4); width: max-content; animation: arScroll 48s linear infinite; padding: 0 var(--sp-2); }
+        .ar-marquee:hover .ar-track { animation-play-state: paused; }
+        .ar-item { margin: 0; width: 168px; flex-shrink: 0; }
+        .ar-item img { width: 168px; height: 210px; object-fit: cover; border-radius: var(--r-md); box-shadow: var(--shadow-sm); }
+        .ar-item figcaption { font-size: 12px; font-weight: 600; color: var(--text-strong); margin-top: 8px; text-align: center; }
+        @keyframes arScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .ar-track { animation: none; } .ar-marquee { overflow-x: auto; } }
+        .ar-visual .ar-caption { padding: 0 var(--sp-6); }
+
+        /* Belong without images */
+        .belong-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+        .belong-card .lede { margin-left: auto; margin-right: auto; }
+        .belong-card .ctas { justify-content: center; }
+
+        /* Footer social icons */
+        .footer-social { display: flex; align-items: center; gap: var(--sp-3); }
+        .footer-social a {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--white); color: var(--navy-900);
+            display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(13,35,64,0.08);
+            transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .footer-social a:hover { background: var(--brand-teal); color: var(--white); transform: translateY(-2px); }
+        .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+        .footer-bottom-right { display: flex; align-items: center; gap: var(--sp-8); flex-wrap: wrap; }
+
+        /* ==========================================
            RESPONSIVE
            ========================================== */
         @media (max-width: 1100px) {
-            .hero-grid { grid-template-columns: 1fr 1fr; }
-            .hero-side { grid-column: 1 / -1; flex-direction: row; margin-top: var(--sp-8); align-items: center; justify-content: center; }
-            .hero-side-img { width: 220px; }
-            .discovery-cards { flex-direction: column; align-items: center; }
-            .salon-card { margin-right: 0; }
+            .hero-grid { gap: var(--sp-8); }
+            .people { grid-template-columns: 1fr 1.2fr; gap: var(--sp-8); }
+            .people-copy { padding: var(--sp-8) var(--sp-8) var(--sp-8) 0; }
+            .svc-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 900px) {
@@ -1218,33 +1463,59 @@
             .nav-cta { gap: var(--sp-2); }
 
             .two-col { grid-template-columns: 1fr; gap: var(--sp-12); }
-            .hero-grid { grid-template-columns: 1fr; }
+            .hero-grid { grid-template-columns: 1fr; gap: var(--sp-10); }
             .hero-copy { text-align: left; }
-            .hero-phone-col { justify-content: center; order: 2; }
-            .hero-side { order: 3; flex-direction: column; margin-top: var(--sp-10); }
-            .hero-side-img { width: 100%; max-width: 400px; margin: 0 auto; }
+            .hero-phone-col { justify-content: center; }
+
+            .people { grid-template-columns: 1fr; gap: 0; margin-top: var(--sp-12); }
+            .people-img { min-height: 0; aspect-ratio: 16/10; }
+            .people-img img { position: absolute; }
+            .people-copy { padding: var(--sp-8); }
 
             .benefit-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
             .how-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
             .faq-two { grid-template-columns: 1fr; gap: var(--sp-8); }
 
-            .belong-card { grid-template-columns: 1fr; padding: var(--sp-10); gap: var(--sp-8); }
-            .belong-imgs { max-width: 400px; }
+            .discovery-visual { order: 2; }
+            .belong-card { padding: var(--sp-10); gap: var(--sp-8); }
 
             .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
             .footer-brand { grid-column: 1 / -1; }
 
             section { padding: var(--sp-16) 0; }
             .hero { padding: var(--sp-12) 0 var(--sp-16); }
+            .ar-visual { padding: var(--sp-10) 0 var(--sp-6); }
+        }
+
+        @media (max-width: 640px) {
+            .people-trends { grid-template-columns: repeat(2, 1fr); }
+            .people-copy { padding: var(--sp-6); }
+            .svc-grid { grid-template-columns: 1fr; }
+            .ar-item { width: 136px; }
+            .ar-item img { width: 136px; height: 170px; }
+            .community-stars { margin-left: 0; width: 100%; padding-left: 52px; }
+            .community-post-head { flex-wrap: wrap; }
         }
 
         @media (max-width: 540px) {
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
-            .ar-visual { padding: var(--sp-6); }
+            .footer-bottom-right { justify-content: center; }
+            .ar-visual { padding: var(--sp-8) 0 var(--sp-4); }
             .community-left { padding: var(--sp-4); }
             .faq-item { padding: var(--sp-5); }
             .faq-item summary { font-size: 16px; }
+            .belong-card { padding: var(--sp-8) var(--sp-5); }
+            .hero-stores-row .btn-store { padding: 12px 16px; }
+            .h1 { font-size: clamp(34px, 10vw, 44px); letter-spacing: -1px; }
+            .phone { border-width: 8px; border-radius: 36px; }
+            .phone-screens { height: 560px; }
+        }
+
+        @media (max-width: 360px) {
+            .phone-topbar { padding: 12px 16px 0 20px; }
+            .phone-screens { height: 540px; }
+            .ps-body { padding: 10px 10px 8px; }
         }
 
         /* ==========================================
@@ -1336,91 +1607,259 @@
                 </div>
 
                 <div class="hero-phone-col">
-                    <div class="phone" aria-hidden="true">
-                        <div class="phone-home-head">
-                            <div class="status-bar">
-                                <span>9:41</span>
-                                <span>&#9679;&#9679;&#9679;&#9679;&#9679;</span>
-                            </div>
-                            <div class="phone-greet">Good Morning Sara <span>&#128075;</span></div>
-                            <div class="phone-bell">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            </div>
+                    <div class="phone phone--tour" id="app-tour">
+                        <div class="phone-topbar" aria-hidden="true">
+                            <span>9:41</span>
+                            <span class="phone-topbar-icons">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h3V10H2zM7 20h3V7H7zM12 20h3V4h-3zM17 20h3V13h-3z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l-1.4-1.4a2 2 0 0 1 2.8 0zM7.8 15.8l-1.4-1.4a8 8 0 0 1 11.2 0l-1.4 1.4a6 6 0 0 0-8.4 0zM4.9 12.9l-1.4-1.4a12 12 0 0 1 17 0l-1.4 1.4a10 10 0 0 0-14.2 0z"/></svg>
+                                <svg viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="10" rx="3"/><rect x="4" y="9" width="14" height="6" rx="1.5" fill="currentColor" stroke="none"/><path d="M24 10v4" stroke-linecap="round"/></svg>
+                            </span>
                         </div>
-                        <div class="phone-body">
-                            <div class="phone-row-head">
-                                <span class="avatar">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="9" r="3"/></svg>
-                                </span>
-                                <span class="label">Community</span>
-                            </div>
-                            <p class="phone-sub">Join the conversations from the artist and client.</p>
-                            <button type="button" class="phone-ask-btn" tabindex="-1">Want to ask something to the Artist?</button>
-                            <div class="phone-photos">
-                                <img src="assets/v2/hand-nude.jpg" alt="">
-                                <img src="assets/v2/hand-pink-french.jpg" alt="">
-                            </div>
-                            <div class="phone-post">
-                                <div class="phone-post-head">
-                                    <div class="phone-post-avatar"></div>
-                                    <div>
-                                        <div class="phone-post-name">Tasha N. <span style="color:#ffa300">&#9733;</span></div>
-                                        <div class="phone-post-meta">South End, Charlotte &middot; 3h ago</div>
+
+                        <div class="phone-screens">
+                            <!-- HOME -->
+                            <div class="ps ps-home is-active" data-screen="home">
+                                <div class="ps-head">
+                                    <div class="ps-head-row">
+                                        <div class="phone-greet">Good morning, Sara <span>&#128075;</span></div>
+                                        <div class="phone-bell">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="ps-search">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/></svg>
+                                        <span>Search discussions, artists, salons</span>
                                     </div>
                                 </div>
-                                <p class="phone-post-text">We&rsquo;re thinking of adding builder gel because basic manicures aren&rsquo;t booking like they used to&hellip;</p>
-                                <div class="phone-post-tags">
-                                    <span class="phone-tag">Gel Nails</span>
-                                    <span class="phone-tag phone-tag--outline">Question</span>
-                                </div>
-                                <div class="phone-post-foot">
-                                    <span>&#128172; 23 replies</span>
-                                    <span>&rsaquo;</span>
+                                <div class="ps-body">
+                                    <div class="ps-row-title">
+                                        <span>Discussions</span>
+                                        <span class="ps-link">See all</span>
+                                    </div>
+                                    <div class="ps-filters">
+                                        <span class="ps-filter is-on">All</span><span class="ps-filter">Nail Art</span><span class="ps-filter">Gel</span><span class="ps-filter">French</span><span class="ps-filter">Pros only</span>
+                                    </div>
+                                    <div class="phone-post">
+                                        <div class="phone-post-head">
+                                            <img class="phone-post-avatar" src="assets/v2/img/avatar-artist-braids.jpg" alt="">
+                                            <div>
+                                                <div class="phone-post-name">Maya R. <span class="ps-verified" title="Verified nail professional">&#10003;</span></div>
+                                                <div class="phone-post-meta">Nail artist &middot; NoDa &middot; 2h</div>
+                                            </div>
+                                        </div>
+                                        <p class="phone-post-text">Tortoiseshell with gold foil on two accent nails. Autumn sets are booking fast, who else is seeing it?</p>
+                                        <div class="ps-post-img"><img src="assets/v2/img/nails-tortoiseshell.jpg" alt=""></div>
+                                        <div class="phone-post-foot">
+                                            <span>&#10084;&#65039; 128 &nbsp; &#128172; 41 replies</span>
+                                            <span>&rsaquo;</span>
+                                        </div>
+                                    </div>
+                                    <a class="ps-ar-btn" href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="tour_ar_preview">
+                                        <span class="ps-ar-ico">&#10024;</span>
+                                        <span class="ps-ar-txt"><strong>AR Nail Preview</strong><small>Try a design on your own hand</small></span>
+                                        <span class="ps-ar-go">&rsaquo;</span>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="phone-ar-wrap">
-                                <span class="phone-ar-pill">&#128247; AR Nail Preview</span>
+
+                            <!-- EXPLORE -->
+                            <div class="ps ps-explore" data-screen="explore">
+                                <div class="ps-map" aria-hidden="true">
+                                    <div class="ps-map-roads"></div>
+                                    <span class="ps-map-label" style="left:14%;top:22%">Uptown</span>
+                                    <span class="ps-map-label" style="left:60%;top:16%">NoDa</span>
+                                    <span class="ps-map-label" style="left:22%;top:66%">South End</span>
+                                    <span class="ps-map-label" style="left:64%;top:58%">Plaza Midwood</span>
+                                    <span class="ps-pin" style="left:30%;top:36%"></span>
+                                    <span class="ps-pin" style="left:68%;top:30%"></span>
+                                    <span class="ps-pin ps-pin--on" style="left:40%;top:60%"></span>
+                                    <span class="ps-pin" style="left:76%;top:72%"></span>
+                                    <span class="ps-pin ps-pin--me" style="left:48%;top:48%"></span>
+                                    <div class="ps-map-search">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/></svg>
+                                        <span>Nail salons near me</span>
+                                    </div>
+                                </div>
+                                <div class="ps-sheet">
+                                    <div class="ps-sheet-handle"></div>
+                                    <div class="ps-row-title"><span>Nearby</span><span class="ps-link">12 salons</span></div>
+                                    <div class="ps-salon">
+                                        <img src="assets/v2/salon-service.jpg" alt="">
+                                        <div class="ps-salon-main">
+                                            <div class="ps-salon-name">Luxe Nails <span class="ps-rate">&#9733; 4.9</span></div>
+                                            <div class="ps-salon-meta">South End &middot; 1.2 mi &middot; Open until 7pm</div>
+                                            <div class="ps-salon-tags"><span>Gel</span><span>Builder gel</span><span>Nail art</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-salon">
+                                        <img src="assets/v2/img/salon-together.jpg" alt="">
+                                        <div class="ps-salon-main">
+                                            <div class="ps-salon-name">Studio Linh <span class="ps-rate">&#9733; 4.8</span></div>
+                                            <div class="ps-salon-meta">NoDa &middot; 2.4 mi &middot; Open until 6pm</div>
+                                            <div class="ps-salon-tags"><span>French</span><span>Chrome</span><span>Pedicure</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BOOKINGS -->
+                            <div class="ps ps-bookings" data-screen="bookings">
+                                <div class="ps-head ps-head--plain">
+                                    <div class="ps-title">Bookings</div>
+                                    <div class="ps-seg"><span class="is-on">Upcoming</span><span>Past</span></div>
+                                </div>
+                                <div class="ps-body">
+                                    <div class="ps-date">Tomorrow</div>
+                                    <div class="phone-booking">
+                                        <img class="phone-booking-avatar" src="assets/v2/img/avatar-artist-braids.jpg" alt="">
+                                        <div class="phone-booking-main">
+                                            <div class="phone-booking-name">Maya R. &middot; NoDa</div>
+                                            <div class="phone-booking-svc">Nail art full set &middot; 10:30 AM</div>
+                                        </div>
+                                        <span class="phone-booking-tag">Confirmed</span>
+                                    </div>
+                                    <div class="ps-date">Sat 8 Nov</div>
+                                    <div class="phone-booking">
+                                        <img class="phone-booking-avatar" src="assets/v2/img/avatar-artist-vn.jpg" alt="">
+                                        <div class="phone-booking-main">
+                                            <div class="phone-booking-name">Linh T. &middot; South End</div>
+                                            <div class="phone-booking-svc">Builder gel refill &middot; 2:00 PM</div>
+                                        </div>
+                                        <span class="phone-booking-tag phone-booking-tag--pending">Pending</span>
+                                    </div>
+                                    <div class="ps-date">Fri 21 Nov</div>
+                                    <div class="phone-booking">
+                                        <img class="phone-booking-avatar" src="assets/v2/img/avatar-artist-curly.jpg" alt="">
+                                        <div class="phone-booking-main">
+                                            <div class="phone-booking-name">Destiny C. &middot; Plaza Midwood</div>
+                                            <div class="phone-booking-svc">Chrome French &middot; 5:30 PM</div>
+                                        </div>
+                                        <span class="phone-booking-tag">Confirmed</span>
+                                    </div>
+                                    <div class="ps-book-new">+ Book a new appointment</div>
+                                </div>
+                            </div>
+
+                            <!-- CHAT -->
+                            <div class="ps ps-chat" data-screen="chat">
+                                <div class="ps-head ps-head--plain ps-chat-head">
+                                    <img src="assets/v2/img/avatar-artist-braids.jpg" alt="">
+                                    <div>
+                                        <div class="ps-title ps-title--sm">Maya R.</div>
+                                        <div class="ps-online">Online now</div>
+                                    </div>
+                                </div>
+                                <div class="ps-body ps-thread">
+                                    <div class="ps-bubble ps-bubble--them">Hey Sara! Saw your post about the tortoiseshell set. Want it with gold foil or kept plain?</div>
+                                    <div class="ps-bubble ps-bubble--me">Gold foil please, just on two nails like your photo &#128525;</div>
+                                    <div class="ps-bubble ps-bubble--them ps-bubble--img"><img src="assets/v2/img/nails-tortoiseshell.jpg" alt=""><span>Like this?</span></div>
+                                    <div class="ps-bubble ps-bubble--me">Exactly that. Tomorrow at 10:30 still good?</div>
+                                    <div class="ps-bubble ps-bubble--them">Perfect, it&rsquo;s confirmed in your bookings. See you then!</div>
+                                    <div class="ps-chat-input"><span>Message Maya&hellip;</span><span class="ps-send">&#10148;</span></div>
+                                </div>
+                            </div>
+
+                            <!-- PROFILE -->
+                            <div class="ps ps-profile" data-screen="profile">
+                                <div class="ps-cover"></div>
+                                <div class="ps-body ps-profile-body">
+                                    <img class="ps-profile-avatar" src="assets/v2/img/avatar-artist-braids.jpg" alt="">
+                                    <div class="ps-profile-name">Maya Rivera <span class="ps-verified" title="Verified nail professional">&#10003;</span></div>
+                                    <div class="ps-profile-meta">Nail artist &middot; NoDa, Charlotte</div>
+                                    <div class="ps-stats">
+                                        <div><strong>4.9 &#9733;</strong><span>Rating</span></div>
+                                        <div><strong>128</strong><span>Reviews</span></div>
+                                        <div><strong>312</strong><span>Bookings</span></div>
+                                    </div>
+                                    <div class="ps-profile-actions"><span class="ps-btn-fill">Book</span><span class="ps-btn-line">Message</span></div>
+                                    <div class="ps-row-title"><span>Portfolio</span><span class="ps-link">See all</span></div>
+                                    <div class="ps-portfolio">
+                                        <img src="assets/v2/img/nails-tortoiseshell.jpg" alt="">
+                                        <img src="assets/v2/img/nails-3d-floral.jpg" alt="">
+                                        <img src="assets/v2/img/nails-aura.jpg" alt="">
+                                        <img src="assets/v2/img/nails-cherry-chrome.jpg" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="phone-tabs">
-                            <div class="phone-tab active">
-                                <span class="tab-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                                </span>
+
+                        <div class="phone-tabs" role="tablist" aria-label="App walkthrough">
+                            <button type="button" class="phone-tab active" role="tab" aria-selected="true" data-tour="home">
+                                <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
                                 <span>Home</span>
-                            </div>
-                            <div class="phone-tab">
+                            </button>
+                            <button type="button" class="phone-tab" role="tab" aria-selected="false" data-tour="explore">
                                 <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
                                 <span>Explore</span>
-                            </div>
-                            <div class="phone-tab">
+                            </button>
+                            <button type="button" class="phone-tab" role="tab" aria-selected="false" data-tour="bookings">
                                 <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
                                 <span>Bookings</span>
-                            </div>
-                            <div class="phone-tab">
+                            </button>
+                            <button type="button" class="phone-tab" role="tab" aria-selected="false" data-tour="chat">
                                 <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
                                 <span>Chat</span>
-                            </div>
-                            <div class="phone-tab">
+                            </button>
+                            <button type="button" class="phone-tab" role="tab" aria-selected="false" data-tour="profile">
                                 <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
                                 <span>Profile</span>
-                            </div>
+                            </button>
                         </div>
                         <div class="phone-home-indicator"></div>
                     </div>
-                </div>
-
-                <div class="hero-side">
-                    <div class="hero-side-img">
-                        <img src="assets/v2/hand-pearl.jpg" alt="Hand with pearl and chrome nail art">
+                    <div class="tour-steps" aria-hidden="true">
+                        <span class="tour-step is-active" data-tour-dot="home"></span><span class="tour-step" data-tour-dot="explore"></span><span class="tour-step" data-tour-dot="bookings"></span><span class="tour-step" data-tour-dot="chat"></span><span class="tour-step" data-tour-dot="profile"></span>
                     </div>
-                    <div>
-                        <h3 class="hero-side-title">Find your<br>people.</h3>
-                        <p class="hero-side-sub">Inspiration. Connection. Community.</p>
+                    <p class="hero-caption">Tap the tabs to walk through the app &middot; Example accounts</p>
+                </div>
+            </div>
+
+            <!-- Find your people -->
+            <div class="people reveal">
+                <div class="people-img">
+                    <img src="assets/v2/img/salon-together.jpg" alt="Nail artist and client laughing together at the manicure table" width="1200" height="864" loading="lazy">
+                    <span class="people-img-tag">Charlotte, NC</span>
+                </div>
+                <div class="people-copy">
+                    <span class="eyebrow">Find your people</span>
+                    <h2 class="people-title">The artists, the clients and the conversations, all in one place.</h2>
+                    <p class="people-sub">Follow the nail artists whose work you love, see what they are posting this week and book them when you are ready. These are example profiles showing how it looks in the app.</p>
+                    <div class="people-artists">
+                        <div class="people-artist">
+                            <img src="assets/v2/img/avatar-artist-braids.jpg" alt="">
+                            <div class="people-artist-main">
+                                <div class="people-artist-name">Maya Rivera <span class="ps-verified">&#10003;</span></div>
+                                <div class="people-artist-meta">Nail art &amp; 3D &middot; NoDa</div>
+                            </div>
+                            <span class="people-artist-rate">4.9 &#9733;</span>
+                        </div>
+                        <div class="people-artist">
+                            <img src="assets/v2/img/avatar-artist-vn.jpg" alt="">
+                            <div class="people-artist-main">
+                                <div class="people-artist-name">Linh Tran <span class="ps-verified">&#10003;</span></div>
+                                <div class="people-artist-meta">Builder gel &amp; natural nails &middot; South End</div>
+                            </div>
+                            <span class="people-artist-rate">4.8 &#9733;</span>
+                        </div>
+                        <div class="people-artist">
+                            <img src="assets/v2/img/avatar-artist-curly.jpg" alt="">
+                            <div class="people-artist-main">
+                                <div class="people-artist-name">Destiny Cole <span class="ps-verified">&#10003;</span></div>
+                                <div class="people-artist-meta">Chrome &amp; French &middot; Plaza Midwood</div>
+                            </div>
+                            <span class="people-artist-rate">5.0 &#9733;</span>
+                        </div>
+                    </div>
+                    <div class="people-trend-head">Trending designs this week</div>
+                    <div class="people-trends">
+                        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" class="people-trend"><img src="assets/v2/img/nails-chrome-french.jpg" alt="Chrome French tips" loading="lazy"><span>Chrome French</span></a>
+                        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" class="people-trend"><img src="assets/v2/img/nails-aura.jpg" alt="Aura nails" loading="lazy"><span>Aura nails</span></a>
+                        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" class="people-trend"><img src="assets/v2/img/nails-cat-eye.jpg" alt="Emerald cat eye nails" loading="lazy"><span>Cat eye</span></a>
+                        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" class="people-trend"><img src="assets/v2/img/nails-3d-floral.jpg" alt="3D floral nail art" loading="lazy"><span>3D florals</span></a>
                     </div>
                 </div>
             </div>
-            <p class="hero-caption">Your nail community, all in one place</p>
         </div>
     </section>
 
@@ -1432,37 +1871,38 @@
             <div class="two-col">
                 <div class="community-left reveal" id="community-preview" role="tabpanel" aria-live="polite">
                     <div class="community-photos">
-                        <img src="assets/v2/hand-nude.jpg" alt="Nude almond gel manicure" data-cp="img1">
-                        <img src="assets/v2/hand-pearl.jpg" alt="Pearl and chrome gel nails" data-cp="img2">
+                        <img src="assets/v2/img/nails-builder-gel.jpg" alt="Sheer milky builder gel manicure" data-cp="img1" width="900" height="900" loading="lazy">
+                        <img src="assets/v2/img/nails-cat-eye.jpg" alt="Emerald green cat eye gel nails" data-cp="img2" width="900" height="900" loading="lazy">
                     </div>
                     <div class="community-post">
                         <div class="community-post-head">
-                            <div class="community-post-avatar" data-cp="avatar" data-tone="teal" aria-hidden="true">TN</div>
+                            <img class="community-post-avatar" data-cp="avatar" src="assets/v2/img/avatar-client-auburn.jpg" alt="" width="400" height="400" loading="lazy">
                             <div>
-                                <div class="community-post-name"><span data-cp="name">Tasha N.</span> <span data-cp="badge" style="color:#ffa300" title="Nail professional">&#9733;</span></div>
-                                <div class="community-post-meta" data-cp="meta">Salon owner &middot; South End, Charlotte &middot; 3h ago</div>
+                                <div class="community-post-name"><span data-cp="name">Elena M.</span></div>
+                                <div class="community-post-meta" data-cp="meta">Reviewed Linh T. &middot; South End &middot; 3h ago</div>
                             </div>
+                            <span class="community-stars" data-cp="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                         </div>
-                        <p class="community-post-body" data-cp="body">We&rsquo;re thinking of adding builder gel because basic manicures aren&rsquo;t booking like they used to. Which builder gel brands do your clients actually ask for?</p>
+                        <p class="community-post-body" data-cp="body">Switched to builder gel with Linh after years of my natural nails breaking. Three weeks in, zero chips, and they finally look like my nails but better. She explained every step too.</p>
                         <div class="community-post-tags">
                             <span class="phone-tag" data-cp="tag">Gel Nails</span>
-                            <span class="phone-tag phone-tag--outline" data-cp="kind">Question</span>
+                            <span class="phone-tag phone-tag--outline" data-cp="kind">Client review</span>
                         </div>
                         <div class="community-post-foot">
                             <span style="display:inline-flex;align-items:center;gap:6px">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                                <span data-cp="replies">23 replies</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                                <span data-cp="replies">36 found this helpful</span>
                             </span>
                             <span>&rsaquo;</span>
                         </div>
                     </div>
-                    <p class="community-caption">Example posts showing the kind of conversations in the app</p>
+                    <p class="community-caption">Example reviews showing how clients share their experience in the app</p>
                 </div>
 
                 <div class="reveal">
                     <span class="eyebrow">The heart of Jovéelink</span>
                     <h2 class="h2">Where the nail industry comes together.</h2>
-                    <p class="lede lede--tight">Ask questions, trade knowledge, share inspiration and find your people. JOVÉELINK is a social space first &mdash; a place to belong, whether you&rsquo;re a client discovering nail art or a salon owner building your community.</p>
+                    <p class="lede lede--tight">Ask questions, trade knowledge, share inspiration and find your people. JOVÉELINK is a social space first: a place to belong, whether you&rsquo;re a client discovering nail art or a salon owner building your community.</p>
                     <ul class="checklist">
                         <li>
                             <span class="check">
@@ -1483,7 +1923,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="community-chips" role="tablist" aria-label="Browse example posts by topic">
+                    <div class="community-chips" role="tablist" aria-label="Browse example reviews by topic">
                         <button type="button" class="chip" role="tab" aria-selected="false" aria-controls="community-preview" data-topic="art">Nail Art</button>
                         <button type="button" class="chip" role="tab" aria-selected="true" aria-controls="community-preview" data-topic="gel">Gel Nails</button>
                         <button type="button" class="chip" role="tab" aria-selected="false" aria-controls="community-preview" data-topic="french">French Tips</button>
@@ -1557,7 +1997,7 @@
                             <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                             <div>
                                 <h3>Manage appointments, your way</h3>
-                                <p>View your upcoming schedule and stay organised &mdash; so you can focus on what you do best.</p>
+                                <p>View your upcoming schedule and stay organised, so you can focus on what you do best.</p>
                             </div>
                         </li>
                         <li>
@@ -1576,13 +2016,18 @@
 
                 <div class="pros-visual reveal">
                     <div>
-                        <div class="phone" aria-hidden="true">
-                            <div class="phone-pro-head">
-                                <div class="status-bar" style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#0d2340;margin-bottom:12px">
-                                    <span>9:41</span><span>&#9679;&#9679;&#9679;&#9679;&#9679;</span>
+                        <div class="phone">
+                            <div class="phone-pro-head" aria-hidden="true">
+                                <div class="status-bar" style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:#0d2340;margin-bottom:12px">
+                                    <span>9:41</span>
+                                    <span class="phone-topbar-icons">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h3V10H2zM7 20h3V7H7zM12 20h3V4h-3zM17 20h3V13h-3z"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l-1.4-1.4a2 2 0 0 1 2.8 0zM7.8 15.8l-1.4-1.4a8 8 0 0 1 11.2 0l-1.4 1.4a6 6 0 0 0-8.4 0zM4.9 12.9l-1.4-1.4a12 12 0 0 1 17 0l-1.4 1.4a10 10 0 0 0-14.2 0z"/></svg>
+                                        <svg viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="10" rx="3"/><rect x="4" y="9" width="14" height="6" rx="1.5" fill="currentColor" stroke="none"/><path d="M24 10v4" stroke-linecap="round"/></svg>
+                                    </span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center">
-                                    <div class="greet">Welcome, Katty Nails <span>&#128075;</span></div>
+                                    <div class="greet">Welcome, Katty <span>&#128075;</span></div>
                                     <div class="phone-bell" style="position:static;top:auto;right:auto">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                                     </div>
@@ -1607,23 +2052,27 @@
                                 Upcoming Bookings
                             </div>
                             <div class="phone-booking">
-                                <div class="phone-booking-avatar"></div>
+                                <img class="phone-booking-avatar" src="assets/v2/img/avatar-client-auburn.jpg" alt="">
                                 <div class="phone-booking-main">
-                                    <div class="phone-booking-name">Sarah Jenkins</div>
+                                    <div class="phone-booking-name">Elena Moore</div>
                                     <div class="phone-booking-svc">Gel Extensions &middot; 10:30 AM</div>
                                 </div>
                                 <span class="phone-booking-tag">Confirmed</span>
                             </div>
                             <div class="phone-booking">
-                                <div class="phone-booking-avatar" style="background:linear-gradient(135deg,#c3b8d8,#8877a8)"></div>
+                                <img class="phone-booking-avatar" src="assets/v2/img/avatar-client-latina.jpg" alt="">
                                 <div class="phone-booking-main">
-                                    <div class="phone-booking-name">Megan Fox</div>
+                                    <div class="phone-booking-name">Camila Reyes</div>
                                     <div class="phone-booking-svc">Custom Acrylic Nail Art &middot; 1:00 PM</div>
                                 </div>
                                 <span class="phone-booking-tag">Confirmed</span>
                             </div>
-                            <div class="phone-ar-wrap" style="margin:12px 0 12px">
-                                <span class="phone-ar-pill">&#128247; AR Nail Preview</span>
+                            <div style="padding:6px 14px 12px">
+                                <a class="ps-ar-btn" href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="pros_ar_preview">
+                                    <span class="ps-ar-ico">&#10024;</span>
+                                    <span class="ps-ar-txt"><strong>AR Nail Preview</strong><small>Show clients a design on their own hand</small></span>
+                                    <span class="ps-ar-go">&rsaquo;</span>
+                                </a>
                             </div>
                             <div class="phone-tabs">
                                 <div class="phone-tab active">
@@ -1659,28 +2108,23 @@
     <!-- =================================== -->
     <!-- 6 · DISCOVERY (Find the artist)      -->
     <!-- =================================== -->
-    <section class="section-mint">
+    <section class="section-mint discovery">
         <div class="container">
-            <div class="two-col">
+            <div class="two-col two-col--discovery">
                 <div class="reveal">
                     <span class="eyebrow">Discover &amp; connect</span>
                     <h2 class="h2">Find the artist who gets your vision.</h2>
-                    <p class="lede lede--tight">Explore nearby salons, browse real portfolios and connect with artists in your area. When you&rsquo;re ready, booking is simple &mdash; but the connection comes first.</p>
-                    <ul class="checklist">
-                        <li>
-                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            <div>
-                                <h3>Real portfolios, real artists</h3>
-                                <p>See the actual work of artists near you. Browse styles, services and the stories behind them.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            <div>
-                                <h3>Booking when you&rsquo;re ready</h3>
-                                <p>Once you&rsquo;ve found your artist, booking is straightforward &mdash; choose a service, pick your time and confirm your request.</p>
-                            </div>
-                        </li>
+                    <p class="lede lede--tight">Explore nearby salons, browse real portfolios and connect with artists in your area. When you are ready, booking takes a minute: choose a service, pick a time and confirm. The connection comes first.</p>
+                    <div class="svc-head">Services you will find on Jov&eacute;e Link</div>
+                    <ul class="svc-grid" aria-label="Services offered by artists and salons">
+                        <li><span class="svc-ico">&#128133;</span><strong>Gel manicure</strong><small>Shape, cuticle care, glossy gel</small></li>
+                        <li><span class="svc-ico">&#128170;</span><strong>Builder gel</strong><small>Strength for natural nails</small></li>
+                        <li><span class="svc-ico">&#10024;</span><strong>Acrylic full set</strong><small>Sculpted extensions, any shape</small></li>
+                        <li><span class="svc-ico">&#127912;</span><strong>Nail art &amp; 3D</strong><small>Hand painted, foils, charms</small></li>
+                        <li><span class="svc-ico">&#129689;</span><strong>French &amp; chrome</strong><small>Micro French, mirror chrome</small></li>
+                        <li><span class="svc-ico">&#127800;</span><strong>Dip powder</strong><small>Light, long lasting colour</small></li>
+                        <li><span class="svc-ico">&#129462;</span><strong>Pedicure</strong><small>Classic, gel or spa</small></li>
+                        <li><span class="svc-ico">&#128295;</span><strong>Removal &amp; repair</strong><small>Soak off, fills, fixes</small></li>
                     </ul>
                     <a href="#community" class="btn btn-primary" data-tt-track="discovery_explore">
                         Explore the community
@@ -1689,72 +2133,47 @@
                 </div>
 
                 <div class="discovery-visual reveal">
-                    <div class="discovery-cards">
-                        <div class="salon-card">
-                            <div class="salon-card-img">
-                                <img src="assets/v2/salon-service.jpg" alt="Nail artist painting a client&rsquo;s nails">
-                                <span class="salon-card-badge">
-                                    <span style="color:#ffa300">&#9733;</span> High Rating
+                    <div>
+                        <div class="phone phone--book" aria-hidden="true">
+                            <div class="phone-topbar">
+                                <span>9:41</span>
+                                <span class="phone-topbar-icons">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h3V10H2zM7 20h3V7H7zM12 20h3V4h-3zM17 20h3V13h-3z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l-1.4-1.4a2 2 0 0 1 2.8 0zM7.8 15.8l-1.4-1.4a8 8 0 0 1 11.2 0l-1.4 1.4a6 6 0 0 0-8.4 0zM4.9 12.9l-1.4-1.4a12 12 0 0 1 17 0l-1.4 1.4a10 10 0 0 0-14.2 0z"/></svg>
+                                    <svg viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="10" rx="3"/><rect x="4" y="9" width="14" height="6" rx="1.5" fill="currentColor" stroke="none"/><path d="M24 10v4" stroke-linecap="round"/></svg>
                                 </span>
                             </div>
-                            <div class="salon-card-body">
-                                <div>
-                                    <span class="salon-card-name">Luxe Nails</span>
-                                    <span class="salon-card-tag">Client Suggested</span>
-                                </div>
-                                <p class="salon-card-desc">Luxe Nails is a premier salon that specializes in providing top-notch nail care services. Our expert technicians offer a range of treatments&hellip;</p>
-                                <div class="salon-card-foot">
-                                    <span class="salon-card-distance">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                        1.2 mi &middot; 4 min
-                                    </span>
-                                    <button type="button" class="salon-card-book" tabindex="-1">Book now</button>
+                            <div class="phone-book-head">
+                                <div class="phone-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
+                                <span class="phone-book-title">Book Appointment</span>
+                            </div>
+                            <div class="phone-book-body">
+                                <h4>Choose a service</h4>
+                                <p class="intro">Select one service for your appointment with Luxe Nails.</p>
+                                <div class="phone-progress">
+                                    <span class="active"></span><span></span><span></span>
                                 </div>
                             </div>
-                        </div>
-
-                        <div>
-                            <div class="phone" aria-hidden="true">
-                                <div class="phone-book-head">
-                                    <div class="phone-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
-                                    <span class="phone-book-title">Book Appointment</span>
+                            <div class="phone-svc-scroll" id="svcScroll">
+                                <div class="phone-svc-list">
+                                    <div class="phone-svc selected"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Gel Manicure</div><div class="phone-svc-desc">Shape, cuticle care and a glossy gel finish.</div><div class="phone-svc-dur">45 min &middot; from $45</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Builder Gel Overlay</div><div class="phone-svc-desc">Strength and structure on your natural nails.</div><div class="phone-svc-dur">1 hr &middot; from $60</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Acrylic Full Set</div><div class="phone-svc-desc">Sculpted extensions with your choice of shape and colour.</div><div class="phone-svc-dur">1 hr 30 min &middot; from $75</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Nail Art Add-on</div><div class="phone-svc-desc">Hand painted designs, foils, charms and 3D details.</div><div class="phone-svc-dur">30 min &middot; from $15</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Chrome or French Finish</div><div class="phone-svc-desc">Mirror chrome, micro French or classic tips.</div><div class="phone-svc-dur">20 min &middot; from $12</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Dipping Powder</div><div class="phone-svc-desc">Long lasting colour with a lightweight natural feel.</div><div class="phone-svc-dur">1 hr &middot; from $55</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Gel Pedicure</div><div class="phone-svc-desc">Soak, shape, callus care and a gel polish finish.</div><div class="phone-svc-dur">1 hr &middot; from $55</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Fill / Refill</div><div class="phone-svc-desc">Refresh your current acrylic or gel set.</div><div class="phone-svc-dur">1 hr &middot; from $50</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Soak-off Removal</div><div class="phone-svc-desc">Gentle removal of gel, dip or acrylic.</div><div class="phone-svc-dur">30 min &middot; from $15</div></div></div>
+                                    <div class="phone-svc"><div class="phone-svc-radio"></div><div class="phone-svc-main"><div class="phone-svc-name">Nail Repair</div><div class="phone-svc-desc">Fix a broken or lifted nail between visits.</div><div class="phone-svc-dur">15 min &middot; from $8</div></div></div>
                                 </div>
-                                <div class="phone-book-body">
-                                    <h4>Choose a service</h4>
-                                    <p class="intro">Select one service for your appointment with Luxe Nails.</p>
-                                    <div class="phone-progress">
-                                        <span class="active"></span><span></span><span></span>
-                                    </div>
-                                    <div class="phone-svc selected">
-                                        <div class="phone-svc-radio"></div>
-                                        <div class="phone-svc-main">
-                                            <div class="phone-svc-name">Gel Manicure</div>
-                                            <div class="phone-svc-desc">Shape, cuticle care and a glossy gel finish.</div>
-                                            <div class="phone-svc-dur">45 min</div>
-                                        </div>
-                                    </div>
-                                    <div class="phone-svc">
-                                        <div class="phone-svc-radio"></div>
-                                        <div class="phone-svc-main">
-                                            <div class="phone-svc-name">Acrylic Full Set</div>
-                                            <div class="phone-svc-desc">Sculpted extensions with your choice of shape and color.</div>
-                                            <div class="phone-svc-dur">1 hr 30 min</div>
-                                        </div>
-                                    </div>
-                                    <div class="phone-svc">
-                                        <div class="phone-svc-radio"></div>
-                                        <div class="phone-svc-main">
-                                            <div class="phone-svc-name">Dipping Powder</div>
-                                            <div class="phone-svc-desc">Long-lasting color with a lightweight natural feel.</div>
-                                            <div class="phone-svc-dur">1 hr</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="phone-continue" tabindex="-1">Continue</button>
-                                <div class="phone-home-indicator"></div>
+                                <div class="phone-svc-fade"></div>
+                                <div class="phone-scroll-hint" id="svcHint"><span>Scroll for more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                             </div>
-                            <p class="discovery-caption">Choose a service in the app</p>
+                            <button type="button" class="phone-continue" tabindex="-1">Continue</button>
+                            <div class="phone-home-indicator"></div>
                         </div>
+                        <p class="discovery-caption">Choose a service in the app &middot; Example prices</p>
                     </div>
                 </div>
             </div>
@@ -1770,10 +2189,32 @@
                 <div class="ar-visual reveal">
                     <span class="ar-badge">AI + AR nail preview</span>
                     <span class="ar-made-for-you">Made for you</span>
-                    <div class="ar-hand">
-                        <img src="assets/v2/hand-mixed-art.jpg" alt="Hand with mixed nail art designs">
+                    <div class="ar-marquee" aria-label="Nail design ideas">
+                        <div class="ar-track">
+                            <figure class="ar-item"><img src="assets/v2/img/nails-chrome-french.jpg" alt="Chrome French tips" loading="lazy"><figcaption>Chrome French</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-3d-floral.jpg" alt="3D floral nail art" loading="lazy"><figcaption>3D florals</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-cherry-chrome.jpg" alt="Cherry red chrome nails" loading="lazy"><figcaption>Cherry chrome</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-aura.jpg" alt="Aura nails" loading="lazy"><figcaption>Aura nails</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-tortoiseshell.jpg" alt="Tortoiseshell nail art" loading="lazy"><figcaption>Tortoiseshell</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-pearl-chrome.jpg" alt="Pearl chrome nails" loading="lazy"><figcaption>Pearl chrome</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-cat-eye.jpg" alt="Emerald cat eye nails" loading="lazy"><figcaption>Cat eye</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-baby-boomer.jpg" alt="Baby boomer ombre nails" loading="lazy"><figcaption>Baby boomer</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-micro-french.jpg" alt="Micro French manicure" loading="lazy"><figcaption>Micro French</figcaption></figure>
+                            <figure class="ar-item"><img src="assets/v2/img/nails-builder-gel.jpg" alt="Milky builder gel manicure" loading="lazy"><figcaption>Milky builder gel</figcaption></figure>
+                            <!-- duplicated for a seamless loop -->
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-chrome-french.jpg" alt="" loading="lazy"><figcaption>Chrome French</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-3d-floral.jpg" alt="" loading="lazy"><figcaption>3D florals</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-cherry-chrome.jpg" alt="" loading="lazy"><figcaption>Cherry chrome</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-aura.jpg" alt="" loading="lazy"><figcaption>Aura nails</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-tortoiseshell.jpg" alt="" loading="lazy"><figcaption>Tortoiseshell</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-pearl-chrome.jpg" alt="" loading="lazy"><figcaption>Pearl chrome</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-cat-eye.jpg" alt="" loading="lazy"><figcaption>Cat eye</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-baby-boomer.jpg" alt="" loading="lazy"><figcaption>Baby boomer</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-micro-french.jpg" alt="" loading="lazy"><figcaption>Micro French</figcaption></figure>
+                            <figure class="ar-item" aria-hidden="true"><img src="assets/v2/img/nails-builder-gel.jpg" alt="" loading="lazy"><figcaption>Milky builder gel</figcaption></figure>
+                        </div>
                     </div>
-                    <p class="ar-caption">Explore a look. Share your inspiration.</p>
+                    <p class="ar-caption">Pick a look, then try it on your own hand in AR.</p>
                 </div>
 
                 <div class="reveal">
@@ -1836,25 +2277,25 @@
                         <summary>Who is JOVÉELINK for?
                             <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                         </summary>
-                        <p>JOVÉELINK is a home for everyone in the nail industry &mdash; clients who love discovering nail art, nail artists who want to share their craft, and salon owners who want to connect with a wider community. Everyone has a place here.</p>
+                        <p>JOVÉELINK is a home for everyone in the nail industry: clients who love discovering nail art, nail artists who want to share their craft, and salon owners who want to connect with a wider community. Everyone has a place here.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Is JOVÉELINK only for booking?
                             <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                         </summary>
-                        <p>Not at all. Booking is one part of JOVÉELINK. The community &mdash; discussions, inspiration, connections between artists and clients &mdash; is the heart of what we&rsquo;re building. Nail professionals and clients come here to belong, not just to transact.</p>
+                        <p>Not at all. Booking is one part of JOVÉELINK. The community, with its discussions, inspiration and connections between artists and clients, is the heart of what we&rsquo;re building. Nail professionals and clients come here to belong, not just to transact.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Can I preview nails before I book?
                             <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                         </summary>
-                        <p>Yes. The AI and AR nail preview feature lets you explore a look before discussing it with your artist. Think of it as inspiration made personal &mdash; something to bring to your consultation.</p>
+                        <p>Yes. The AI and AR nail preview feature lets you explore a look before discussing it with your artist. Think of it as inspiration made personal, something to bring to your consultation.</p>
                     </details>
                     <details class="faq-item">
                         <summary>How does JOVÉELINK support nail professionals?
                             <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                         </summary>
-                        <p>Professionals can build and showcase their portfolio, present their services, manage their schedule and stay connected with clients and peers &mdash; all in one place designed for the nail industry.</p>
+                        <p>Professionals can build and showcase their portfolio, present their services, manage their schedule and stay connected with clients and peers, all in one place designed for the nail industry.</p>
                     </details>
                 </div>
             </div>
@@ -1870,7 +2311,7 @@
                 <div>
                     <span class="eyebrow">A home for everyone in the nail industry.</span>
                     <h2 class="h2">You belong here.</h2>
-                    <p class="lede lede--tight">Whether you&rsquo;re a client looking for your next look, an artist ready to share your craft, or a salon owner building your community &mdash; JOVÉELINK is the place where the nail industry comes together.</p>
+                    <p class="lede lede--tight">Whether you&rsquo;re a client looking for your next look, an artist ready to share your craft, or a salon owner building your community, JOVÉELINK is the place where the nail industry comes together.</p>
                     <div class="ctas" id="download">
                         <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="belong_appstore" aria-label="Download on the App Store">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1882,10 +2323,6 @@
                         </a>
                         <a href="/for-artists" class="btn btn-outline" data-tt-track="belong_pro">Join as a professional</a>
                     </div>
-                </div>
-                <div class="belong-imgs">
-                    <img src="assets/v2/hand-nude.jpg" alt="Nude almond manicure">
-                    <img src="assets/v2/hand-pearl.jpg" alt="Pearl and chrome nail art">
                 </div>
             </div>
         </div>
@@ -1928,10 +2365,23 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 JOVÉELINK. All rights reserved.</span>
-                <div class="footer-legal">
-                    <a href="/privacy">Privacy policy</a>
-                    <a href="/terms">Terms of use</a>
-                    <a href="/support">Support</a>
+                <div class="footer-bottom-right">
+                    <div class="footer-legal">
+                        <a href="/privacy">Privacy policy</a>
+                        <a href="/terms">Terms of use</a>
+                        <a href="/support">Support</a>
+                    </div>
+                    <div class="footer-social" aria-label="Follow Jovée on social media">
+                        <a href="https://www.instagram.com/joveear/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-tt-track="footer_instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.6.7 1.3 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.6 1.1-1.3 1.4-2.1.3-.8.5-1.7.6-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.6-.7-1.3-1.1-2.1-1.4-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@jovee.ar" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-tt-track="footer_tiktok">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.8V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61593995901920" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-tt-track="footer_facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4z"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2001,6 +2451,17 @@
             });
         }
 
+
+        // Booking phone: hide the scroll hint once the services list has been scrolled
+        var svcList = document.querySelector('.phone-svc-list');
+        var svcHint = document.getElementById('svcHint');
+        if (svcList && svcHint) {
+            svcList.addEventListener('scroll', function () {
+                var atEnd = svcList.scrollTop + svcList.clientHeight >= svcList.scrollHeight - 8;
+                svcHint.classList.toggle('is-hidden', svcList.scrollTop > 24 || atEnd);
+            }, { passive: true });
+        }
+
         // FAQ accordion: close others when one opens (optional, but nicer UX)
         document.querySelectorAll('.faq-item').forEach(function(item) {
             item.addEventListener('toggle', function() {
@@ -2061,33 +2522,33 @@
     })();
     </script>
 
-    <!-- Community topic tabs: swap the example post and photos -->
+    <!-- Community topic tabs: swap the example review and photos -->
     <script>
     (function () {
         var panel = document.getElementById('community-preview');
         var tabs = document.querySelectorAll('.community-chips [data-topic]');
         if (!panel || !tabs.length) return;
         var posts = {
-            art: { img1: ['assets/v2/hand-mixed-art.jpg', 'Mixed nail art set with tortoiseshell, chrome and a star'], img2: ['assets/v2/hand-pearl.jpg', 'Pearl and chrome nail art'],
-                   avatar: 'MR', tone: 'blush', name: 'Maya R.', pro: true, meta: 'Nail artist \u00b7 NoDa, Charlotte \u00b7 2h ago',
-                   body: 'Did this mixed set for a client yesterday: tortoiseshell, chrome and one tiny star. Which nail would you keep if you could only pick one?',
-                   tag: 'Nail Art', kind: 'Inspiration', replies: '41 replies' },
-            gel: { img1: ['assets/v2/hand-nude.jpg', 'Nude almond gel manicure'], img2: ['assets/v2/hand-pearl.jpg', 'Pearl and chrome gel nails'],
-                   avatar: 'TN', tone: 'teal', name: 'Tasha N.', pro: true, meta: 'Salon owner \u00b7 South End, Charlotte \u00b7 3h ago',
-                   body: 'We\u2019re thinking of adding builder gel because basic manicures aren\u2019t booking like they used to. Which builder gel brands do your clients actually ask for?',
-                   tag: 'Gel Nails', kind: 'Question', replies: '23 replies' },
-            french: { img1: ['assets/v2/hand-pink-french.jpg', 'Soft pink French tips'], img2: ['assets/v2/hand-nude.jpg', 'Nude almond nails'],
-                   avatar: 'JK', tone: 'sand', name: 'Jasmine K.', pro: false, meta: 'Ballantyne, Charlotte \u00b7 5h ago',
-                   body: 'Wedding next month and I want a soft pink French with a little shimmer, like the second photo but shorter. Who does micro French really well near Ballantyne?',
-                   tag: 'French Tips', kind: 'Question', replies: '17 replies' }
+            art: { img1: ['assets/v2/img/nails-tortoiseshell.jpg', 'Tortoiseshell nail art with gold foil accents'], img2: ['assets/v2/img/nails-3d-floral.jpg', '3D white floral nail art with pearls'],
+                   avatar: 'assets/v2/img/avatar-client-southasian.jpg', name: 'Priya S.', meta: 'Reviewed Maya R. · NoDa · 2h ago',
+                   body: 'Showed Maya a tortoiseshell photo from the community and she made it better than the picture. The gold foil is hand placed and people keep stopping me to ask where I went.',
+                   tag: 'Nail Art', kind: 'Client review', replies: '52 found this helpful' },
+            gel: { img1: ['assets/v2/img/nails-builder-gel.jpg', 'Sheer milky builder gel manicure'], img2: ['assets/v2/img/nails-cat-eye.jpg', 'Emerald green cat eye gel nails'],
+                   avatar: 'assets/v2/img/avatar-client-auburn.jpg', name: 'Elena M.', meta: 'Reviewed Linh T. · South End · 3h ago',
+                   body: 'Switched to builder gel with Linh after years of my natural nails breaking. Three weeks in, zero chips, and they finally look like my nails but better. She explained every step too.',
+                   tag: 'Gel Nails', kind: 'Client review', replies: '36 found this helpful' },
+            french: { img1: ['assets/v2/img/nails-chrome-french.jpg', 'Mirror chrome French tips on almond nails'], img2: ['assets/v2/img/nails-micro-french.jpg', 'Micro French manicure with a thin gold line'],
+                   avatar: 'assets/v2/img/avatar-client-latina.jpg', name: 'Camila R.', meta: 'Reviewed Destiny C. · Plaza Midwood · 5h ago',
+                   body: 'Booked Destiny for a chrome French before my sister’s wedding. Clean lines, no smudges at the cuticle, and the chrome still looks like glass two weeks later. Already rebooked.',
+                   tag: 'French Tips', kind: 'Client review', replies: '29 found this helpful' }
         };
         var q = function (k) { return panel.querySelector('[data-cp="' + k + '"]'); };
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         function render(p) {
             q('img1').src = p.img1[0]; q('img1').alt = p.img1[1];
             q('img2').src = p.img2[0]; q('img2').alt = p.img2[1];
-            var av = q('avatar'); av.textContent = p.avatar; av.setAttribute('data-tone', p.tone);
-            q('name').textContent = p.name; q('badge').hidden = !p.pro;
+            q('avatar').src = p.avatar;
+            q('name').textContent = p.name;
             q('meta').textContent = p.meta; q('body').textContent = p.body;
             q('tag').textContent = p.tag; q('kind').textContent = p.kind; q('replies').textContent = p.replies;
         }
@@ -2100,6 +2561,45 @@
             if (typeof window.ttq !== 'undefined' && window.ttq.track) { try { window.ttq.track('ClickButton', { content_name: 'community_topic_' + tab.getAttribute('data-topic') }); } catch (_) {} }
         }
         tabs.forEach(function (t) { t.addEventListener('click', function () { select(t); }); });
+    })();
+    </script>
+
+    <!-- Hero phone walkthrough -->
+    <script>
+    (function () {
+        var phone = document.getElementById('app-tour');
+        if (!phone) return;
+        var tabs = Array.prototype.slice.call(phone.querySelectorAll('[data-tour]'));
+        var screens = phone.querySelectorAll('.ps');
+        var dots = document.querySelectorAll('[data-tour-dot]');
+        var order = ['home', 'explore', 'bookings', 'chat', 'profile'];
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var idx = 0, timer = null, paused = false;
+        function show(name) {
+            idx = order.indexOf(name); if (idx < 0) idx = 0;
+            screens.forEach(function (s) { s.classList.toggle('is-active', s.getAttribute('data-screen') === name); });
+            tabs.forEach(function (t) { var on = t.getAttribute('data-tour') === name; t.classList.toggle('active', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+            dots.forEach(function (d) { d.classList.toggle('is-active', d.getAttribute('data-tour-dot') === name); });
+        }
+        function next() { show(order[(idx + 1) % order.length]); }
+        function start() { if (reduce || timer) return; timer = setInterval(function () { if (!paused) next(); }, 3800); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        tabs.forEach(function (t) {
+            t.addEventListener('click', function () {
+                show(t.getAttribute('data-tour'));
+                stop(); setTimeout(start, 12000);
+            });
+        });
+        phone.addEventListener('mouseenter', function () { paused = true; });
+        phone.addEventListener('mouseleave', function () { paused = false; });
+        phone.addEventListener('focusin', function () { paused = true; });
+        phone.addEventListener('focusout', function () { paused = false; });
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) start(); else stop(); });
+            }, { threshold: 0.4 });
+            io.observe(phone);
+        } else { start(); }
     })();
     </script>
 
