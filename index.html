@@ -1530,6 +1530,207 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* ==========================================
+           FIGMA PASS · tokens and layout per breakpoint
+           (Desktop 1440 / Tablet 834 / Mobile 390)
+           ========================================== */
+        :root {
+            --page-bg: #fcfefd;
+            --text-body: #536a78;
+            --line: #d8eae6;
+            --line-teal: #b8e6dd;
+            --surface-2: #f0faf8;
+            --container: 1440px;
+            --gutter: 96px;
+            --sec-y: 88px;
+        }
+        body { background: var(--page-bg); color: var(--text-body); }
+        .container { max-width: var(--container); padding: 0 var(--gutter); }
+        section { padding: var(--sec-y) 0; }
+        .section-mint { background: var(--brand-mint); }
+        .discovery.section-mint { background: var(--surface-2); }
+
+        /* Type */
+        .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 24px; }
+        .h1 { font-weight: 500; font-size: 64px; line-height: 1.12; letter-spacing: -0.04em; margin-bottom: 24px; }
+        .h2 { font-weight: 500; font-size: 40px; line-height: 1.22; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .lede { font-size: 16px; line-height: 1.65; color: var(--text-body); margin-bottom: 28px; }
+        .lede--tight { margin-bottom: 24px; }
+        .checklist { gap: 20px; margin-bottom: 28px; }
+        .checklist .check { width: 14px; height: 14px; margin-top: 5px; }
+        .checklist h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.2; }
+        .checklist p { font-size: 14px; line-height: 1.6; }
+        .hero-copy .ctas { margin-bottom: 24px; }
+        .hero-chips .chip, .chip { padding: 7px 12px; font-size: 12px; font-weight: 400; color: var(--brand-teal); border-color: var(--line); }
+        .community-chips button.chip[aria-selected="true"] { font-weight: 500; }
+
+        /* Buttons */
+        .btn { font-family: var(--font-head); font-weight: 500; font-size: 16px; line-height: 1.55; padding: 13px 24px; gap: 8px; }
+        .btn-primary { box-shadow: 0 1px 2px rgba(13, 13, 18, 0.06), inset 0 -14px 24px #86d3c6; }
+        .btn-primary svg { width: 20px; height: 20px; }
+        .btn-outline { border: 1px solid var(--line-teal); box-shadow: 0 1px 2px rgba(13, 13, 18, 0.06); background: transparent; }
+        .btn-outline:hover { border-color: var(--brand-teal); background: var(--white); }
+        .btn-sm { padding: 13px 24px; font-size: 16px; }
+        .btn-store { padding: 12px 20px; border-radius: 100px; }
+
+        /* Nav + welcome gradient */
+        .nav { position: sticky; background: rgba(252, 254, 253, 0.82); border-bottom: 0; }
+        .nav-inner { padding: 24px var(--gutter); min-height: 100px; }
+        .nav-logo img { height: 38px; }
+        .nav-links { gap: 28px; }
+        .nav-links a { font-size: 14px; font-weight: 400; }
+        .hero { background: linear-gradient(180deg, #fcfefd 0%, #e8f5f3 60%, #c9ebe4 100%); padding: 40px 0 72px; }
+        .hero-grid { grid-template-columns: minmax(0, 1fr) 610px; gap: 50px; align-items: center; }
+        .hero-copy { padding-top: 0; }
+        .hero-stores-label { font-size: 12px; color: var(--text-body); }
+        .hero-caption { font-size: 11px; }
+
+        /* Phone frame, Figma style: white bezel, teal shadow, floating pill nav */
+        .phone {
+            border: 5px solid var(--white);
+            border-radius: 22px;
+            box-shadow: 0 20px 48px rgba(13, 117, 104, 0.12);
+            background: var(--white);
+            width: 300px;
+        }
+        .phone-screens { background: linear-gradient(180deg, #e8f5f3 0%, #fff 40%); }
+        .ps-head { background: linear-gradient(180deg, #4db7a6 0%, #86d3c6 100%); }
+        .ps-head .phone-greet { color: var(--white); }
+        .ps-head .phone-bell { background: rgba(255, 255, 255, 0.3); border: 1px solid #fff; color: var(--white); }
+        .phone-topbar, .phone-topbar-icons { color: var(--navy-900); }
+        .phone--tour[data-screen="home"] .phone-topbar { color: var(--white); }
+        .phone-tabs {
+            margin: 6px 10px 8px; padding: 3px; border-top: 0; border-radius: 100px;
+            background: var(--white); box-shadow: 0 1px 54px rgba(10, 14, 18, 0.1);
+        }
+        .phone-tab { padding: 5px 4px; border-radius: 100px; font-size: 10px; color: var(--gray-400); }
+        .phone-tab.active { background: var(--brand-mint); border: 1px solid var(--line-teal); color: var(--navy-900); }
+        .phone-tab.active .tab-icon { background: transparent; color: var(--brand-teal); padding: 0; }
+        .tab-icon { padding: 0; }
+        .phone-tab svg { width: 16px; height: 16px; }
+        .phone-tabs button.phone-tab { padding: 5px 4px; }
+        .phone-home-indicator { width: 90px; height: 3px; background: #000; margin-bottom: 6px; }
+        .phone-pro-head { background: linear-gradient(180deg, #4db7a6 0%, #86d3c6 100%); }
+        .phone-pro-head .greet, .phone-pro-head .status-bar { color: var(--white); }
+        .phone-pro-head .phone-bell { background: rgba(255, 255, 255, 0.3); border: 1px solid #fff; color: var(--white); }
+        .phone-booking { border-color: #dddedf; border-radius: 18px; }
+        .phone-svc { border-radius: 10px; }
+        .phone-svc.selected { border-color: var(--brand-teal); background: var(--surface-2); }
+
+        /* Find your people band */
+        .people { border-color: var(--line); border-radius: 32px; }
+        .people-title { font-weight: 500; font-size: 28px; }
+        .people-artist { border-color: var(--line); }
+
+        /* Community showcase */
+        .community-left { padding: 32px; border-radius: 32px; border-color: var(--line); gap: 20px; }
+        .community-post { border-color: #c9d8e2; border-radius: 20px; padding: 16px; }
+        .community-post-body { font-size: 14px; line-height: 1.6; }
+
+        /* Benefits */
+        .benefits-head { margin-bottom: 40px; }
+        .benefit-grid { gap: 24px; }
+        .benefit-card { padding: 24px; border-radius: 24px; border-color: var(--line); gap: 18px; }
+        .benefit-icon { margin-bottom: 0; }
+        .benefit-card h3 { font-weight: 500; font-size: 20px; line-height: 1.3; margin-bottom: 0; }
+        .benefit-card p { font-size: 14px; line-height: 1.6; }
+        .benefit-more { padding-top: 0; }
+
+        /* Services grid */
+        .svc-grid li { border-color: var(--line); }
+
+        /* AR preview visual */
+        .ar-visual { background: var(--brand-mint); border-radius: 32px; padding: 32px 0 24px; }
+        .ar-badge, .ar-made-for-you { top: 32px; }
+        .ar-badge { left: 32px; } .ar-made-for-you { right: 32px; }
+        .ar-marquee { margin-top: 44px; }
+        .ar-finepr { font-size: 12px; }
+
+        /* How it works */
+        .how-head { margin-bottom: 40px; }
+        .how-num { background: var(--brand-teal); color: var(--white); font-size: 16px; margin-bottom: 20px; }
+        .how-step h3 { font-weight: 500; font-size: 22px; line-height: 1.35; margin-bottom: 12px; }
+        .how-step p { font-size: 14px; line-height: 1.6; }
+
+        /* FAQ */
+        .faq-two { grid-template-columns: 360px minmax(0, 1fr); gap: 88px; }
+        .faq-list { gap: 12px; }
+        .faq-item { border-radius: 16px; border-color: var(--line); padding: 24px; }
+        .faq-item summary { font-size: 16px; line-height: 1.4; }
+        .faq-item p { font-size: 14px; line-height: 1.65; margin-top: 14px; }
+
+        /* Invitation + footer */
+        .belong-wrap { padding: 16px 0 80px; }
+        .belong-card { border-radius: 32px; padding: 48px; background: linear-gradient(180deg, #e8f5f3 0%, #c9ebe4 100%); }
+        .footer { background: var(--surface-2); padding: 56px 0 32px; }
+        .footer-grid { grid-template-columns: 290px repeat(3, 1fr); gap: 48px 40px; margin-bottom: 48px; }
+        .footer-tag { font-size: 14px; }
+        .footer-col h4 { font-size: 14px; margin-bottom: 16px; }
+        .footer-col ul { gap: 12px; }
+        .footer-col a { font-size: 13px; }
+        .footer-bottom { padding-top: 24px; font-size: 13px; }
+        .footer-legal { gap: 24px; }
+
+        /* Reveal: never leave blank space. Reveal early, and fall back to visible. */
+        .reveal { opacity: 1; transform: none; }
+        .js-reveal .reveal { opacity: 0; transform: translateY(14px); }
+        .js-reveal .reveal.in { opacity: 1; transform: none; }
+
+        /* ---------- Tablet (Figma 834) ---------- */
+        @media (max-width: 1100px) {
+            :root { --gutter: 40px; }
+            .nav-inner { flex-wrap: wrap; row-gap: 8px; padding: 24px var(--gutter) 8px; min-height: 0; }
+            .nav-logo { order: 1; }
+            .nav-cta { order: 2; }
+            .nav-links { order: 3; width: 100%; display: flex; gap: 28px; padding-bottom: 8px; }
+            .nav-cta .btn { display: inline-flex; }
+            .hamburger { display: none; }
+            .hero { padding: 40px 0 72px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-phone-col { justify-content: center; }
+            .h1 { font-size: 52px; }
+            .two-col { grid-template-columns: 1fr; gap: 40px; }
+            .two-col > .reveal:first-child { order: 0; }
+            .pros-visual, .discovery-visual, .ar-visual { order: 1; }
+            .benefit-grid { grid-template-columns: 1fr; gap: 16px; }
+            .how-grid { grid-template-columns: 1fr; gap: 32px; }
+            .faq-two { grid-template-columns: 1fr; gap: 32px; }
+            .belong-card { padding: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .footer-brand { grid-column: 1 / -1; }
+            .people { grid-template-columns: 1fr; gap: 0; }
+            .people-copy { padding: 40px; }
+            .svc-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ---------- Mobile (Figma 390) ---------- */
+        @media (max-width: 640px) {
+            :root { --gutter: 24px; --sec-y: 56px; }
+            .nav-inner { flex-wrap: nowrap; padding: 20px var(--gutter); }
+            .nav-links { display: none; }
+            .nav-cta .btn { display: none; }
+            .hamburger { display: block; }
+            .mobile-menu { inset: 78px 0 0; }
+            .hero { padding: 32px 0 40px; }
+            .hero-grid { gap: 40px; }
+            .h1 { font-size: 40px; }
+            .h2 { font-size: 32px; }
+            .hero-copy .ctas, .hero-copy .ctas .btn { width: 100%; }
+            .hero-copy .ctas .btn { justify-content: center; }
+            .hero-stores-row { flex-direction: column; }
+            .hero-stores-row .btn-store { width: 100%; justify-content: center; }
+            .belong-card { padding: 32px 20px; }
+            .belong-card .ctas .btn, .belong-card .ctas .btn-store { width: 100%; justify-content: center; }
+            .people-copy { padding: 24px; }
+            .people-title { font-size: 22px; }
+            .community-left { padding: 20px; border-radius: 24px; }
+            .ar-visual { border-radius: 24px; padding: 24px 0 16px; }
+            .ar-badge { left: 20px; top: 20px; } .ar-made-for-you { right: 20px; top: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .faq-item { padding: 20px; }
+            .btn-store { width: auto; }
+            .svc-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -1607,7 +1808,7 @@
                 </div>
 
                 <div class="hero-phone-col">
-                    <div class="phone phone--tour" id="app-tour">
+                    <div class="phone phone--tour" id="app-tour" data-screen="home">
                         <div class="phone-topbar" aria-hidden="true">
                             <span>9:41</span>
                             <span class="phone-topbar-icons">
@@ -2018,7 +2219,7 @@
                     <div>
                         <div class="phone">
                             <div class="phone-pro-head" aria-hidden="true">
-                                <div class="status-bar" style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:#0d2340;margin-bottom:12px">
+                                <div class="status-bar" style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;margin-bottom:12px">
                                     <span>9:41</span>
                                     <span class="phone-topbar-icons">
                                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h3V10H2zM7 20h3V7H7zM12 20h3V4h-3zM17 20h3V13h-3z"/></svg>
@@ -2473,17 +2674,19 @@
             });
         });
 
-        // Reveal-on-scroll
+        // Reveal-on-scroll: only when IntersectionObserver exists, reveal early
+        // (20% before entering) and never leave sections blank for long.
         var revealed = document.querySelectorAll('.reveal');
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
-        revealed.forEach(function(el) { io.observe(el); });
+        if ('IntersectionObserver' in window && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+            document.documentElement.classList.add('js-reveal');
+            var io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, { rootMargin: '0px 0px 20% 0px', threshold: 0 });
+            revealed.forEach(function(el) { io.observe(el); });
+            setTimeout(function () { revealed.forEach(function (el) { el.classList.add('in'); }); }, 2500);
+        }
 
         // TikTok ClickButton tracking (parallels existing /api/tiktok-track relay)
         function ttGenId() {
@@ -2578,6 +2781,7 @@
         function show(name) {
             idx = order.indexOf(name); if (idx < 0) idx = 0;
             screens.forEach(function (s) { s.classList.toggle('is-active', s.getAttribute('data-screen') === name); });
+            phone.setAttribute('data-screen', name);
             tabs.forEach(function (t) { var on = t.getAttribute('data-tour') === name; t.classList.toggle('active', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
             dots.forEach(function (d) { d.classList.toggle('is-active', d.getAttribute('data-tour-dot') === name); });
         }
