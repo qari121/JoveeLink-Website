@@ -63,9 +63,10 @@
         .tryon-stage {
             border-radius: var(--r-lg);
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.10);
             box-shadow: 0 30px 70px rgba(13,35,64,0.33);
-            background: #0b1a2c;
+            /* The app renders its own white surface under ?embed=1, so no
+               border or fill here — otherwise it reads as a box in a box. */
+            background: var(--white);
             height: min(78vh, 840px);
         }
         .tryon-stage iframe { display: block; width: 100%; height: 100%; border: 0; }
@@ -188,7 +189,7 @@
                      joveear.ai layout, so embedding it nests that site's navbar and
                      footer inside this page. This is the bare AR app. -->
                 <iframe
-                    src="https://www.joveear.ai/nail-ar-app.html"
+                    src="https://www.joveear.ai/nail-ar-app.html?embed=1"
                     title="Jov&eacute;e AR virtual nail try-on"
                     allow="camera; fullscreen; accelerometer; gyroscope; xr-spatial-tracking"
                     allowfullscreen
