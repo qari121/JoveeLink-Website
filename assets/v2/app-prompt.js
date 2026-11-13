@@ -46,7 +46,7 @@
             '<p>The try-on needs a camera, so it only really works on a phone. The app is where you book, too.</p>' +
             '<div class="app-prompt-body">' +
               '<div class=\"app-prompt-qr-wrap\">' +
-                '<div class="app-prompt-qr"><img src="/assets/v2/qr-tryon.svg" alt="QR code linking to the Jov&eacute;e Link try-on" width="112" height="112" loading="lazy"></div>' +
+                '<div class="app-prompt-qr"><img src="/assets/v2/qr-tryon.svg" alt="QR code linking to the Jov&eacute;e Link try-on" width="228" height="228"></div>' +
                 '<span class="app-prompt-qr-cap">Scan to open it<br>on your phone</span>' +
               '</div>' +
               '<div style="flex:1;min-width:0">' +
