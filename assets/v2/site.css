@@ -295,6 +295,13 @@ strong { font-weight: 600; color: var(--text-strong); }
     border-bottom: 1px solid var(--gray-100);
 }
 .mobile-menu .btn-primary { margin-top: var(--sp-4); align-self: flex-start; }
+.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.mobile-menu a.btn-primary { color: var(--white); border-bottom: 0; justify-content: center; align-self: stretch; font-size: 16px; }
+.mobile-menu .mobile-menu-ext { display: inline-flex; align-items: center; gap: 6px; }
+.mobile-menu .mobile-menu-ext svg { width: 16px; height: 16px; opacity: .7; }
 
 /* ==========================================
    SECTIONS
@@ -614,22 +621,43 @@ section { padding: var(--sp-24) 0; }
 /* ==========================================
    RESPONSIVE
    ========================================== */
-@media (max-width: 900px) {
-    .nav-links, .nav-cta .btn { display: none; }
-    .hamburger { display: block; }
-    .nav-cta { gap: var(--sp-2); }
+/* Tablet (641 to 1100): links on a second row like the homepage, two-column cards */
+@media (max-width: 1100px) {
+    .nav-inner { flex-wrap: wrap; row-gap: 4px; padding: 20px 0 8px; }
+    .nav-logo { order: 1; }
+    .nav-cta { order: 2; }
+    .nav-links { order: 3; width: 100%; display: flex; gap: 20px; }
+    .nav-links a { display: inline-block; padding: 10px 2px; font-size: 14px; }
+    .nav-cta .btn { display: inline-flex; }
+    .hamburger { display: none; }
 
-    .two-col { grid-template-columns: 1fr; gap: var(--sp-12); }
-    .feature-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
-    .steps-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+    .two-col { grid-template-columns: minmax(0, 1fr); gap: var(--sp-12); }
+    .feature-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+    .steps-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+    .ways-grid { grid-template-columns: 1fr 1fr; }
 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
     .footer-brand { grid-column: 1 / -1; }
-
+    .footer-col ul { gap: 2px; }
     section { padding: var(--sp-16) 0; }
     .page-hero { padding: var(--sp-12) 0 var(--sp-16); }
     .cta-band { padding: var(--sp-16) 0; }
     .prose-page { padding: var(--sp-12) 0 var(--sp-16); }
+}
+
+@media (pointer: coarse), (max-width: 1100px) {
+    .footer-col ul { gap: 2px; }
+    .footer-col a, .footer-legal a { display: inline-block; padding: 7px 0; }
+    .footer-legal { gap: 16px; }
+}
+
+/* Phones (640 and under): hamburger menu, single column */
+@media (max-width: 640px) {
+    .nav-inner { flex-wrap: nowrap; padding: 16px 0; }
+    .nav-links, .nav-cta .btn { display: none; }
+    .hamburger { display: block; }
+    .nav-cta { gap: var(--sp-2); }
+    .feature-grid, .steps-grid, .ways-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 540px) {
@@ -641,3 +669,15 @@ section { padding: var(--sp-24) 0; }
 
 .nav-links .nav-ext { display: inline-flex; align-items: center; gap: 3px; }
 .nav-links .nav-ext svg { width: 12px; height: 12px; opacity: .7; }
+
+/* Footer social icons + bottom row (shared with the homepage) */
+.footer-bottom-right { display: flex; align-items: center; gap: var(--sp-8); flex-wrap: wrap; }
+.footer-social { display: flex; align-items: center; gap: var(--sp-3); }
+.footer-social a {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--white); color: var(--navy-900);
+    display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(13,35,64,0.08);
+    transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.footer-social a:hover { background: var(--brand-teal); color: var(--white); transform: translateY(-2px); }
+.footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+@media (max-width: 540px) { .footer-bottom-right { justify-content: center; } }

@@ -350,6 +350,13 @@
             border-bottom: 1px solid var(--gray-100);
         }
         .mobile-menu .btn-primary { margin-top: var(--sp-4); align-self: flex-start; }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .mobile-menu a.btn-primary { color: var(--white); border-bottom: 0; justify-content: center; align-self: stretch; font-size: 16px; }
+        .mobile-menu .mobile-menu-ext { display: inline-flex; align-items: center; gap: 6px; }
+        .mobile-menu .mobile-menu-ext svg { width: 16px; height: 16px; opacity: .7; }
 
         /* ==========================================
            SECTIONS – shared
@@ -1364,7 +1371,8 @@
         .tour-steps { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
         .tour-step { width: 6px; height: 6px; border-radius: 999px; background: var(--teal-200); transition: width 0.3s var(--ease), background 0.3s var(--ease); }
         .tour-step.is-active { width: 20px; background: var(--brand-teal); }
-        .hero-phone-col { flex-direction: column; align-items: center; }
+        .hero-phone-col { flex-direction: column; align-items: center; min-width: 0; }
+        .hero-grid > *, .two-col > *, .people > * { min-width: 0; }
         .hero-phone-col .hero-caption { text-align: center; margin-top: var(--sp-3); }
         .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--sp-12); align-items: start; }
 
@@ -1700,20 +1708,30 @@
         }
         .nav-links .nav-ext { display: inline-flex; align-items: center; gap: 3px; }
         .nav-links .nav-ext svg { width: 12px; height: 12px; opacity: .7; }
+        /* ---------- Touch: bigger tap targets, readable captions ---------- */
+        @media (pointer: coarse), (max-width: 1100px) {
+            .nav-links a { display: inline-block; padding: 10px 2px; }
+            .footer-col ul { gap: 2px; }
+            .footer-col a, .footer-legal a { display: inline-block; padding: 7px 0; }
+            .footer-legal { gap: 16px; }
+            .hero-caption, .pros-caption, .discovery-caption, .ar-caption { font-size: 12px; }
+            .community-chips .chip, .hero-chips .chip { padding: 10px 14px; }
+            .faq-item summary { padding: 4px 0; }
+        }
         /* ---------- Tablet (Figma 834) ---------- */
         @media (max-width: 1100px) {
             :root { --gutter: 40px; }
             .nav-inner { flex-wrap: wrap; row-gap: 8px; padding: 24px var(--gutter) 8px; min-height: 0; }
             .nav-logo { order: 1; }
             .nav-cta { order: 2; }
-            .nav-links { order: 3; width: 100%; display: flex; gap: 28px; padding-bottom: 8px; }
+            .nav-links { order: 3; width: 100%; display: flex; gap: 20px; padding-bottom: 0; }
             .nav-cta .btn { display: inline-flex; }
             .hamburger { display: none; }
             .hero { padding: 40px 0 72px; }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
             .hero-phone-col { justify-content: center; }
             .h1 { font-size: 52px; }
-            .two-col { grid-template-columns: 1fr; gap: 40px; }
+            .two-col { grid-template-columns: minmax(0, 1fr); gap: 40px; }
             .two-col > .reveal:first-child { order: 0; }
             .pros-visual, .discovery-visual, .ar-visual { order: 1; }
             .benefit-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1725,6 +1743,28 @@
             .people { grid-template-columns: 1fr; gap: 0; }
             .people-copy { padding: 40px; }
             .svc-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ---------- Landscape tablets and small laptops (901 to 1100): keep two columns ---------- */
+        @media (min-width: 901px) and (max-width: 1100px) {
+            .hero-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: center; }
+            .h1 { font-size: 46px; }
+            .people { grid-template-columns: 1fr 1.15fr; gap: 0; }
+            .people-img { min-height: 100%; aspect-ratio: auto; }
+            .people-copy { padding: 32px 32px 32px 0; }
+            .people-trends { grid-template-columns: repeat(4, 1fr); }
+            .two-col { grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+            .two-col--discovery { align-items: start; }
+            .pros-visual, .discovery-visual, .ar-visual { order: 0; }
+            .benefit-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .benefit-card { padding: 20px; }
+            .how-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+            .faq-two { grid-template-columns: 280px minmax(0, 1fr); gap: 40px; }
+            .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 32px 24px; }
+            .footer-brand { grid-column: auto; }
+            .svc-grid { grid-template-columns: 1fr 1fr; }
+            .ar-item { width: 150px; }
+            .ar-item img { width: 150px; height: 188px; }
         }
 
         /* ---------- Mobile (Figma 390) ---------- */
@@ -1951,7 +1991,7 @@
         <a href="/for-clients">For clients</a>
         <a href="/for-artists">For professionals</a>
         <a href="/for-salons">For salons</a>
-        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="nav_ar_tryon">AR Try On</a>
+        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="nav_ar_tryon" class="mobile-menu-ext">AR Try On<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
         <a href="#belong" class="btn btn-primary">Join the community
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -2258,8 +2298,8 @@
             <div class="two-col">
                 <div class="community-left reveal" id="community-preview" role="tabpanel" aria-live="polite">
                     <div class="community-photos">
-                        <img src="assets/v2/img/nails-builder-gel.webp" alt="Sheer milky builder gel manicure" width="640" height="640" data-cp="img1" width="900" height="900" loading="lazy">
-                        <img src="assets/v2/img/nails-cat-eye.webp" alt="Emerald green cat eye gel nails" width="640" height="640" data-cp="img2" width="900" height="900" loading="lazy">
+                        <img src="assets/v2/img/nails-builder-gel.webp" srcset="assets/v2/img/nails-builder-gel-360.webp 360w, assets/v2/img/nails-builder-gel.webp 640w" sizes="(max-width: 900px) 44vw, 262px" alt="Sheer milky builder gel manicure" data-cp="img1" width="640" height="640" loading="lazy">
+                        <img src="assets/v2/img/nails-cat-eye.webp" srcset="assets/v2/img/nails-cat-eye-360.webp 360w, assets/v2/img/nails-cat-eye.webp 640w" sizes="(max-width: 900px) 44vw, 262px" alt="Emerald green cat eye gel nails" data-cp="img2" width="640" height="640" loading="lazy">
                     </div>
                     <div class="community-post">
                         <div class="community-post-head">
@@ -2504,14 +2544,14 @@
                     <p class="lede lede--tight">Explore nearby salons, browse real portfolios and connect with artists in your area. When you are ready, booking takes a minute: choose a service, pick a time and confirm. The connection comes first.</p>
                     <div class="svc-head">Services you will find on Jov&eacute;e Link</div>
                     <ul class="svc-grid" aria-label="Services offered by artists and salons">
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-baby-boomer-160.webp" alt="Glossy gel manicure" width="160" height="160" loading="lazy"></span><strong>Gel manicure</strong><small>Shape, cuticle care, glossy gel</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-builder-gel-160.webp" alt="Builder gel overlay" width="160" height="160" loading="lazy"></span><strong>Builder gel</strong><small>Strength for natural nails</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-aura-160.webp" alt="Long square acrylic set" width="160" height="160" loading="lazy"></span><strong>Acrylic full set</strong><small>Sculpted extensions, any shape</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-3d-floral-160.webp" alt="3D floral nail art" width="160" height="160" loading="lazy"></span><strong>Nail art &amp; 3D</strong><small>Hand painted, foils, charms</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-chrome-french-160.webp" alt="Chrome French tips" width="160" height="160" loading="lazy"></span><strong>French &amp; chrome</strong><small>Micro French, mirror chrome</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/nails-cherry-chrome-160.webp" alt="Deep red dip-style colour" width="160" height="160" loading="lazy"></span><strong>Dip powder</strong><small>Light, long lasting colour</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/svc-pedicure.webp" alt="Fresh pedicure" width="160" height="160" loading="lazy"></span><strong>Pedicure</strong><small>Classic, gel or spa</small></li>
-                        <li><span class="svc-ico"><img src="assets/v2/img/svc-repair.webp" alt="Nail tidy and repair" width="160" height="160" loading="lazy"></span><strong>Removal &amp; repair</strong><small>Soak off, fills, fixes</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-baby-boomer-160.webp" alt="Glossy gel manicure" width="160" height="160"></span><strong>Gel manicure</strong><small>Shape, cuticle care, glossy gel</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-builder-gel-160.webp" alt="Builder gel overlay" width="160" height="160"></span><strong>Builder gel</strong><small>Strength for natural nails</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-aura-160.webp" alt="Long square acrylic set" width="160" height="160"></span><strong>Acrylic full set</strong><small>Sculpted extensions, any shape</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-3d-floral-160.webp" alt="3D floral nail art" width="160" height="160"></span><strong>Nail art &amp; 3D</strong><small>Hand painted, foils, charms</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-chrome-french-160.webp" alt="Chrome French tips" width="160" height="160"></span><strong>French &amp; chrome</strong><small>Micro French, mirror chrome</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/nails-cherry-chrome-160.webp" alt="Deep red dip-style colour" width="160" height="160"></span><strong>Dip powder</strong><small>Light, long lasting colour</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/svc-pedicure.webp" alt="Fresh pedicure" width="160" height="160"></span><strong>Pedicure</strong><small>Classic, gel or spa</small></li>
+                        <li><span class="svc-ico"><img src="assets/v2/img/svc-repair.webp" alt="Nail tidy and repair" width="160" height="160"></span><strong>Removal &amp; repair</strong><small>Soak off, fills, fixes</small></li>
                     </ul>
                     <a href="#community" class="btn btn-primary" data-tt-track="discovery_explore">
                         Explore the community
