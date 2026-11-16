@@ -58,8 +58,23 @@
         }
         .tryon-badge svg { width: 14px; height: 14px; color: var(--teal-300); }
 
-        /* The stage lifts into the dark hero rather than sitting under it */
-        .tryon-stage-wrap { margin-top: calc(var(--sp-20) * -1); position: relative; z-index: 2; }
+        /* The stage lifts toward the dark hero rather than sitting under it.
+           The negative margin and the padding below are a PAIR and have to be
+           read together: the card's top edge lands at
+           (hero bottom - 32px + 48px) = 16px under the hero.
+
+           padding-top is set explicitly so the shared `section + section`
+           joint rule in site.css cannot apply here. That rule and this
+           negative margin solve the same problem — doubled padding where two
+           sections meet — and when both applied, they compounded and dragged
+           the card 32px up into the dark hero, leaving its white corners
+           stranded on the gradient. */
+        .tryon-stage-wrap {
+            padding-top: var(--sp-12);
+            margin-top: calc(var(--sp-8) * -1);
+            position: relative;
+            z-index: 2;
+        }
         .tryon-stage {
             border-radius: var(--r-lg);
             overflow: hidden;
@@ -125,7 +140,9 @@
         }
         @media (max-width: 720px) {
             .tryon-hero { padding: var(--sp-16) 0 var(--sp-20); }
-            .tryon-stage-wrap { margin-top: calc(var(--sp-16) * -1); }
+            /* Same pairing at the mobile padding: -48 + 48 sits the card
+               flush with the bottom of the hero. */
+            .tryon-stage-wrap { padding-top: var(--sp-12); margin-top: calc(var(--sp-12) * -1); }
             .tryon-stage { height: min(74vh, 660px); border-radius: var(--r-md); }
             .phone-band-qr { display: none; }
         }
