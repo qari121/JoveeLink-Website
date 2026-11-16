@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERKQ239G6V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ERKQ239G6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Virtual nail try-on — Jovée Link</title>
+    <meta name="description" content="Try nail colours and shapes on your own hands before you book. Works in your browser, no app or account needed.">
+    <link rel="canonical" href="https://www.joveelink.com/try-on">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.joveear.ai">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/v2/site.css">
+    <style>
+        /* Page-specific */
+        .tryon-hero {
+            background: linear-gradient(160deg, var(--brand-navy) 0%, #11304f 55%, var(--teal-950) 100%);
+            color: var(--white);
+            padding: var(--sp-20) 0 var(--sp-24);
+            position: relative;
+            overflow: hidden;
+        }
+        .tryon-hero::after {
+            content: "";
+            position: absolute;
+            right: -14%;
+            top: -28%;
+            width: 58%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(13,117,104,0.5) 0%, rgba(13,117,104,0) 68%);
+            pointer-events: none;
+        }
+        .tryon-hero .container { position: relative; z-index: 1; }
+        .tryon-hero .eyebrow { color: var(--teal-300); }
+        .tryon-hero h1 { color: var(--white); max-width: 16ch; }
+        .tryon-hero .lede { color: var(--navy-200); max-width: 54ch; }
+        .tryon-badges { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-8); }
+        .tryon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.07);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .tryon-badge svg { width: 14px; height: 14px; color: var(--teal-300); }
+
+        /* The stage lifts toward the dark hero rather than sitting under it.
+           The negative margin and the padding below are a PAIR and have to be
+           read together: the card's top edge lands at
+           (hero bottom - 32px + 48px) = 16px under the hero.
+
+           padding-top is set explicitly so the shared `section + section`
+           joint rule in site.css cannot apply here. That rule and this
+           negative margin solve the same problem — doubled padding where two
+           sections meet — and when both applied, they compounded and dragged
+           the card 32px up into the dark hero, leaving its white corners
+           stranded on the gradient. */
+        .tryon-stage-wrap {
+            padding-top: var(--sp-12);
+            margin-top: calc(var(--sp-8) * -1);
+            position: relative;
+            z-index: 2;
+        }
+        .tryon-stage {
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(13,35,64,0.33);
+            /* The app renders its own white surface under ?embed=1, so no
+               border or fill here — otherwise it reads as a box in a box. */
+            background: var(--white);
+            height: min(78vh, 840px);
+        }
+        .tryon-stage iframe { display: block; width: 100%; height: 100%; border: 0; }
+        .tryon-note {
+            margin-top: var(--sp-5);
+            font-size: 13.5px;
+            color: var(--gray-500);
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            max-width: 72ch;
+        }
+        .tryon-note svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--brand-teal); }
+
+        /* Steps */
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); margin-top: var(--sp-10); }
+        .step-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--r-lg);
+            padding: var(--sp-8);
+        }
+        .step-num {
+            display: grid;
+            place-items: center;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: var(--brand-mint);
+            color: var(--brand-teal);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: var(--sp-4);
+        }
+        .step-card h3 { font-size: 17px; margin: 0 0 6px; color: var(--brand-navy); }
+        .step-card p { font-size: 14.5px; color: var(--gray-700); margin: 0; }
+
+        /* Phone CTA band */
+        .phone-band { background: var(--brand-mint); }
+        .phone-band-inner { display: flex; gap: var(--sp-10); align-items: center; }
+        .phone-band-qr {
+            flex: none;
+            width: 150px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: var(--r-md);
+            border: 1px solid var(--teal-200);
+        }
+        .phone-band-qr img { display: block; width: 100%; height: auto; }
+        .phone-band h2 { margin: 0 0 var(--sp-3); }
+        .phone-band p { margin: 0 0 var(--sp-6); color: var(--gray-700); max-width: 52ch; }
+        .phone-band .ctas { margin: 0; }
+
+        @media (max-width: 860px) {
+            .steps-grid { grid-template-columns: 1fr; }
+            .phone-band-inner { flex-direction: column; align-items: flex-start; gap: var(--sp-8); }
+        }
+        @media (max-width: 720px) {
+            .tryon-hero { padding: var(--sp-16) 0 var(--sp-20); }
+            /* Same pairing at the mobile padding: -48 + 48 sits the card
+               flush with the bottom of the hero. */
+            .tryon-stage-wrap { padding-top: var(--sp-12); margin-top: calc(var(--sp-12) * -1); }
+            .tryon-stage { height: min(74vh, 660px); border-radius: var(--r-md); }
+            .phone-band-qr { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="/" class="nav-logo" aria-label="Jovée Link home">
+                <img src="assets/logo-dark.png" alt="Jovée Link" width="600" height="158">
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="/#community">Community</a>
+                <a href="/for-clients">For clients</a>
+                <a href="/for-artists">For professionals</a>
+                <a href="/for-salons">For salons</a>
+                <a href="/try-on" aria-current="page" data-tt-track="nav_ar_tryon">AR Try On</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="/#belong" class="btn btn-primary btn-sm" data-tt-track="nav_join">
+                    Join the community
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+        <a href="/#community">Community</a>
+        <a href="/for-clients">For clients</a>
+        <a href="/for-artists">For professionals</a>
+        <a href="/for-salons">For salons</a>
+        <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
+        <a href="/#belong" class="btn btn-primary">Join the community
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="tryon-hero">
+        <div class="container">
+            <span class="eyebrow">Virtual try-on</span>
+            <h1 class="h1">See it on your own hands before you book.</h1>
+            <p class="lede">Try polish colours and 3D nail shapes on your own hands, right here in your browser. You don’t need to install anything or make an account.</p>
+            <div class="tryon-badges">
+                <span class="tryon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Works in your browser</span>
+                <span class="tryon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Your video stays on your phone</span>
+                <span class="tryon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Polish and 3D shapes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE TRY-ON -->
+    <section class="tryon-stage-wrap">
+        <div class="container">
+            <div class="tryon-stage">
+                <!-- nail-ar-app.html, not /try-on: the /try-on route renders the full
+                     joveear.ai layout, so embedding it nests that site's navbar and
+                     footer inside this page. This is the bare AR app. -->
+                <iframe
+                    src="https://www.joveear.ai/nail-ar-app.html?embed=1"
+                    title="Jov&eacute;e AR virtual nail try-on"
+                    allow="camera; fullscreen; accelerometer; gyroscope; xr-spatial-tracking"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <p class="tryon-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>Your browser will ask to use your camera. The video stays on your device. Built by <a href="https://joveear.ai" target="_blank" rel="noopener noreferrer">Jov&eacute;e AR</a>, the company behind Jov&eacute;e Link.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- HOW -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">How it works</span>
+                <h2 class="h2">Getting started</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3>Let it use your camera</h3>
+                    <p>Point the camera at your hand. The video is processed on your phone and never sent anywhere.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3>Pick a colour</h3>
+                    <p>Switch between polish and 3D nail shapes. You can also grab a colour off anything in your camera.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3>Book it</h3>
+                    <p>Found a set you like? Open the app and book a nail artist near you who does that kind of work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHONE / APP BAND -->
+    <section class="phone-band">
+        <div class="container">
+            <div class="phone-band-inner">
+                <div class="phone-band-qr">
+                    <img src="assets/v2/qr-tryon.svg" alt="QR code linking to this try-on page" width="126" height="126" loading="lazy">
+                </div>
+                <div>
+                    <h2 class="h2">Open it on your phone</h2>
+                    <p>Scan the code to open this page on your phone, where the camera is. The app is where you find a nail artist near you, message them, book a time and pay after your appointment.</p>
+                    <div class="ctas">
+                        <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="tryon_appstore" aria-label="Download on the App Store">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="tryon_playstore" aria-label="Get it on Google Play">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                            <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                        </a>
+                        <a href="/for-clients" class="btn btn-outline">Find an artist near you</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo-dark.png" alt="Jovée Link" width="600" height="158">
+                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place. Based in Charlotte, NC.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-h">Community</h3>
+                    <ul>
+                        <li><a href="/#community">Discussions</a></li>
+                        <li><a href="/#community">Nail inspiration</a></li>
+                        <li><a href="/try-on">AR nail try-on</a></li>
+                        <li><a href="https://www.joveear.ai/blog" target="_blank" rel="noopener noreferrer">Nail ideas &amp; guides</a></li>
+                        <li><a href="/for-clients">Find a nail artist in Charlotte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-h">For professionals</h3>
+                    <ul>
+                        <li><a href="/for-artists">Your profile &amp; portfolio</a></li>
+                        <li><a href="/for-artists">Appointments</a></li>
+                        <li><a href="/for-artists">Professional community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-h">Join JOVÉELINK</h3>
+                    <ul>
+                        <li><a href="/for-clients">For clients</a></li>
+                        <li><a href="/for-artists">For nail artists</a></li>
+                        <li><a href="/for-salons">For salons</a></li>
+                        <li><a href="https://www.joveear.ai/" target="_blank" rel="noopener noreferrer">Jov&eacute;e AR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 JOVÉELINK. All rights reserved.</span>
+                <div class="footer-bottom-right">
+                    <div class="footer-legal">
+                        <a href="/privacy">Privacy policy</a>
+                        <a href="/terms">Terms of use</a>
+                        <a href="/support">Support</a>
+                    </div>
+                    <div class="footer-social" aria-label="Follow Jovée on social media">
+                        <a href="https://www.instagram.com/joveear/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-tt-track="footer_instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.6.7 1.3 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.6 1.1-1.3 1.4-2.1.3-.8.5-1.7.6-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.6-.7-1.3-1.1-2.1-1.4-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@jovee.ar" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-tt-track="footer_tiktok">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.8V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61593995901920" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-tt-track="footer_facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      (function () {
+        var h = document.getElementById('hamburger');
+        var m = document.getElementById('mobileMenu');
+        if (!h || !m) return;
+        h.addEventListener('click', function () {
+          var open = m.classList.toggle('open');
+          h.setAttribute('aria-expanded', open ? 'true' : 'false');
+          h.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+      })();
+    </script>
+    <script src="assets/v2/app-prompt.js" defer></script>
+</body>
+</html>

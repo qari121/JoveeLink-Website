@@ -25,6 +25,19 @@
   ],
   "headers": [
     {
+      "source": "/try-on",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "credentialless"
+        }
+      ]
+    },
+    {
       "source": "/.well-known/apple-app-site-association",
       "headers": [
         {

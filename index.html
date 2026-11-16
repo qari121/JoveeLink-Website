@@ -362,6 +362,18 @@
            SECTIONS – shared
            ========================================== */
         section { padding: var(--sp-24) 0; }
+
+        /* Keep in step with assets/v2/site.css — this page inlines its own
+           copy of the design system instead of linking it. 96px bottom against
+           96px top is 192px between any two blocks, a quarter of a 768px
+           viewport; the page still opens and closes on a full 96px and only
+           the joint halves. The footer is --brand-mint and so are several of
+           the sections running into it, so that joint has no visual boundary
+           at all and is trimmed from both sides. */
+        section + section,
+        section + .footer { padding-top: var(--sp-12); }
+        section:has(+ .footer) { padding-bottom: var(--sp-16); }
+
         .section-mint { background: var(--brand-mint); }
 
         .section-head { margin-bottom: var(--sp-12); max-width: 820px; }
@@ -1972,7 +1984,7 @@
                 <a href="/for-clients">For clients</a>
                 <a href="/for-artists">For professionals</a>
                 <a href="/for-salons">For salons</a>
-                <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="nav_ar_tryon" class="nav-ext">AR Try On<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
             </nav>
             <div class="nav-cta">
                 <a href="#belong" class="btn btn-primary btn-sm" data-tt-track="nav_join">
@@ -1991,7 +2003,7 @@
         <a href="/for-clients">For clients</a>
         <a href="/for-artists">For professionals</a>
         <a href="/for-salons">For salons</a>
-        <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer" data-tt-track="nav_ar_tryon" class="mobile-menu-ext">AR Try On<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
         <a href="#belong" class="btn btn-primary">Join the community
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -2782,7 +2794,7 @@
                     <ul>
                         <li><a href="#community">Discussions</a></li>
                         <li><a href="#community">Nail inspiration</a></li>
-                        <li><a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer">AR nail try-on</a></li>
+                        <li><a href="/try-on">AR nail try-on</a></li>
                         <li><a href="https://www.joveear.ai/blog" target="_blank" rel="noopener noreferrer">Nail ideas &amp; guides</a></li>
                         <li><a href="/for-clients">Find a nail artist in Charlotte</a></li>
                     </ul>
@@ -3066,5 +3078,6 @@
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
+    <script src="assets/v2/app-prompt.js" defer></script>
 </body>
 </html>
