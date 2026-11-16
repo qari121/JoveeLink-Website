@@ -293,6 +293,21 @@ strong { font-weight: 600; color: var(--text-strong); }
    SECTIONS
    ========================================== */
 section { padding: var(--sp-24) 0; }
+
+/* Adjacent blocks were each paying full freight: 96px bottom against 96px
+   top is 192px between any two sections, a quarter of a 768px viewport. The
+   first and last block on a page keep their full 96px, so the page still
+   opens and closes with air; only the joint between two blocks halves.
+
+   The footer is --brand-mint and so are several of the sections that run
+   into it, so that joint has no visual boundary at all and the padding reads
+   as pure emptiness. It gets trimmed from both sides. :has() is progressive
+   — without it the joint is 112px instead of 144px, which is still an
+   improvement on 160px. */
+section + section,
+section + .footer { padding-top: var(--sp-12); }
+section:has(+ .footer) { padding-bottom: var(--sp-16); }
+
 .section-mint { background: var(--brand-mint); }
 
 /* Hero shared pattern (used by audience pages) */

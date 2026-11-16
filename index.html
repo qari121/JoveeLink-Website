@@ -330,6 +330,18 @@
            SECTIONS – shared
            ========================================== */
         section { padding: var(--sp-24) 0; }
+
+        /* Keep in step with assets/v2/site.css — this page inlines its own
+           copy of the design system instead of linking it. 96px bottom against
+           96px top is 192px between any two blocks, a quarter of a 768px
+           viewport; the page still opens and closes on a full 96px and only
+           the joint halves. The footer is --brand-mint and so are several of
+           the sections running into it, so that joint has no visual boundary
+           at all and is trimmed from both sides. */
+        section + section,
+        section + .footer { padding-top: var(--sp-12); }
+        section:has(+ .footer) { padding-bottom: var(--sp-16); }
+
         .section-mint { background: var(--brand-mint); }
 
         .section-head { margin-bottom: var(--sp-12); max-width: 820px; }
