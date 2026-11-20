@@ -12,17 +12,17 @@
         gtag('config', 'G-ERKQ239G6V', { linker: { domains: ['joveelink.com', 'joveear.ai'] } });
       }
     </script>
-    <title>Charlotte Nail Salon App: Check-In to Payroll | Jovée Link</title>
-    <meta name="description" content="Run your Charlotte nail salon in one app: walk-in check-in, queue, bookings, counter checkout, daily close-out, weekly pay statements, campaigns and inventory.">
+    <title>Free Nail Salon App in Charlotte: Check-In, POS | Jovée Link</title>
+    <meta name="description" content="A complete ecosystem for your nail salon, free: check-in, unlimited bookings, POS, staff management, text and email campaigns, a dashboard and a free website.">
     <link rel="canonical" href="https://www.joveelink.com/for-salons">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jovée Link">
     <meta property="og:url" content="https://www.joveelink.com/for-salons">
-    <meta property="og:title" content="Charlotte Nail Salon App: Check-In to Payroll | Jovée Link">
-    <meta property="og:description" content="Run your Charlotte nail salon in one app: walk-in check-in, queue, bookings, counter checkout, daily close-out, weekly pay statements, campaigns and inventory.">
+    <meta property="og:title" content="Free Nail Salon App in Charlotte: Check-In, POS | Jovée Link">
+    <meta property="og:description" content="A complete ecosystem for your nail salon, free: check-in, unlimited bookings, POS, staff management, text and email campaigns, a dashboard and a free website.">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Charlotte Nail Salon App: Check-In to Payroll | Jovée Link">
-    <meta name="twitter:description" content="Run your Charlotte nail salon in one app: walk-in check-in, queue, bookings, counter checkout, daily close-out, weekly pay statements, campaigns and inventory.">
+    <meta name="twitter:title" content="Free Nail Salon App in Charlotte: Check-In, POS | Jovée Link">
+    <meta name="twitter:description" content="A complete ecosystem for your nail salon, free: check-in, unlimited bookings, POS, staff management, text and email campaigns, a dashboard and a free website.">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
@@ -41,13 +41,20 @@
 
         /* ---------- Hero ---------- */
         .sal-hero { padding: var(--sp-16) 0 var(--sp-20); background: linear-gradient(180deg, #fcfefd 0%, var(--brand-mint) 60%, #c9ebe4 100%); overflow: hidden; }
-        .sal-hero-grid { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 56px; align-items: center; }
+        .sal-hero-grid { display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr); gap: 48px; align-items: center; }
         .sal-hero-grid > * { min-width: 0; }
-        .sal-hero .h1 { font-size: clamp(38px, 4.8vw, 62px); }
-        .sal-hero .lede { max-width: 48ch; }
+        .sal-hero .h1 { font-size: clamp(36px, 4.3vw, 56px); }
+        .sal-hero .lede { max-width: 48ch; margin-bottom: var(--sp-6); }
+        /* what is free and what has no limit, said once before the buttons */
+        .sal-free { list-style: none; margin: 0 0 var(--sp-8); padding: 0; display: grid; grid-template-columns: repeat(2, max-content); gap: 12px 28px; }
+        .sal-free li { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--text-strong); }
+        .sal-free svg { width: 20px; height: 20px; padding: 4px; box-sizing: border-box; border-radius: 50%; background: var(--brand-teal); color: #fff; fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
         .sal-hero-more { display: inline-block; margin-top: var(--sp-6); padding: 6px 0; font-size: 15px; font-weight: 600; color: var(--brand-teal); text-decoration: underline; text-decoration-color: rgba(13, 117, 104, 0.35); text-underline-offset: 4px; }
         .sal-hero-more:hover { text-decoration-color: var(--brand-teal); }
-        .hero-devices { width: 100%; max-width: 640px; margin: 0 auto; }
+        /* two devices on the same salon: the front-desk tablet and a phone beside it */
+        .hero-devices { width: 100%; max-width: 700px; margin: 0 auto; display: flex; align-items: flex-end; gap: 3.5%; }
+        .hero-tab { flex: 1 1 0; min-width: 0; }
+        .hero-phone { flex: 0 0 27%; min-width: 0; }
         .dev-stand { width: 30%; margin: 0 auto; }
         .dev-stand::before { content: ""; display: block; width: 24%; height: 26px; margin: 0 auto; background: linear-gradient(180deg, #cfe0dc, #eef6f4); }
         .dev-stand::after { content: ""; display: block; height: 11px; border-radius: 12px 12px 5px 5px; background: #fff; box-shadow: 0 10px 22px rgba(13, 117, 104, 0.18), 0 0 0 1px rgba(13, 35, 64, 0.07); }
@@ -60,12 +67,19 @@
         .rail a { flex-shrink: 0; padding: 8px 12px; border-radius: var(--r-pill); border: 1px solid transparent; font-size: 14px; font-weight: 500; color: var(--text-strong); transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
         .rail a:hover { background: var(--brand-mint); }
         .rail a.is-on { background: var(--brand-mint); border-color: var(--teal-200); color: var(--brand-teal); }
-        .rail a:focus-visible, .sal-hero-more:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
+        .rail a:focus-visible, .sal-hero-more:focus-visible, .feat-cta:focus-visible, .feat-cta-note a:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
 
-        /* ---------- Positioning strip (kept from the old page) ---------- */
-        .positioning-strip { background: var(--navy-900); color: var(--white); padding: var(--sp-16) 0; text-align: center; }
-        .positioning-strip p { font-family: var(--font-head); font-size: clamp(22px, 2.6vw, 30px); font-weight: 500; line-height: 1.3; margin: 0 auto; max-width: 32ch; color: var(--white); letter-spacing: -0.4px; }
-        .positioning-strip .accent { color: var(--teal-200); }
+        /* ---------- The promise: free, and no limits ---------- */
+        .promise { background: var(--navy-900); color: var(--white); padding: var(--sp-16) 0; }
+        .promise .h2 { color: var(--white); margin: 0 0 var(--sp-10); font-size: clamp(26px, 3vw, 38px); font-weight: 500; line-height: 1.25; max-width: 24ch; }
+        .promise .h2 span { display: block; font-size: clamp(64px, 9vw, 116px); font-weight: 600; line-height: 0.95; letter-spacing: -0.03em; color: var(--teal-200); margin-bottom: var(--sp-4); }
+        .promise-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, 0.18); }
+        .promise-grid li { padding: var(--sp-6) var(--sp-6) 0 0; }
+        .promise-grid li + li { padding-left: var(--sp-6); border-left: 1px solid rgba(255, 255, 255, 0.18); }
+        .promise-grid h3 { font-family: var(--font-head); font-size: 20px; font-weight: 600; line-height: 1.3; color: var(--white); margin: 0 0 6px; }
+        .promise-grid p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, 0.8); }
+        .promise-built { margin: var(--sp-12) 0 0; font-family: var(--font-head); font-size: clamp(17px, 1.7vw, 20px); font-weight: 500; line-height: 1.45; color: var(--white); max-width: 60ch; }
+        .promise-note { margin: var(--sp-3) 0 0; font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.68); max-width: 74ch; }
 
         /* ---------- Feature sections ---------- */
         .feat { padding: 76px 0; scroll-margin-top: calc(var(--nav-h, 67px) + var(--rail-h, 56px)); overflow: hidden; }
@@ -79,6 +93,9 @@
         .feat-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
         .feat-list li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16px; line-height: 1.5; color: var(--text-body); }
         .feat-list svg { width: 20px; height: 20px; margin-top: 2px; color: var(--brand-teal); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+        .feat-cta { margin-top: var(--sp-8); }
+        .feat-cta-note { margin: var(--sp-3) 0 0; font-size: 14px; line-height: 1.5; color: var(--text-body); }
+        .feat-cta-note a { color: var(--brand-teal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
         .feat-visual { display: flex; flex-direction: column; align-items: center; container-type: inline-size; container-name: vis; }
         .stack { position: relative; width: 100%; max-width: 320px; margin: 0 auto; }
         /* a phone with a companion card (or printed ticket) beside it */
@@ -215,8 +232,8 @@
         .ci-pad span { width: 2.55em; height: 2.55em; border-radius: 50%; background: #f1f5f9; border: 1px solid #c9d9e3; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 2.2em; font-weight: 500; color: var(--navy-900); }
         .ci-pad .ci-pad-x { background: transparent; border-color: transparent; }
         .ci-pad .ci-pad-x svg { width: 1.1em; height: 1.1em; }
-        /* Narrow frame: the same tablet, turned to portrait */
-        @container dev (max-width: 479px) {
+        /* On a phone-sized page: the same tablet, turned to portrait */
+        @media (max-width: 520px) {
             .dev--tablet .dev-frame { font-size: calc(100cqi / 40); }
             .ci--tab { height: auto; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "top" "intro" "pad" "go" "line"; padding: 2em 2.2em 2.2em; }
             .ci--tab .ci-hello, .ci--tab .ci-ask { text-align: center; }
@@ -260,11 +277,71 @@
         .float-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
         .float-chips span { font-size: 11.5px; font-weight: 500; color: #4b5563; padding: 4px 10px; border-radius: 99px; box-shadow: 0 0 0 1px #d9dee3; }
         .float-chips .on { background: var(--mint); color: var(--brand-teal); box-shadow: 0 0 0 1.5px var(--brand-teal); }
+        .float-btn--in { display: inline-block; margin-top: 0; padding: 7px 16px; flex-shrink: 0; }
+        .float-tog { width: 30px; height: 17px; border-radius: 99px; background: #dfe3e7; position: relative; flex-shrink: 0; }
+        .float-tog::after { content: ""; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+        .float-tog.on { background: var(--brand-teal); }
+        .float-tog.on::after { left: auto; right: 2px; }
+        .float-note { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px solid #edf1f4; font-size: 12px; line-height: 1.4; color: var(--mute); }
+        /* the text a customer receives */
+        .sms-from { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: var(--ink); }
+        .sms-from .float-ini { width: 30px; height: 30px; font-size: 11.5px; }
+        .sms { background: #eef2f5; border-radius: 16px 16px 16px 5px; padding: 10px 12px; font-size: 13px; line-height: 1.45; color: var(--ink); }
+        .sms-meta { margin-top: 9px; font-size: 12px; line-height: 1.4; color: var(--mute); }
+
+        /* ---------- Any device: one salon, live on four screens ---------- */
+        .lineup { container-type: inline-size; container-name: lineup; width: 100%; max-width: 540px; margin: 0 auto; background: #fff; border-radius: 28px; padding: 20px 24px 22px; box-shadow: 0 24px 56px rgba(13, 117, 104, 0.14), 0 0 0 1px rgba(13, 35, 64, 0.07); font-family: var(--font-body); }
+        .lineup-bar { display: flex; align-items: center; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid #e6ecf0; font-family: var(--font-head); font-size: 16px; font-weight: 600; color: var(--navy-900); }
+        .lineup-bar i { width: 9px; height: 9px; border-radius: 50%; background: #1aa68b; box-shadow: 0 0 0 4px rgba(26, 166, 139, 0.18); }
+        .lineup-bar span { margin-left: auto; font-family: var(--font-body); font-size: 12px; font-weight: 600; color: var(--brand-teal); background: var(--mint); border-radius: 99px; padding: 4px 11px; white-space: nowrap; }
+        .lineup-row { display: flex; align-items: flex-end; justify-content: space-between; padding: 30px 0 24px; }
+        .ld { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+        .ld-scr { box-sizing: border-box; border: 3px solid #fff; border-radius: 10px; overflow: hidden; background: linear-gradient(180deg, #dcf0ec 0, #f6fbfa 45%, #fff 100%); box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.16), 0 10px 22px rgba(13, 117, 104, 0.2); margin-bottom: 12px; }
+        .ld-scr svg { display: block; width: 100%; height: auto; }
+        .ld--tab .ld-scr { width: 28cqi; }
+        .ld--ph .ld-scr { width: 15cqi; border-radius: 12px; }
+        .ld--tabp .ld-scr { width: 20cqi; }
+        .u-ink { fill: #1f3a4f; }
+        .u-soft { fill: #d3e0e5; }
+        .u-teal { fill: var(--brand-teal); }
+        .u-mint { fill: var(--teal-300); }
+        .u-card { fill: #fff; stroke: #cfdde6; stroke-width: 1; }
+        .u-key circle { fill: #eef3f6; stroke: #c9d9e3; stroke-width: 1; }
+        .ld b { font-family: var(--font-head); font-size: 14.5px; font-weight: 600; line-height: 1.3; color: var(--navy-900); white-space: nowrap; }
+        .ld > span { font-size: 12.5px; line-height: 1.4; color: var(--mute); white-space: nowrap; }
+        .lineup-more { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1.5px dashed var(--teal-300); border-radius: 14px; padding: 11px 12px; font-size: 14px; font-weight: 600; color: var(--brand-teal); }
+        .lineup-more svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+        @container lineup (max-width: 429px) {
+            .lineup-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; justify-items: center; gap: 24px 10px; padding: 24px 0 22px; }
+            .ld--tab .ld-scr { width: 40cqi; }
+            .ld--ph .ld-scr { width: 21cqi; }
+            .ld--tabp .ld-scr { width: 29cqi; }
+        }
+
+        /* ---------- Free website: a salon site in a browser window ---------- */
+        .site { flex: 0 1 380px; min-width: 0; container-type: inline-size; container-name: site; }
+        .site-frame { font-size: 9px; font-size: calc(100cqi / 37); background: #fff; border-radius: 1.6em; overflow: hidden; box-shadow: 0 2em 4.8em rgba(13, 117, 104, 0.16), 0 0 0 1px rgba(13, 35, 64, 0.09); font-family: var(--font-body); color: var(--navy-900); line-height: 1.35; }
+        .site-bar { display: flex; align-items: center; gap: 0.5em; padding: 0.9em 1.2em; background: #eef2f5; }
+        .site-bar i { width: 0.8em; height: 0.8em; border-radius: 50%; background: #cbd3da; }
+        .site-bar span { flex: 1; margin-left: 0.7em; background: #fff; border-radius: 99em; padding: 0.4em 1.1em; font-size: 1em; color: #5b6470; }
+        .site-nav { display: flex; align-items: center; gap: 1.3em; padding: 1.1em 1.5em; font-size: 1em; color: #4b5563; }
+        .site-nav b { margin-right: auto; font-family: var(--font-head); font-size: 1.4em; font-weight: 600; color: var(--navy-900); white-space: nowrap; }
+        .site-nav em, .site-hero em { font-style: normal; font-weight: 600; background: var(--brand-teal); color: #fff; border-radius: 99em; padding: 0.5em 1.15em; white-space: nowrap; }
+        .site-hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); margin: 0 1.2em; border-radius: 1.4em; overflow: hidden; background: var(--mint); }
+        .site-hero img { display: block; width: 100%; height: 100%; min-height: 15.5em; object-fit: cover; object-position: 58% 30%; }
+        .site-hero div { order: -1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.55em; padding: 1.5em 1.2em 1.5em 1.5em; }
+        .site-hero strong { font-family: var(--font-head); font-size: 1.72em; font-weight: 600; line-height: 1.2; color: var(--navy-900); }
+        .site-hero small { font-size: 1.05em; line-height: 1.4; color: #4b5563; margin-bottom: 0.4em; }
+        .site-svcs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8em; padding: 1.2em; }
+        .site-svcs div { border: 1px solid var(--line); border-radius: 1.1em; padding: 0.8em 0.9em; }
+        .site-svcs b { display: block; font-size: 1.05em; font-weight: 600; color: var(--ink); white-space: nowrap; }
+        .site-svcs span { font-size: 1em; color: var(--mute); }
 
         /* narrow column: the companion drops under the phone and only laps over its bottom edge, so nothing on the screen is hidden */
         @container vis (max-width: 523px) {
             .stack--side { flex-direction: column; }
             .stack--side .dev--phone { flex: 0 0 auto; width: 100%; }
+            .site { flex: 0 0 auto; width: 100%; max-width: 420px; }
             .side-card { margin: -6px 0 0; width: min(256px, 92%); }
             .ticket { margin: -2px 0 0 64px; }
         }
@@ -305,6 +382,11 @@
         .cm-line svg { width: 1.4em; height: 1.4em; color: var(--brand-teal); }
         .cm-line b { margin-left: auto; font-weight: 500; }
         .cm-auto .app-name { font-size: 1.35em; }
+        .cu-search { display: flex; align-items: center; gap: 0.6em; background: #fff; border: 1px solid #d9dee3; border-radius: 99em; padding: 0.72em 1.1em; font-size: 1.15em; color: var(--mute); flex-shrink: 0; white-space: nowrap; overflow: hidden; }
+        .cu-search svg { width: 1.25em; height: 1.25em; }
+        .cu-row + .cu-row { margin-top: 0.8em; padding-top: 0.8em; border-top: 1px solid #e6ecf0; }
+        .cu-row .app-name { font-size: 1.22em; }
+        .cu-last { font-size: 1.05em; color: var(--mute); white-space: nowrap; flex-shrink: 0; }
         .inv-item { display: grid; gap: 0.5em; }
         .db-billed span { display: block; font-size: 1.12em; color: var(--mute); }
         .db-billed strong { display: block; font-family: var(--font-head); font-size: 2.4em; font-weight: 600; color: var(--brand-teal); line-height: 1.25; }
@@ -375,9 +457,21 @@
             .feat, .spec, .sal-steps, .sal-faq { padding: 60px 0; }
             .feat-grid { gap: 32px; }
             .sal-faq-grid { grid-template-columns: minmax(0, 1fr); gap: var(--sp-8); }
+            .promise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--sp-6); }
+            .promise-grid li:nth-child(odd) { padding-left: 0; border-left: 0; }
+            .promise-grid li:nth-child(n + 3) { border-top: 1px solid rgba(255, 255, 255, 0.18); }
         }
         @media (max-width: 640px) {
-            .positioning-strip { padding: var(--sp-12) 0; }
+            .promise { padding: var(--sp-12) 0; }
+            .promise .h2 { margin-bottom: var(--sp-8); }
+            .promise-grid { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+            .promise-grid li, .promise-grid li + li { padding: var(--sp-5) 0; border-left: 0; }
+            .promise-grid li + li { border-top: 1px solid rgba(255, 255, 255, 0.18); }
+            .promise-built { margin-top: var(--sp-6); }
+            .hero-phone, .cap-pair { display: none; }
+            .sal-free { gap: 10px 20px; }
+            .sal-free li { font-size: 15px; }
+            .lineup { padding: 18px 18px 20px; border-radius: 24px; }
             .feat, .spec, .sal-steps, .sal-faq { padding: 48px 0; }
             .feat-grid, .feat--flip .feat-grid { grid-template-columns: minmax(0, 1fr); gap: var(--sp-8); }
             .feat--flip .feat-visual { order: 0; }
@@ -396,6 +490,9 @@
             .kit div { padding: var(--sp-6); }
             .sal-hero .ctas .btn-store { flex: 1 1 150px; justify-content: center; }
         }
+        @media (max-width: 343px) {
+            .sal-free { grid-template-columns: minmax(0, 1fr); }
+        }
         @media (prefers-reduced-motion: reduce) {
             .ci-caret { animation: none; }
         }
@@ -408,8 +505,8 @@
       "@type": "WebPage",
       "@id": "https://www.joveelink.com/for-salons#webpage",
       "url": "https://www.joveelink.com/for-salons",
-      "name": "Charlotte Nail Salon App: Check-In to Payroll | Jovée Link",
-      "description": "Run your Charlotte nail salon in one app: walk-in check-in, queue, bookings, counter checkout, daily close-out, weekly pay statements, campaigns and inventory.",
+      "name": "Free Nail Salon App in Charlotte: Check-In, POS | Jovée Link",
+      "description": "A complete ecosystem for your nail salon, free: check-in, unlimited bookings, POS, staff management, text and email campaigns, a dashboard and a free website.",
       "inLanguage": "en-US",
       "isPartOf": {
         "@id": "https://www.joveelink.com/#website"
@@ -448,7 +545,7 @@
           "name": "What does Jovée Link do for a nail salon?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It runs the salon day in one app: walk-in check-in, a walk-in queue, bookings, counter checkout, end-of-day close-out, weekly pay statements, customer campaigns, inventory and a dashboard. Your salon also gets a profile in Charlotte’s nail community, where clients find artists, try a look with AR Nail Preview and book."
+            "text": "It is a complete ecosystem for your salon in one app: walk-in check-in, a walk-in queue, unlimited bookings, a point of sale at the counter, end-of-day close-out, weekly pay statements, staff management, text and email campaigns, inventory and a dashboard. Your salon also gets a free website and a profile in Charlotte’s nail community, where clients find artists, try a look with AR Nail Preview and book."
           }
         },
         {
@@ -456,7 +553,23 @@
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Jovée Link is free to download and free to set up. There is no setup fee and no sales call. If you take payments in the app, Stripe’s processing fee applies, and Jovée Link currently charges no platform fee on top."
+            "text": "It’s free. The app is free to download and free to use, with no setup fee and no sales call. There is no cap on bookings and no limit on devices, and we build your salon a website at no charge. If you take card payments in the app, Stripe’s processing fee applies, and Jovée Link currently charges no platform fee on top."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What devices can I use, and how many?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any iPhone, iPad or Android phone or tablet, and as many as you like. There is no special hardware to buy. Keep a tablet at the front desk for check-in, another at the counter for checkout, and the dashboard on your own phone. Owner, co-owners and managers see every change as it happens."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get the free website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Email support@joveear.ai with your salon’s name. We build the website and link it to your salon in the app, so clients can book from it without downloading anything. Bookings from your website land in the same Bookings tab as everything else."
           }
         },
         {
@@ -497,6 +610,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. Customers choose at check-in whether to get your offers by text or email. You can send one-off campaigns, or switch on automatic ones for birthdays, review requests and customers who haven’t visited in 30 days. Email campaigns work from day one, and texting is switched on salon by salon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who controls my customer list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Your customer list is built from your own check-ins and stays with your salon. A customer’s number is shared only with your salon and the service that delivers your messages. Jovée Link does not sell personal information, and every opt-in is recorded with its date and wording."
           }
         },
         {
@@ -591,6 +712,8 @@
             <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
             <symbol id="i-cash" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></symbol>
             <symbol id="i-split" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+            <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
         </defs>
     </svg>
 
@@ -598,9 +721,15 @@
     <section class="sal-hero">
         <div class="container sal-hero-grid">
             <div>
-                <span class="eyebrow">For nail salons in Charlotte</span>
-                <h1 class="h1">Run the floor, not the phone.</h1>
-                <p class="lede">Jov&eacute;e Link runs the whole salon day in one app: walk-in check-in, the queue, bookings, checkout, close-out and weekly pay statements. It also gives your salon a home in Charlotte&rsquo;s nail community.</p>
+                <span class="eyebrow">Free for nail salons in Charlotte</span>
+                <h1 class="h1">A complete ecosystem for your nail salon.</h1>
+                <p class="lede">Check-in, unlimited bookings, POS, staff management, text and email campaigns and a salon dashboard, working together in one app. Use it on any phone or tablet you already have. It&rsquo;s free.</p>
+                <ul class="sal-free">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free app</li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited bookings</li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free website</li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited devices</li>
+                </ul>
                 <div class="ctas">
                     <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_hero_appstore" aria-label="Download on the App Store">
                         <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -611,69 +740,141 @@
                         <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
                     </a>
                 </div>
-                <a class="sal-hero-more" href="#check-in">See everything it does</a>
+                <a class="sal-hero-more" href="#devices">See everything it does</a>
             </div>
             <div class="sal-hero-visual">
                 <div class="hero-devices">
-                    <div class="dev dev--tablet" role="img" aria-label="Walk-in check-in on a tablet: a customer enters their phone number on a large keypad, and the screen shows who is in line">
-                        <div class="dev-frame">
-                            <div class="ci--tab" aria-hidden="true">
-                                <div class="ci-top">
-                                    <div class="ci-langs"><span class="on">EN</span><span>ES</span><span>VI</span></div>
-                                    <span class="app-circ app-circ--flat"><svg><use href="#i-lock"/></svg></span>
+                    <div class="hero-tab" role="img" aria-label="Walk-in check-in on a tablet at the front desk: a customer enters their phone number on a large keypad, and the screen shows who is in line">
+                        <div class="dev dev--tablet">
+                            <div class="dev-frame">
+                                <div class="ci--tab" aria-hidden="true">
+                                    <div class="ci-top">
+                                        <div class="ci-langs"><span class="on">EN</span><span>ES</span><span>VI</span></div>
+                                        <span class="app-circ app-circ--flat"><svg><use href="#i-lock"/></svg></span>
+                                    </div>
+                                    <div class="ci-intro">
+                                        <div class="ci-hello">Welcome to Your Salon!</div>
+                                        <div class="ci-ask">Enter your phone number to check in.</div>
+                                        <div class="ci-field-l">Phone number</div>
+                                        <div class="ci-field">(704) 555-01<i class="ci-caret"></i></div>
+                                    </div>
+                                    <div class="ci-go"><div class="app-btn">Continue</div></div>
+                                    <div class="app-card ci-inline">
+                                        <div class="app-row"><b>In line</b><span class="app-pill">2</span></div>
+                                        <div class="app-row"><span class="app-num">1</span><div class="app-main"><div class="app-name">Camila R.</div><div class="app-meta">Next up &middot; Waiting 6 min</div></div></div>
+                                        <div class="app-row"><span class="app-num">2</span><div class="app-main"><div class="app-name">Elena M.</div><div class="app-meta">Waiting 2 min</div></div></div>
+                                    </div>
+                                    <div class="ci-pad"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="ci-pad-x"></span><span>0</span><span class="ci-pad-x"><svg><use href="#i-del"/></svg></span></div>
                                 </div>
-                                <div class="ci-intro">
-                                    <div class="ci-hello">Welcome to Your Salon!</div>
-                                    <div class="ci-ask">Enter your phone number to check in.</div>
-                                    <div class="ci-field-l">Phone number</div>
-                                    <div class="ci-field">(704) 555-01<i class="ci-caret"></i></div>
+                            </div>
+                        </div>
+                        <div class="dev-stand"></div>
+                    </div>
+                    <div class="hero-phone" role="img" aria-label="The same salon on a phone at the same time: the walk-in queue, with who is waiting and for how long">
+                        <div class="dev dev--phone">
+                            <div class="dev-frame">
+                                <div class="scr" aria-hidden="true">
+                                    <div class="app-status"><b>9:41</b><i></i></div>
+                                    <div class="app-hd"><span class="app-circ"><svg><use href="#i-back"/></svg></span><span class="app-hd-t">Walk-in queue</span><span></span></div>
+                                    <div class="app-body">
+                                        <div class="app-btn"><svg><use href="#i-clip"/></svg>Start check-in</div>
+                                        <div class="app-tiles">
+                                            <div class="app-tile"><span>Waiting</span><strong>3</strong></div>
+                                            <div class="app-tile"><span>With artists</span><strong>4</strong></div>
+                                            <div class="app-tile"><span>Done today</span><strong>9</strong></div>
+                                        </div>
+                                        <div class="app-label">Waiting &middot; next up first</div>
+                                        <div class="app-card q-card">
+                                            <div class="app-row" style="align-items:flex-start"><span class="app-num">1</span><div class="app-main"><div class="app-row"><span class="app-name">Camila R.</span><span class="app-pill">New</span></div><div class="app-text">Gel Manicure</div><div class="app-meta">Waiting 12 min</div></div></div>
+                                            <div class="app-btns"><div class="app-btn app-btn--sm">Assign</div><div class="app-btn app-btn--ghost app-btn--sm">Left</div></div>
+                                        </div>
+                                        <div class="app-card q-card">
+                                            <div class="app-row" style="align-items:flex-start"><span class="app-num">2</span><div class="app-main"><div class="app-name">Elena M.</div><div class="app-text">Pedicure</div><div class="app-meta">Waiting 5 min</div></div></div>
+                                            <div class="app-btns"><div class="app-btn app-btn--sm">Assign</div><div class="app-btn app-btn--ghost app-btn--sm">Left</div></div>
+                                        </div>
+                                        <div class="app-card q-card">
+                                            <div class="app-row" style="align-items:flex-start"><span class="app-num">3</span><div class="app-main"><div class="app-name">Priya S.</div><div class="app-text">Acrylic Fill</div><div class="app-meta">Waiting 1 min</div></div></div>
+                                            <div class="app-btns"><div class="app-btn app-btn--sm">Assign</div><div class="app-btn app-btn--ghost app-btn--sm">Left</div></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="ci-go"><div class="app-btn">Continue</div></div>
-                                <div class="app-card ci-inline">
-                                    <div class="app-row"><b>In line</b><span class="app-pill">2</span></div>
-                                    <div class="app-row"><span class="app-num">1</span><div class="app-main"><div class="app-name">Camila R.</div><div class="app-meta">Next up &middot; Waiting 6 min</div></div></div>
-                                    <div class="app-row"><span class="app-num">2</span><div class="app-main"><div class="app-name">Elena M.</div><div class="app-meta">Waiting 2 min</div></div></div>
-                                </div>
-                                <div class="ci-pad"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="ci-pad-x"></span><span>0</span><span class="ci-pad-x"><svg><use href="#i-del"/></svg></span></div>
                             </div>
                         </div>
                     </div>
-                    <div class="dev-stand" aria-hidden="true"></div>
                 </div>
-                <p class="shot-caption">Walk-in check-in on a tablet at the front desk. Example data.</p>
+                <p class="shot-caption">Check-in on a tablet<span class="cap-pair">, the queue on a phone</span>. Use whatever you have. Example data.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- PROMISE STRIP -->
+    <section class="promise">
+        <div class="container">
+            <h2 class="h2"><span>Free.</span> The app, the website, every booking and every device.</h2>
+            <ul class="promise-grid">
+                <li><h3>Free app</h3><p>Free to download and free to use. No setup fee and no sales call.</p></li>
+                <li><h3>Free website</h3><p>We build a website for your salon and link it to the app.</p></li>
+                <li><h3>Unlimited bookings</h3><p>Take as many as your chairs can handle. There is no cap.</p></li>
+                <li><h3>Unlimited devices</h3><p>Phones, tablets, whatever is lying around. Use as many as you like.</p></li>
+            </ul>
+            <p class="promise-built">Built for how nail spas actually run in America: the salon owns the floor, the artists work the chairs, and every booking has one home.</p>
+            <p class="promise-note">If you take card payments in the app, Stripe&rsquo;s processing fee applies. Jov&eacute;e Link currently adds no platform fee on top.</p>
         </div>
     </section>
 
     <!-- FEATURE RAIL -->
     <nav class="rail" aria-label="Salon features on this page">
         <div class="rail-inner">
+            <a href="#devices">Any device</a>
             <a href="#check-in">Check-in</a>
-            <a href="#queue">Walk-in queue</a>
             <a href="#bookings">Bookings</a>
-            <a href="#team">Team</a>
-            <a href="#checkout">Checkout</a>
-            <a href="#close-out">Close-out</a>
-            <a href="#payroll">Payroll</a>
+            <a href="#website">Free website</a>
+            <a href="#pos">POS</a>
+            <a href="#team">Staff</a>
             <a href="#customers">Campaigns</a>
+            <a href="#your-data">Your data</a>
             <a href="#inventory">Inventory</a>
             <a href="#dashboard">Dashboard</a>
             <a href="#profile">Salon profile</a>
         </div>
     </nav>
 
-    <!-- POSITIONING STRIP -->
-    <section class="positioning-strip">
-        <div class="container">
-            <p>Built for <span class="accent">how nail spas actually run in America</span>: the salon owns the floor, the artists work the chairs, and every booking has one home.</p>
+    <!-- 1. ANY DEVICE -->
+    <section class="feat feat--tint feat--flip" id="devices">
+        <div class="container feat-grid">
+            <div class="feat-copy">
+                <span class="eyebrow">Any device</span>
+                <h2 class="h2">Use any device. Use as many as you like.</h2>
+                <p class="lede">There is no special hardware to buy and no limit on devices. Use your phone, a tablet, whatever is lying around. Put one on the front desk, one at the counter, and keep the dashboard in your pocket.</p>
+                <ul class="feat-list">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Works on iPhone, iPad and Android, on phones and tablets.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>No kiosk to buy and no hardware to rent.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>No limit on devices. Put one at every station if you like.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Owner, co-owners and managers see every change as it happens, on every screen.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Hand one to customers for check-in. A 4-digit code keeps them out of the rest of the app.</span></li>
+                </ul>
+            </div>
+            <div class="feat-visual">
+                <div class="lineup" role="img" aria-label="Four devices running the same salon at once: a tablet at the front desk for check-in, a phone at the chairs for the walk-in queue, a tablet at the counter for POS, and the owner&rsquo;s phone for the dashboard">
+                    <div class="lineup-bar" aria-hidden="true"><i></i>Your Salon<span>Live on 4 devices</span></div>
+                    <div class="lineup-row" aria-hidden="true">
+                        <div class="ld ld--tab"><div class="ld-scr"><svg viewBox="0 0 120 90"><rect class="u-ink" x="10" y="15" width="36" height="6" rx="3"/><rect class="u-soft" x="10" y="26" width="46" height="4" rx="2"/><rect class="u-card" x="10.5" y="38.5" width="47" height="11" rx="5.5"/><rect class="u-teal" x="10" y="56" width="48" height="11" rx="5.5"/><g class="u-key"><circle cx="76" cy="19" r="5.5"/><circle cx="91" cy="19" r="5.5"/><circle cx="106" cy="19" r="5.5"/><circle cx="76" cy="35" r="5.5"/><circle cx="91" cy="35" r="5.5"/><circle cx="106" cy="35" r="5.5"/><circle cx="76" cy="51" r="5.5"/><circle cx="91" cy="51" r="5.5"/><circle cx="106" cy="51" r="5.5"/><circle cx="91" cy="67" r="5.5"/></g></svg></div><b>Check-in</b><span>Front desk</span></div>
+                        <div class="ld ld--ph"><div class="ld-scr"><svg viewBox="0 0 60 122"><rect class="u-ink" x="18" y="12" width="24" height="5" rx="2.5"/><rect class="u-card" x="6.5" y="26.5" width="47" height="24" rx="6"/><circle class="u-teal" cx="15" cy="35" r="4"/><rect class="u-ink" x="23" y="32" width="20" height="4" rx="2"/><rect class="u-soft" x="23" y="39" width="13" height="3" rx="1.5"/><rect class="u-card" x="6.5" y="56.5" width="47" height="24" rx="6"/><circle class="u-teal" cx="15" cy="65" r="4"/><rect class="u-ink" x="23" y="62" width="20" height="4" rx="2"/><rect class="u-soft" x="23" y="69" width="13" height="3" rx="1.5"/><rect class="u-card" x="6.5" y="86.5" width="47" height="24" rx="6"/><circle class="u-teal" cx="15" cy="95" r="4"/><rect class="u-ink" x="23" y="92" width="20" height="4" rx="2"/><rect class="u-soft" x="23" y="99" width="13" height="3" rx="1.5"/></svg></div><b>Queue</b><span>At the chairs</span></div>
+                        <div class="ld ld--tabp"><div class="ld-scr"><svg viewBox="0 0 90 118"><rect class="u-ink" x="30" y="12" width="30" height="5" rx="2.5"/><rect class="u-card" x="9.5" y="25.5" width="71" height="42" rx="6"/><rect class="u-ink" x="16" y="33" width="26" height="4" rx="2"/><rect class="u-soft" x="60" y="33" width="14" height="4" rx="2"/><rect class="u-ink" x="16" y="44" width="20" height="4" rx="2"/><rect class="u-soft" x="60" y="44" width="14" height="4" rx="2"/><rect class="u-ink" x="16" y="55" width="30" height="4" rx="2"/><rect class="u-soft" x="60" y="55" width="14" height="4" rx="2"/><rect class="u-soft" x="9" y="76" width="34" height="9" rx="4.5"/><rect class="u-mint" x="47" y="76" width="34" height="9" rx="4.5"/><rect class="u-teal" x="9" y="94" width="72" height="12" rx="6"/></svg></div><b>POS</b><span>At the counter</span></div>
+                        <div class="ld ld--ph"><div class="ld-scr"><svg viewBox="0 0 60 122"><rect class="u-ink" x="16" y="12" width="28" height="5" rx="2.5"/><rect class="u-card" x="6.5" y="25.5" width="14" height="13" rx="4"/><rect class="u-card" x="23.5" y="25.5" width="14" height="13" rx="4"/><rect class="u-card" x="40.5" y="25.5" width="14" height="13" rx="4"/><rect class="u-card" x="6.5" y="45.5" width="47" height="22" rx="6"/><rect class="u-teal" x="12" y="51" width="22" height="6" rx="3"/><rect class="u-soft" x="12" y="60" width="30" height="3" rx="1.5"/><rect class="u-mint" x="8" y="99" width="5" height="9" rx="1.5"/><rect class="u-mint" x="15" y="93" width="5" height="15" rx="1.5"/><rect class="u-mint" x="22" y="84" width="5" height="24" rx="1.5"/><rect class="u-teal" x="29" y="78" width="5" height="30" rx="1.5"/><rect class="u-mint" x="36" y="87" width="5" height="21" rx="1.5"/><rect class="u-mint" x="43" y="95" width="5" height="13" rx="1.5"/><rect class="u-mint" x="50" y="101" width="5" height="7" rx="1.5"/><rect class="u-soft" x="6" y="109" width="48" height="1.5" rx="0.75"/></svg></div><b>Dashboard</b><span>In your pocket</span></div>
+                    </div>
+                    <div class="lineup-more" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add as many as you like</div>
+                </div>
+                <p class="shot-caption">One salon, on every device you sign in to. Example setup.</p>
+            </div>
         </div>
     </section>
 
-    <!-- 1. CHECK-IN -->
+    <!-- 2. CHECK-IN -->
     <section class="feat" id="check-in">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">When they walk in</span>
+                <span class="eyebrow">Check-in</span>
                 <h2 class="h2">Check-in your customers do themselves.</h2>
                 <p class="lede">Hand customers a phone or a tablet at the front desk. They check in with their phone number and join the line. Nobody stops mid-set to take a name.</p>
                 <ul class="feat-list">
@@ -721,11 +922,11 @@
         </div>
     </section>
 
-    <!-- 2. WALK-IN QUEUE -->
+    <!-- 3. WALK-IN QUEUE -->
     <section class="feat feat--tint feat--flip" id="queue">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">While they wait</span>
+                <span class="eyebrow">Walk-in queue</span>
                 <h2 class="h2">A walk-in queue everyone can see.</h2>
                 <p class="lede">Every check-in lands in the queue, next up first. You always know who&rsquo;s waiting, who&rsquo;s with an artist and who&rsquo;s done.</p>
                 <ul class="feat-list">
@@ -779,17 +980,18 @@
         </div>
     </section>
 
-    <!-- 3. BOOKINGS -->
+    <!-- 4. BOOKINGS -->
     <section class="feat" id="bookings">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">When a request comes in</span>
-                <h2 class="h2">Bookings with one home.</h2>
-                <p class="lede">Clients book a specific artist, or just book the salon. Requests without an artist wait under Unassigned until you give them to someone.</p>
+                <span class="eyebrow">Unlimited bookings</span>
+                <h2 class="h2">Unlimited bookings, with one home.</h2>
+                <p class="lede">There is no cap on bookings. Clients book a specific artist, or just book the salon, and requests without an artist wait under Unassigned until you give them to someone.</p>
                 <ul class="feat-list">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>No limit on bookings, and your clients pay no booking fee.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Unassigned, Upcoming and Past, all in one tab.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Assign whoever&rsquo;s free. If they can&rsquo;t take it, the request comes back to you.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Bookings made on the web land in the same place. No app needed to book.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Bookings from your website land in the same place. No app needed to book.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Clients can only book inside the business hours you set.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Owner, co-owners and managers see every change as it happens.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Alerts for new booking requests, join requests and messages, and you can reply to clients as the salon.</span></li>
@@ -827,58 +1029,53 @@
         </div>
     </section>
 
-    <!-- 4. TEAM -->
-    <section class="feat feat--tint feat--flip" id="team">
+    <!-- 5. FREE WEBSITE -->
+    <section class="feat feat--tint feat--flip" id="website">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">On the floor</span>
-                <h2 class="h2">Your team, and who can run it.</h2>
-                <p class="lede">Artists ask to join your salon, or you invite them. Add a manager or co-owner so the salon keeps running when you&rsquo;re away.</p>
+                <span class="eyebrow">Free website</span>
+                <h2 class="h2">A free website for your salon.</h2>
+                <p class="lede">No website yet, or one that can&rsquo;t take bookings? We build one for your salon and link it to the app, free of charge.</p>
                 <ul class="feat-list">
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Active, Request and Invited show where every artist stands.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Search the roster by skills, experience or who&rsquo;s free today, and open any artist&rsquo;s week.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Managers and co-owners take bookings, assign artists and approve requests.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Only the owner can change the team.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Set one service list for the salon. Every artist on your team offers it.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Post an opening on the job board when you have a chair to fill.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>We build it for you, so you don&rsquo;t need a developer.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A Book button takes bookings right on your site. Clients don&rsquo;t need the app.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Web bookings land in the same Bookings tab as everything else.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Guest bookings from your website are paid at the salon.</span></li>
                 </ul>
+                <a class="btn btn-primary feat-cta" href="mailto:support@joveear.ai?subject=Free%20website%20for%20my%20salon">Ask for your free website</a>
+                <p class="feat-cta-note">Or email <a href="mailto:support@joveear.ai?subject=Free%20website%20for%20my%20salon">support@joveear.ai</a> with your salon&rsquo;s name.</p>
             </div>
             <div class="feat-visual">
                 <div class="stack stack--side">
-                    <div class="dev dev--phone" role="img" aria-label="The Teams tab: active artists on the salon's team, with tabs for join requests and invitations">
-                        <div class="dev-frame">
-                            <div class="scr" aria-hidden="true">
-                                <div class="app-status"><b>9:41</b><i></i></div>
-                                <div class="app-hd app-hd--root"><span class="app-badge"><svg><use href="#i-users"/></svg></span><b>Teams</b><div class="app-btn app-btn--mint app-btn--sm">Invite</div></div>
-                                <div class="app-body">
-                                    <div class="app-seg"><span class="on">Active</span><span>Request</span><span>Invited</span></div>
-                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-braids.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Maya R.</div><div class="app-meta">Gel-X, nail art</div></div><span class="app-pill">Free today</span></div></div>
-                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-vn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Linh T.</div><div class="app-meta">Acrylic, dip powder</div></div><span class="app-pill">Free today</span></div></div>
-                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-curly.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Destiny C.</div><div class="app-meta">Nail art, French tips</div></div><span class="app-pill app-pill--slate">Off today</span></div></div>
-                                </div>
-                                <div class="app-tabs"><span><svg><use href="#i-home"/></svg>Home</span><span class="on"><svg><use href="#i-users"/></svg>Teams</span><span><svg><use href="#i-cal"/></svg>Bookings</span><span><svg><use href="#i-chat"/></svg>Chat</span><span><svg><use href="#i-user"/></svg>Profile</span></div>
+                    <div class="site" role="img" aria-label="An example salon website with a Book now button. A booking made on it arrives in the salon&rsquo;s Bookings tab, marked as a web booking">
+                        <div class="site-frame" aria-hidden="true">
+                            <div class="site-bar"><i></i><i></i><i></i><span>yoursalon.com</span></div>
+                            <div class="site-nav"><b>Your Salon</b><span>Services</span><span>Gallery</span><span>Hours</span><em>Book now</em></div>
+                            <div class="site-hero">
+                                <img src="assets/v2/img/salon-together-800.webp" alt="" width="800" height="584" loading="lazy" decoding="async">
+                                <div><strong>Nails done right, in Charlotte.</strong><small>Gel, acrylic, dip powder and nail art.</small><em>Book now</em></div>
                             </div>
+                            <div class="site-svcs"><div><b>Gel Manicure</b><span>$45</span></div><div><b>Pedicure</b><span>$40</span></div><div><b>Dip Powder</b><span>$50</span></div></div>
                         </div>
                     </div>
                     <div class="side-card" aria-hidden="true">
-                        <div class="side-card-t">Team &amp; managers</div>
-                        <div class="float-row"><span class="float-ini">Y</span><div><b>You</b><small>This is your salon</small></div><span class="float-tag">Owner</span></div>
-                        <div class="float-row"><span class="float-ini">SK</span><div><b>Sam K.</b><small>Added by email</small></div><span class="float-tag">Manager</span></div>
-                        <span class="float-btn">Invite a team member</span>
+                        <div class="side-card-t">New booking request</div>
+                        <div class="float-row"><img src="assets/v2/img/avatar-client-auburn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><b>Elena Moore</b><small>Pedicure, tomorrow at 11:00 AM</small></div></div>
+                        <div class="float-row"><div><span class="float-tag">Web booking</span></div><span class="float-btn float-btn--in">Assign</span></div>
                     </div>
                 </div>
-                <p class="shot-caption">Your artists, plus the people who can run the salon. Example data.</p>
+                <p class="shot-caption">An example salon website, and the booking it sends to the app. Example data.</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. CHECKOUT -->
-    <section class="feat" id="checkout">
+    <!-- 6. POS -->
+    <section class="feat" id="pos">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">When the set is done</span>
-                <h2 class="h2">Checkout at the counter.</h2>
-                <p class="lede">Ring up a walk-in, someone who checked in, or a booking. Add what was done and who did it, take the payment and print the ticket.</p>
+                <span class="eyebrow">POS</span>
+                <h2 class="h2">A point of sale at your counter.</h2>
+                <p class="lede">Ring up a walk-in, someone who checked in, or a booking. Add what was done and who did it, record how they paid and print the ticket. It runs on the phone or tablet you already have.</p>
                 <ul class="feat-list">
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Every service goes on the ticket with its artist and its price.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Add a discount or a tip on card. Cash tips go straight to the artist.</span></li>
@@ -938,11 +1135,11 @@
         </div>
     </section>
 
-    <!-- 6. CLOSE-OUT -->
+    <!-- 7. CLOSE-OUT -->
     <section class="feat feat--tint feat--flip" id="close-out">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">At closing time</span>
+                <span class="eyebrow">End of day</span>
                 <h2 class="h2">Close out the day and know it adds up.</h2>
                 <p class="lede">See the day&rsquo;s sales, tips, money collected and ticket count. Count the cash drawer and the app checks it against the cash sales.</p>
                 <ul class="feat-list">
@@ -988,11 +1185,56 @@
         </div>
     </section>
 
-    <!-- 7. PAYROLL -->
-    <section class="feat" id="payroll">
+    <!-- 8. STAFF -->
+    <section class="feat" id="team">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">On payday</span>
+                <span class="eyebrow">Staff management</span>
+                <h2 class="h2">Your team, and who can run it.</h2>
+                <p class="lede">Artists ask to join your salon, or you invite them. Add a manager or co-owner so the salon keeps running when you&rsquo;re away.</p>
+                <ul class="feat-list">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Active, Request and Invited show where every artist stands.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Search the roster by skills, experience or who&rsquo;s free today, and open any artist&rsquo;s week.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Managers and co-owners take bookings, assign artists and approve requests.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Only the owner can change the team.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Set one service list for the salon. Every artist on your team offers it.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Post an opening on the job board when you have a chair to fill.</span></li>
+                </ul>
+            </div>
+            <div class="feat-visual">
+                <div class="stack stack--side">
+                    <div class="dev dev--phone" role="img" aria-label="The Teams tab: active artists on the salon's team, with tabs for join requests and invitations">
+                        <div class="dev-frame">
+                            <div class="scr" aria-hidden="true">
+                                <div class="app-status"><b>9:41</b><i></i></div>
+                                <div class="app-hd app-hd--root"><span class="app-badge"><svg><use href="#i-users"/></svg></span><b>Teams</b><div class="app-btn app-btn--mint app-btn--sm">Invite</div></div>
+                                <div class="app-body">
+                                    <div class="app-seg"><span class="on">Active</span><span>Request</span><span>Invited</span></div>
+                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-braids.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Maya R.</div><div class="app-meta">Gel-X, nail art</div></div><span class="app-pill">Free today</span></div></div>
+                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-vn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Linh T.</div><div class="app-meta">Acrylic, dip powder</div></div><span class="app-pill">Free today</span></div></div>
+                                    <div class="app-card"><div class="app-row"><img class="app-av" src="assets/v2/img/avatar-artist-curly.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div class="app-main"><div class="app-name">Destiny C.</div><div class="app-meta">Nail art, French tips</div></div><span class="app-pill app-pill--slate">Off today</span></div></div>
+                                </div>
+                                <div class="app-tabs"><span><svg><use href="#i-home"/></svg>Home</span><span class="on"><svg><use href="#i-users"/></svg>Teams</span><span><svg><use href="#i-cal"/></svg>Bookings</span><span><svg><use href="#i-chat"/></svg>Chat</span><span><svg><use href="#i-user"/></svg>Profile</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-card" aria-hidden="true">
+                        <div class="side-card-t">Team &amp; managers</div>
+                        <div class="float-row"><span class="float-ini">Y</span><div><b>You</b><small>This is your salon</small></div><span class="float-tag">Owner</span></div>
+                        <div class="float-row"><span class="float-ini">SK</span><div><b>Sam K.</b><small>Added by email</small></div><span class="float-tag">Manager</span></div>
+                        <span class="float-btn">Invite a team member</span>
+                    </div>
+                </div>
+                <p class="shot-caption">Your artists, plus the people who can run the salon. Example data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. PAYROLL -->
+    <section class="feat feat--tint feat--flip" id="payroll">
+        <div class="container feat-grid">
+            <div class="feat-copy">
+                <span class="eyebrow">Payroll</span>
                 <h2 class="h2">Pay statements that add themselves up.</h2>
                 <p class="lede">Each week the app turns the sales you rang up into a pay statement for every artist: their sales, their commission and their card tips, with payday on it.</p>
                 <ul class="feat-list">
@@ -1014,38 +1256,37 @@
                                     <div style="text-align:center"><span class="app-pill app-pill--slate">In progress</span></div>
                                     <div class="app-card">
                                         <div class="app-kv"><span>Artist sales</span><b>$4,820.00</b></div>
-                                        <div class="app-kv"><span>Commission</span><b>$2,892.00</b></div>
+                                        <div class="app-kv"><span>Commission</span><b>$2,651.00</b></div>
                                         <div class="app-kv"><span>Card tips</span><b>$614.00</b></div>
                                         <div class="app-rule"></div>
-                                        <div class="app-kv"><span>By check</span><b>$2,103.60</b></div>
-                                        <div class="app-kv"><span>In cash</span><b>$1,402.40</b></div>
-                                        <div class="pay-total"><span>Total pay</span><strong>$3,506.00</strong></div>
+                                        <div class="app-kv"><span>By check</span><b>$2,285.50</b></div>
+                                        <div class="app-kv"><span>In cash</span><b>$979.50</b></div>
+                                        <div class="pay-total"><span>Total pay</span><strong>$3,265.00</strong></div>
                                     </div>
                                     <div class="app-card">
-                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-braids.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Maya R.</div><div class="app-meta">$1,950.00 in sales</div></div></div><div class="pay-amt">$1,418.00</div></div>
-                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-vn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Linh T.</div><div class="app-meta">$1,640.00 in sales</div></div></div><div class="pay-amt">$1,196.50</div></div>
-                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-curly.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Destiny C.</div><div class="app-meta">$1,230.00 in sales</div></div></div><div class="pay-amt">$891.50</div></div>
+                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-braids.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Maya R.</div><div class="app-meta">$1,950.00 in sales</div></div></div><div class="pay-amt">$1,320.50</div></div>
+                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-vn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Linh T.</div><div class="app-meta">$1,640.00 in sales</div></div></div><div class="pay-amt">$1,114.50</div></div>
+                                        <div class="cl-sale"><div class="app-row"><img class="app-av app-av--sm" src="assets/v2/img/avatar-artist-curly.webp" alt="" width="240" height="240" loading="lazy" decoding="async"><div><div class="app-name">Destiny C.</div><div class="app-meta">$1,230.00 in sales</div></div></div><div class="pay-amt">$830.00</div></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p class="shot-caption">A week of pay at 60% commission. Example figures.</p>
+                <p class="shot-caption">A week of pay statements. Example figures.</p>
             </div>
         </div>
     </section>
 
-    <!-- 8. CUSTOMERS + CAMPAIGNS -->
-    <section class="feat feat--tint feat--flip" id="customers">
+    <!-- 10. CAMPAIGNS -->
+    <section class="feat" id="customers">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">After they leave</span>
-                <h2 class="h2">A customer list that brings people back.</h2>
-                <p class="lede">Every check-in builds your customer list. Send offers by text or email to the customers who opted in, or switch on the automatic ones and let them go out by themselves.</p>
+                <span class="eyebrow">Customer retention campaigns</span>
+                <h2 class="h2">Texts and emails that bring customers back.</h2>
+                <p class="lede">Every check-in builds your customer list. Send offers by text or email to the customers who opted in, or switch on the automatic campaigns and let them go out by themselves.</p>
                 <ul class="feat-list">
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Search customers by name, phone or email, and see their visits and last visit.</span></li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Filter by today, birthdays, and who&rsquo;s OK with texts or emails.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Customers choose at check-in whether to get your offers by text or email. Nothing is ticked for them.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Birthday treat goes out on their birthday.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Review request goes out after their third visit.</span></li>
                     <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>We miss you goes out 30 days after their last visit.</span></li>
@@ -1055,7 +1296,7 @@
             </div>
             <div class="feat-visual">
                 <div class="stack stack--side">
-                    <div class="dev dev--phone" role="img" aria-label="Campaigns: this month's texts and emails, and three automatic campaigns for birthdays, review requests and customers who have not visited in 30 days">
+                    <div class="dev dev--phone" role="img" aria-label="Campaigns: texts and emails sent this month, and three automatic campaigns for birthdays, review requests and customers who have not visited in 30 days">
                         <div class="dev-frame">
                             <div class="scr" aria-hidden="true">
                                 <div class="app-status"><b>9:41</b><i></i></div>
@@ -1064,10 +1305,8 @@
                                     <div class="app-sub">Send offers by text or email to the customers who opted in at check-in.</div>
                                     <div class="app-card">
                                         <div class="app-label">This month</div>
-                                        <div class="cm-line"><svg><use href="#i-msg"/></svg>Texts<b>132 / 500</b></div>
-                                        <div class="app-bar" style="--w:26%;margin-top:0.5em"></div>
-                                        <div class="cm-line"><svg><use href="#i-mail"/></svg>Emails<b>410 / 2,000</b></div>
-                                        <div class="app-bar" style="--w:21%;margin-top:0.5em"></div>
+                                        <div class="cm-line"><svg><use href="#i-msg"/></svg>Texts sent<b>132</b></div>
+                                        <div class="cm-line"><svg><use href="#i-mail"/></svg>Emails sent<b>410</b></div>
                                     </div>
                                     <div><div class="app-label">Automatic</div><div class="app-meta">Set these up once and they go out by themselves.</div></div>
                                     <div class="app-card cm-auto"><div class="app-row"><span class="app-ico"><svg><use href="#i-cake"/></svg></span><div class="app-main"><div class="app-name">Birthday treat</div><div class="app-meta">On their birthday, at 10 AM</div></div><span class="app-toggle on"></span></div></div>
@@ -1079,22 +1318,79 @@
                         </div>
                     </div>
                     <div class="side-card" aria-hidden="true">
-                        <div class="side-card-t">Customers</div>
-                        <div class="float-chips"><span class="on">All</span><span>Birthdays</span><span>Texts OK</span><span>Emails OK</span></div>
-                        <div class="float-row"><span class="float-ini">CR</span><div><b>Camila Reyes</b><small>(704) 555-0142 &middot; 6 visits</small></div></div>
-                        <div class="float-row"><span class="float-ini">EM</span><div><b>Elena Moore</b><small>(704) 555-0178 &middot; 2 visits</small></div></div>
+                        <div class="side-card-t">What your customers get</div>
+                        <div class="sms-from"><span class="float-ini">YS</span>Your Salon</div>
+                        <div class="sms">Holiday special at Your Salon: $10 off any gel manicure this week. See you soon! Reply STOP to opt out.</div>
+                        <div class="sms-meta">One-off campaign, sent by text to customers who said yes to texts.</div>
                     </div>
                 </div>
-                <p class="shot-caption">Campaigns and the customer list they send to. Example data.</p>
+                <p class="shot-caption">Campaigns, and a text your customers get. Example data and message.</p>
             </div>
         </div>
     </section>
 
-    <!-- 9. INVENTORY -->
+    <!-- 11. YOUR DATA -->
+    <section class="feat feat--tint feat--flip" id="your-data">
+        <div class="container feat-grid">
+            <div class="feat-copy">
+                <span class="eyebrow">Your salon, your data</span>
+                <h2 class="h2">Complete control of your salon and your customer data.</h2>
+                <p class="lede">Your customer list is built at your own front desk, and it stays with your salon. You decide who can run things, when you&rsquo;re open and what clients get to see.</p>
+                <ul class="feat-list">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Jov&eacute;e Link does not sell personal information.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A customer&rsquo;s number is shared only with your salon and the service that delivers your messages.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Every opt-in is recorded with its date and wording, so you can show you have consent.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Your texts and emails go out in your salon&rsquo;s name.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Search your customers by name, phone or email, and filter by today, birthdays and who&rsquo;s OK with texts or emails.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You add managers and co-owners yourself, and only the owner can change the team.</span></li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You set your hours, your services and whether clients see your prices.</span></li>
+                </ul>
+            </div>
+            <div class="feat-visual">
+                <div class="stack stack--side">
+                    <div class="dev dev--phone" role="img" aria-label="The Customers screen: customers checked in today, the total customer count, a search box, filters and each customer with their visits and last visit">
+                        <div class="dev-frame">
+                            <div class="scr" aria-hidden="true">
+                                <div class="app-status"><b>9:41</b><i></i></div>
+                                <div class="app-hd"><span class="app-circ"><svg><use href="#i-back"/></svg></span><span class="app-hd-t">Customers</span><span></span></div>
+                                <div class="app-body">
+                                    <div class="app-btn"><svg><use href="#i-clip"/></svg>Start check-in</div>
+                                    <div class="app-btns"><div class="app-btn app-btn--ghost app-btn--sm">Campaigns</div><div class="app-btn app-btn--ghost app-btn--sm">Walk-in queue</div></div>
+                                    <div class="app-tiles" style="--n:2">
+                                        <div class="app-tile"><span>Checked in today</span><strong>14</strong></div>
+                                        <div class="app-tile"><span>Customers</span><strong>212</strong></div>
+                                    </div>
+                                    <div class="cu-search"><svg><use href="#i-search"/></svg>Search name, phone or email</div>
+                                    <div class="app-chips app-chips--row"><span class="app-chip on">All</span><span class="app-chip">Today</span><span class="app-chip">Birthdays</span><span class="app-chip">Texts OK</span></div>
+                                    <div class="app-card">
+                                        <div class="app-row cu-row"><span class="app-av app-av--txt">CR</span><div class="app-main"><div class="app-name">Camila Reyes</div><div class="app-meta">(704) 555-0142, 6 visits</div></div><span class="cu-last">Nov 14</span></div>
+                                        <div class="app-row cu-row"><span class="app-av app-av--txt">EM</span><div class="app-main"><div class="app-name">Elena Moore</div><div class="app-meta">(704) 555-0178, 2 visits</div></div><span class="cu-last">Nov 12</span></div>
+                                        <div class="app-row cu-row"><span class="app-av app-av--txt">PS</span><div class="app-main"><div class="app-name">Priya Shah</div><div class="app-meta">(704) 555-0119, 4 visits</div></div><span class="cu-last">Nov 9</span></div>
+                                        <div class="app-row cu-row"><span class="app-av app-av--txt">JT</span><div class="app-main"><div class="app-name">Jasmine Tran</div><div class="app-meta">(704) 555-0164, 9 visits</div></div><span class="cu-last">Nov 7</span></div>
+                                        <div class="app-row cu-row"><span class="app-av app-av--txt">OB</span><div class="app-main"><div class="app-name">Olivia Brooks</div><div class="app-meta">(704) 555-0131, 1 visit</div></div><span class="cu-last">Nov 6</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-card" aria-hidden="true">
+                        <div class="side-card-t">Business hours</div>
+                        <div class="float-row"><div><b>Monday</b><small>9:30 AM to 7:00 PM</small></div><span class="float-tog on"></span></div>
+                        <div class="float-row"><div><b>Saturday</b><small>9:00 AM to 6:00 PM</small></div><span class="float-tog on"></span></div>
+                        <div class="float-row"><div><b>Sunday</b><small>Closed</small></div><span class="float-tog"></span></div>
+                        <small class="float-note">Clients can only book inside these hours.</small>
+                    </div>
+                </div>
+                <p class="shot-caption">Your customer list, and the hours you set. Example data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. INVENTORY -->
     <section class="feat" id="inventory">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">In the back room</span>
+                <span class="eyebrow">Inventory</span>
                 <h2 class="h2">Inventory that keeps its own count.</h2>
                 <p class="lede">Add the consumables you stock, like gel top coat, tips and files. The app tracks estimated usage as bookings complete.</p>
                 <ul class="feat-list">
@@ -1128,11 +1424,11 @@
         </div>
     </section>
 
-    <!-- 10. DASHBOARD -->
+    <!-- 13. DASHBOARD -->
     <section class="feat feat--tint feat--flip" id="dashboard">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">From the office</span>
+                <span class="eyebrow">Salon dashboard</span>
                 <h2 class="h2">See how the salon is really doing.</h2>
                 <p class="lede">Pick 7, 30 or 90 days and see your bookings, what was billed and when you&rsquo;re busiest.</p>
                 <ul class="feat-list">
@@ -1178,11 +1474,11 @@
         </div>
     </section>
 
-    <!-- 11. SALON PROFILE -->
+    <!-- 14. SALON PROFILE -->
     <section class="feat" id="profile">
         <div class="container feat-grid">
             <div class="feat-copy">
-                <span class="eyebrow">Out front</span>
+                <span class="eyebrow">Salon profile</span>
                 <h2 class="h2">A salon page in Charlotte&rsquo;s nail community.</h2>
                 <p class="lede">Jov&eacute;e Link is a nail community first. Your salon gets a profile where clients find you, see your work and book.</p>
                 <ul class="feat-list">
@@ -1231,10 +1527,21 @@
         <div class="container">
             <div class="section-head">
                 <span class="eyebrow">The full list</span>
-                <h2 class="h2">Everything on the salon side, in one place.</h2>
-                <p class="lede">From the moment a customer checks in to the day your artists get paid.</p>
+                <h2 class="h2">The complete ecosystem, item by item.</h2>
+                <p class="lede">From the moment a customer checks in to the day your artists get paid. All of it is free.</p>
             </div>
             <div class="spec-rows">
+                <details class="spec-row" open>
+                    <summary><h3>Free, with no limits</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <ul>
+                        <li>Free app on the App Store and Google Play</li>
+                        <li>Free salon website, built for you</li>
+                        <li>Unlimited bookings</li>
+                        <li>Unlimited devices</li>
+                        <li>No setup fee and no sales call</li>
+                        <li>No booking fee for your clients</li>
+                    </ul>
+                </details>
                 <details class="spec-row" open>
                     <summary><h3>Check-in and walk-ins</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
                     <ul>
@@ -1254,7 +1561,7 @@
                         <li>Book a specific artist, or book the salon</li>
                         <li>Unassigned requests wait for you to assign</li>
                         <li>Declined requests come back to the salon</li>
-                        <li>Web bookings without the app</li>
+                        <li>Bookings from your free website, no app needed</li>
                         <li>Business hours that limit when clients can book</li>
                         <li>Clients can reschedule and add to their calendar</li>
                         <li>Real-time sync across owner, co-owners and managers</li>
@@ -1262,7 +1569,7 @@
                     </ul>
                 </details>
                 <details class="spec-row" open>
-                    <summary><h3>Team</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <summary><h3>Staff management</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
                     <ul>
                         <li>Artists ask to join, or you invite them</li>
                         <li>Managers and co-owners</li>
@@ -1273,7 +1580,7 @@
                     </ul>
                 </details>
                 <details class="spec-row" open>
-                    <summary><h3>Checkout and close-out</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <summary><h3>POS and close-out</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
                     <ul>
                         <li>Ring up walk-ins, check-ins and bookings</li>
                         <li>Services billed with their artist and price</li>
@@ -1297,7 +1604,7 @@
                     </ul>
                 </details>
                 <details class="spec-row" open>
-                    <summary><h3>Customers and campaigns</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <summary><h3>Customer retention campaigns</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
                     <ul>
                         <li>Customer list built from check-ins</li>
                         <li>Visits, last visit and birthdays</li>
@@ -1307,6 +1614,17 @@
                         <li>Automatic review request</li>
                         <li>Automatic &ldquo;we miss you&rdquo; after 30 days</li>
                         <li>One-off offers, like a holiday special</li>
+                    </ul>
+                </details>
+                <details class="spec-row" open>
+                    <summary><h3>Your salon, your data</h3><svg class="spec-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <ul>
+                        <li>Customer list that stays with your salon</li>
+                        <li>No selling of personal information</li>
+                        <li>Opt-ins recorded with date and wording</li>
+                        <li>Texts and emails sent in your salon&rsquo;s name</li>
+                        <li>Only the owner changes the team</li>
+                        <li>Hours, services and prices set by you</li>
                     </ul>
                 </details>
                 <details class="spec-row" open>
@@ -1334,12 +1652,12 @@
             </div>
             <div class="kit">
                 <div>
-                    <h3>iPhone and Android</h3>
-                    <p>Free on the App Store and Google Play. Your whole team uses the same app.</p>
+                    <h3>Any phone or tablet</h3>
+                    <p>iPhone, iPad and Android. Free on the App Store and Google Play, and your whole team uses the same app.</p>
                 </div>
                 <div>
-                    <h3>iPad at the front desk</h3>
-                    <p>Runs natively on iPad in portrait or landscape, with a large check-in keypad.</p>
+                    <h3>No device limit</h3>
+                    <p>Front desk, counter, every station. On iPad, check-in runs in portrait or landscape with a large keypad.</p>
                 </div>
                 <div>
                     <h3>Three languages</h3>
@@ -1355,7 +1673,7 @@
             <div class="feat-copy">
                 <span class="eyebrow">Getting started</span>
                 <h2 class="h2">Set up in three steps.</h2>
-                <p class="lede">No sales call. No setup fee. Add your salon, bring in your team and open the doors.</p>
+                <p class="lede">It&rsquo;s free, with no sales call and no setup fee. Add your salon, bring in your team and open the doors.</p>
                 <ol class="sal-steps-list">
                     <li class="sal-step">
                         <div class="step-num">01</div>
@@ -1412,13 +1730,25 @@
                     <summary>What does Jov&eacute;e Link do for a nail salon?
                         <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                     </summary>
-                    <p>It runs the salon day in one app: walk-in check-in, a walk-in queue, bookings, counter checkout, end-of-day close-out, weekly pay statements, customer campaigns, inventory and a dashboard. Your salon also gets a profile in Charlotte&rsquo;s nail community, where clients find artists, try a look with AR Nail Preview and book.</p>
+                    <p>It is a complete ecosystem for your salon in one app: walk-in check-in, a walk-in queue, unlimited bookings, a point of sale at the counter, end-of-day close-out, weekly pay statements, staff management, text and email campaigns, inventory and a dashboard. Your salon also gets a free website and a profile in Charlotte&rsquo;s nail community, where clients find artists, try a look with AR Nail Preview and book.</p>
                 </details>
                 <details class="faq-item">
                     <summary>How much does it cost?
                         <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                     </summary>
-                    <p>Jov&eacute;e Link is free to download and free to set up. There is no setup fee and no sales call. If you take payments in the app, Stripe&rsquo;s processing fee applies, and Jov&eacute;e Link currently charges no platform fee on top.</p>
+                    <p>It&rsquo;s free. The app is free to download and free to use, with no setup fee and no sales call. There is no cap on bookings and no limit on devices, and we build your salon a website at no charge. If you take card payments in the app, Stripe&rsquo;s processing fee applies, and Jov&eacute;e Link currently charges no platform fee on top.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What devices can I use, and how many?
+                        <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                    </summary>
+                    <p>Any iPhone, iPad or Android phone or tablet, and as many as you like. There is no special hardware to buy. Keep a tablet at the front desk for check-in, another at the counter for checkout, and the dashboard on your own phone. Owner, co-owners and managers see every change as it happens.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I get the free website?
+                        <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                    </summary>
+                    <p>Email support@joveear.ai with your salon&rsquo;s name. We build the website and link it to your salon in the app, so clients can book from it without downloading anything. Bookings from your website land in the same Bookings tab as everything else.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Do my customers need the app?
@@ -1451,6 +1781,12 @@
                     <p>Yes. Customers choose at check-in whether to get your offers by text or email. You can send one-off campaigns, or switch on automatic ones for birthdays, review requests and customers who haven&rsquo;t visited in 30 days. Email campaigns work from day one, and texting is switched on salon by salon.</p>
                 </details>
                 <details class="faq-item">
+                    <summary>Who controls my customer list?
+                        <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                    </summary>
+                    <p>You do. Your customer list is built from your own check-ins and stays with your salon. A customer&rsquo;s number is shared only with your salon and the service that delivers your messages. Jov&eacute;e Link does not sell personal information, and every opt-in is recorded with its date and wording.</p>
+                </details>
+                <details class="faq-item">
                     <summary>Which languages does it support?
                         <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                     </summary>
@@ -1469,8 +1805,8 @@
     <!-- CTA -->
     <section class="cta-band">
         <div class="container">
-            <h2 class="h2">Ready to run the floor properly?</h2>
-            <p class="lede">Free to set up. Walk-ins, web bookings and app bookings all end up in the same place. Available on iPhone, iPad and Android.</p>
+            <h2 class="h2">Superpower your business with Jov&eacute;e Link.</h2>
+            <p class="lede">Free app, free website, unlimited bookings, and as many devices as you like. Available on iPhone, iPad and Android.</p>
             <div class="ctas">
                 <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_cta_appstore" aria-label="Download on the App Store">
                     <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1560,6 +1896,8 @@
         var links = [].slice.call(document.querySelectorAll('.rail a'));
         if (!links.length || !('IntersectionObserver' in window)) return;
         var byId = {}, current = null;
+        // sections without a chip of their own light up the chip they belong with
+        var under = { 'queue': 'check-in', 'close-out': 'pos', 'payroll': 'team' };
         links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
         function mark(id) {
             if (id === current) return;
@@ -1571,9 +1909,9 @@
             });
         }
         var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) mark(e.target.id); });
+            entries.forEach(function (e) { if (e.isIntersecting) mark(under[e.target.id] || e.target.id); });
         }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-        Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+        Object.keys(byId).concat(Object.keys(under)).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
     })();
     // On phones the full list starts folded: one tap opens a group
     if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
