@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERKQ239G6V"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-ERKQ239G6V');
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        gtag('config', 'G-ERKQ239G6V', { linker: { domains: ['joveelink.com', 'joveear.ai'] } });
+      }
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Support — Jovée Link</title>
+    <title>Support | Jovée Link</title>
     <meta name="description" content="Help and FAQs for the Jovée Link app. Get answers or reach our team at Support@joveear.ai.">
-    <link rel="icon" type="image/png" href="assets/logo-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://www.joveelink.com/support">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jovée Link">
+    <meta property="og:url" content="https://www.joveelink.com/support">
+    <meta property="og:title" content="Support | Jovée Link">
+    <meta property="og:description" content="Help and FAQs for the Jovée Link app. Get answers or reach our team at Support@joveear.ai.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support | Jovée Link">
+    <meta name="twitter:description" content="Help and FAQs for the Jovée Link app. Get answers or reach our team at Support@joveear.ai.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#0d7568">
+    <link rel="preload" href="/assets/fonts/poppins-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/v2/site.css">
     <style>
         .availability-note {
@@ -73,14 +86,14 @@
     <header class="nav">
         <div class="container nav-inner">
             <a href="/" class="nav-logo" aria-label="Jovée Link home">
-                <img src="assets/logo-dark.png" alt="Jovée Link">
+                <img src="assets/logo-dark.png" alt="Jovée Link" width="600" height="158">
             </a>
             <nav class="nav-links" aria-label="Primary">
                 <a href="/#community">Community</a>
                 <a href="/for-clients">For clients</a>
                 <a href="/for-artists">For professionals</a>
                 <a href="/for-salons">For salons</a>
-        <a href="/try-on">Try it on</a>
+                <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
             </nav>
             <div class="nav-cta">
                 <a href="/#belong" class="btn btn-primary btn-sm" data-tt-track="nav_join">
@@ -99,7 +112,7 @@
         <a href="/for-clients">For clients</a>
         <a href="/for-artists">For professionals</a>
         <a href="/for-salons">For salons</a>
-        <a href="/try-on">Try it on</a>
+        <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
         <a href="/#belong" class="btn btn-primary">Join the community
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -130,7 +143,7 @@
                             <summary>What is Jovée Link?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p>Jovée Link is the home for the nail community. Clients, nail artists, and salons can share work, follow one another, discover talent nearby, chat, and book appointments &mdash; all in one place.</p>
+                            <p>Jovée Link is the home for the nail community. Clients, nail artists, and salons can share work, follow one another, discover talent nearby, chat, and book appointments, all in one place.</p>
                         </details>
                         <details class="faq-item">
                             <summary>How do I sign up?
@@ -142,9 +155,9 @@
                             <summary>Which role should I choose?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p><strong>Client</strong> &mdash; if you get your nails done and want to discover and book artists.<br>
-                            <strong>Nail Artist</strong> &mdash; if you do nails and want to showcase your work and get booked.<br>
-                            <strong>Salon</strong> &mdash; if you run a salon and want to build your team and presence.</p>
+                            <p><strong>Client</strong>: if you get your nails done and want to discover and book artists.<br>
+                            <strong>Nail Artist</strong>: if you do nails and want to showcase your work and get booked.<br>
+                            <strong>Salon</strong>: if you run a salon and want to build your team and presence.</p>
                         </details>
                     </div>
                 </div>
@@ -162,7 +175,7 @@
                             <summary>How does the AR nail preview work?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p>Tap &ldquo;AR Nail Preview&rdquo; from the home screen or an artist&rsquo;s profile to preview colours and designs on your own hands before you book. The preview is powered by <a href="https://joveear.ai" target="_blank" rel="noopener noreferrer">joveear.ai</a> and runs in-app (internet connection required).</p>
+                            <p>Tap &ldquo;AR Nail Preview&rdquo; from the home screen or an artist&rsquo;s profile to preview colours and designs on your own hands before you book. The preview is powered by <a href="https://www.joveear.ai/try-on" target="_blank" rel="noopener noreferrer">joveear.ai</a> and runs in-app (internet connection required).</p>
                         </details>
                         <details class="faq-item">
                             <summary>How do I book an appointment?
@@ -174,7 +187,7 @@
                             <summary>How do I pay?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p>Nothing is charged when you book. After your appointment the artist or salon sends you an itemised bill in the app &mdash; you review it and pay in-app with a card, Apple Pay, Google Pay, Klarna, Afterpay or Cash App Pay where available, or you can settle at the salon. See the <a href="/terms#payments">payments terms</a> for details.</p>
+                            <p>Nothing is charged when you book. After your appointment the artist or salon sends you an itemised bill in the app. You review it and pay in-app with a card, Apple Pay, Google Pay, Klarna, Afterpay or Cash App Pay where available, or you can settle at the salon. See the <a href="/terms#payments">payments terms</a> for details.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Can I cancel a booking?
@@ -204,7 +217,7 @@
                             <summary>Why do I need to connect to a salon?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p>Artists connect to a salon before going live in the App. This keeps the community high-quality and helps clients find you in the right place. If your salon isn&rsquo;t on Jovée Link yet, invite them &mdash; or reach out to us at <a href="mailto:Support@joveear.ai">Support@joveear.ai</a>.</p>
+                            <p>Artists connect to a salon before going live in the App. This keeps the community high-quality and helps clients find you in the right place. If your salon isn&rsquo;t on Jovée Link yet, invite them, or reach out to us at <a href="mailto:Support@joveear.ai">Support@joveear.ai</a>.</p>
                         </details>
                         <details class="faq-item">
                             <summary>How do I set my availability?
@@ -246,7 +259,7 @@
                             <summary>How do we take in-app payments?
                                 <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
                             </summary>
-                            <p>Set up payouts through Stripe inside the app &mdash; you give your business and bank details to Stripe directly. Once set up, clients can pay in-app after their appointment and payouts land in your bank on your Stripe schedule. See the <a href="/terms#payments">payments terms</a>.</p>
+                            <p>Set up payouts through Stripe inside the app. You give your business and bank details to Stripe directly. Once set up, clients can pay in-app after their appointment and payouts land in your bank on your Stripe schedule. See the <a href="/terms#payments">payments terms</a>.</p>
                         </details>
                     </div>
                 </div>
@@ -315,40 +328,56 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="assets/logo-dark.png" alt="Jovée Link">
-                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place.</p>
+                    <img src="assets/logo-dark.png" alt="Jovée Link" width="600" height="158">
+                    <p class="footer-tag">A home for everyone in the nail industry. Clients, artists and salon owners, all in one place. Based in Charlotte, NC.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Community</h4>
+                    <h3 class="footer-h">Community</h3>
                     <ul>
                         <li><a href="/#community">Discussions</a></li>
                         <li><a href="/#community">Nail inspiration</a></li>
-                        <li><a href="/try-on">Virtual try-on</a></li>
-                        <li><a href="/for-clients">Find an artist</a></li>
+                        <li><a href="/try-on">AR nail try-on</a></li>
+                        <li><a href="https://www.joveear.ai/blog" target="_blank" rel="noopener noreferrer">Nail ideas &amp; guides</a></li>
+                        <li><a href="/for-clients">Find a nail artist in Charlotte</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>For professionals</h4>
+                    <h3 class="footer-h">For professionals</h3>
                     <ul>
                         <li><a href="/for-artists">Your profile &amp; portfolio</a></li>
                         <li><a href="/for-artists">Appointments</a></li>
-                        <li><a href="/for-salons">For salons</a></li>
+                        <li><a href="/for-artists">Professional community</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Join JOVÉELINK</h4>
+                    <h3 class="footer-h">Join JOVÉELINK</h3>
                     <ul>
                         <li><a href="/for-clients">For clients</a></li>
-                        <li><a href="/for-artists">For nail artists &amp; salons</a></li>
+                        <li><a href="/for-artists">For nail artists</a></li>
+                        <li><a href="/for-salons">For salons</a></li>
+                        <li><a href="https://www.joveear.ai/" target="_blank" rel="noopener noreferrer">Jov&eacute;e AR</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 JOVÉELINK. All rights reserved.</span>
-                <div class="footer-legal">
-                    <a href="/privacy">Privacy policy</a>
-                    <a href="/terms">Terms of use</a>
-                    <a href="/support">Support</a>
+                <div class="footer-bottom-right">
+                    <div class="footer-legal">
+                        <a href="/privacy">Privacy policy</a>
+                        <a href="/terms">Terms of use</a>
+                        <a href="/support">Support</a>
+                    </div>
+                    <div class="footer-social" aria-label="Follow Jovée on social media">
+                        <a href="https://www.instagram.com/joveear/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-tt-track="footer_instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.1.6.7 1.3 1.1 2.1 1.4.8.3 1.7.5 3 .6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.4.7-.6 1.1-1.3 1.4-2.1.3-.8.5-1.7.6-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.1-.6-.7-1.3-1.1-2.1-1.4-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@jovee.ar" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-tt-track="footer_tiktok">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.8V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61593995901920" target="_blank" rel="noopener noreferrer" aria-label="Facebook" data-tt-track="footer_facebook">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4z"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -364,8 +393,10 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
 
-      ttq.load('DA0FUTJC77UDKVSV2FQG');
-      ttq.page();
+      if (/(^|\.)joveelink\.com$/.test(location.hostname)) {
+        ttq.load('DA0FUTJC77UDKVSV2FQG');
+        ttq.page();
+      }
     }(window, document, 'ttq');
     </script>
 </body>

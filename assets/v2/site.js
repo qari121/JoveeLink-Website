@@ -6,24 +6,44 @@
 (function () {
     'use strict';
 
-    // Scroll to hash target on initial page load — some browsers skip the
-    // native jump when scroll-behavior: smooth is set, or when images push
-    // the target's position after first paint. Re-run on window.load and
-    // after a short delay so a /#community link lands at the section.
+    // Section links (/#community, #belong, ...): land on the section when
+    // arriving from a link, then clear the #hash from the address bar so a
+    // refresh starts at the top of the page instead of jumping back down.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    function clearHash() {
+        if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+    }
     function scrollToHash() {
         if (!location.hash) return;
         var t = document.getElementById(location.hash.slice(1));
         if (t) t.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
     if (location.hash) {
-        scrollToHash();
+        var landedHash = location.hash;
+        var settle = function () { if (location.hash === landedHash) scrollToHash(); };
+        settle();
         if (document.readyState === 'complete') {
-            setTimeout(scrollToHash, 50);
+            setTimeout(settle, 50);
         } else {
-            window.addEventListener('load', function () { setTimeout(scrollToHash, 50); }, { once: true });
+            window.addEventListener('load', function () { setTimeout(settle, 50); }, { once: true });
         }
-        setTimeout(scrollToHash, 400);
+        setTimeout(function () { settle(); clearHash(); }, 400);
+    } else {
+        window.scrollTo(0, 0);
     }
+    // Same-page section links scroll smoothly without leaving #hash behind
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"], a[href^="/#"]');
+        if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        var href = a.getAttribute('href');
+        var id = href.slice(href.indexOf('#') + 1);
+        if (href.charAt(0) === '/' && location.pathname !== '/' && location.pathname !== '/index.html') return;
+        var t = id && document.getElementById(id);
+        if (!t) return;
+        e.preventDefault();
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        clearHash();
+    });
 
     // Mobile menu
     var hamburger = document.getElementById('hamburger');
