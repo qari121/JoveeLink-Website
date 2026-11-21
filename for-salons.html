@@ -60,29 +60,39 @@
         .dev-stand::after { content: ""; display: block; height: 11px; border-radius: 12px 12px 5px 5px; background: #fff; box-shadow: 0 10px 22px rgba(13, 117, 104, 0.18), 0 0 0 1px rgba(13, 35, 64, 0.07); }
         .shot-caption { font-size: 13px; font-weight: 500; color: var(--brand-teal); text-align: center; margin: var(--sp-5) 0 0; }
 
-        /* ---------- Feature rail ---------- */
-        .rail { position: sticky; top: var(--nav-h, 67px); z-index: 50; background: rgba(255, 255, 255, 0.93); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(13, 35, 64, 0.07); }
-        .rail-inner { max-width: var(--container); margin: 0 auto; padding: 10px var(--gutter); display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; }
-        .rail-inner::-webkit-scrollbar { display: none; }
-        .rail a { flex-shrink: 0; padding: 8px 12px; border-radius: var(--r-pill); border: 1px solid transparent; font-size: 14px; font-weight: 500; color: var(--text-strong); transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
-        .rail a:hover { background: var(--brand-mint); }
-        .rail a.is-on { background: var(--brand-mint); border-color: var(--teal-200); color: var(--brand-teal); }
-        .rail a:focus-visible, .sal-hero-more:focus-visible, .feat-cta:focus-visible, .feat-cta-note a:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
-
-        /* ---------- The promise: free, and no limits ---------- */
-        .promise { background: var(--navy-900); color: var(--white); padding: var(--sp-16) 0; }
-        .promise .h2 { color: var(--white); margin: 0 0 var(--sp-10); font-size: clamp(26px, 3vw, 38px); font-weight: 500; line-height: 1.25; max-width: 24ch; }
-        .promise .h2 span { display: block; font-size: clamp(64px, 9vw, 116px); font-weight: 600; line-height: 0.95; letter-spacing: -0.03em; color: var(--teal-200); margin-bottom: var(--sp-4); }
-        .promise-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, 0.18); }
-        .promise-grid li { padding: var(--sp-6) var(--sp-6) 0 0; }
-        .promise-grid li + li { padding-left: var(--sp-6); border-left: 1px solid rgba(255, 255, 255, 0.18); }
-        .promise-grid h3 { font-family: var(--font-head); font-size: 20px; font-weight: 600; line-height: 1.3; color: var(--white); margin: 0 0 6px; }
-        .promise-grid p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, 0.8); }
-        .promise-built { margin: var(--sp-12) 0 0; font-family: var(--font-head); font-size: clamp(17px, 1.7vw, 20px); font-weight: 500; line-height: 1.45; color: var(--white); max-width: 60ch; }
-        .promise-note { margin: var(--sp-3) 0 0; font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.68); max-width: 74ch; }
+        /* ---------- Page index: section names down the right edge, middle of the screen ---------- */
+        /* Like the letters down the side of a phone's contact list. The section you are in grows
+           big, the ones beside it a little, the rest stay small. Tap or drag down it on a phone. */
+        :root { --idx-w: 150px; }
+        .idx { position: fixed; z-index: 120; top: calc(50% + var(--nav-h, 67px) / 2); right: max(8px, calc((100vw - var(--container)) / 2 - var(--idx-w) - 8px)); transform: translate(10px, -50%); opacity: 0; visibility: hidden; transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0s linear 0.25s; }
+        .idx.is-shown { opacity: 1; visibility: visible; transform: translate(0, -50%); transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }
+        .idx-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-end; touch-action: none; }
+        .idx-list li { display: flex; justify-content: flex-end; }
+        .idx-list a { display: block; padding: 4px 10px 4px 12px; border-right: 2px solid rgba(13, 35, 64, 0.1); font-family: var(--font-head); font-size: 13px; font-weight: 500; line-height: 1.25; text-align: right; white-space: nowrap; color: #8a96a3; transition: font-size 0.28s var(--ease), color 0.28s var(--ease), border-color 0.28s var(--ease), padding 0.28s var(--ease); -webkit-tap-highlight-color: transparent; }
+        .idx-list a:hover { color: var(--text-strong); }
+        .idx-list a.is-near { font-size: 15px; color: #5f6b78; }
+        .idx-list a.is-on { font-size: 21px; font-weight: 600; color: var(--brand-teal); border-right-color: var(--brand-teal); padding-top: 6px; padding-bottom: 6px; }
+        .idx-list a:focus-visible, .sal-hero-more:focus-visible, .feat-cta:focus-visible, .feat-cta-note a:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
+        /* where the screen has no margin beside the page, the features move over to make room */
+        @media (max-width: 1599px) { .sal-body .container { padding-right: calc(var(--gutter) + var(--idx-w)); } }
+        @media (max-width: 900px) {
+            :root { --idx-w: 106px; }
+            .idx-list a { padding: 3px 8px 3px 6px; font-size: 11px; }
+            .idx-list a.is-near { font-size: 12px; }
+            .idx-list a.is-on { font-size: 14.5px; padding-top: 5px; padding-bottom: 5px; }
+            .sal-body .container { padding-right: calc(var(--idx-w) + 14px); }
+        }
+        @media (max-width: 380px) {
+            :root { --idx-w: 88px; }
+            .idx-list a { font-size: 10.5px; padding-left: 4px; padding-right: 6px; }
+            .idx-list a.is-near { font-size: 11px; }
+            .idx-list a.is-on { font-size: 12.5px; }
+        }
+        @media (max-height: 560px) { .idx-list a { padding-top: 1px; padding-bottom: 1px; } }
+        @media (prefers-reduced-motion: reduce) { .idx, .idx-list a { transition: none !important; } }
 
         /* ---------- Feature sections ---------- */
-        .feat { padding: 76px 0; scroll-margin-top: calc(var(--nav-h, 67px) + var(--rail-h, 56px)); overflow: hidden; }
+        .feat { padding: 76px 0; scroll-margin-top: var(--nav-h, 67px); overflow: hidden; }
         .feat--tint { background: var(--brand-mint); }
         .feat-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
         .feat-grid > * { min-width: 0; }
@@ -407,7 +417,7 @@
         .pf-sheet .app-btn { margin-top: 1em; }
 
         /* ---------- The full list ---------- */
-        .spec { padding: var(--sp-20) 0; scroll-margin-top: calc(var(--nav-h, 67px) + var(--rail-h, 56px)); }
+        .spec { padding: var(--sp-20) 0; scroll-margin-top: var(--nav-h, 67px); }
         .spec-rows { border-bottom: 1px solid var(--teal-200); }
         .spec-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 40px; padding: 24px 0; border-top: 1px solid var(--teal-200); }
         .spec-row summary { list-style: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; pointer-events: none; }
@@ -442,8 +452,6 @@
 
         /* ---------- Responsive ---------- */
         @media (max-width: 1100px) {
-            .rail { position: static; }
-            .feat, .spec { scroll-margin-top: var(--nav-h, 110px); }
             .sal-hero-grid { gap: 40px; }
             .feat-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; }
             .feat--flip .feat-grid { grid-template-columns: 300px minmax(0, 1fr); }
@@ -475,7 +483,6 @@
             .feat, .spec, .sal-steps, .sal-faq { padding: 48px 0; }
             .feat-grid, .feat--flip .feat-grid { grid-template-columns: minmax(0, 1fr); gap: var(--sp-8); }
             .feat--flip .feat-visual { order: 0; }
-            .rail a { padding: 10px 12px; }
             .spec-row { display: block; padding: 0; }
             .spec-row summary { pointer-events: auto; cursor: pointer; padding: 18px 0; align-items: center; }
             .spec-row summary:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
@@ -822,22 +829,28 @@
         </div>
     </section>
 
-    <!-- FEATURE RAIL -->
-    <nav class="rail" aria-label="Salon features on this page">
-        <div class="rail-inner">
-            <a href="#devices">Any device</a>
-            <a href="#check-in">Check-in</a>
-            <a href="#bookings">Bookings</a>
-            <a href="#website">Free website</a>
-            <a href="#pos">POS</a>
-            <a href="#team">Staff</a>
-            <a href="#customers">Campaigns</a>
-            <a href="#your-data">Your data</a>
-            <a href="#inventory">Inventory</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#profile">Salon profile</a>
-        </div>
-    </nav>
+    <!-- FEATURES, WITH THE PAGE INDEX BESIDE THEM -->
+    <div class="sal-body">
+        <!-- page index: the section names down the right edge, like the letters down the side of a phone's contact list -->
+        <nav class="idx" id="page-index" aria-label="On this page">
+            <ol class="idx-list">
+                <li><a href="#devices">Any device</a></li>
+                <li><a href="#check-in">Check-in</a></li>
+                <li><a href="#queue">Walk-ins</a></li>
+                <li><a href="#bookings">Bookings</a></li>
+                <li><a href="#website">Free website</a></li>
+                <li><a href="#pos">POS</a></li>
+                <li><a href="#close-out">End of day</a></li>
+                <li><a href="#team">Staff</a></li>
+                <li><a href="#payroll">Payroll</a></li>
+                <li><a href="#customers">Campaigns</a></li>
+                <li><a href="#your-data">Your data</a></li>
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#profile">Salon profile</a></li>
+                <li><a href="#everything">Full list</a></li>
+            </ol>
+        </nav>
 
     <!-- 1. ANY DEVICE -->
     <section class="feat feat--tint feat--flip" id="devices">
@@ -1667,6 +1680,8 @@
         </div>
     </section>
 
+    </div>
+
     <!-- GET STARTED -->
     <section class="sal-steps">
         <div class="container feat-grid">
@@ -1882,36 +1897,90 @@
 
     <script src="assets/v2/site.js"></script>
     <script>
-    // Salons page: keep the feature rail under the nav, and mark the section in view
+    // Salons page: the section names down the right edge, like the letters down a phone's contact list
     (function () {
         'use strict';
-        var root = document.documentElement, nav = document.querySelector('.nav'), rail = document.querySelector('.rail');
-        function measure() {
-            if (nav) root.style.setProperty('--nav-h', nav.offsetHeight + 'px');
-            if (rail) root.style.setProperty('--rail-h', (getComputedStyle(rail).position === 'sticky' ? rail.offsetHeight : 0) + 'px');
-        }
+        var root = document.documentElement, nav = document.querySelector('.nav');
+        function measure() { if (nav) root.style.setProperty('--nav-h', nav.offsetHeight + 'px'); }
         measure();
         window.addEventListener('resize', measure);
         window.addEventListener('load', measure);
-        var links = [].slice.call(document.querySelectorAll('.rail a'));
-        if (!links.length || !('IntersectionObserver' in window)) return;
-        var byId = {}, current = null;
-        // sections without a chip of their own light up the chip they belong with
-        var under = { 'queue': 'check-in', 'close-out': 'pos', 'payroll': 'team' };
+        var body = document.querySelector('.sal-body'), idx = document.getElementById('page-index');
+        if (!body || !idx || !('IntersectionObserver' in window)) return;
+        var list = idx.querySelector('.idx-list'), links = [].slice.call(idx.querySelectorAll('a'));
+        var byId = {}, current = null, scrubbing = false;
         links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+        var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
         function mark(id) {
             if (id === current) return;
             current = id;
-            links.forEach(function (a) {
-                var on = a === byId[id];
+            var at = links.indexOf(byId[id]);
+            links.forEach(function (a, i) {
+                var on = i === at;
                 a.classList.toggle('is-on', on);
+                // the names either side grow a little, like the dock on a Mac
+                a.classList.toggle('is-near', at >= 0 && Math.abs(i - at) === 1);
                 if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
             });
         }
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) mark(under[e.target.id] || e.target.id); });
-        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-        Object.keys(byId).concat(Object.keys(under)).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+        // the section in view is the last one whose top has passed a line a third of the way down
+        // the screen (under the top bar), so the name changes as the next heading comes into view
+        function pick() {
+            if (scrubbing) return;
+            var navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 0;
+            var line = navH + (window.innerHeight - navH) * 0.3, id = null;
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i] && sections[i].getBoundingClientRect().top <= line) id = sections[i].id;
+            }
+            mark(id || (sections[0] && sections[0].id));
+        }
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () { ticking = false; pick(); });
+        }, { passive: true });
+        window.addEventListener('resize', pick);
+        window.addEventListener('load', pick);
+        pick();
+        // the list shows only while the reader is among the features
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { idx.classList.toggle('is-shown', e.isIntersecting); });
+        }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 }).observe(body);
+        // touch: tap a name, or drag up and down the strip, and the page follows the finger
+        function linkAt(y) {
+            var best = null, dist = Infinity;
+            links.forEach(function (a) { var r = a.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - y); if (d < dist) { dist = d; best = a; } });
+            return best;
+        }
+        function jumpTo(a) {
+            var id = a.getAttribute('href').slice(1), t = document.getElementById(id);
+            if (!t || id === current && scrubbing) return;
+            // straight there, no smooth scroll, so the page keeps up with the finger
+            var navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 0;
+            window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'instant' });
+            mark(id);
+        }
+        list.addEventListener('touchstart', function (e) {
+            if (e.touches.length !== 1) return;
+            e.preventDefault();
+            scrubbing = true;
+            idx.classList.add('is-scrub');
+            current = null;
+            jumpTo(linkAt(e.touches[0].clientY));
+        }, { passive: false });
+        list.addEventListener('touchmove', function (e) {
+            if (!scrubbing) return;
+            e.preventDefault();
+            jumpTo(linkAt(e.touches[0].clientY));
+        }, { passive: false });
+        function endScrub() {
+            if (!scrubbing) return;
+            scrubbing = false;
+            idx.classList.remove('is-scrub');
+        }
+        list.addEventListener('touchend', endScrub);
+        list.addEventListener('touchcancel', endScrub);
     })();
     // On phones the full list starts folded: one tap opens a group
     if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
