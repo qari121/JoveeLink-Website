@@ -91,6 +91,18 @@
         @media (max-height: 560px) { .idx-list a { padding-top: 1px; padding-bottom: 1px; } }
         @media (prefers-reduced-motion: reduce) { .idx, .idx-list a { transition: none !important; } }
 
+        /* ---------- Promise strip ---------- */
+        .promise { background: var(--navy-900); color: var(--white); padding: var(--sp-16) 0; }
+        .promise .h2 { color: var(--white); margin: 0 0 var(--sp-10); font-size: clamp(26px, 3vw, 38px); font-weight: 500; line-height: 1.25; max-width: 24ch; }
+        .promise .h2 span { display: block; font-size: clamp(64px, 9vw, 116px); font-weight: 600; line-height: 0.95; letter-spacing: -0.03em; color: var(--teal-200); margin-bottom: var(--sp-4); }
+        .promise-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, 0.18); }
+        .promise-grid li { padding: var(--sp-6) var(--sp-6) 0 0; }
+        .promise-grid li + li { padding-left: var(--sp-6); border-left: 1px solid rgba(255, 255, 255, 0.18); }
+        .promise-grid h3 { font-family: var(--font-head); font-size: 20px; font-weight: 600; line-height: 1.3; color: var(--white); margin: 0 0 6px; }
+        .promise-grid p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, 0.8); }
+        .promise-built { margin: var(--sp-12) 0 0; font-family: var(--font-head); font-size: clamp(17px, 1.7vw, 20px); font-weight: 500; line-height: 1.45; color: var(--white); max-width: 60ch; }
+        .promise-note { margin: var(--sp-3) 0 0; font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.68); max-width: 74ch; }
+
         /* ---------- Feature sections ---------- */
         .feat { padding: 76px 0; scroll-margin-top: var(--nav-h, 67px); overflow: hidden; }
         .feat--tint { background: var(--brand-mint); }
@@ -503,6 +515,66 @@
         @media (prefers-reduced-motion: reduce) {
             .ci-caret { animation: none; }
         }
+
+        /* ---------- Phone pass (640 and under) ---------- */
+        /* Each feature reads: heading, one line, the screen, then the top three points with the
+           rest behind "Show all". Screens are smaller, and the section names show only while
+           the page is moving, so the text keeps the full width. */
+        @media (max-width: 640px) {
+            .sal-hero { padding: 24px 0 36px; }
+            .sal-hero .lede { margin-bottom: 16px; }
+            .sal-free { margin-bottom: 20px; gap: 8px 18px; }
+            .sal-free li { font-size: 14.5px; gap: 8px; }
+            .sal-hero-more { margin-top: 14px; }
+            .sal-hero-grid { gap: 26px; }
+            .hero-devices { max-width: 330px; }
+            .dev-stand { display: none; }
+            .promise { padding: 36px 0; }
+            .promise .h2 { font-size: 20px; margin-bottom: 18px; max-width: none; }
+            .promise .h2 span { font-size: 54px; margin-bottom: 6px; }
+            .promise-grid { grid-template-columns: 1fr 1fr; column-gap: 18px; row-gap: 0; }
+            .promise-grid li, .promise-grid li + li { padding: 14px 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+            .promise-grid h3 { font-size: 15.5px; margin-bottom: 3px; }
+            .promise-grid p { font-size: 13px; line-height: 1.45; }
+            .promise-built { margin-top: 18px; font-size: 15.5px; }
+            .promise-note { font-size: 12.5px; }
+            .feat, .spec, .sal-steps, .sal-faq { padding: 40px 0; }
+            .sal-body .container { padding-right: var(--gutter); }
+            .feat-grid, .feat--flip .feat-grid { gap: 0; }
+            .feat-copy { display: contents; }
+            .feat-copy > * { order: 1; }
+            .feat-copy .h2 { font-size: clamp(23px, 6.4vw, 27px); margin-bottom: 8px; }
+            .feat-copy .lede { margin-bottom: 0; font-size: 15.5px; }
+            .feat-grid .feat-visual, .feat--flip .feat-grid .feat-visual { order: 2; margin: 22px 0 6px; }
+            .feat-copy .feat-list { order: 3; margin-top: 16px; gap: 10px; }
+            .feat-copy .feat-more { order: 4; }
+            .feat-copy .feat-cta, .feat-copy .feat-cta-note { order: 5; }
+            .feat-list li { font-size: 15px; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; }
+            .feat-list svg { width: 18px; height: 18px; }
+            .feat-list.is-clipped li:nth-child(n + 4) { display: none; }
+            .feat-more { display: inline-flex; align-items: center; gap: 6px; align-self: start; justify-self: start; margin-top: 12px; padding: 9px 14px 9px 12px; border: 1px solid var(--teal-200); border-radius: var(--r-pill); background: #fff; color: var(--brand-teal); font: 600 14px/1 var(--font-body, Inter, system-ui, sans-serif); cursor: pointer; }
+            .feat-more svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s var(--ease); }
+            .feat-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+            .dev--phone, .stack { max-width: 236px; }
+            .stack--side { max-width: 300px; }
+            .stack--side .dev--phone { flex-basis: 236px; }
+            .shot-caption { margin-top: 12px; font-size: 12.5px; }
+            /* section names: over the page, only while it is moving */
+            .idx { right: 4px; }
+            .idx.is-shown:not(.is-live) { opacity: 0; visibility: hidden; transform: translate(10px, -50%); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), visibility 0s linear 0.4s; }
+            .idx-list { padding: 8px 2px 8px 8px; border-radius: 16px; background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 8px 28px rgba(13, 35, 64, 0.16); border: 1px solid rgba(13, 35, 64, 0.07); }
+            .sal-steps .feat-copy { display: block; }
+            .sal-step h3 { font-size: 17px; }
+            .sal-step p { font-size: 14.5px; }
+            .spec-row summary { padding: 14px 0; }
+            .sal-faq-grid { gap: 14px; }
+            .sal-faq .faq-item summary { padding: 15px 0; margin: 0; }
+            .kit { margin-top: 22px; border: 0; border-radius: 0; background: none; }
+            .kit > div, .kit > div + div { padding: 12px 0; border: 0; border-top: 1px solid rgba(13, 35, 64, 0.1); }
+            .kit h3 { font-size: 15.5px; margin-bottom: 2px; }
+            .kit p { font-size: 14px; line-height: 1.5; }
+        }
+        @media (min-width: 641px) { .feat-more { display: none; } }
     </style>
     <script type="application/ld+json">
 {
@@ -1934,8 +2006,10 @@
             }
             mark(id || (sections[0] && sections[0].id));
         }
-        var ticking = false;
+        var ticking = false, liveTimer = null;
+        function live() { idx.classList.add('is-live'); clearTimeout(liveTimer); liveTimer = setTimeout(function () { if (!scrubbing) idx.classList.remove('is-live'); }, 1600); }
         window.addEventListener('scroll', function () {
+            live();
             if (ticking) return;
             ticking = true;
             requestAnimationFrame(function () { ticking = false; pick(); });
@@ -1977,10 +2051,33 @@
         function endScrub() {
             if (!scrubbing) return;
             scrubbing = false;
+            live();
             idx.classList.remove('is-scrub');
         }
         list.addEventListener('touchend', endScrub);
         list.addEventListener('touchcancel', endScrub);
+    })();
+    // On phones each feature shows its first three points, with the rest behind a button
+    (function () {
+        if (!window.matchMedia || !window.matchMedia('(max-width: 640px)').matches) return;
+        [].forEach.call(document.querySelectorAll('.feat-copy .feat-list'), function (list, n) {
+            var total = list.children.length;
+            if (total < 5) return;
+            if (!list.id) list.id = 'feat-points-' + n;
+            list.classList.add('is-clipped');
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'feat-more';
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-controls', list.id);
+            btn.innerHTML = '<span>Show all ' + total + '</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+            btn.addEventListener('click', function () {
+                var open = list.classList.toggle('is-clipped') === false;
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                btn.firstChild.textContent = open ? 'Show less' : 'Show all ' + total;
+            });
+            list.parentNode.insertBefore(btn, list.nextSibling);
+        });
     })();
     // On phones the full list starts folded: one tap opens a group
     if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {

@@ -1807,6 +1807,123 @@
             .btn-store { width: auto; }
             .svc-grid { grid-template-columns: 1fr; }
         }
+
+        /* ==========================================
+           PHONE PASS (640 and under)
+           Less box, more content: tighter type and spacing, cards
+           become plain rows with a hairline between them, store
+           buttons sit side by side, the footer folds to two columns.
+           ========================================== */
+        @media (max-width: 640px) {
+            :root { --gutter: 20px; }
+            section { padding: 44px 0; }
+            .h1 { font-size: clamp(30px, 8.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; }
+            .h2 { font-size: clamp(24px, 6.6vw, 28px); line-height: 1.18; }
+            .lede { font-size: 16px; line-height: 1.55; }
+            .page-hero { padding: 28px 0 36px; }
+            .page-hero .h1 { margin-bottom: 14px; }
+            .section-head { margin-bottom: 20px; }
+            /* store buttons: two across, never stacked */
+            .ctas { flex-wrap: wrap; gap: 10px; }
+            .ctas > .btn { flex: 1 0 100%; justify-content: center; }
+            .ctas .btn-store { flex: 1 1 0; min-width: 0; justify-content: center; padding: 10px 8px; gap: 8px; border-radius: 12px; }
+            .ctas .btn-store svg { width: 20px; height: 20px; }
+            .btn-store-text small { font-size: 9px; white-space: nowrap; }
+            .btn-store-text strong { font-size: 14px; white-space: nowrap; }
+            /* feature tiles: rows, not boxes */
+            .feature-grid { gap: 0; }
+            .feature-tile, .feature-tile:hover { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; align-items: start; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; padding: 16px 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); }
+            .feature-tile:last-child { border-bottom: 0; padding-bottom: 0; }
+            .feature-tile:first-child { padding-top: 0; }
+            .feature-icon { width: 40px; height: 40px; margin: 0; grid-row: 1 / span 2; }
+            .feature-icon svg { width: 19px; height: 19px; }
+            .feature-tile h3 { font-size: 16.5px; margin: 0 0 3px; }
+            .feature-tile p { font-size: 14.5px; line-height: 1.5; }
+            /* "two ways" cards */
+            .ways-grid { gap: 12px; }
+            .way-card { padding: 18px; border-radius: 16px; }
+            .way-card h3 { font-size: 17px; }
+            /* steps */
+            .steps-grid { gap: 18px; }
+            .step-card { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+            .step-card .step-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
+            .step-card h3 { font-size: 17px; margin: 0 0 3px; }
+            .step-card p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+            /* questions: a plain list with hairlines */
+            .faq-list { gap: 0; }
+            .faq-item, .faq-item[open] { background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; padding: 0; }
+            .faq-item summary { font-size: 15.5px; padding: 15px 0; margin: 0; }
+            .faq-item p { margin: -4px 0 16px; font-size: 14.5px; line-height: 1.6; }
+            /* closing band */
+            .cta-band { padding: 40px 0; }
+            .cta-band .h2 { margin-bottom: 10px; }
+            .cta-band .lede { margin-bottom: 22px; font-size: 15px; }
+            /* footer: two columns of links */
+            .footer { padding: 36px 0 24px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+            .footer-brand { grid-column: 1 / -1; }
+            .footer-tag { font-size: 14px; margin-top: 10px; }
+            .footer-col h3 { margin-bottom: 6px; font-size: 13px; }
+            .footer-col a { font-size: 14px; padding: 6px 0; }
+            .footer-bottom { margin-top: 22px; padding-top: 18px; gap: 12px; }
+            .prose-page { padding: 28px 0 44px; }
+        }
+
+        /* PHONE PASS, homepage pieces */
+        @media (max-width: 640px) {
+            :root { --sec-y: 44px; }
+            .nav-inner { padding: 14px var(--gutter); }
+            .mobile-menu { inset: 66px 0 0; }
+            .hero { padding: 20px 0 32px; }
+            .hero-grid { gap: 28px; }
+            .hero-copy .lede { margin-bottom: 20px; }
+            .hero-copy .ctas { flex-wrap: wrap; }
+            .hero-stores { margin-top: 18px; }
+            .hero-stores-row { flex-direction: row; gap: 10px; }
+            .hero-stores-row .btn-store { flex: 1 1 0; min-width: 0; width: auto; justify-content: center; padding: 10px 8px; gap: 8px; border-radius: 12px; }
+            .hero-chips { gap: 8px; margin-top: 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); }
+            .hero-chips::-webkit-scrollbar { display: none; }
+            .hero-chips .chip { flex-shrink: 0; }
+            /* the people band: photo shorter, designs in one swipeable row */
+            .people-img img { height: 180px; object-fit: cover; }
+            .people-copy { padding: 20px; }
+            .people-title { font-size: 20px; }
+            .people-trends { display: flex; grid-template-columns: none; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -20px; padding: 0 20px 2px; }
+            .people-trends::-webkit-scrollbar { display: none; }
+            .people-trend { flex: 0 0 31%; scroll-snap-align: start; }
+            /* three audiences: rows, not boxes */
+            .benefits-head { margin-bottom: 18px; }
+            .benefit-grid { gap: 0; }
+            .benefit-card, .benefit-card:hover { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; column-gap: 14px; row-gap: 2px; align-items: center; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; padding: 16px 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); }
+            .benefit-card:last-child { border-bottom: 0; }
+            .benefit-icon { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; align-self: start; }
+            .benefit-icon svg { width: 19px; height: 19px; }
+            .benefit-card h3 { grid-column: 2; font-size: 17px; margin: 0; }
+            .benefit-card p { grid-column: 2; font-size: 14.5px; line-height: 1.5; margin: 0; }
+            .benefit-more { grid-column: 3; grid-row: 1 / span 2; padding: 0; margin: 0; font-size: 0; gap: 0; }
+            .benefit-more svg { width: 18px; height: 18px; }
+            /* services: small tiles, two across */
+            .svc-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
+            .svc-grid li { grid-template-columns: 36px minmax(0, 1fr); grid-template-rows: auto; align-items: center; padding: 7px 9px; column-gap: 9px; border-radius: 12px; }
+            .svc-ico { grid-row: auto; width: 36px; height: 36px; border-radius: 9px; }
+            .svc-grid li strong { font-size: 13.5px; line-height: 1.25; }
+            .svc-grid li small { display: none; }
+            /* three steps: number beside the text */
+            .how-head { margin-bottom: 20px; }
+            .how-grid { gap: 18px; }
+            .how-step { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+            .how-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
+            .how-step h3 { font-size: 17px; margin: 0 0 3px; }
+            .how-step p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+            .checklist { gap: 14px; }
+            .checklist li { gap: 12px; }
+            .community-left { padding: 14px; border-radius: 20px; }
+            .belong-card { padding: 28px 18px; border-radius: 22px; }
+            .belong-card .ctas { flex-wrap: wrap; }
+            .belong-card .ctas .btn-store { flex: 1 1 0; width: auto; min-width: 0; padding: 10px 8px; }
+            .belong-card .ctas .btn { flex: 1 0 100%; }
+            .phone-screens { height: 520px; }
+        }
     </style>
     <script type="application/ld+json">
 {

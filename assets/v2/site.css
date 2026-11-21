@@ -696,3 +696,64 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
 .footer-social a:hover { background: var(--brand-teal); color: var(--white); transform: translateY(-2px); }
 .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
 @media (max-width: 540px) { .footer-bottom-right { justify-content: center; } }
+
+/* ==========================================
+   PHONE PASS (640 and under)
+   Less box, more content: tighter type and spacing, cards
+   become plain rows with a hairline between them, store
+   buttons sit side by side, the footer folds to two columns.
+   ========================================== */
+@media (max-width: 640px) {
+    :root { --gutter: 20px; }
+    section { padding: 44px 0; }
+    .h1 { font-size: clamp(30px, 8.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; }
+    .h2 { font-size: clamp(24px, 6.6vw, 28px); line-height: 1.18; }
+    .lede { font-size: 16px; line-height: 1.55; }
+    .page-hero { padding: 28px 0 36px; }
+    .page-hero .h1 { margin-bottom: 14px; }
+    .section-head { margin-bottom: 20px; }
+    /* store buttons: two across, never stacked */
+    .ctas { flex-wrap: wrap; gap: 10px; }
+    .ctas > .btn { flex: 1 0 100%; justify-content: center; }
+    .ctas .btn-store { flex: 1 1 0; min-width: 0; justify-content: center; padding: 10px 8px; gap: 8px; border-radius: 12px; }
+    .ctas .btn-store svg { width: 20px; height: 20px; }
+    .btn-store-text small { font-size: 9px; white-space: nowrap; }
+    .btn-store-text strong { font-size: 14px; white-space: nowrap; }
+    /* feature tiles: rows, not boxes */
+    .feature-grid { gap: 0; }
+    .feature-tile, .feature-tile:hover { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; align-items: start; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; padding: 16px 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); }
+    .feature-tile:last-child { border-bottom: 0; padding-bottom: 0; }
+    .feature-tile:first-child { padding-top: 0; }
+    .feature-icon { width: 40px; height: 40px; margin: 0; grid-row: 1 / span 2; }
+    .feature-icon svg { width: 19px; height: 19px; }
+    .feature-tile h3 { font-size: 16.5px; margin: 0 0 3px; }
+    .feature-tile p { font-size: 14.5px; line-height: 1.5; }
+    /* "two ways" cards */
+    .ways-grid { gap: 12px; }
+    .way-card { padding: 18px; border-radius: 16px; }
+    .way-card h3 { font-size: 17px; }
+    /* steps */
+    .steps-grid { gap: 18px; }
+    .step-card { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+    .step-card .step-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
+    .step-card h3 { font-size: 17px; margin: 0 0 3px; }
+    .step-card p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+    /* questions: a plain list with hairlines */
+    .faq-list { gap: 0; }
+    .faq-item, .faq-item[open] { background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; padding: 0; }
+    .faq-item summary { font-size: 15.5px; padding: 15px 0; margin: 0; }
+    .faq-item p { margin: -4px 0 16px; font-size: 14.5px; line-height: 1.6; }
+    /* closing band */
+    .cta-band { padding: 40px 0; }
+    .cta-band .h2 { margin-bottom: 10px; }
+    .cta-band .lede { margin-bottom: 22px; font-size: 15px; }
+    /* footer: two columns of links */
+    .footer { padding: 36px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-tag { font-size: 14px; margin-top: 10px; }
+    .footer-col h3 { margin-bottom: 6px; font-size: 13px; }
+    .footer-col a { font-size: 14px; padding: 6px 0; }
+    .footer-bottom { margin-top: 22px; padding-top: 18px; gap: 12px; }
+    .prose-page { padding: 28px 0 44px; }
+}
