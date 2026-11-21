@@ -238,7 +238,7 @@ strong { font-weight: 600; color: var(--text-strong); }
     align-items: center;
     justify-content: space-between;
     gap: var(--sp-6);
-    padding: 16px 0;
+    padding: 16px var(--gutter); /* side gutter: .nav-inner is also .container, and a bare 16px 0 wiped it */
 }
 .nav-logo { display: flex; align-items: center; }
 .nav-logo img { height: 34px; width: auto; }
@@ -550,8 +550,9 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
     height: 20px;
     transition: transform 0.3s var(--ease);
     color: var(--text-strong);
+    transform: rotate(180deg); /* the drawn arrow points up: turned, it points down on a closed question */
 }
-.faq-item[open] .faq-chev { transform: rotate(180deg); }
+.faq-item[open] .faq-chev { transform: none; }
 .faq-item p {
     margin: var(--sp-4) 0 0;
     font-size: 15px;
@@ -638,7 +639,7 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
    ========================================== */
 /* Tablet (641 to 1100): links on a second row like the homepage, two-column cards */
 @media (max-width: 1100px) {
-    .nav-inner { flex-wrap: wrap; row-gap: 4px; padding: 20px 0 8px; }
+    .nav-inner { flex-wrap: wrap; row-gap: 4px; padding: 20px var(--gutter) 8px; }
     .nav-logo { order: 1; }
     .nav-cta { order: 2; }
     .nav-links { order: 3; width: 100%; display: flex; gap: 20px; }
@@ -668,7 +669,7 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
 
 /* Phones (640 and under): hamburger menu, single column */
 @media (max-width: 640px) {
-    .nav-inner { flex-wrap: nowrap; padding: 16px 0; }
+    .nav-inner { flex-wrap: nowrap; padding: 16px var(--gutter); }
     .nav-links, .nav-cta .btn { display: none; }
     .hamburger { display: block; }
     .nav-cta { gap: var(--sp-2); }
@@ -697,19 +698,86 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
 .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
 @media (max-width: 540px) { .footer-bottom-right { justify-content: center; } }
 
+/* The header's own phone button. Hidden above 640px. */
+.nav-app { display: none; }
+
 /* ==========================================
    PHONE PASS (640 and under)
    Less box, more content: tighter type and spacing, cards
    become plain rows with a hairline between them, store
    buttons sit side by side, the footer folds to two columns.
+   The header is a floating bar that folds away while you
+   scroll down, and the menu drops from it.
    ========================================== */
 @media (max-width: 640px) {
     :root { --gutter: 20px; }
+
+    /* ---------- Header: a floating bar ---------- */
+    /* At the top of the page it is part of the page and scrolls away with it, so nothing sits on what
+       you are reading. Scroll back up and it returns as a floating bar. */
+    .nav { position: relative; top: auto; z-index: 100; padding: 8px 10px 0; background: none; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; transition: transform 0.32s var(--ease); }
+    .nav.is-stuck { position: sticky; top: 0; }
+    .nav-inner { pointer-events: auto; flex-wrap: nowrap; gap: 8px; max-width: none; min-height: 0; height: 52px; margin: 0; padding: 0 10px; border-radius: 26px; background-color: rgba(255, 255, 255, 0); box-shadow: 0 0 0 1px rgba(13, 35, 64, 0), 0 8px 24px rgba(13, 35, 64, 0); transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), padding 0.3s var(--ease); }
+    .nav-logo { flex: 0 0 auto; order: 0; height: 44px; margin-left: -3px; -webkit-tap-highlight-color: transparent; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-links, .nav-cta .btn { display: none; }
+    .nav-cta { order: 0; gap: 6px; }
+    .nav-app { position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 36px; padding: 0 15px; border-radius: 18px; background: var(--brand-teal); color: #fff; font-family: var(--font-body); font-size: 13.5px; font-weight: 600; line-height: 1; white-space: nowrap; transition: transform 0.15s var(--ease); -webkit-tap-highlight-color: transparent; }
+    .nav-app::after { content: ""; position: absolute; inset: -6px -3px; } /* a 48px target for the thumb */
+    .nav-app:active { transform: scale(0.96); }
+    .hamburger { display: block; position: relative; flex: 0 0 auto; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background-color: rgba(13, 35, 64, 0.06); cursor: pointer; transition: background-color 0.25s var(--ease); -webkit-tap-highlight-color: transparent; }
+    .hamburger span { position: absolute; left: 13px; top: 21px; width: 18px; height: 2px; margin: 0; border-radius: 2px; background: var(--navy-900); transition: transform 0.3s var(--ease), opacity 0.2s var(--ease); }
+    .hamburger span:nth-child(1) { transform: translateY(-6px); }
+    .hamburger span:nth-child(3) { transform: translateY(6px); }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
+    /* scrolled back up, or the menu is open: the bar lifts off the page */
+    .nav.is-float .nav-inner, .nav.is-menu .nav-inner { padding: 0 4px 0 14px; background-color: #fff; box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.06), 0 8px 24px rgba(13, 35, 64, 0.12); }
+    .nav.is-float { animation: nav-in 0.34s var(--ease); }
+    /* scrolling down again: out of the way, shadow and all */
+    .nav.is-hide { transform: translateY(calc(-100% - 36px)); }
+    .nav.is-hide .nav-inner { pointer-events: none; }
+
+    /* ---------- Menu: a card that drops from the bar ---------- */
+    .mobile-menu, .mobile-menu.open { display: flex; }
+    .mobile-menu { position: fixed; inset: 68px 10px auto 10px; z-index: 99; flex-direction: column; gap: 2px; box-sizing: border-box; max-height: calc(100vh - 84px); max-height: calc(100dvh - 84px); padding: 8px; overflow-y: auto; overscroll-behavior: contain; border-radius: 24px; background: #fff; box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.06), 0 24px 60px rgba(13, 35, 64, 0.28); transform-origin: calc(100% - 26px) 0; transform: translateY(-8px) scale(0.96); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.18s var(--ease), visibility 0s linear 0.26s; }
+    .mobile-menu.open { transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.18s var(--ease); }
+    .mobile-menu > a { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; column-gap: 12px; align-items: center; padding: 9px 10px; border: 0; border-radius: 16px; font-size: 16px; color: var(--text-strong); -webkit-tap-highlight-color: transparent; }
+    .mobile-menu > a:active, .mobile-menu > a[aria-current="page"] { background: var(--brand-mint); }
+    .mm-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--brand-mint); color: var(--brand-teal); }
+    .mobile-menu > a[aria-current="page"] .mm-ico { background: #fff; }
+    .mm-ico svg, .mm-go { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .mm-ico svg { width: 19px; height: 19px; }
+    .mm-txt strong { display: block; font-family: var(--font-head); font-size: 16px; font-weight: 600; line-height: 1.25; color: var(--text-strong); }
+    .mm-txt small { display: block; margin-top: 1px; font-size: 13px; font-weight: 400; line-height: 1.35; color: var(--text-body); }
+    .mm-go { width: 18px; height: 18px; color: #9aa6b2; }
+    .mm-foot { margin-top: 6px; padding: 14px 10px 8px; border-top: 1px solid rgba(13, 35, 64, 0.08); }
+    .mm-foot p { margin: 0 0 10px; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text-body); }
+    .mm-stores { display: flex; gap: 10px; }
+    .mm-stores .btn-store { flex: 1 1 0; min-width: 0; width: auto; justify-content: center; padding: 10px 8px; gap: 8px; border: 0; border-radius: 12px; color: #fff; }
+    .mobile-menu.open > * { animation: mm-in 0.36s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+    .mobile-menu.open > :nth-child(2) { animation-delay: 0.03s; }
+    .mobile-menu.open > :nth-child(3) { animation-delay: 0.06s; }
+    .mobile-menu.open > :nth-child(4) { animation-delay: 0.09s; }
+    .mobile-menu.open > :nth-child(5) { animation-delay: 0.12s; }
+    .mobile-menu.open > :nth-child(6) { animation-delay: 0.15s; }
+    .nav-scrim { position: fixed; inset: 0; z-index: 98; background: rgba(13, 35, 64, 0.4); opacity: 0; visibility: hidden; transition: opacity 0.25s var(--ease), visibility 0s linear 0.25s; -webkit-tap-highlight-color: transparent; }
+    .nav-scrim.show { opacity: 1; visibility: visible; transition: opacity 0.25s var(--ease); }
+
+    /* ---------- Touch: things answer the finger ---------- */
+    a, button, summary { -webkit-tap-highlight-color: rgba(13, 117, 104, 0.1); }
+    .btn, .btn-store { transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease); }
+    .btn:active, .btn-store:active, .btn-store:hover:active { transform: scale(0.97); }
+
+    /* ---------- Type and spacing ---------- */
+    h1, h2, h3, .h1, .h2 { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
     section { padding: 44px 0; }
     .h1 { font-size: clamp(30px, 8.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; }
     .h2 { font-size: clamp(24px, 6.6vw, 28px); line-height: 1.18; }
     .lede { font-size: 16px; line-height: 1.55; }
-    .page-hero { padding: 28px 0 36px; }
+    .page-hero { margin-top: -60px; padding: 84px 0 36px; }
     .page-hero .h1 { margin-bottom: 14px; }
     .section-head { margin-bottom: 20px; }
     /* store buttons: two across, never stacked */
@@ -728,16 +796,23 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
     .feature-icon svg { width: 19px; height: 19px; }
     .feature-tile h3 { font-size: 16.5px; margin: 0 0 3px; }
     .feature-tile p { font-size: 14.5px; line-height: 1.5; }
-    /* "two ways" cards */
-    .ways-grid { gap: 12px; }
-    .way-card { padding: 18px; border-radius: 16px; }
-    .way-card h3 { font-size: 17px; }
+    /* "two ways" cards: two plain entries with a hairline between them */
+    div.ways-grid { gap: 0; } /* the page's own rule sets a gap; this one has to outrank it */
+    .ways-grid .way-card, .ways-grid .way-card:hover { padding: 18px 0; background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; box-shadow: none; transform: none; }
+    .ways-grid .way-card:first-child { padding-top: 0; }
+    .ways-grid .way-card:last-child { border-bottom: 0; padding-bottom: 0; }
+    .ways-grid .way-tag { background: #fff; margin-bottom: 0; }
+    .ways-grid .way-card h3 { font-size: 18px; margin: 10px 0 5px; }
+    .ways-grid .way-card p { font-size: 14.5px; line-height: 1.55; }
     /* steps */
     .steps-grid { gap: 18px; }
     .step-card { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
     .step-card .step-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
     .step-card h3 { font-size: 17px; margin: 0 0 3px; }
     .step-card p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+    /* the try-on page keeps its own step styles: on phones they follow the same plain rows */
+    .steps-grid .step-card, .steps-grid .step-card:hover { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; }
+    .steps-grid .step-card .step-num { width: 40px; height: 40px; margin: 0; }
     /* questions: a plain list with hairlines */
     .faq-list { gap: 0; }
     .faq-item, .faq-item[open] { background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; padding: 0; }
@@ -756,4 +831,21 @@ section:has(+ .footer) { padding-bottom: var(--sp-16); }
     .footer-col a { font-size: 14px; padding: 6px 0; }
     .footer-bottom { margin-top: 22px; padding-top: 18px; gap: 12px; }
     .prose-page { padding: 28px 0 44px; }
+}
+/* the narrowest phones: the logo and the button give a little so the bar still fits */
+@media (max-width: 350px) {
+    .nav-logo img { height: 28px; }
+    .nav-app { padding: 0 12px; font-size: 13px; }
+}
+@keyframes mm-in { from { opacity: 0; transform: translateY(-6px); } }
+/* Phones: going from one page to the next cross-fades instead of flashing white. The switch for it
+   (@view-transition) sits in each page's <head>, because the browser reads it before this file has
+   loaded; this only sets the pace. Browsers that do not know it ignore it. */
+@media (max-width: 640px) {
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; }
+}
+@keyframes nav-in { from { transform: translateY(calc(-100% - 36px)); } }
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+    .nav, .nav-inner, .nav-app, .hamburger, .hamburger span, .mobile-menu, .mobile-menu.open, .nav-scrim, .nav-scrim.show { transition: none; }
+    .mobile-menu.open > *, .nav.is-float { animation: none; }
 }

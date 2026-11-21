@@ -29,7 +29,7 @@
     <meta name="theme-color" content="#0d7568">
     <link rel="preload" href="/assets/fonts/poppins-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/v2/site.css">
+    <link rel="stylesheet" href="assets/v2/site.css?v=20261122">
     <style>
         /* ==========================================================
            FOR SALONS: the salon day, check-in to payroll.
@@ -68,9 +68,9 @@
         .idx.is-shown { opacity: 1; visibility: visible; transform: translate(0, -50%); transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }
         .idx-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-end; touch-action: none; }
         .idx-list li { display: flex; justify-content: flex-end; }
-        .idx-list a { display: block; padding: 4px 10px 4px 12px; border-right: 2px solid rgba(13, 35, 64, 0.1); font-family: var(--font-head); font-size: 13px; font-weight: 500; line-height: 1.25; text-align: right; white-space: nowrap; color: #8a96a3; transition: font-size 0.28s var(--ease), color 0.28s var(--ease), border-color 0.28s var(--ease), padding 0.28s var(--ease); -webkit-tap-highlight-color: transparent; }
+        .idx-list a { display: block; padding: 4px 10px 4px 12px; border-right: 2px solid rgba(13, 35, 64, 0.1); font-family: var(--font-head); font-size: 13px; font-weight: 500; line-height: 1.25; text-align: right; white-space: nowrap; color: #5f6b78; transition: font-size 0.28s var(--ease), color 0.28s var(--ease), border-color 0.28s var(--ease), padding 0.28s var(--ease); -webkit-tap-highlight-color: transparent; }
         .idx-list a:hover { color: var(--text-strong); }
-        .idx-list a.is-near { font-size: 15px; color: #5f6b78; }
+        .idx-list a.is-near { font-size: 15px; color: #364250; }
         .idx-list a.is-on { font-size: 21px; font-weight: 600; color: var(--brand-teal); border-right-color: var(--brand-teal); padding-top: 6px; padding-bottom: 6px; }
         .idx-list a:focus-visible, .sal-hero-more:focus-visible, .feat-cta:focus-visible, .feat-cta-note a:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
         /* where the screen has no margin beside the page, the features move over to make room */
@@ -539,6 +539,9 @@
             .promise-built { margin-top: 18px; font-size: 15.5px; }
             .promise-note { font-size: 12.5px; }
             .feat, .spec, .sal-steps, .sal-faq { padding: 40px 0; }
+            .feat, .spec { scroll-margin-top: 0; }
+            /* a section chosen from the map or the index settles in */
+            .feat.is-arrive > .container, .spec.is-arrive > .container { animation: sec-arrive 0.42s var(--ease) both; }
             .sal-body .container { padding-right: var(--gutter); }
             .feat-grid, .feat--flip .feat-grid { gap: 0; }
             .feat-copy { display: contents; }
@@ -559,10 +562,41 @@
             .stack--side { max-width: 300px; }
             .stack--side .dev--phone { flex-basis: 236px; }
             .shot-caption { margin-top: 12px; font-size: 12.5px; }
-            /* section names: over the page, only while it is moving */
-            .idx { right: 4px; }
-            .idx.is-shown:not(.is-live) { opacity: 0; visibility: hidden; transform: translate(10px, -50%); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), visibility 0s linear 0.4s; }
-            .idx-list { padding: 8px 2px 8px 8px; border-radius: 16px; background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 8px 28px rgba(13, 35, 64, 0.16); border: 1px solid rgba(13, 35, 64, 0.07); }
+            /* Section index on phones: small marks in the right margin, like the letters down the side
+               of a phone's contact list. They never sit on the text. Tap them and the names open out
+               beside your thumb; pick one, or press and slide and the page follows. A swipe that
+               starts on the marks still scrolls the page (touch-action: pan-y). */
+            .idx, .idx.is-shown { top: 0; right: 0; bottom: 0; left: auto; width: 0; z-index: 90; transform: none; }
+            .idx-rail { display: flex; flex-direction: column; align-items: flex-end; position: absolute; right: 0; top: 50%; padding: 14px 4px 14px 12px; transform: translateY(-50%); touch-action: pan-y; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; transition: opacity 0.15s var(--ease); }
+            .idx-rail i { position: relative; display: block; width: 14px; height: 11px; }
+            .idx-rail i::after, .idx-list a::after { content: ""; position: absolute; right: 0; top: 50%; width: 5px; height: 2px; margin-top: -1px; border-radius: 2px; background: rgba(13, 35, 64, 0.28); transition: width 0.18s var(--ease), background-color 0.18s var(--ease); }
+            .idx-rail i.is-near::after, .idx-list a.is-near::after { width: 9px; background: rgba(13, 35, 64, 0.42); }
+            .idx-rail i.is-on::after, .idx-list a.is-on::after { width: 14px; height: 3px; margin-top: -1.5px; background: var(--brand-teal); }
+            .idx.is-open .idx-rail { opacity: 0; }
+            /* the first time the marks appear, a ripple runs down them once: they are there to be touched */
+            .idx-rail.is-wave i::after { animation: idx-wave 0.5s var(--ease) both; animation-delay: calc(var(--k, 0) * 32ms); transform-origin: right center; }
+            .idx-list { display: block; position: absolute; right: 0; top: 0; width: max-content; padding: 10px 34px 10px 20px; border-radius: 22px 0 0 22px; background: #fff; box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.06), 0 14px 44px rgba(13, 35, 64, 0.22); opacity: 0; transform: translateX(14px); pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; transition: opacity 0.16s var(--ease), transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1); }
+            .idx.is-open .idx-list { opacity: 1; transform: none; pointer-events: auto; }
+            .idx-list li { align-items: center; height: var(--idx-row, 30px); }
+            .idx-list a, .idx-list a.is-near, .idx-list a.is-on { position: relative; padding: 0; border: 0; line-height: 1; -webkit-tap-highlight-color: transparent; }
+            .idx-list a { font-size: 13px; color: #5f6b78; transition: font-size 0.14s var(--ease), color 0.14s var(--ease); }
+            .idx-list a.is-near { font-size: 15px; color: #364250; }
+            .idx-list a.is-on { font-size: 20px; color: var(--brand-teal); }
+            .idx-list a.is-touch { color: var(--text-strong); }
+            .idx-list a.is-touch::after { background: var(--navy-900); width: 9px; }
+            .idx-list a::after { right: -30px; }
+            /* everything in one app: the page at a glance */
+            .eco { display: block; padding: 36px 0 30px; background: #fff; }
+            .eco .eyebrow { margin-bottom: 8px; }
+            .eco .h2 { font-size: clamp(23px, 6.4vw, 27px); margin: 0 0 4px; }
+            .eco-sub { margin: 0 0 20px; font-size: 14.5px; line-height: 1.5; color: var(--text-body); }
+            .eco-grid { list-style: none; margin: 0 -6px; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; row-gap: 16px; }
+            .eco-grid li { flex: 0 0 25%; min-width: 0; }
+            .eco-grid a { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 2px; font-size: 12px; font-weight: 500; line-height: 1.25; text-align: center; color: var(--text-strong); -webkit-tap-highlight-color: transparent; }
+            .eco-ico { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 17px; background: var(--brand-mint); color: var(--brand-teal); transition: transform 0.15s var(--ease), background-color 0.15s var(--ease); }
+            .eco-ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+            .eco-grid a:active .eco-ico { transform: scale(0.92); background: var(--teal-100); }
+            .eco-grid a:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; border-radius: 12px; }
             .sal-steps .feat-copy { display: block; }
             .sal-step h3 { font-size: 17px; }
             .sal-step p { font-size: 14.5px; }
@@ -574,8 +608,12 @@
             .kit h3 { font-size: 15.5px; margin-bottom: 2px; }
             .kit p { font-size: 14px; line-height: 1.5; }
         }
-        @media (min-width: 641px) { .feat-more { display: none; } }
+        @media (min-width: 641px) { .feat-more, .eco, .idx-rail { display: none; } }
+        @keyframes idx-wave { 40% { transform: scaleX(2.4); background-color: var(--brand-teal); } }
+        @keyframes sec-arrive { from { opacity: 0.2; transform: translateY(12px); } }
+        @media (prefers-reduced-motion: reduce) { .idx-rail.is-wave i::after, .feat.is-arrive > .container, .spec.is-arrive > .container { animation: none; } .idx-list, .idx-rail { transition: none !important; } }
     </style>
+    <style>@media (max-width: 640px) and (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }</style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -741,6 +779,7 @@
                     Join the community
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
+                <a href="/#belong" class="nav-app" data-store-link data-tt-track="nav_get_app">Get the app</a>
                 <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -749,14 +788,24 @@
     </header>
 
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-        <a href="/#community">Community</a>
-        <a href="/for-clients">For clients</a>
-        <a href="/for-artists">For professionals</a>
-        <a href="/for-salons">For salons</a>
-        <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
-        <a href="/#belong" class="btn btn-primary">Join the community
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <a href="/#community"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="mm-txt"><strong>Community</strong><small>Discussions, inspiration and your people</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-clients"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="mm-txt"><strong>For clients</strong><small>Find a nail artist and book</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-artists"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg></span><span class="mm-txt"><strong>For professionals</strong><small>Your portfolio, clients and bookings</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-salons" aria-current="page"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg></span><span class="mm-txt"><strong>For salons</strong><small>Run your salon in one free app</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/try-on" data-tt-track="nav_ar_tryon"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span><span class="mm-txt"><strong>AR Try On</strong><small>See a look on your own hands</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <div class="mm-foot">
+            <p>Join the community. Free on iPhone and Android.</p>
+            <div class="mm-stores">
+                <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="menu_appstore" aria-label="Download on the App Store">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="menu_playstore" aria-label="Get it on Google Play">
+                    <svg viewBox="0 0 24 24"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                    <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
+                </a>
+            </div>
+        </div>
     </nav>
 
     <!-- Icons used inside the app screens (Lucide, ISC licence) -->
@@ -794,6 +843,22 @@
             <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
             <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
         </defs>
+        <!-- the "everything in one app" map on phones (Lucide) -->
+        <symbol id="e-devices" viewBox="0 0 24 24"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></symbol>
+        <symbol id="e-check-in" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+        <symbol id="e-queue" viewBox="0 0 24 24"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="M4 10h2"/><path d="M4 6h1v4"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></symbol>
+        <symbol id="e-bookings" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+        <symbol id="e-website" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+        <symbol id="e-pos" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+        <symbol id="e-close-out" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol>
+        <symbol id="e-team" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+        <symbol id="e-payroll" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+        <symbol id="e-customers" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+        <symbol id="e-your-data" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="e-inventory" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/></symbol>
+        <symbol id="e-dashboard" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+        <symbol id="e-profile" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></symbol>
+        <symbol id="e-everything" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><path d="M14 4h7"/><path d="M14 9h7"/><path d="M14 15h7"/><path d="M14 20h7"/></symbol>
     </svg>
 
     <!-- HERO -->
@@ -812,11 +877,11 @@
                 <div class="ctas">
                     <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_hero_appstore" aria-label="Download on the App Store">
                         <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                        <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_hero_playstore" aria-label="Get it on Google Play">
                         <svg viewBox="0 0 24 24"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                        <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                        <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
                     </a>
                 </div>
                 <a class="sal-hero-more" href="#devices">See everything it does</a>
@@ -901,9 +966,35 @@
         </div>
     </section>
 
+    <!-- EVERYTHING IN ONE APP: the page at a glance, phones only -->
+    <section class="eco" id="one-app" aria-labelledby="eco-title">
+        <div class="container">
+            <span class="eyebrow">One app</span>
+            <h2 class="h2" id="eco-title">Everything your salon runs on.</h2>
+            <p class="eco-sub">Tap one to see it.</p>
+            <ul class="eco-grid">
+                <li><a href="#devices"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-devices"/></svg></span><span>Any device</span></a></li>
+                <li><a href="#check-in"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-check-in"/></svg></span><span>Check-in</span></a></li>
+                <li><a href="#queue"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-queue"/></svg></span><span>Walk-ins</span></a></li>
+                <li><a href="#bookings"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-bookings"/></svg></span><span>Bookings</span></a></li>
+                <li><a href="#website"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-website"/></svg></span><span>Free website</span></a></li>
+                <li><a href="#pos"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-pos"/></svg></span><span>POS</span></a></li>
+                <li><a href="#close-out"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-close-out"/></svg></span><span>End of day</span></a></li>
+                <li><a href="#team"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-team"/></svg></span><span>Staff</span></a></li>
+                <li><a href="#payroll"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-payroll"/></svg></span><span>Payroll</span></a></li>
+                <li><a href="#customers"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-customers"/></svg></span><span>Campaigns</span></a></li>
+                <li><a href="#your-data"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-your-data"/></svg></span><span>Your data</span></a></li>
+                <li><a href="#inventory"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-inventory"/></svg></span><span>Inventory</span></a></li>
+                <li><a href="#dashboard"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-dashboard"/></svg></span><span>Dashboard</span></a></li>
+                <li><a href="#profile"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-profile"/></svg></span><span>Salon profile</span></a></li>
+                <li><a href="#everything"><span class="eco-ico"><svg aria-hidden="true"><use href="#e-everything"/></svg></span><span>Full list</span></a></li>
+            </ul>
+        </div>
+    </section>
+
     <!-- FEATURES, WITH THE PAGE INDEX BESIDE THEM -->
     <div class="sal-body">
-        <!-- page index: the section names down the right edge, like the letters down the side of a phone's contact list -->
+        <!-- page index: the section names down the right edge. On phones: marks in the margin, like the letters down the side of a phone's contact list -->
         <nav class="idx" id="page-index" aria-label="On this page">
             <ol class="idx-list">
                 <li><a href="#devices">Any device</a></li>
@@ -922,6 +1013,7 @@
                 <li><a href="#profile">Salon profile</a></li>
                 <li><a href="#everything">Full list</a></li>
             </ol>
+            <div class="idx-rail" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </nav>
 
     <!-- 1. ANY DEVICE -->
@@ -1897,11 +1989,11 @@
             <div class="ctas">
                 <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_cta_appstore" aria-label="Download on the App Store">
                     <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                    <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="salon_cta_playstore" aria-label="Get it on Google Play">
                     <svg viewBox="0 0 24 24"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                    <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                    <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
                 </a>
             </div>
         </div>
@@ -1967,49 +2059,58 @@
         </div>
     </footer>
 
-    <script src="assets/v2/site.js"></script>
+    <script src="assets/v2/site.js?v=20261122"></script>
     <script>
-    // Salons page: the section names down the right edge, like the letters down a phone's contact list
+    // Salons page: the section index.
+    // Desktop and tablets: the section names down the right edge, the one in view larger.
+    // Phones: small marks in the right margin, like the letters down the side of a phone's
+    // contact list. Tap them and the names open out beside your thumb; pick one, or press and
+    // slide and the page follows. A swipe that starts on the marks still scrolls the page.
     (function () {
         'use strict';
         var root = document.documentElement, nav = document.querySelector('.nav');
-        function measure() { if (nav) root.style.setProperty('--nav-h', nav.offsetHeight + 'px'); }
+        function navH() { return nav ? nav.offsetHeight : 0; }
+        function measure() { root.style.setProperty('--nav-h', navH() + 'px'); }
         measure();
         window.addEventListener('resize', measure);
         window.addEventListener('load', measure);
         var body = document.querySelector('.sal-body'), idx = document.getElementById('page-index');
         if (!body || !idx || !('IntersectionObserver' in window)) return;
-        var list = idx.querySelector('.idx-list'), links = [].slice.call(idx.querySelectorAll('a'));
-        var byId = {}, current = null, scrubbing = false;
-        links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+        var list = idx.querySelector('.idx-list'), rail = idx.querySelector('.idx-rail');
+        var links = [].slice.call(list.querySelectorAll('a'));
+        var ticks = rail ? [].slice.call(rail.children) : [];
         var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
-        function mark(id) {
-            if (id === current) return;
-            current = id;
-            var at = links.indexOf(byId[id]);
-            links.forEach(function (a, i) {
-                var on = i === at;
-                a.classList.toggle('is-on', on);
+        var n = links.length, current = -1, scrubbing = false, closeTimer = null, waved = false;
+        var phone = window.matchMedia ? window.matchMedia('(max-width: 640px)') : { matches: false };
+        function clamp(i) { return Math.max(0, Math.min(n - 1, i)); }
+        // where a section's top should sit after a jump: under the bar on big screens. On phones the
+        // bar gets out of the way for a jump (nav.js), so the section starts at the top of the screen
+        function landing() { return phone.matches ? 0 : navH(); }
+
+        function mark(i) {
+            if (i === current) return;
+            current = i;
+            for (var k = 0; k < n; k++) {
                 // the names either side grow a little, like the dock on a Mac
-                a.classList.toggle('is-near', at >= 0 && Math.abs(i - at) === 1);
-                if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-            });
+                var on = k === i, near = Math.abs(k - i) === 1;
+                links[k].classList.toggle('is-on', on);
+                links[k].classList.toggle('is-near', near);
+                if (on) links[k].setAttribute('aria-current', 'true'); else links[k].removeAttribute('aria-current');
+                if (ticks[k]) { ticks[k].classList.toggle('is-on', on); ticks[k].classList.toggle('is-near', near); }
+            }
         }
         // the section in view is the last one whose top has passed a line a third of the way down
         // the screen (under the top bar), so the name changes as the next heading comes into view
         function pick() {
             if (scrubbing) return;
-            var navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 0;
-            var line = navH + (window.innerHeight - navH) * 0.3, id = null;
-            for (var i = 0; i < sections.length; i++) {
-                if (sections[i] && sections[i].getBoundingClientRect().top <= line) id = sections[i].id;
+            var h = landing(), line = h + (window.innerHeight - h) * 0.3, at = 0;
+            for (var k = 0; k < n; k++) {
+                if (sections[k] && sections[k].getBoundingClientRect().top <= line) at = k;
             }
-            mark(id || (sections[0] && sections[0].id));
+            mark(at);
         }
-        var ticking = false, liveTimer = null;
-        function live() { idx.classList.add('is-live'); clearTimeout(liveTimer); liveTimer = setTimeout(function () { if (!scrubbing) idx.classList.remove('is-live'); }, 1600); }
+        var ticking = false;
         window.addEventListener('scroll', function () {
-            live();
             if (ticking) return;
             ticking = true;
             requestAnimationFrame(function () { ticking = false; pick(); });
@@ -2017,46 +2118,207 @@
         window.addEventListener('resize', pick);
         window.addEventListener('load', pick);
         pick();
-        // the list shows only while the reader is among the features
+        // the index shows only while the reader is among the features
         new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { idx.classList.toggle('is-shown', e.isIntersecting); });
+            entries.forEach(function (e) {
+                idx.classList.toggle('is-shown', e.isIntersecting);
+                if (!e.isIntersecting) close();
+                // once, the first time the marks come into view, a ripple runs down them
+                if (e.isIntersecting && rail && !waved) {
+                    waved = true;
+                    ticks.forEach(function (t, k) { t.style.setProperty('--k', k); });
+                    rail.classList.add('is-wave');
+                    setTimeout(function () { rail.classList.remove('is-wave'); }, 1400);
+                }
+            });
         }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 }).observe(body);
-        // touch: tap a name, or drag up and down the strip, and the page follows the finger
-        function linkAt(y) {
-            var best = null, dist = Infinity;
-            links.forEach(function (a) { var r = a.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - y); if (d < dist) { dist = d; best = a; } });
+
+        // straight there, no smooth scroll, so the page keeps up with the finger
+        function jump(i, arrive) {
+            var t = sections[i];
+            if (!t) return;
+            // the header (nav.js) stays out of the way while the page jumps
+            try { document.dispatchEvent(new CustomEvent('jl:jump')); } catch (err) {}
+            var was = root.style.scrollBehavior;
+            root.style.scrollBehavior = 'auto';
+            window.scrollTo(0, Math.round(t.getBoundingClientRect().top + window.pageYOffset - landing()));
+            root.style.scrollBehavior = was;
+            mark(i);
+            // a chosen section settles in, so the change of place reads as one move
+            if (arrive && phone.matches) {
+                t.classList.remove('is-arrive');
+                void t.offsetWidth;
+                t.classList.add('is-arrive');
+            }
+        }
+        body.addEventListener('animationend', function (e) {
+            if (e.animationName === 'sec-arrive' && e.target.closest) { var s = e.target.closest('.is-arrive'); if (s) s.classList.remove('is-arrive'); }
+        });
+
+        // Phones: the names panel. It opens with the touched section's name level with the finger.
+        var PAD = 10, panelTop = 0, rowH = 30;
+        function openAt(y, i) {
+            var box = idx.getBoundingClientRect();
+            // rows as tall as the screen allows, up to 30px, and never so tall that the panel
+            // cannot be placed with the first or the last name level with its mark
+            var pitch = ticks.length ? ticks[0].offsetHeight : 11;
+            rowH = Math.max(16, Math.min(30, Math.floor((box.height / 2 + (n - 1) / 2 * pitch - PAD - 6) / (n - 0.5))));
+            var h = n * rowH + 2 * PAD;
+            var top = Math.max(6, Math.min(y - box.top - PAD - (i + 0.5) * rowH, box.height - h - 6));
+            panelTop = box.top + top;
+            idx.style.setProperty('--idx-row', rowH + 'px');
+            list.style.top = Math.round(top) + 'px';
+            idx.classList.add('is-open');
+        }
+        var touchRow = -1;
+        function setTouchRow(i) {
+            if (i === touchRow) return;
+            if (links[touchRow]) links[touchRow].classList.remove('is-touch');
+            touchRow = i;
+            if (links[i]) links[i].classList.add('is-touch');
+        }
+        function close() { clearTimeout(closeTimer); setTouchRow(-1); idx.classList.remove('is-open'); }
+        function closeSoon(ms) { clearTimeout(closeTimer); closeTimer = setTimeout(close, ms); }
+        function tickAt(y) {
+            var r = rail.getBoundingClientRect(), s = getComputedStyle(rail);
+            var top = r.top + parseFloat(s.paddingTop), pitch = (r.height - parseFloat(s.paddingTop) - parseFloat(s.paddingBottom)) / n;
+            return clamp(Math.floor((y - top) / pitch));
+        }
+        function rowAt(y) {
+            if (phone.matches) return clamp(Math.floor((y - panelTop - PAD) / rowH));
+            // tablets: the names are always on screen, so take the nearest one
+            var best = 0, dist = Infinity;
+            links.forEach(function (a, k) { var r = a.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - y); if (d < dist) { dist = d; best = k; } });
             return best;
         }
-        function jumpTo(a) {
-            var id = a.getAttribute('href').slice(1), t = document.getElementById(id);
-            if (!t || id === current && scrubbing) return;
-            // straight there, no smooth scroll, so the page keeps up with the finger
-            var navH = parseFloat(getComputedStyle(root).getPropertyValue('--nav-h')) || 0;
-            window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'instant' });
-            mark(id);
+        function setScrub(on) {
+            scrubbing = on;
+            idx.classList.toggle('is-scrub', on);
         }
-        list.addEventListener('touchstart', function (e) {
-            if (e.touches.length !== 1) return;
-            e.preventDefault();
-            scrubbing = true;
-            idx.classList.add('is-scrub');
-            current = null;
-            jumpTo(linkAt(e.touches[0].clientY));
-        }, { passive: false });
-        list.addEventListener('touchmove', function (e) {
-            if (!scrubbing) return;
-            e.preventDefault();
-            jumpTo(linkAt(e.touches[0].clientY));
-        }, { passive: false });
-        function endScrub() {
-            if (!scrubbing) return;
-            scrubbing = false;
-            live();
-            idx.classList.remove('is-scrub');
+
+        // One finger on the index.
+        //   Tablets: the names are on screen, so a touch on a name goes there and a drag follows.
+        //   Phones:  'pending'  finger down on the marks; too early to tell a press from a scroll
+        //            'scroll'   it moved straight away: the reader is scrolling, the page has it
+        //            'armed'    a press: the names are open, nothing has moved yet
+        //            'scrub'    the finger slid to another name: the page follows it
+        var mode = null, from = '', y0 = 0, row0 = -1, holdTimer = null, lastTouch = 0;
+        // a touch is followed by make-believe mouse events: the mouse rules below ignore those
+        function byTouch() { return Date.now() - lastTouch < 1200; }
+        function start(e) {
+            if (!e.touches || e.touches.length !== 1) return;
+            lastTouch = Date.now();
+            var y = e.touches[0].clientY;
+            clearTimeout(closeTimer);
+            clearTimeout(holdTimer);
+            if (!phone.matches) {
+                e.preventDefault();
+                mode = 'scrub';
+                setScrub(true);
+                jump(rowAt(y));
+                return;
+            }
+            y0 = y;
+            if (idx.classList.contains('is-open') && list.contains(e.target)) {
+                // the names are open: a finger on one is a choice
+                e.preventDefault();
+                from = 'list';
+                mode = 'armed';
+                row0 = rowAt(y);
+                setTouchRow(row0);
+                return;
+            }
+            // on the marks: wait a moment, so a swipe that starts here still scrolls the page
+            from = 'rail';
+            mode = 'pending';
+            holdTimer = setTimeout(function () {
+                if (mode !== 'pending') return;
+                mode = 'armed';
+                openAt(y0, tickAt(y0));
+                row0 = rowAt(y0);
+                setTouchRow(row0);
+            }, 110);
         }
-        list.addEventListener('touchend', endScrub);
-        list.addEventListener('touchcancel', endScrub);
+        function move(e) {
+            if (!mode || !e.touches || !e.touches.length) return;
+            var y = e.touches[0].clientY;
+            if (mode === 'pending') {
+                if (Math.abs(y - y0) > 6) { mode = 'scroll'; clearTimeout(holdTimer); }
+                return;
+            }
+            if (mode === 'scroll') return;
+            if (e.cancelable) e.preventDefault();
+            var i = rowAt(y);
+            if (mode === 'armed') {
+                if (i === row0 && Math.abs(y - y0) < 8) return;
+                mode = 'scrub';
+                setScrub(true);
+                setTouchRow(-1);
+            }
+            if (i !== current) jump(i);
+        }
+        function end(e) {
+            clearTimeout(holdTimer);
+            lastTouch = Date.now();
+            var was = mode, cancelled = e && e.type === 'touchcancel';
+            mode = null;
+            if (!was) return;
+            if (was === 'scrub') {
+                setScrub(false);
+                if (phone.matches) closeSoon(700);
+            } else if (was === 'pending' && !cancelled) {
+                // a tap on the marks: the names open and stay open
+                openAt(y0, tickAt(y0));
+            } else if (was === 'armed' && from === 'list' && !cancelled) {
+                // a tap on a name: go there
+                jump(row0, true);
+                closeSoon(240);
+            }
+            if (was !== 'armed' || from === 'list') setTouchRow(-1);
+        }
+        idx.addEventListener('touchstart', start, { passive: false });
+        idx.addEventListener('touchmove', move, { passive: false });
+        idx.addEventListener('touchend', end);
+        idx.addEventListener('touchcancel', end);
+        // a touch anywhere else puts the names away
+        document.addEventListener('touchstart', function (e) {
+            if (idx.classList.contains('is-open') && !idx.contains(e.target)) close();
+        }, { passive: true });
+        // a mouse on a narrow window, and the keyboard
+        if (rail) rail.addEventListener('mouseenter', function (e) { if (phone.matches && !byTouch()) { clearTimeout(closeTimer); openAt(e.clientY, tickAt(e.clientY)); } });
+        list.addEventListener('mouseenter', function () { if (!byTouch()) clearTimeout(closeTimer); });
+        idx.addEventListener('mouseleave', function () { if (phone.matches && !byTouch()) closeSoon(250); });
+        list.addEventListener('click', function () { if (phone.matches) closeSoon(350); });
+        list.addEventListener('focusin', function () {
+            if (!phone.matches || idx.classList.contains('is-open')) return;
+            var r = idx.getBoundingClientRect();
+            openAt(r.top + r.height / 2, Math.max(0, current));
+        });
+        list.addEventListener('focusout', function () { if (phone.matches) closeSoon(250); });
+        function onBreakpoint() { close(); list.style.top = ''; }
+        if (phone.addEventListener) phone.addEventListener('change', onBreakpoint);
+        else if (phone.addListener) phone.addListener(onBreakpoint);
+
+        // Phones: "See everything it does" in the hero goes to the map; on wider screens, to the first section
+        var more = document.querySelector('.sal-hero-more'), map = document.getElementById('one-app');
+        function aimMore() { if (more && map) more.setAttribute('href', phone.matches ? '#one-app' : '#devices'); }
+        aimMore();
+        if (phone.addEventListener) phone.addEventListener('change', aimMore);
+        else if (phone.addListener) phone.addListener(aimMore);
+
+        // Phones: the "Everything your salon runs on" map opens a section the way an app opens a screen
+        var eco = document.querySelector('.eco-grid');
+        if (eco) eco.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href^="#"]');
+            if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+            var id = a.getAttribute('href').slice(1), i = -1;
+            sections.forEach(function (s, k) { if (s && s.id === id) i = k; });
+            if (i < 0 || !phone.matches) return;
+            e.preventDefault();
+            jump(i, true);
+        });
     })();
+
     // On phones each feature shows its first three points, with the rest behind a button
     (function () {
         if (!window.matchMedia || !window.matchMedia('(max-width: 640px)').matches) return;
@@ -2084,6 +2346,7 @@
         [].forEach.call(document.querySelectorAll('details.spec-row'), function (d) { d.open = false; });
     }
     </script>
+    <script src="assets/v2/nav.js?v=20261122" defer></script>
 
     <!-- TikTok Pixel -->
     <script>

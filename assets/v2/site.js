@@ -1,6 +1,6 @@
 /* ==========================================
    JOVÉE LINK · v2 shared JS
-   Mobile menu, FAQ accordion, scroll reveal,
+   FAQ accordion, scroll reveal,
    TikTok ClickButton tracking
    ========================================== */
 (function () {
@@ -45,23 +45,7 @@
         clearHash();
     });
 
-    // Mobile menu
-    var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', function () {
-            var open = mobileMenu.classList.toggle('open');
-            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-            document.body.style.overflow = open ? 'hidden' : '';
-        });
-        mobileMenu.querySelectorAll('a').forEach(function (a) {
-            a.addEventListener('click', function () {
-                mobileMenu.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
-        });
-    }
+    // The header and the mobile menu live in nav.js
 
     // FAQ accordion: close others when one opens
     document.querySelectorAll('.faq-item').forEach(function (item) {
