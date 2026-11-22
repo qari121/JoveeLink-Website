@@ -1155,8 +1155,9 @@
             height: 20px;
             transition: transform 0.3s var(--ease);
             color: var(--text-strong);
+            transform: rotate(180deg); /* the drawn arrow points up: turned, it points down on a closed question */
         }
-        .faq-item[open] .faq-chev { transform: rotate(180deg); }
+        .faq-item[open] .faq-chev { transform: none; }
         .faq-item p {
             margin: var(--sp-4) 0 0;
             font-size: 15px;
@@ -1807,6 +1808,221 @@
             .btn-store { width: auto; }
             .svc-grid { grid-template-columns: 1fr; }
         }
+
+        /* The header's own phone button. Hidden above 640px. */
+        .nav-app { display: none; }
+
+        /* ==========================================
+           PHONE PASS (640 and under)
+           Less box, more content: tighter type and spacing, cards
+           become plain rows with a hairline between them, store
+           buttons sit side by side, the footer folds to two columns.
+           The header is a floating bar that folds away while you
+           scroll down, and the menu drops from it.
+           ========================================== */
+        @media (max-width: 640px) {
+            :root { --gutter: 20px; }
+
+            /* ---------- Header: a floating bar ---------- */
+            /* At the top of the page it is part of the page and scrolls away with it, so nothing sits on what
+               you are reading. Scroll back up and it returns as a floating bar. */
+            .nav { position: relative; top: auto; z-index: 100; padding: 8px 10px 0; background: none; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; transition: transform 0.32s var(--ease); }
+            .nav.is-stuck { position: sticky; top: 0; }
+            .nav-inner { pointer-events: auto; flex-wrap: nowrap; gap: 8px; max-width: none; min-height: 0; height: 52px; margin: 0; padding: 0 10px; border-radius: 26px; background-color: rgba(255, 255, 255, 0); box-shadow: 0 0 0 1px rgba(13, 35, 64, 0), 0 8px 24px rgba(13, 35, 64, 0); transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), padding 0.3s var(--ease); }
+            .nav-logo { flex: 0 0 auto; order: 0; height: 44px; margin-left: -3px; -webkit-tap-highlight-color: transparent; }
+            .nav-logo img { height: 32px; width: auto; }
+            .nav-links, .nav-cta .btn { display: none; }
+            .nav-cta { order: 0; gap: 6px; }
+            .nav-app { position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 36px; padding: 0 15px; border-radius: 18px; background: var(--brand-teal); color: #fff; font-family: var(--font-body); font-size: 13.5px; font-weight: 600; line-height: 1; white-space: nowrap; transition: transform 0.15s var(--ease); -webkit-tap-highlight-color: transparent; }
+            .nav-app::after { content: ""; position: absolute; inset: -6px -3px; } /* a 48px target for the thumb */
+            .nav-app:active { transform: scale(0.96); }
+            .hamburger { display: block; position: relative; flex: 0 0 auto; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background-color: rgba(13, 35, 64, 0.06); cursor: pointer; transition: background-color 0.25s var(--ease); -webkit-tap-highlight-color: transparent; }
+            .hamburger span { position: absolute; left: 13px; top: 21px; width: 18px; height: 2px; margin: 0; border-radius: 2px; background: var(--navy-900); transition: transform 0.3s var(--ease), opacity 0.2s var(--ease); }
+            .hamburger span:nth-child(1) { transform: translateY(-6px); }
+            .hamburger span:nth-child(3) { transform: translateY(6px); }
+            .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+            .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+            .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
+            /* scrolled back up, or the menu is open: the bar lifts off the page */
+            .nav.is-float .nav-inner, .nav.is-menu .nav-inner { padding: 0 4px 0 14px; background-color: #fff; box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.06), 0 8px 24px rgba(13, 35, 64, 0.12); }
+            .nav.is-float { animation: nav-in 0.34s var(--ease); }
+            /* scrolling down again: out of the way, shadow and all */
+            .nav.is-hide { transform: translateY(calc(-100% - 36px)); }
+            .nav.is-hide .nav-inner { pointer-events: none; }
+
+            /* ---------- Menu: a card that drops from the bar ---------- */
+            .mobile-menu, .mobile-menu.open { display: flex; }
+            .mobile-menu { position: fixed; inset: 68px 10px auto 10px; z-index: 99; flex-direction: column; gap: 2px; box-sizing: border-box; max-height: calc(100vh - 84px); max-height: calc(100dvh - 84px); padding: 8px; overflow-y: auto; overscroll-behavior: contain; border-radius: 24px; background: #fff; box-shadow: 0 0 0 1px rgba(13, 35, 64, 0.06), 0 24px 60px rgba(13, 35, 64, 0.28); transform-origin: calc(100% - 26px) 0; transform: translateY(-8px) scale(0.96); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.18s var(--ease), visibility 0s linear 0.26s; }
+            .mobile-menu.open { transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.18s var(--ease); }
+            .mobile-menu > a { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; column-gap: 12px; align-items: center; padding: 9px 10px; border: 0; border-radius: 16px; font-size: 16px; color: var(--text-strong); -webkit-tap-highlight-color: transparent; }
+            .mobile-menu > a:active, .mobile-menu > a[aria-current="page"] { background: var(--brand-mint); }
+            .mm-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--brand-mint); color: var(--brand-teal); }
+            .mobile-menu > a[aria-current="page"] .mm-ico { background: #fff; }
+            .mm-ico svg, .mm-go { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+            .mm-ico svg { width: 19px; height: 19px; }
+            .mm-txt strong { display: block; font-family: var(--font-head); font-size: 16px; font-weight: 600; line-height: 1.25; color: var(--text-strong); }
+            .mm-txt small { display: block; margin-top: 1px; font-size: 13px; font-weight: 400; line-height: 1.35; color: var(--text-body); }
+            .mm-go { width: 18px; height: 18px; color: #9aa6b2; }
+            .mm-foot { margin-top: 6px; padding: 14px 10px 8px; border-top: 1px solid rgba(13, 35, 64, 0.08); }
+            .mm-foot p { margin: 0 0 10px; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text-body); }
+            .mm-stores { display: flex; gap: 10px; }
+            .mm-stores .btn-store { flex: 1 1 0; min-width: 0; width: auto; justify-content: center; padding: 10px 8px; gap: 8px; border: 0; border-radius: 12px; color: #fff; }
+            .mobile-menu.open > * { animation: mm-in 0.36s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+            .mobile-menu.open > :nth-child(2) { animation-delay: 0.03s; }
+            .mobile-menu.open > :nth-child(3) { animation-delay: 0.06s; }
+            .mobile-menu.open > :nth-child(4) { animation-delay: 0.09s; }
+            .mobile-menu.open > :nth-child(5) { animation-delay: 0.12s; }
+            .mobile-menu.open > :nth-child(6) { animation-delay: 0.15s; }
+            .nav-scrim { position: fixed; inset: 0; z-index: 98; background: rgba(13, 35, 64, 0.4); opacity: 0; visibility: hidden; transition: opacity 0.25s var(--ease), visibility 0s linear 0.25s; -webkit-tap-highlight-color: transparent; }
+            .nav-scrim.show { opacity: 1; visibility: visible; transition: opacity 0.25s var(--ease); }
+
+            /* ---------- Touch: things answer the finger ---------- */
+            a, button, summary { -webkit-tap-highlight-color: rgba(13, 117, 104, 0.1); }
+            .btn, .btn-store { transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease); }
+            .btn:active, .btn-store:active, .btn-store:hover:active { transform: scale(0.97); }
+
+            /* ---------- Type and spacing ---------- */
+            h1, h2, h3, .h1, .h2 { text-wrap: balance; }
+            p, li { text-wrap: pretty; }
+            section { padding: 44px 0; }
+            .h1 { font-size: clamp(30px, 8.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; }
+            .h2 { font-size: clamp(24px, 6.6vw, 28px); line-height: 1.18; }
+            .lede { font-size: 16px; line-height: 1.55; }
+            .page-hero { margin-top: -60px; padding: 84px 0 36px; }
+            .page-hero .h1 { margin-bottom: 14px; }
+            .section-head { margin-bottom: 20px; }
+            /* store buttons: two across, never stacked */
+            .ctas { flex-wrap: wrap; gap: 10px; }
+            .ctas > .btn { flex: 1 0 100%; justify-content: center; }
+            .ctas .btn-store { flex: 1 1 0; min-width: 0; justify-content: center; padding: 10px 8px; gap: 8px; border-radius: 12px; }
+            .ctas .btn-store svg { width: 20px; height: 20px; }
+            .btn-store-text small { font-size: 9px; white-space: nowrap; }
+            .btn-store-text strong { font-size: 14px; white-space: nowrap; }
+            /* feature tiles: rows, not boxes */
+            .feature-grid { gap: 0; }
+            .feature-tile, .feature-tile:hover { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; align-items: start; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; padding: 16px 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); }
+            .feature-tile:last-child { border-bottom: 0; padding-bottom: 0; }
+            .feature-tile:first-child { padding-top: 0; }
+            .feature-icon { width: 40px; height: 40px; margin: 0; grid-row: 1 / span 2; }
+            .feature-icon svg { width: 19px; height: 19px; }
+            .feature-tile h3 { font-size: 16.5px; margin: 0 0 3px; }
+            .feature-tile p { font-size: 14.5px; line-height: 1.5; }
+            /* "two ways" cards: two plain entries with a hairline between them */
+            div.ways-grid { gap: 0; } /* the page's own rule sets a gap; this one has to outrank it */
+            .ways-grid .way-card, .ways-grid .way-card:hover { padding: 18px 0; background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; box-shadow: none; transform: none; }
+            .ways-grid .way-card:first-child { padding-top: 0; }
+            .ways-grid .way-card:last-child { border-bottom: 0; padding-bottom: 0; }
+            .ways-grid .way-tag { background: #fff; margin-bottom: 0; }
+            .ways-grid .way-card h3 { font-size: 18px; margin: 10px 0 5px; }
+            .ways-grid .way-card p { font-size: 14.5px; line-height: 1.55; }
+            /* steps */
+            .steps-grid { gap: 18px; }
+            .step-card { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+            .step-card .step-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
+            .step-card h3 { font-size: 17px; margin: 0 0 3px; }
+            .step-card p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+            /* the try-on page keeps its own step styles: on phones they follow the same plain rows */
+            .steps-grid .step-card, .steps-grid .step-card:hover { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; }
+            .steps-grid .step-card .step-num { width: 40px; height: 40px; margin: 0; }
+            /* questions: a plain list with hairlines */
+            .faq-list { gap: 0; }
+            .faq-item, .faq-item[open] { background: none; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.1); border-radius: 0; padding: 0; }
+            .faq-item summary { font-size: 15.5px; padding: 15px 0; margin: 0; }
+            .faq-item p { margin: -4px 0 16px; font-size: 14.5px; line-height: 1.6; }
+            /* closing band */
+            .cta-band { padding: 40px 0; }
+            .cta-band .h2 { margin-bottom: 10px; }
+            .cta-band .lede { margin-bottom: 22px; font-size: 15px; }
+            /* footer: two columns of links */
+            .footer { padding: 36px 0 24px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+            .footer-brand { grid-column: 1 / -1; }
+            .footer-tag { font-size: 14px; margin-top: 10px; }
+            .footer-col h3 { margin-bottom: 6px; font-size: 13px; }
+            .footer-col a { font-size: 14px; padding: 6px 0; }
+            .footer-bottom { margin-top: 22px; padding-top: 18px; gap: 12px; }
+            .prose-page { padding: 28px 0 44px; }
+        }
+        /* the narrowest phones: the logo and the button give a little so the bar still fits */
+        @media (max-width: 350px) {
+            .nav-logo img { height: 28px; }
+            .nav-app { padding: 0 12px; font-size: 13px; }
+        }
+        @keyframes mm-in { from { opacity: 0; transform: translateY(-6px); } }
+        /* Phones: going from one page to the next cross-fades instead of flashing white. The switch for it
+           (@view-transition) sits in each page's <head>, because the browser reads it before this file has
+           loaded; this only sets the pace. Browsers that do not know it ignore it. */
+        @media (max-width: 640px) {
+            ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; }
+        }
+        @keyframes nav-in { from { transform: translateY(calc(-100% - 36px)); } }
+        @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+            .nav, .nav-inner, .nav-app, .hamburger, .hamburger span, .mobile-menu, .mobile-menu.open, .nav-scrim, .nav-scrim.show { transition: none; }
+            .mobile-menu.open > *, .nav.is-float { animation: none; }
+        }
+
+        /* PHONE PASS, homepage pieces */
+        @media (max-width: 640px) {
+            :root { --sec-y: 44px; }
+            .hero { padding: 12px 0 32px; }
+            .hero-grid { gap: 28px; }
+            .hero-copy .lede { margin-bottom: 20px; }
+            .hero-copy .ctas { display: none; }
+            .hero-stores { margin-top: 0; margin-bottom: 16px; }
+            .hero-stores-row { flex-direction: row; gap: 10px; }
+            .hero-stores-row .btn-store { flex: 1 1 0; min-width: 0; width: auto; justify-content: center; padding: 10px 8px; gap: 8px; border-radius: 12px; }
+            .hero-chips { gap: 8px; margin-top: 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); }
+            .hero-chips::-webkit-scrollbar { display: none; }
+            .hero-chips .chip { flex-shrink: 0; }
+            /* the people band: photo shorter, designs in one swipeable row */
+            .people-img { aspect-ratio: 16 / 9; }
+            .people-copy { padding: 20px; }
+            .people-title { font-size: 20px; }
+            /* the three artists: plain rows, like the rest of the page */
+            .people-artists { gap: 0; margin-bottom: 18px; }
+            .people-artist { padding: 11px 0; border: 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); border-radius: 0; background: none; }
+            .people-artist:last-child { border-bottom: 0; }
+            .people-trends { display: flex; grid-template-columns: none; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; overscroll-behavior-x: contain; scrollbar-width: none; margin: 0 -20px; padding: 0 20px 2px; }
+            .people-trends::-webkit-scrollbar { display: none; }
+            .people-trend { flex: 0 0 31%; scroll-snap-align: start; }
+            /* three audiences: rows, not boxes */
+            .benefits-head { margin-bottom: 18px; }
+            .benefit-grid { gap: 0; }
+            .benefit-card, .benefit-card:hover { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; column-gap: 14px; row-gap: 2px; align-items: center; background: none; border: 0; border-radius: 0; box-shadow: none; transform: none; padding: 16px 0; border-bottom: 1px solid rgba(13, 35, 64, 0.09); }
+            .benefit-card:last-child { border-bottom: 0; }
+            .benefit-icon { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; align-self: start; }
+            .benefit-icon svg { width: 19px; height: 19px; }
+            .benefit-card h3 { grid-column: 2; font-size: 17px; margin: 0; }
+            .benefit-card p { grid-column: 2; font-size: 14.5px; line-height: 1.5; margin: 0; }
+            .benefit-more { grid-column: 3; grid-row: 1 / span 2; padding: 0; margin: 0; font-size: 0; gap: 0; }
+            .benefit-more svg { width: 18px; height: 18px; }
+            /* services: small tiles, two across */
+            .svc-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
+            .svc-grid li { grid-template-columns: 36px minmax(0, 1fr); grid-template-rows: auto; align-items: center; padding: 7px 9px; column-gap: 9px; border-radius: 12px; }
+            .svc-ico { grid-row: auto; width: 36px; height: 36px; border-radius: 9px; }
+            .svc-grid li strong { font-size: 13.5px; line-height: 1.25; }
+            .svc-grid li small { display: none; }
+            /* three steps: number beside the text */
+            .how-head { margin-bottom: 20px; }
+            .faq-two { gap: 10px; }
+            .faq-head .lede { margin-bottom: 0; }
+            .how-grid { gap: 18px; }
+            .how-step { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+            .how-num { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; font-size: 14px; }
+            .how-step h3 { font-size: 17px; margin: 0 0 3px; }
+            .how-step p { font-size: 14.5px; line-height: 1.5; margin: 0; }
+            .checklist { gap: 14px; }
+            .checklist li { gap: 12px; }
+            .community-left { padding: 14px; border-radius: 20px; }
+            .belong-card { padding: 28px 18px; border-radius: 22px; }
+            .belong-card .ctas { flex-wrap: wrap; }
+            .belong-card .ctas .btn-store { flex: 1 1 0; width: auto; min-width: 0; padding: 10px 8px; }
+            .belong-card .ctas .btn { flex: 1 0 100%; }
+            .phone-screens { height: 520px; }
+            /* the services list inside the booking phone: when it reaches its end, the next swipe moves the page
+               (it used to hold the swipe, which left a thumb stuck inside the phone) */
+            .phone-svc-list { overscroll-behavior: auto; }
+        }
     </style>
     <script type="application/ld+json">
 {
@@ -1968,6 +2184,7 @@
   ]
 }
     </script>
+    <style>@media (max-width: 640px) and (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }</style>
 </head>
 <body>
 
@@ -1991,6 +2208,7 @@
                     Join the community
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
+                <a href="#belong" class="nav-app" data-store-link data-tt-track="nav_get_app">Get the app</a>
                 <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -1999,14 +2217,24 @@
     </header>
 
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-        <a href="#community">Community</a>
-        <a href="/for-clients">For clients</a>
-        <a href="/for-artists">For professionals</a>
-        <a href="/for-salons">For salons</a>
-        <a href="/try-on" data-tt-track="nav_ar_tryon">AR Try On</a>
-        <a href="#belong" class="btn btn-primary">Join the community
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <a href="#community"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span class="mm-txt"><strong>Community</strong><small>Discussions, inspiration and your people</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-clients"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="mm-txt"><strong>For clients</strong><small>Find a nail artist and book</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-artists"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg></span><span class="mm-txt"><strong>For professionals</strong><small>Your portfolio, clients and bookings</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/for-salons"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg></span><span class="mm-txt"><strong>For salons</strong><small>Run your salon in one free app</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <a href="/try-on" data-tt-track="nav_ar_tryon"><span class="mm-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span><span class="mm-txt"><strong>AR Try On</strong><small>See a look on your own hands</small></span><svg class="mm-go" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+        <div class="mm-foot">
+            <p>Join the community. Free on iPhone and Android.</p>
+            <div class="mm-stores">
+                <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="menu_appstore" aria-label="Download on the App Store">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="menu_playstore" aria-label="Get it on Google Play">
+                    <svg viewBox="0 0 24 24"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
+                    <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
+                </a>
+            </div>
+        </div>
     </nav>
 
     <!-- =================================== -->
@@ -2030,11 +2258,11 @@
                         <div class="hero-stores-row">
                             <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="hero_appstore" aria-label="Download on the App Store">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                                <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                                <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
                             </a>
                             <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="hero_playstore" aria-label="Get it on Google Play">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                                <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                                <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
                             </a>
                         </div>
                     </div>
@@ -2766,11 +2994,11 @@
                     <div class="ctas" id="download">
                         <a href="https://apps.apple.com/us/app/jovee-link/id6755535426" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="belong_appstore" aria-label="Download on the App Store">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            <span class="btn-store-text"><small>Download on the</small><strong>App Store</strong></span>
+                            <span class="btn-store-text"><small>Download on the</small> <strong>App Store</strong></span>
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.joveelink.app" target="_blank" rel="noopener noreferrer" class="btn-store" data-tt-track="belong_playstore" aria-label="Get it on Google Play">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199 2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.395 12l2.303-2.492zM5.864 2.658l10.937 6.333-2.302 2.302L5.864 2.658z"/></svg>
-                            <span class="btn-store-text"><small>Get it on</small><strong>Google Play</strong></span>
+                            <span class="btn-store-text"><small>Get it on</small> <strong>Google Play</strong></span>
                         </a>
                         <a href="/for-artists" class="btn btn-outline" data-tt-track="belong_pro">Join as a professional</a>
                     </div>
@@ -2887,24 +3115,7 @@
             clearHash();
         });
 
-        // Hamburger / mobile menu
-        var hamburger = document.getElementById('hamburger');
-        var mobileMenu = document.getElementById('mobileMenu');
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', function() {
-                var open = mobileMenu.classList.toggle('open');
-                hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-                document.body.style.overflow = open ? 'hidden' : '';
-            });
-            mobileMenu.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    mobileMenu.classList.remove('open');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-
+        // The header and the mobile menu live in nav.js
 
         // Booking phone: hide the scroll hint once the services list has been scrolled
         var svcList = document.querySelector('.phone-svc-list');
@@ -3078,6 +3289,7 @@
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
+    <script src="assets/v2/nav.js?v=20261122" defer></script>
     <script src="assets/v2/app-prompt.js" defer></script>
 </body>
 </html>
