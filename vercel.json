@@ -97,7 +97,7 @@
       ]
     },
     {
-      "source": "/assets/((?!fonts/|v2/site|v2/nav|v2/app-prompt).*)",
+      "source": "/assets/((?!fonts/|v2/site|v2/nav|v2/app-prompt|v2/track).*)",
       "headers": [
         {
           "key": "Cache-Control",
